@@ -2,51 +2,139 @@
 
 {%- liquid
   assign echo_title = section.settings.title_default
-  assign target_collection = blank
-  assign found_match = false
+  assign best_collection = blank
+  assign best_count = 999999
 
   comment
-    LOGIQUE D'INTELLIGENCE PAR BLOCS : 
-    On boucle sur les paramètres de l'éditeur (blocks) et on compare le "tag déclencheur"
-    avec la liste des tags du produit actuel. Le premier qui matche l'emporte.
+    =============================================
+    INTELLIGENCE AUTOMATIQUE — Echo Lumineux v2
+    =============================================
+    1. On detecte le tag univers du produit (cocon / pro / setup)
+       pour adapter le titre via les blocs configurables.
+    2. On parcourt TOUTES les collections du produit actuel,
+       on ignore les generiques (all, frontpage),
+       et on prend la PLUS SPECIFIQUE (celle avec le moins de produits).
+       C'est toujours la sous-collection la plus pertinente.
+    3. Fallback : si aucune collection pertinente, on utilise
+       les recommendations natives de Shopify.
   endcomment
 
+  comment — ETAPE 1 : Detection du titre par tag univers — endcomment
   for block in section.blocks
     assign trigger_tag = block.settings.trigger_tag | downcase | strip
+    if trigger_tag == blank
+      continue
+    endif
 
     for tag in product.tags
       assign product_tag_down = tag | downcase | strip
-      
       if product_tag_down contains trigger_tag
         assign echo_title = block.settings.block_title
-        assign target_collection = collections[block.settings.block_collection]
-        assign found_match = true
         break
       endif
     endfor
+  endfor
 
-    if found_match
-      break
+  comment — ETAPE 2 : Trouver la collection la plus specifique du produit — endcomment
+  for col in product.collections
+    assign col_handle = col.handle | downcase
+
+    comment — Skip collections generiques — endcomment
+    if col_handle == 'all' or col_handle == 'frontpage' or col_handle == 'all-products'
+      continue
+    endif
+
+    comment — On veut la collection la plus petite = la plus specifique — endcomment
+    if col.products_count < best_count and col.products_count > 1
+      assign best_collection = col
+      assign best_count = col.products_count
     endif
   endfor
 
-  comment
-    Si aucun tag trouvé, on prend une collection par défaut
-  endcomment
-  if target_collection == blank
-    assign target_collection = collections[section.settings.collection_default]
+  comment — Variables pour le fallback recommendations — endcomment
+  assign use_recommendations = false
+  if best_collection == blank
+    assign use_recommendations = true
   endif
 -%}
 
-{%- if target_collection != blank and target_collection.products_count > 0 -%}
+{%- if use_recommendations -%}
+  {%- comment -%} FALLBACK : Shopify Product Recommendations API {%- endcomment -%}
+  <div class="sf-echo-lumineux" style="--illu-bg-night: {{ section.settings.bg_color }};"
+       id="echo-lumineux-{{ section.id }}"
+       data-product-id="{{ product.id }}"
+       data-limit="{{ section.settings.product_limit }}"
+       data-section-id="{{ section.id }}">
+    <div class="page-width">
+      <h2 class="sf-echo-title">{{ echo_title }}</h2>
+      <div class="sf-echo-grid" id="echo-grid-{{ section.id }}">
+        {%- comment -%} Rempli par JS via l'API recommendations {%- endcomment -%}
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const section = document.getElementById('echo-lumineux-{{ section.id }}');
+      if (!section) return;
+      const productId = section.dataset.productId;
+      const limit = parseInt(section.dataset.limit) + 1;
+      const grid = document.getElementById('echo-grid-{{ section.id }}');
+
+      fetch(`${window.Shopify.routes.root}recommendations/products.json?product_id=${productId}&limit=${limit}&intent=related`)
+        .then(r => r.json())
+        .then(data => {
+          if (!data.products || data.products.length === 0) {
+            section.style.display = 'none';
+            return;
+          }
+          let html = '';
+          const showBtn = {{ section.settings.show_add_button | json }};
+          const btnText = {{ section.settings.add_button_text | json }};
+
+          data.products.forEach(p => {
+            if (String(p.id) === String(productId)) return;
+            const img = p.featured_image || p.images[0] || '';
+            const price = (p.price / 100).toFixed(2).replace('.', ',') + ' \u20ac';
+            const variantId = p.variants[0].id;
+
+            html += `<a href="${p.url}" class="sf-echo-card">
+              <div class="sf-echo-image-wrapper">
+                <img src="${img}?width=600" alt="${p.title}" width="600" height="600" loading="lazy">
+              </div>
+              <div class="sf-echo-info">
+                <h3 class="sf-echo-product-title">${p.title}</h3>
+                <p class="sf-echo-product-price">${price}</p>
+                ${showBtn
+                  ? `<form method="post" action="/cart/add" class="sf-echo-add-form" style="margin:0;padding:0;">
+                       <input type="hidden" name="id" value="${variantId}">
+                       <button type="submit" class="sf-echo-add-button">${btnText}</button>
+                     </form>`
+                  : `<div class="sf-echo-add-button" style="text-align:center;margin-top:16px;">Decouvrir</div>`
+                }
+              </div>
+            </a>`;
+          });
+          grid.innerHTML = html;
+        })
+        .catch(() => { section.style.display = 'none'; });
+    })();
+  </script>
+
+{%- elsif best_collection.products_count > 0 -%}
+  {%- comment -%} MODE PRINCIPAL : Collection auto-detectee {%- endcomment -%}
   <div class="sf-echo-lumineux" style="--illu-bg-night: {{ section.settings.bg_color }};">
     <div class="page-width">
       <h2 class="sf-echo-title">{{ echo_title }}</h2>
       
       <div class="sf-echo-grid">
-        {%- for echo_product in target_collection.products limit: section.settings.product_limit -%}
-          {%- comment -%} On exclut le produit actuellement consulté {%- endcomment -%}
+        {%- assign shown_count = 0 -%}
+        {%- for echo_product in best_collection.products limit: section.settings.product_limit -%}
           {%- if echo_product.id != product.id -%}
+            {%- assign shown_count = shown_count | plus: 1 -%}
+            {%- if shown_count > section.settings.product_limit | minus: 1 -%}
+              {%- break -%}
+            {%- endif -%}
             
             <a href="{{ echo_product.url }}" class="sf-echo-card">
               <div class="sf-echo-image-wrapper">
@@ -69,7 +157,7 @@
                     </button>
                   </form>
                 {%- else -%}
-                   <div class="sf-echo-add-button" style="text-align: center; margin-top: 16px;">Découvrir</div>
+                   <div class="sf-echo-add-button" style="text-align: center; margin-top: 16px;">Decouvrir</div>
                 {%- endif -%}
               </div>
             </a>
@@ -89,22 +177,18 @@
   "settings": [
     {
       "type": "header",
-      "content": "Affichage par Defaut (Si aucun tag ne matche)"
+      "content": "Titre & Affichage"
     },
     {
       "type": "text",
       "id": "title_default",
       "label": "Titre par defaut",
-      "default": "Sublimez votre univers avec ces essentiels"
-    },
-    {
-      "type": "collection",
-      "id": "collection_default",
-      "label": "Collection par Défaut"
+      "default": "Sublimez votre univers avec ces essentiels",
+      "info": "Affiche si aucun tag univers ne matche."
     },
     {
       "type": "header",
-      "content": "Design & Affichage"
+      "content": "Design"
     },
     {
       "type": "color",
@@ -124,7 +208,7 @@
     {
       "type": "checkbox",
       "id": "show_add_button",
-      "label": "Activer le bouton d'ajout au panier direct",
+      "label": "Bouton ajout panier",
       "default": true
     },
     {
@@ -143,18 +227,13 @@
           "type": "text",
           "id": "trigger_tag",
           "label": "Tag declencheur",
-          "info": "Si le produit actuel possede ce tag (ex: 'cocon' ou 'bureau'), les regles ci-dessous s'appliqueront."
+          "info": "Si le produit possede ce tag, le titre ci-dessous s'affichera. La collection est detectee automatiquement."
         },
         {
           "type": "text",
           "id": "block_title",
-          "label": "Titre de section personnalise",
+          "label": "Titre personnalise",
           "default": "Pour completer votre espace"
-        },
-        {
-          "type": "collection",
-          "id": "block_collection",
-          "label": "Collection a suggerer"
         }
       ]
     }
@@ -175,14 +254,14 @@
           "type": "universe_rule",
           "settings": {
             "trigger_tag": "pro",
-            "block_title": "Pour optimiser votre configuration de travail"
+            "block_title": "Pour optimiser votre configuration"
           }
         },
         {
           "type": "universe_rule",
           "settings": {
             "trigger_tag": "setup",
-            "block_title": "Pour pousser l'immersion un cran plus loin"
+            "block_title": "Pour pousser l'immersion plus loin"
           }
         }
       ]
