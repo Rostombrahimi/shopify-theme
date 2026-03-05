@@ -19,6 +19,8 @@
             "phrase_1": "Votre atmosphère est prête à être infusée.",
             "phrase_2": "Temps de propagation des photons : 3 à 5 jours.",
             "phrase_3": "Votre univers s'illumine le",
+            "label_start": "L'Atelier Illuminées",
+            "label_end": "Chez Vous",
             "delivery_days": 4,
             "carousel_speed": 4
           }
