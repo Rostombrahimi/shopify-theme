@@ -190,6 +190,28 @@
     font-weight: 500;
 }
 
+.sf-review-error {
+    background: rgba(239, 68, 68, 0.1);
+    color: #EF4444;
+    padding: 16px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    text-align: center;
+    font-weight: 500;
+}
+
+.sf-review-error ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0 0;
+    font-size: 13px;
+}
+
+.hidden {
+    display: none !important;
+}
+
 /* Grid */
 .sf-reviews-grid {
     display: grid;
