@@ -83,18 +83,18 @@
 
 {% schema %}
 {
-  "name": "L'Écho Lumineux (Sug.)",
+  "name": "Echo Lumineux (Suggestions)",
   "tag": "section",
   "class": "section-echo-lumineux",
   "settings": [
     {
       "type": "header",
-      "content": "Affichage par Défaut (Si aucun tag ne matche)"
+      "content": "Affichage par Defaut (Si aucun tag ne matche)"
     },
     {
       "type": "text",
       "id": "title_default",
-      "label": "Titre par défaut",
+      "label": "Titre par defaut",
       "default": "Sublimez votre univers avec ces essentiels"
     },
     {
@@ -137,38 +137,38 @@
   "blocks": [
     {
       "type": "universe_rule",
-      "name": "Règle Univers / Sous-Univ.",
+      "name": "Regle Univers / Sous-Univ.",
       "settings": [
         {
           "type": "text",
           "id": "trigger_tag",
-          "label": "Tag déclencheur",
-          "info": "Si le produit actuel possède ce tag (ex: 'cocon' ou 'bureau'), les règles ci-dessous s'appliqueront."
+          "label": "Tag declencheur",
+          "info": "Si le produit actuel possede ce tag (ex: 'cocon' ou 'bureau'), les regles ci-dessous s'appliqueront."
         },
         {
           "type": "text",
           "id": "block_title",
-          "label": "Titre de section personnalisé",
-          "default": "Pour compléter votre espace"
+          "label": "Titre de section personnalise",
+          "default": "Pour completer votre espace"
         },
         {
           "type": "collection",
           "id": "block_collection",
-          "label": "Collection à suggérer"
+          "label": "Collection a suggerer"
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "L'Écho Lumineux",
+      "name": "Echo Lumineux",
       "category": "Produit",
       "blocks": [
         {
           "type": "universe_rule",
           "settings": {
             "trigger_tag": "cocon",
-            "block_title": "Pour compléter son cocon de douceur"
+            "block_title": "Pour completer son cocon de douceur"
           }
         },
         {
