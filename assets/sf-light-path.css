@@ -115,34 +115,34 @@
     position: absolute;
     top: -1px;
     left: 0;
-    right: 0;
-    /* Forces full width regardless of flex parsing quirks */
+    width: 40px;
     height: 3px;
     background-color: var(--illu-accent-amber, #E89D46);
     box-shadow: 0 0 10px 2px var(--illu-accent-amber, #E89D46);
     border-radius: 4px;
     z-index: 10;
-    transform-origin: left center;
-    animation: light-fill var(--path-duration, 4s) infinite cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+    animation: light-travel 3s infinite linear;
 }
 
-@keyframes light-fill {
+@keyframes light-travel {
     0% {
-        transform: scaleX(0);
+        left: 0%;
         opacity: 0;
     }
 
     15% {
+        left: 5%;
         opacity: 1;
     }
 
     85% {
-        transform: scaleX(1);
+        left: 95%;
         opacity: 1;
     }
 
     100% {
-        transform: scaleX(1);
+        left: 100%;
         opacity: 0;
     }
 }
