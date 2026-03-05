@@ -5,20 +5,6 @@
   assign best_collection = blank
   assign best_count = 999999
 
-  comment
-    =============================================
-    INTELLIGENCE AUTOMATIQUE — Echo Lumineux v2
-    =============================================
-    1. On detecte le tag univers du produit (cocon / pro / setup)
-       pour adapter le titre via les blocs configurables.
-    2. On parcourt TOUTES les collections du produit actuel,
-       on ignore les generiques (all, frontpage),
-       et on prend la PLUS SPECIFIQUE (celle avec le moins de produits).
-       C'est toujours la sous-collection la plus pertinente.
-    3. Fallback : si aucune collection pertinente, on utilise
-       les recommendations natives de Shopify.
-  endcomment
-
 
   for block in section.blocks
     assign trigger_tag = block.settings.trigger_tag | downcase | strip
