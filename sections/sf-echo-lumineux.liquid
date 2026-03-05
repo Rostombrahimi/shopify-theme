@@ -129,13 +129,9 @@
       <h2 class="sf-echo-title">{{ echo_title }}</h2>
       
       <div class="sf-echo-grid">
-        {%- assign shown_count = 0 -%}
-        {%- for echo_product in best_collection.products limit: section.settings.product_limit -%}
+        {%- assign echo_limit = section.settings.product_limit | plus: 1 -%}
+        {%- for echo_product in best_collection.products limit: echo_limit -%}
           {%- if echo_product.id != product.id -%}
-            {%- assign shown_count = shown_count | plus: 1 -%}
-            {%- if shown_count > section.settings.product_limit | minus: 1 -%}
-              {%- break -%}
-            {%- endif -%}
             
             <a href="{{ echo_product.url }}" class="sf-echo-card">
               <div class="sf-echo-image-wrapper">
