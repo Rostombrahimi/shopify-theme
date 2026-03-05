@@ -3,7 +3,7 @@
 /* Conteneur principal */
 .sf-echo-lumineux {
     padding: 60px 20px;
-    background-color: var(--illu-bg-night, #0A1428);
+    background-color: var(--illu-bg-night, #081A32);
     position: relative;
     overflow: hidden;
 }
@@ -160,6 +160,6 @@
 
 .sf-echo-add-button:hover {
     background: var(--illu-accent-amber, #E89D46);
-    color: #0A1428 !important;
+    color: #081A32 !important;
     /* Forces dark text on amber background */
 }
