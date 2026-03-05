@@ -478,7 +478,7 @@
 
               {%- when 'variant_picker' -%}
                 {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
-              {%- when 'light_path' -%}
+              {%- when 'illuminations_path' -%}
                 <div class="light-path-wrapper" style="margin-bottom: 24px;" {{ block.shopify_attributes }}>
                     <div class="light-path-header">
                         <div class="light-path-title-row">
@@ -817,7 +817,7 @@
       "type": "@app"
     },
     {
-      "type": "light_path",
+      "type": "illuminations_path",
       "name": "⚡ Trajet Idéal",
       "limit": 1,
       "settings": [

@@ -39,8 +39,8 @@
                         "btn_text": "Ajouter au panier"
                     }
                 },
-                "light_path": {
-                    "type": "light_path",
+                "illuminations_path": {
+                    "type": "illuminations_path",
                     "settings": {}
                 },
                 "reassurance_1": {
@@ -83,7 +83,7 @@
                 "subtitle",
                 "price",
                 "buy_buttons",
-                "light_path",
+                "illuminations_path",
                 "reassurance_1",
                 "reassurance_2",
                 "description",

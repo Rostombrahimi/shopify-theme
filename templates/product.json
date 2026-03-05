@@ -36,8 +36,8 @@
                         "show_gift_card_recipient": true
                     }
                 },
-                "light_path": {
-                    "type": "light_path",
+                "illuminations_path": {
+                    "type": "illuminations_path",
                     "settings": {}
                 },
                 "description": {
