@@ -130,6 +130,79 @@
                   {{ block.settings.text }}
                 </div>
                 
+              {%- when 'light_path' -%}
+                <div class="light-path-wrapper" style="margin-bottom: 24px;" {{ block.shopify_attributes }}>
+                    <div class="light-path-header">
+                        <div class="light-path-title-row">
+                          <h3 class="light-path-subtitle">Le Trajet de la Lumière</h3>
+                          <span class="path-badge">
+                              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                              Expert Verified
+                          </span>
+                        </div>
+                        
+                        <div class="phrase-rotator" id="phrase-rotator-{{ section.id }}-{{ block.id }}">
+                            <p class="phrase-item is-active" data-phase="0">Votre atmosphère est prête à être infusée.</p>
+                            <p class="phrase-item" data-phase="1">Temps de propagation des photons : 3 à 5 jours.</p>
+                            <p class="phrase-item" data-phase="2">Votre univers s'illumine le <span id="dynamic-delivery-date-{{ section.id }}-{{ block.id }}"></span>.</p>
+                        </div>
+                    </div>
+
+                    <!-- Animation du point A au point B -->
+                    <div class="path-line-container">
+                        <!-- Point de départ -->
+                        <div class="path-icon">
+                            <span class="path-point"></span>
+                        </div>
+
+                        <!-- Le fameux photon -->
+                        <div class="photon-pulse"></div>
+
+                        <!-- Point d'arrivée (Maison) -->
+                        <div class="path-icon icon-home">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                        </div>
+                    </div>
+
+                    <div class="light-path-labels">
+                        <div class="label-start">L'Atelier Illuminées</div>
+                        <div class="label-end">Votre Univers</div>
+                    </div>
+                </div>
+
+                <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                    const dateSpan = document.getElementById('dynamic-delivery-date-{{ section.id }}-{{ block.id }}');
+                    if (dateSpan && !dateSpan.dataset.initialized) {
+                        const arrivalDate = new Date();
+                        arrivalDate.setDate(arrivalDate.getDate() + 4);
+                        const options = { day: 'numeric', month: 'long' };
+                        dateSpan.textContent = arrivalDate.toLocaleDateString('fr-FR', options);
+                        dateSpan.dataset.initialized = 'true';
+                    }
+
+                    const rotator = document.getElementById('phrase-rotator-{{ section.id }}-{{ block.id }}');
+                    if (rotator && !rotator.dataset.initialized) {
+                      const phrases = rotator.querySelectorAll('.phrase-item');
+                      if (phrases.length >= 3) {
+                          let currentPhase = 0;
+                          const phaseDuration = 1333; // 4s / 3
+
+                          setInterval(() => {
+                              phrases[currentPhase].classList.remove('is-active');
+                              phrases[currentPhase].classList.add('is-leaving');
+                              
+                              currentPhase = (currentPhase + 1) % phrases.length;
+                              
+                              phrases[currentPhase].classList.remove('is-leaving');
+                              phrases[currentPhase].classList.add('is-active');
+                          }, phaseDuration);
+                      }
+                      rotator.dataset.initialized = 'true';
+                    }
+                });
+                </script>
+
               {%- when 'description' -%}
                 {% if product.description != blank %}
                 <div class="glass-accordion" style="margin-bottom: 16px;" {{ block.shopify_attributes }}>
@@ -285,7 +358,7 @@
           "type": "text",
           "id": "text",
           "label": "Texte",
-          "default": "Livraison sécurisée Premium offerte"
+          "default": "Livraison sécurisée Premium"
         },
         {
           "type": "html",
@@ -293,6 +366,11 @@
           "label": "Icône SVG custom"
         }
       ]
+    },
+    {
+      "type": "light_path",
+      "name": "⚡ Trajet Idéal (Livraison)",
+      "limit": 1
     },
     {
       "type": "description",

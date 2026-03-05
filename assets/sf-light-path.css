@@ -1,6 +1,6 @@
 /* sf-light-path.css */
 :root {
-    --illu-bg-night: #081A32;
+    --illu-bg-night: #0d1e34;
     --illu-accent-amber: #E89D46;
     --illu-text-cream: #F9F9F9;
     --path-duration: 4s;
@@ -9,29 +9,35 @@
 /* 1️⃣ STRUCTURE DU MODULE */
 .light-path-wrapper {
     background-color: var(--illu-bg-night);
-    padding: 40px 2rem;
+    padding: 20px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 30px;
-    border-radius: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
+    align-items: stretch;
+    gap: 16px;
+    border-radius: 12px;
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .light-path-header,
 .light-path-labels {
     width: 100%;
-    max-width: 800px;
+}
+
+.light-path-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
 }
 
 .light-path-subtitle {
-    font-size: 13px;
+    font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     text-transform: uppercase;
     color: var(--illu-accent-amber);
-    margin: 0 0 16px 0;
+    margin: 0;
     text-align: left;
 }
 
@@ -58,7 +64,7 @@
 
 /* 2️⃣ L'ANIMATION DES PHRASES (LOGIQUE DE FLUIDITÉ) */
 .phrase-rotator {
-    height: 32px;
+    height: 24px;
     position: relative;
     overflow: hidden;
     width: 100%;
@@ -68,67 +74,66 @@
 .phrase-item {
     position: absolute;
     width: 100%;
-    font-size: 24px;
+    font-size: 15px;
     font-weight: 500;
     color: var(--illu-text-cream);
     opacity: 0;
-    transform: translateY(25px);
-    /* Cubic-bezier est la clé pour l'effet "soyeux" */
+    top: 25px;
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     margin: 0;
 }
 
 .phrase-item.is-active {
     opacity: 1;
-    transform: translateY(0);
+    top: 0;
 }
 
 .phrase-item.is-leaving {
     opacity: 0;
-    transform: translateY(-25px);
+    top: -25px;
 }
 
 /* 3️⃣ LA LIGNE DE PHOTONS */
 .path-line-container {
     width: 100%;
-    max-width: 800px;
     height: 1px;
     background: rgba(255, 255, 255, 0.1);
     position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 5px;
 }
 
 .photon-pulse {
     position: absolute;
     top: -1px;
-    width: 100px;
+    width: 60px;
     height: 3px;
     background: linear-gradient(90deg, transparent, var(--illu-accent-amber), transparent);
     filter: blur(1px);
-    box-shadow: 0 0 15px var(--illu-accent-amber);
+    box-shadow: 0 0 10px var(--illu-accent-amber);
     animation: light-travel var(--path-duration) infinite linear;
-    will-change: left;
+    will-change: transform;
+    left: 0;
 }
 
 @keyframes light-travel {
     0% {
-        left: -10%;
+        transform: translateX(-60px);
         opacity: 0;
     }
 
-    15% {
+    10% {
         opacity: 1;
     }
 
-    85% {
+    90% {
         opacity: 1;
     }
 
     100% {
-        left: 110%;
+        transform: translateX(min(100vw, 400px));
         opacity: 0;
     }
 }
@@ -171,7 +176,7 @@
 .light-path-labels {
     display: flex;
     justify-content: space-between;
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 600;
     letter-spacing: 1px;
     color: #8A9BB1;
@@ -188,16 +193,11 @@
 
 /* Mobile Adjustments */
 @media (max-width: 768px) {
-    .light-path-wrapper {
-        padding: 30px 20px;
+    .path-badge {
+        display: none;
     }
 
     .phrase-item {
-        font-size: 18px;
-    }
-
-    .path-badge {
-        display: none;
-        /* Hide badge on very small screens to save header space */
+        font-size: 14px;
     }
 }

@@ -39,6 +39,10 @@
                         "btn_text": "Ajouter au panier"
                     }
                 },
+                "light_path": {
+                    "type": "light_path",
+                    "settings": {}
+                },
                 "reassurance_1": {
                     "type": "reassurance",
                     "settings": {
@@ -79,16 +83,13 @@
                 "subtitle",
                 "price",
                 "buy_buttons",
+                "light_path",
                 "reassurance_1",
                 "reassurance_2",
                 "description",
                 "specs",
                 "advice"
             ]
-        },
-        "light_path": {
-            "type": "sf-light-path",
-            "settings": {}
         },
         "reviews_grid": {
             "type": "sf-pdp-reviews-grid",
@@ -138,7 +139,6 @@
     },
     "order": [
         "main",
-        "light_path",
         "reviews_grid"
     ]
 }
