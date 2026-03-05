@@ -105,39 +105,43 @@
 
 .path-line {
     flex-grow: 1;
-    height: 1px;
+    height: 2px;
     background: rgba(255, 255, 255, 0.1);
     position: relative;
     overflow: visible;
+    border-radius: 2px;
+}
+
+/* Le faisceau est injecté directement dans la ligne pour qu'il ne puisse pas être supprimé */
+.path-line::after {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -40%;
+    width: 40%;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--illu-accent-amber, #E89D46) 50%, transparent);
+    box-shadow: 0 0 10px 2px var(--illu-accent-amber, #E89D46);
+    border-radius: 4px;
+    animation: light-beam var(--path-duration, 4s) infinite cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 10;
 }
 
 .photon-pulse {
-    position: absolute;
-    top: -1px;
-    left: 0;
-    width: 40px;
-    height: 3px;
-    background-color: var(--illu-accent-amber, #E89D46);
-    box-shadow: 0 0 10px 2px var(--illu-accent-amber, #E89D46);
-    border-radius: 4px;
-    z-index: 10;
-    pointer-events: none;
-    animation: light-travel 3s infinite linear;
+    display: none !important;
 }
 
-@keyframes light-travel {
+@keyframes light-beam {
     0% {
-        left: 0%;
+        left: -40%;
         opacity: 0;
     }
 
-    15% {
-        left: 5%;
+    10% {
         opacity: 1;
     }
 
-    85% {
-        left: 95%;
+    90% {
         opacity: 1;
     }
 
