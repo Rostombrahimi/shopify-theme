@@ -1,9 +1,8 @@
 /* Module : L'Écho Lumineux (Recommandations Intelligentes) */
 
-/* Conteneur principal */
 .sf-echo-lumineux {
     padding: 60px 20px;
-    background-color: var(--illu-bg-night, #081A32);
+    background-color: #081A32 !important;
     position: relative;
     overflow: hidden;
 }
