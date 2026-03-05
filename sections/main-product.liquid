@@ -516,8 +516,8 @@
                     </div>
 
                     <div class="light-path-labels">
-                        <div class="label-start">L'Atelier Illuminées</div>
-                        <div class="label-end">Votre Univers</div>
+                        <div class="label-start">{{ block.settings.label_start | default: "L'Atelier Illuminées" }}</div>
+                        <div class="label-end">{{ block.settings.label_end | default: "Votre Univers" }}</div>
                     </div>
                 </light-path>
 
@@ -862,6 +862,18 @@
           "id": "phrase_3",
           "label": "Phrase 3 (avant la date)",
           "default": "Votre univers s'illumine le"
+        },
+        {
+          "type": "text",
+          "id": "label_start",
+          "label": "Texte de départ (Gauche)",
+          "default": "L'Atelier Illuminées"
+        },
+        {
+          "type": "text",
+          "id": "label_end",
+          "label": "Texte d'arrivée (Droite)",
+          "default": "Votre Univers"
         },
         {
           "type": "range",

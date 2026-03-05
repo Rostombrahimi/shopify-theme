@@ -175,8 +175,8 @@
 .icon-home {
     opacity: 0.3;
     color: #8A9BB1;
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
 }
 
 .light-path-wrapper:hover .icon-home {
@@ -193,14 +193,21 @@
     letter-spacing: 1px;
     color: #8A9BB1;
     text-transform: uppercase;
+    margin-top: 4px;
 }
 
 .label-start {
     text-align: left;
+    width: 80px;
+    /* Force bounds for centering */
+    margin-left: -5px;
 }
 
 .label-end {
-    text-align: right;
+    text-align: center;
+    width: 100px;
+    /* Force bounds for centering */
+    margin-right: -38px;
 }
 
 /* Mobile Adjustments */
