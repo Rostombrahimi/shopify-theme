@@ -86,6 +86,10 @@
                 "advice"
             ]
         },
+        "light_path": {
+            "type": "sf-light-path",
+            "settings": {}
+        },
         "reviews_grid": {
             "type": "sf-pdp-reviews-grid",
             "settings": {
@@ -134,6 +138,7 @@
     },
     "order": [
         "main",
+        "light_path",
         "reviews_grid"
     ]
 }
