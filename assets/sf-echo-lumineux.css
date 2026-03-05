@@ -1,0 +1,165 @@
+/* Module : L'Écho Lumineux (Recommandations Intelligentes) */
+
+/* Conteneur principal */
+.sf-echo-lumineux {
+    padding: 60px 20px;
+    background-color: var(--illu-bg-night, #0A1428);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Titre Dynamique */
+.sf-echo-title {
+    font-family: var(--font-heading-family);
+    font-size: 24px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 24px;
+    letter-spacing: 0.5px;
+    text-align: left;
+}
+
+@media screen and (min-width: 750px) {
+    .sf-echo-title {
+        font-size: 32px;
+        text-align: center;
+        margin-bottom: 40px;
+    }
+}
+
+/* Grille et Slider */
+.sf-echo-grid {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 20px;
+    /* Space for scrollbar */
+}
+
+/* Hide scrollbar for a cleaner look but keep functionality */
+.sf-echo-grid::-webkit-scrollbar {
+    display: none;
+}
+
+.sf-echo-grid {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+@media screen and (min-width: 750px) {
+    .sf-echo-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+        overflow-x: visible;
+        padding-bottom: 0;
+    }
+}
+
+/* Carte Produit (Bento Card) */
+.sf-echo-card {
+    flex: 0 0 80vw;
+    /* Shows 80% on mobile to hint at next item */
+    scroll-snap-align: start;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+}
+
+@media screen and (min-width: 750px) {
+    .sf-echo-card {
+        flex: 1;
+        /* Reset for grid */
+    }
+}
+
+.sf-echo-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(232, 157, 70, 0.3);
+    /* Amber accent border */
+}
+
+/* Image du produit */
+.sf-echo-image-wrapper {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 16px;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.sf-echo-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.5s ease;
+}
+
+.sf-echo-card:hover .sf-echo-image-wrapper img {
+    transform: scale(1.05);
+}
+
+/* Informations du produit */
+.sf-echo-info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-between;
+}
+
+.sf-echo-product-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #FFFFFF;
+    margin: 0 0 8px 0;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.sf-echo-product-price {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--illu-accent-amber, #E89D46);
+    margin: 0;
+}
+
+/* Ajout au panier (Bouton ultra sobre) */
+.sf-echo-add-button {
+    margin-top: 16px;
+    width: 100%;
+    padding: 10px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #FFFFFF;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.sf-echo-card:hover .sf-echo-add-button {
+    border-color: var(--illu-accent-amber, #E89D46);
+    color: var(--illu-accent-amber, #E89D46);
+}
+
+.sf-echo-add-button:hover {
+    background: var(--illu-accent-amber, #E89D46);
+    color: #0A1428 !important;
+    /* Forces dark text on amber background */
+}

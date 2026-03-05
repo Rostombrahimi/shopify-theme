@@ -1,0 +1,164 @@
+{{ 'sf-echo-lumineux.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign current_universe = 'default'
+  assign echo_title = section.settings.title_default
+  assign target_collection = blank
+
+  comment
+    LOGIQUE D'INTELLIGENCE : Détection de l'univers via les tags
+    Si le produit a un tag spécifique, on change le titre du module et on charge la collection correspondante.
+  endcomment
+
+  for tag in product.tags
+    assign t_down = tag | downcase
+    
+    if t_down contains 'cocon'
+      assign current_universe = 'cocon'
+      assign echo_title = 'Pour compléter son cocon de douceur'
+      assign target_collection = collections[section.settings.collection_cocon]
+      break
+    elsif t_down contains 'pro'
+      assign current_universe = 'pro'
+      assign echo_title = 'Pour optimiser votre configuration de travail'
+      assign target_collection = collections[section.settings.collection_pro]
+      break
+    elsif t_down contains 'setup'
+      assign current_universe = 'setup'
+      assign echo_title = 'Pour pousser l\'immersion un cran plus loin'
+      assign target_collection = collections[section.settings.collection_setup]
+      break
+    endif
+  endfor
+
+  comment
+    Si aucun tag trouvé, on prend une collection par défaut
+  endcomment
+  if target_collection == blank
+    assign target_collection = collections[section.settings.collection_default]
+  endif
+-%}
+
+{%- if target_collection != blank and target_collection.products_count > 0 -%}
+  <div class="sf-echo-lumineux" style="--illu-bg-night: {{ section.settings.bg_color }};">
+    <div class="page-width">
+      <h2 class="sf-echo-title">{{ echo_title }}</h2>
+      
+      <div class="sf-echo-grid">
+        {%- for echo_product in target_collection.products limit: section.settings.product_limit -%}
+          {%- comment -%} On exclut le produit actuellement consulté {%- endcomment -%}
+          {%- if echo_product.id != product.id -%}
+            
+            <a href="{{ echo_product.url }}" class="sf-echo-card">
+              <div class="sf-echo-image-wrapper">
+                <img src="{{ echo_product.featured_image | image_url: width: 600 }}" 
+                     alt="{{ echo_product.title | escape }}" 
+                     width="600" 
+                     height="600" 
+                     loading="lazy">
+              </div>
+              
+              <div class="sf-echo-info">
+                <h3 class="sf-echo-product-title">{{ echo_product.title }}</h3>
+                <p class="sf-echo-product-price">{{ echo_product.price | money }}</p>
+                
+                {%- if section.settings.show_add_button -%}
+                  <form method="post" action="/cart/add" class="sf-echo-add-form" style="margin: 0; padding: 0;">
+                    <input type="hidden" name="id" value="{{ echo_product.variants.first.id }}">
+                    <button type="submit" class="sf-echo-add-button">
+                      {{ section.settings.add_button_text }}
+                    </button>
+                  </form>
+                {%- else -%}
+                   <div class="sf-echo-add-button" style="text-align: center; margin-top: 16px;">Découvrir</div>
+                {%- endif -%}
+              </div>
+            </a>
+            
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "L'Écho Lumineux (Sug.)",
+  "tag": "section",
+  "class": "section-echo-lumineux",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Intelligence de l'Univers"
+    },
+    {
+      "type": "collection",
+      "id": "collection_cocon",
+      "label": "Collection Univers COCON"
+    },
+    {
+      "type": "collection",
+      "id": "collection_pro",
+      "label": "Collection Univers PRO"
+    },
+    {
+      "type": "collection",
+      "id": "collection_setup",
+      "label": "Collection Univers SETUP"
+    },
+    {
+      "type": "header",
+      "content": "Affichage par Défaut (Si aucun tag)"
+    },
+    {
+      "type": "text",
+      "id": "title_default",
+      "label": "Titre par défaut",
+      "default": "Sublimez votre univers avec ces essentiels"
+    },
+    {
+      "type": "collection",
+      "id": "collection_default",
+      "label": "Collection par Défaut"
+    },
+    {
+      "type": "header",
+      "content": "Design & Affichage"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Couleur de Fond",
+      "default": "#0A1428"
+    },
+    {
+      "type": "range",
+      "id": "product_limit",
+      "min": 3,
+      "max": 8,
+      "step": 1,
+      "default": 4,
+      "label": "Nombre max de produits"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_add_button",
+      "label": "Activer le bouton d'ajout au panier direct",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "add_button_text",
+      "label": "Texte du bouton",
+      "default": "Ajouter au panier"
+    }
+  ],
+  "presets": [
+    {
+      "name": "L'Écho Lumineux",
+      "category": "Produit"
+    }
+  ]
+}
+{% endschema %}
