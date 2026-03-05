@@ -1,32 +1,31 @@
 {{ 'sf-echo-lumineux.css' | asset_url | stylesheet_tag }}
 
 {%- liquid
-  assign current_universe = 'default'
   assign echo_title = section.settings.title_default
   assign target_collection = blank
+  assign found_match = false
 
   comment
-    LOGIQUE D'INTELLIGENCE : Détection de l'univers via les tags
-    Si le produit a un tag spécifique, on change le titre du module et on charge la collection correspondante.
+    LOGIQUE D'INTELLIGENCE PAR BLOCS : 
+    On boucle sur les paramètres de l'éditeur (blocks) et on compare le "tag déclencheur"
+    avec la liste des tags du produit actuel. Le premier qui matche l'emporte.
   endcomment
 
-  for tag in product.tags
-    assign t_down = tag | downcase
-    
-    if t_down contains 'cocon'
-      assign current_universe = 'cocon'
-      assign echo_title = 'Pour compléter son cocon de douceur'
-      assign target_collection = collections[section.settings.collection_cocon]
-      break
-    elsif t_down contains 'pro'
-      assign current_universe = 'pro'
-      assign echo_title = 'Pour optimiser votre configuration de travail'
-      assign target_collection = collections[section.settings.collection_pro]
-      break
-    elsif t_down contains 'setup'
-      assign current_universe = 'setup'
-      assign echo_title = 'Pour pousser l\'immersion un cran plus loin'
-      assign target_collection = collections[section.settings.collection_setup]
+  for block in section.blocks
+    assign trigger_tag = block.settings.trigger_tag | downcase | strip
+
+    for tag in product.tags
+      assign product_tag_down = tag | downcase | strip
+      
+      if product_tag_down contains trigger_tag
+        assign echo_title = block.settings.block_title
+        assign target_collection = collections[block.settings.block_collection]
+        assign found_match = true
+        break
+      endif
+    endfor
+
+    if found_match
       break
     endif
   endfor
@@ -90,26 +89,7 @@
   "settings": [
     {
       "type": "header",
-      "content": "Intelligence de l'Univers"
-    },
-    {
-      "type": "collection",
-      "id": "collection_cocon",
-      "label": "Collection Univers COCON"
-    },
-    {
-      "type": "collection",
-      "id": "collection_pro",
-      "label": "Collection Univers PRO"
-    },
-    {
-      "type": "collection",
-      "id": "collection_setup",
-      "label": "Collection Univers SETUP"
-    },
-    {
-      "type": "header",
-      "content": "Affichage par Défaut (Si aucun tag)"
+      "content": "Affichage par Défaut (Si aucun tag ne matche)"
     },
     {
       "type": "text",
@@ -154,10 +134,58 @@
       "default": "Ajouter au panier"
     }
   ],
+  "blocks": [
+    {
+      "type": "universe_rule",
+      "name": "Règle Univers / Sous-Univ.",
+      "settings": [
+        {
+          "type": "text",
+          "id": "trigger_tag",
+          "label": "Tag déclencheur",
+          "info": "Si le produit actuel possède ce tag (ex: 'cocon' ou 'bureau'), les règles ci-dessous s'appliqueront."
+        },
+        {
+          "type": "text",
+          "id": "block_title",
+          "label": "Titre de section personnalisé",
+          "default": "Pour compléter votre espace"
+        },
+        {
+          "type": "collection",
+          "id": "block_collection",
+          "label": "Collection à suggérer"
+        }
+      ]
+    }
+  ],
   "presets": [
     {
       "name": "L'Écho Lumineux",
-      "category": "Produit"
+      "category": "Produit",
+      "blocks": [
+        {
+          "type": "universe_rule",
+          "settings": {
+            "trigger_tag": "cocon",
+            "block_title": "Pour compléter son cocon de douceur"
+          }
+        },
+        {
+          "type": "universe_rule",
+          "settings": {
+            "trigger_tag": "pro",
+            "block_title": "Pour optimiser votre configuration de travail"
+          }
+        },
+        {
+          "type": "universe_rule",
+          "settings": {
+            "trigger_tag": "setup",
+            "block_title": "Pour pousser l'immersion un cran plus loin"
+          }
+        }
+      ]
     }
   ]
 }

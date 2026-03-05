@@ -95,10 +95,49 @@
                 "padding_top": 36,
                 "padding_bottom": 28
             }
+        },
+        "echo_lumineux": {
+            "type": "sf-echo-lumineux",
+            "blocks": {
+                "universe_1": {
+                    "type": "universe_rule",
+                    "settings": {
+                        "trigger_tag": "cocon",
+                        "block_title": "Pour compléter son cocon de douceur"
+                    }
+                },
+                "universe_2": {
+                    "type": "universe_rule",
+                    "settings": {
+                        "trigger_tag": "pro",
+                        "block_title": "Pour optimiser votre configuration de travail"
+                    }
+                },
+                "universe_3": {
+                    "type": "universe_rule",
+                    "settings": {
+                        "trigger_tag": "setup",
+                        "block_title": "Pour pousser l'immersion un cran plus loin"
+                    }
+                }
+            },
+            "block_order": [
+                "universe_1",
+                "universe_2",
+                "universe_3"
+            ],
+            "settings": {
+                "title_default": "Sublimez votre univers avec ces essentiels",
+                "bg_color": "#0A1428",
+                "product_limit": 4,
+                "show_add_button": true,
+                "add_button_text": "Ajouter au panier"
+            }
         }
     },
     "order": [
         "main",
+        "echo_lumineux",
         "related-products"
     ]
 }

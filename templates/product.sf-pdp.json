@@ -8,160 +8,199 @@
  * ------------------------------------------------------------
  */
 {
-  "sections": {
-    "main": {
-      "type": "sf-pdp-main",
-      "blocks": {
-        "illuminations_path_M67jpY": {
-          "type": "illuminations_path",
-          "settings": {
-            "accent_color": "#e89d46",
-            "phrase_1": "Votre atmosphère est prête à être infusée.",
-            "phrase_2": "Temps de propagation des photons : 3 à 5 jours.",
-            "phrase_3": "Votre univers s'illumine le",
-            "label_start": "L'Atelier Illuminées",
-            "label_end": "Chez Vous",
-            "delivery_days": 4,
-            "carousel_speed": 4
-          }
+    "sections": {
+        "main": {
+            "type": "sf-pdp-main",
+            "blocks": {
+                "illuminations_path_M67jpY": {
+                    "type": "illuminations_path",
+                    "settings": {
+                        "accent_color": "#e89d46",
+                        "phrase_1": "Votre atmosphère est prête à être infusée.",
+                        "phrase_2": "Temps de propagation des photons : 3 à 5 jours.",
+                        "phrase_3": "Votre univers s'illumine le",
+                        "label_start": "L'Atelier Illuminées",
+                        "label_end": "Chez Vous",
+                        "delivery_days": 4,
+                        "carousel_speed": 4
+                    }
+                },
+                "badge": {
+                    "type": "badge",
+                    "settings": {
+                        "text": "Expert Verified",
+                        "icon_svg": ""
+                    }
+                },
+                "title": {
+                    "type": "title",
+                    "settings": {}
+                },
+                "reviews": {
+                    "type": "reviews",
+                    "settings": {
+                        "rating": 5,
+                        "text": "4.9/5 (128 avis)"
+                    }
+                },
+                "subtitle": {
+                    "type": "subtitle",
+                    "settings": {
+                        "text": "Un chef-d'œuvre artisanal capturant l'essence même de l'énergie cinétique pure."
+                    }
+                },
+                "price": {
+                    "type": "price",
+                    "settings": {}
+                },
+                "buy_buttons": {
+                    "type": "buy_buttons",
+                    "settings": {
+                        "btn_text": "Ajouter au panier"
+                    }
+                },
+                "reassurance_1": {
+                    "type": "reassurance",
+                    "settings": {
+                        "text": "Livraison sécurisée Premium offerte",
+                        "icon_svg": ""
+                    }
+                },
+                "reassurance_2": {
+                    "type": "reassurance",
+                    "settings": {
+                        "text": "Garantie à vie 'Illuminées'",
+                        "icon_svg": ""
+                    }
+                },
+                "description": {
+                    "type": "description",
+                    "settings": {
+                        "heading": "Description"
+                    }
+                },
+                "specs": {
+                    "type": "accordion",
+                    "settings": {
+                        "heading": "Spécifications",
+                        "icon_svg": "",
+                        "content": "<div class=\"sf-spec-row\">\n<span class=\"sf-spec-label\">Diamètre</span><span class=\"sf-spec-value\">24 cm</span>\n</div><div class=\"sf-spec-row\">\n<span class=\"sf-spec-label\">Matériaux</span><span class=\"sf-spec-value\">Verre Soufflé, Laiton</span>\n</div><div class=\"sf-spec-row\">\n<span class=\"sf-spec-label\">Source</span><span class=\"sf-spec-value\">LED Dynamic Core</span>\n</div>",
+                        "page": ""
+                    }
+                },
+                "advice": {
+                    "type": "accordion",
+                    "settings": {
+                        "heading": "Conseils Expert",
+                        "icon_svg": "",
+                        "content": "<p>Nos experts recommandent de placer cette création sur un bureau dégagé ou au centre de la pièce pour laisser l'éclat se diffuser harmonieusement sur 360°.</p>",
+                        "page": ""
+                    }
+                }
+            },
+            "block_order": [
+                "illuminations_path_M67jpY",
+                "badge",
+                "title",
+                "reviews",
+                "subtitle",
+                "price",
+                "buy_buttons",
+                "reassurance_1",
+                "reassurance_2",
+                "description",
+                "specs",
+                "advice"
+            ],
+            "settings": {}
         },
-        "badge": {
-          "type": "badge",
-          "settings": {
-            "text": "Expert Verified",
-            "icon_svg": ""
-          }
+        "reviews_grid": {
+            "type": "sf-pdp-reviews-grid",
+            "blocks": {
+                "review_1": {
+                    "type": "review",
+                    "settings": {
+                        "author": "Julien M.",
+                        "date": "Il y a 3 jours",
+                        "rating": 5,
+                        "title": "Une pièce maîtresse",
+                        "content": "<p>La qualité du verre soufflé est exceptionnelle. La lueur ambrée donne une atmosphère incroyable au salon le soir. Très satisfait.</p>"
+                    }
+                },
+                "review_2": {
+                    "type": "review",
+                    "settings": {
+                        "author": "Sophie T.",
+                        "date": "Il y a 1 semaine",
+                        "rating": 5,
+                        "title": "Exactement comme sur les photos",
+                        "content": "<p>Livraison impeccable, emballage très sécurisé. Le design est épuré mais l'effet lumineux est vraiment puissant.</p>"
+                    }
+                },
+                "review_3": {
+                    "type": "review",
+                    "settings": {
+                        "author": "Marc A.",
+                        "date": "Il y a 2 semaines",
+                        "rating": 4,
+                        "title": "Très bel objet",
+                        "content": "<p>Superbe design cinétique. Un peu imposant mais c'est ce qui fait son charme. Je l'ai mis sur mon bureau, c'est génial.</p>"
+                    }
+                }
+            },
+            "block_order": [
+                "review_1",
+                "review_2",
+                "review_3"
+            ],
+            "settings": {
+                "show_header": true,
+                "average_score": "4.9",
+                "total_reviews": "Basé sur 128 avis"
+            }
         },
-        "title": {
-          "type": "title",
-          "settings": {}
-        },
-        "reviews": {
-          "type": "reviews",
-          "settings": {
-            "rating": 5,
-            "text": "4.9/5 (128 avis)"
-          }
-        },
-        "subtitle": {
-          "type": "subtitle",
-          "settings": {
-            "text": "Un chef-d'œuvre artisanal capturant l'essence même de l'énergie cinétique pure."
-          }
-        },
-        "price": {
-          "type": "price",
-          "settings": {}
-        },
-        "buy_buttons": {
-          "type": "buy_buttons",
-          "settings": {
-            "btn_text": "Ajouter au panier"
-          }
-        },
-        "reassurance_1": {
-          "type": "reassurance",
-          "settings": {
-            "text": "Livraison sécurisée Premium offerte",
-            "icon_svg": ""
-          }
-        },
-        "reassurance_2": {
-          "type": "reassurance",
-          "settings": {
-            "text": "Garantie à vie 'Illuminées'",
-            "icon_svg": ""
-          }
-        },
-        "description": {
-          "type": "description",
-          "settings": {
-            "heading": "Description"
-          }
-        },
-        "specs": {
-          "type": "accordion",
-          "settings": {
-            "heading": "Spécifications",
-            "icon_svg": "",
-            "content": "<div class=\"sf-spec-row\">\n<span class=\"sf-spec-label\">Diamètre</span><span class=\"sf-spec-value\">24 cm</span>\n</div><div class=\"sf-spec-row\">\n<span class=\"sf-spec-label\">Matériaux</span><span class=\"sf-spec-value\">Verre Soufflé, Laiton</span>\n</div><div class=\"sf-spec-row\">\n<span class=\"sf-spec-label\">Source</span><span class=\"sf-spec-value\">LED Dynamic Core</span>\n</div>",
-            "page": ""
-          }
-        },
-        "advice": {
-          "type": "accordion",
-          "settings": {
-            "heading": "Conseils Expert",
-            "icon_svg": "",
-            "content": "<p>Nos experts recommandent de placer cette création sur un bureau dégagé ou au centre de la pièce pour laisser l'éclat se diffuser harmonieusement sur 360°.</p>",
-            "page": ""
-          }
+        "echo_lumineux": {
+            "type": "sf-echo-lumineux",
+            "blocks": {
+                "universe_1": {
+                    "type": "universe_rule",
+                    "settings": {
+                        "trigger_tag": "cocon",
+                        "block_title": "Pour compléter son cocon de douceur"
+                    }
+                },
+                "universe_2": {
+                    "type": "universe_rule",
+                    "settings": {
+                        "trigger_tag": "pro",
+                        "block_title": "Pour optimiser votre configuration de travail"
+                    }
+                },
+                "universe_3": {
+                    "type": "universe_rule",
+                    "settings": {
+                        "trigger_tag": "setup",
+                        "block_title": "Pour pousser l'immersion un cran plus loin"
+                    }
+                }
+            },
+            "block_order": [
+                "universe_1",
+                "universe_2",
+                "universe_3"
+            ],
+            "settings": {
+                "title_default": "Sublimez votre univers avec ces essentiels",
+                "bg_color": "#0A1428",
+                "product_limit": 4,
+                "show_add_button": true,
+                "add_button_text": "Ajouter au panier"
+            }
         }
-      },
-      "block_order": [
-        "illuminations_path_M67jpY",
-        "badge",
-        "title",
-        "reviews",
-        "subtitle",
-        "price",
-        "buy_buttons",
-        "reassurance_1",
-        "reassurance_2",
-        "description",
-        "specs",
-        "advice"
-      ],
-      "settings": {}
     },
-    "reviews_grid": {
-      "type": "sf-pdp-reviews-grid",
-      "blocks": {
-        "review_1": {
-          "type": "review",
-          "settings": {
-            "author": "Julien M.",
-            "date": "Il y a 3 jours",
-            "rating": 5,
-            "title": "Une pièce maîtresse",
-            "content": "<p>La qualité du verre soufflé est exceptionnelle. La lueur ambrée donne une atmosphère incroyable au salon le soir. Très satisfait.</p>"
-          }
-        },
-        "review_2": {
-          "type": "review",
-          "settings": {
-            "author": "Sophie T.",
-            "date": "Il y a 1 semaine",
-            "rating": 5,
-            "title": "Exactement comme sur les photos",
-            "content": "<p>Livraison impeccable, emballage très sécurisé. Le design est épuré mais l'effet lumineux est vraiment puissant.</p>"
-          }
-        },
-        "review_3": {
-          "type": "review",
-          "settings": {
-            "author": "Marc A.",
-            "date": "Il y a 2 semaines",
-            "rating": 4,
-            "title": "Très bel objet",
-            "content": "<p>Superbe design cinétique. Un peu imposant mais c'est ce qui fait son charme. Je l'ai mis sur mon bureau, c'est génial.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "review_1",
-        "review_2",
-        "review_3"
-      ],
-      "settings": {
-        "show_header": true,
-        "average_score": "4.9",
-        "total_reviews": "Basé sur 128 avis"
-      }
-    }
-  },
-  "order": [
-    "main",
-    "reviews_grid"
-  ]
+    "order": [
+        "main",
+        "reviews_grid",
+        "echo_lumineux"
+    ]
 }
