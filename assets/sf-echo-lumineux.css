@@ -3,7 +3,7 @@
 /* Conteneur principal */
 .sf-echo-lumineux {
     padding: 60px 20px;
-    background-color: var(--illu-bg-night, #081A32);
+    background-color: transparent;
     position: relative;
     overflow: hidden;
 }
