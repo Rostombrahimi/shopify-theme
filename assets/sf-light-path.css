@@ -116,11 +116,10 @@
     top: -1px;
     width: 60px;
     height: 3px;
-    background: linear-gradient(90deg, transparent, var(--illu-accent-amber), transparent);
+    background: linear-gradient(90deg, transparent, var(--illu-accent-amber, #E89D46), transparent);
     filter: blur(1px);
-    box-shadow: 0 0 10px var(--illu-accent-amber);
-    animation: light-travel var(--path-duration) infinite linear;
-    will-change: left, opacity;
+    box-shadow: 0 0 10px var(--illu-accent-amber, #E89D46);
+    animation: light-travel var(--path-duration, 4s) infinite linear;
 }
 
 @keyframes light-travel {

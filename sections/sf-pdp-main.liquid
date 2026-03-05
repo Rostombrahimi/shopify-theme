@@ -131,7 +131,12 @@
                 </div>
                 
               {%- when 'illuminations_path' -%}
-                <light-path class="light-path-wrapper" style="margin-bottom: 24px; display: block;" {{ block.shopify_attributes }}>
+                <light-path 
+                    class="light-path-wrapper" 
+                    style="margin-bottom: 24px; display: block; --illu-accent-amber: {{ block.settings.accent_color | default: '#E89D46' }}; --path-duration: {{ block.settings.carousel_speed | default: 4 }}s;" 
+                    data-days="{{ block.settings.delivery_days | default: 4 }}"
+                    data-speed="{{ block.settings.carousel_speed | default: 4 }}"
+                    {{ block.shopify_attributes }}>
                     <div class="light-path-header">
                         <div class="light-path-title-row">
                           <h3 class="light-path-subtitle">Le Trajet de la Lumière</h3>
@@ -142,9 +147,9 @@
                         </div>
                         
                         <div class="phrase-rotator">
-                            <p class="phrase-item is-active" data-phase="0">Votre atmosphère est prête à être infusée.</p>
-                            <p class="phrase-item" data-phase="1">Temps de propagation des photons : 3 à 5 jours.</p>
-                            <p class="phrase-item" data-phase="2">Votre univers s'illumine le <span class="dynamic-delivery-date"></span>.</p>
+                            <p class="phrase-item is-active" data-phase="0">{{ block.settings.phrase_1 | default: 'Votre atmosphère est prête à être infusée.' }}</p>
+                            <p class="phrase-item" data-phase="1">{{ block.settings.phrase_2 | default: 'Temps de propagation des photons : 3 à 5 jours.' }}</p>
+                            <p class="phrase-item" data-phase="2">{{ block.settings.phrase_3 | default: "Votre univers s'illumine le" }} <span class="dynamic-delivery-date"></span>.</p>
                         </div>
                     </div>
 
@@ -175,10 +180,13 @@
                       if (this.dataset.initialized) return;
                       this.dataset.initialized = 'true';
                       
+                      const days = parseInt(this.dataset.days) || 4;
+                      const speedSeconds = parseInt(this.dataset.speed) || 4;
+
                       const dateSpan = this.querySelector('.dynamic-delivery-date');
                       if (dateSpan) {
                           const arrivalDate = new Date();
-                          arrivalDate.setDate(arrivalDate.getDate() + 4);
+                          arrivalDate.setDate(arrivalDate.getDate() + days);
                           const options = { day: 'numeric', month: 'long' };
                           dateSpan.textContent = arrivalDate.toLocaleDateString('fr-FR', options);
                       }
@@ -186,9 +194,9 @@
                       const rotator = this.querySelector('.phrase-rotator');
                       if (rotator) {
                         const phrases = rotator.querySelectorAll('.phrase-item');
-                        if (phrases.length >= 3) {
+                        if (phrases.length > 0) {
                             let currentPhase = 0;
-                            const phaseDuration = 1333; // 4s / 3
+                            const phaseDuration = (speedSeconds * 1000) / Math.max(1, phrases.length);
 
                             this.interval = setInterval(() => {
                                 phrases[currentPhase].classList.remove('is-active');
@@ -383,6 +391,42 @@
           "id": "accent_color",
           "label": "Couleur du rayon",
           "default": "#E89D46"
+        },
+        {
+          "type": "text",
+          "id": "phrase_1",
+          "label": "Phrase 1",
+          "default": "Votre atmosphère est prête à être infusée."
+        },
+        {
+          "type": "text",
+          "id": "phrase_2",
+          "label": "Phrase 2",
+          "default": "Temps de propagation des photons : 3 à 5 jours."
+        },
+        {
+          "type": "text",
+          "id": "phrase_3",
+          "label": "Phrase 3 (avant la date)",
+          "default": "Votre univers s'illumine le"
+        },
+        {
+          "type": "range",
+          "id": "delivery_days",
+          "label": "Jours avant livraison",
+          "min": 1,
+          "max": 14,
+          "step": 1,
+          "default": 4
+        },
+        {
+          "type": "range",
+          "id": "carousel_speed",
+          "label": "Vitesse de rotation (s)",
+          "min": 2,
+          "max": 10,
+          "step": 1,
+          "default": 4
         }
       ]
     },
