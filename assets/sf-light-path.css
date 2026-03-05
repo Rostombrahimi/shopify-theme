@@ -133,7 +133,8 @@
     }
 
     100% {
-        transform: translateX(min(100vw, 400px));
+        transform: translateX(0);
+        left: 100%;
         opacity: 0;
     }
 }
