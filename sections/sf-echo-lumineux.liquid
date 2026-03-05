@@ -19,7 +19,7 @@
        les recommendations natives de Shopify.
   endcomment
 
-  comment — ETAPE 1 : Detection du titre par tag univers — endcomment
+
   for block in section.blocks
     assign trigger_tag = block.settings.trigger_tag | downcase | strip
     if trigger_tag == blank
@@ -35,23 +35,24 @@
     endfor
   endfor
 
-  comment — ETAPE 2 : Trouver la collection la plus specifique du produit — endcomment
+
   for col in product.collections
     assign col_handle = col.handle | downcase
 
-    comment — Skip collections generiques — endcomment
+
     if col_handle == 'all' or col_handle == 'frontpage' or col_handle == 'all-products'
       continue
     endif
 
-    comment — On veut la collection la plus petite = la plus specifique — endcomment
+
     if col.products_count < best_count and col.products_count > 1
       assign best_collection = col
       assign best_count = col.products_count
     endif
   endfor
 
-  comment — Variables pour le fallback recommendations — endcomment
+
+
   assign use_recommendations = false
   if best_collection == blank
     assign use_recommendations = true
