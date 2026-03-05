@@ -1,7 +1,7 @@
 /* sf-pdp-reviews-grid.css */
 
 .sf-reviews-wrapper {
-    background-color: #081A32;
+    background-color: var(--illu-bg-night, #081A32);
     /* Bleu Nuit */
     padding: 80px 20px;
     width: 100%;
