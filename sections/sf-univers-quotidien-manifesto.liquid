@@ -1,0 +1,300 @@
+{% schema %}
+{
+  "name": "Univers Quotidien Manifest",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Texte du badge",
+      "default": "NOTRE APPROCHE"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Titre",
+      "default": "Le choix de la justesse,\npas de l'abondance."
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Texte",
+      "default": "Dans l'univers Espace Quotidien, nous ne cherchons pas à proposer toutes les lampes possibles. Chaque modèle est sélectionné pour répondre à un usage précis, avec une attention particulière portée au confort visuel, à la durabilité et au design."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "pillar",
+      "name": "Pilier",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "html",
+          "id": "icon",
+          "label": "Icône SVG"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Titre",
+          "default": "Curation Maîtrisée"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Texte",
+          "default": "Sélection rigoureuse de l'essentiel."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Univers Quotidien Manifest",
+      "category": "Text",
+      "blocks": [
+        {
+          "type": "pillar",
+          "settings": {
+            "title": "Curation Maîtrisée",
+            "text": "Sélection rigoureuse de l'essentiel.",
+            "icon": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M22 11.08V12a10 10 0 1 1-5.93-9.14\"></path><polyline points=\"22 4 12 14.01 9 11.01\"></polyline></svg>"
+          }
+        },
+        {
+          "type": "pillar",
+          "settings": {
+            "title": "Durabilité Réelle",
+            "text": "Matériaux nobles faits pour durer.",
+            "icon": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\"></path></svg>"
+          }
+        },
+        {
+          "type": "pillar",
+          "settings": {
+            "title": "Design Intemporel",
+            "text": "L'élégance qui traverse les époques.",
+            "icon": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M18.36 6.64a9 9 0 1 1-12.73 0\"></path><line x1=\"12\" y1=\"2\" x2=\"12\" y2=\"12\"></line></svg>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+/* Section 4 - Manifeste Quotidien */
+#shopify-section-{{ section.id }} .daily-manifesto-section {
+  background-color: var(--illu-night, #081A32);
+  padding: 100px 5%;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+  overflow: hidden;
+}
+
+#shopify-section-{{ section.id }} .manifesto-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 80px 60px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Lueur de Fond : Dégradé radial discret */
+#shopify-section-{{ section.id }} .daily-manifesto-section::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 80%;
+  background: radial-gradient(circle, rgba(232, 157, 70, 0.05) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+#shopify-section-{{ section.id }} .manifesto-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 99px;
+  color: #E89D46; /* Amber pour rester raccord avec Espace Quotidien */
+  font-family: 'Inter', sans-serif;
+  font-size: 0.83rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+#shopify-section-{{ section.id }} .manifesto-h2 {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(2.75rem, 5.5vw, 4.4rem); /* Atelier absolute reference */
+  font-weight: 800;
+  color: #F9F9F9;
+  margin-top: 0;
+  margin-bottom: 2rem;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+#shopify-section-{{ section.id }} .manifesto-h2 em,
+#shopify-section-{{ section.id }} .manifesto-h2 i {
+  font-style: normal;
+  color: #E89D46;
+  text-shadow: 0 0 15px rgba(232, 157, 70, 0.45);
+}
+
+#shopify-section-{{ section.id }} .manifesto-p {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.24rem;
+  line-height: 1.7;
+  color: rgba(249, 249, 249, 0.7);
+  max-width: 800px;
+  margin: 0 auto 3.5rem auto;
+}
+
+#shopify-section-{{ section.id }} .manifesto-separator {
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  margin-bottom: 3.5rem;
+}
+
+#shopify-section-{{ section.id }} .manifesto-pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+#shopify-section-{{ section.id }} .pillar-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+#shopify-section-{{ section.id }} .pillar-icon-circle {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+#shopify-section-{{ section.id }} .pillar-icon {
+  color: #E89D46;
+  transition: filter 0.3s ease, color 0.3s ease;
+}
+
+#shopify-section-{{ section.id }} .pillar-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Micro-interactions: Réveil lumineux */
+#shopify-section-{{ section.id }} .pillar-item:hover .pillar-icon-circle {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(232, 157, 70, 0.3);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+#shopify-section-{{ section.id }} .pillar-item:hover .pillar-icon {
+  filter: drop-shadow(0 0 12px rgba(232, 157, 70, 0.6));
+  color: #f2af61;
+}
+
+#shopify-section-{{ section.id }} .pillar-title {
+  color: #F9F9F9;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin: 0 0 6px 0;
+  letter-spacing: 0.01em;
+}
+
+#shopify-section-{{ section.id }} .pillar-desc {
+  color: rgba(249, 249, 249, 0.5);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.99rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+@media (max-width: 990px) {
+  #shopify-section-{{ section.id }} .manifesto-container {
+    padding: 60px 30px;
+  }
+  #shopify-section-{{ section.id }} .manifesto-pillars {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+@media (max-width: 768px) {
+  #shopify-section-{{ section.id }} .daily-manifesto-section {
+    padding: 80px 20px;
+  }
+}
+</style>
+
+<div class="sf-stitch daily-manifesto-section">
+  <div class="manifesto-container">
+    {%- if section.settings.badge_text != blank -%}
+      <div class="manifesto-badge">
+        {{ section.settings.badge_text }}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.title != blank -%}
+      <h2 class="manifesto-h2">{{ section.settings.title | newline_to_br | replace: '<em>', '<em>' | replace: '</em>', '</em>' | replace: '<i>', '<i>' | replace: '</i>', '</i>' }}</h2>
+    {%- endif -%}
+
+    {%- if section.settings.text != blank -%}
+      <p class="manifesto-p">{{ section.settings.text }}</p>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="manifesto-separator"></div>
+      <div class="manifesto-pillars">
+        {%- for block in section.blocks -%}
+          <div class="pillar-item" {{ block.shopify_attributes }}>
+            <div class="pillar-icon-circle">
+              <div class="pillar-icon">
+                {%- if block.settings.icon != blank -%}
+                  {{ block.settings.icon }}
+                {%- else -%}
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
+                {%- endif -%}
+              </div>
+            </div>
+            
+            <div>
+              <h3 class="pillar-title">{{ block.settings.title | escape }}</h3>
+              {%- if block.settings.text != blank -%}
+                <p class="pillar-desc">{{ block.settings.text | escape }}</p>
+              {%- endif -%}
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>

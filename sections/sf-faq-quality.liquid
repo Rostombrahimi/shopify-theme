@@ -1,0 +1,375 @@
+{% schema %}
+{
+  "name": "FAQ Qualite",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Bloc 1: Qualité"
+    },
+    {
+      "type": "text",
+      "id": "title_1",
+      "label": "Titre Bloc 1",
+      "default": "La Qualité Illuminées"
+    },
+    {
+      "type": "textarea",
+      "id": "desc_1",
+      "label": "Description Bloc 1",
+      "default": "Nous ne faisons aucun compromis sur l'excellence. Chaque luminaire est une promesse de durabilité et de précision technique."
+    },
+    {
+      "type": "header",
+      "content": "Bloc 2: L'Expérience"
+    },
+    {
+      "type": "text",
+      "id": "title_2",
+      "label": "Titre Bloc 2",
+      "default": "Votre Expérience Client"
+    },
+    {
+      "type": "textarea",
+      "id": "desc_2",
+      "label": "Description Bloc 2",
+      "default": "De la commande à l'installation, nous veillons à ce que chaque étape soit fluide, transparente et rassurante."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "quality",
+      "name": "Carte Qualité",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "icon",
+          "label": "SVG Icône",
+          "info": "Laissez vide pour icône par défaut"
+        },
+        {
+          "type": "text",
+          "id": "titre",
+          "label": "Titre",
+          "default": "Titre par défaut"
+        },
+        {
+          "type": "textarea",
+          "id": "texte",
+          "label": "Texte",
+          "default": "Texte de la carte"
+        }
+      ]
+    },
+    {
+      "type": "experience",
+      "name": "Carte Expérience",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "icon",
+          "label": "SVG Icône",
+          "info": "Laissez vide pour icône par défaut"
+        },
+        {
+          "type": "text",
+          "id": "titre",
+          "label": "Titre",
+          "default": "Titre par défaut"
+        },
+        {
+          "type": "textarea",
+          "id": "texte",
+          "label": "Texte",
+          "default": "Texte de la carte"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ Qualite",
+      "blocks": [
+        {
+          "type": "quality",
+          "settings": {
+            "titre": "Utilisation Continue",
+            "texte": "Nos luminaires sont conçus pour une utilisation nocturne prolongée sans surchauffe. Grâce à nos dissipateurs thermiques brevetés, vous garantissez sécurité et ambiance sereine, même après 12 heures d'allumage continu."
+          }
+        },
+        {
+          "type": "quality",
+          "settings": {
+            "titre": "Fidélité Visuelle",
+            "texte": "Chaque pièce est calibrée individuellement pour offrir une température de couleur précise de 2700K (blanc chaud) avec un IRC > 95, assurant une lumière chaleureuse qui respecte la vérité des couleurs de votre intérieur."
+          }
+        },
+        {
+          "type": "experience",
+          "settings": {
+            "titre": "Suivi de Commande",
+            "texte": "Dès l'expédition depuis notre atelier parisien, recevez un lien de suivi premium en temps réel. Vous serez notifié par SMS à chaque étape clé du voyage de votre lumière jusqu'à votre porte."
+          }
+        },
+        {
+          "type": "experience",
+          "settings": {
+            "titre": "Retours Simplifiés",
+            "texte": "Si l'éclat ne correspond pas parfaitement à vos attentes, profitez de notre politique de retour sans frais sous 30 jours. L'étiquette de retour prépayée est incluse dans chaque colis pour une tranquillité d'esprit totale."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+/* faq-quality.css */
+
+.faq-sub {
+  padding: 80px 4rem 100px;
+  background-color: #081A32;
+  font-family: 'Inter', sans-serif;
+  color: #F9F9F9;
+}
+
+.faq-i {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.faq-bg {
+  margin-bottom: 80px;
+}
+.faq-bg:last-child {
+  margin-bottom: 0;
+}
+
+.faq-ht {
+  margin-bottom: 40px;
+}
+
+.faq-h2 {
+  font-size: 1.98rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 12px;
+  margin-top: 0;
+  letter-spacing: -0.01em;
+}
+
+.faq-ic {
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #E89D46;
+  flex-shrink: 0;
+}
+
+.faq-ic svg {
+  width: 100%;
+  height: 100%;
+  stroke: #E89D46;
+  stroke-width: 2;
+  fill: none;
+}
+
+.faq-d {
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 750px;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.faq-gr {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.faq-c {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  border-radius: 24px;
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq-c:hover {
+  border-color: rgba(232, 157, 70, 0.2);
+  background: rgba(255, 255, 255, 0.035);
+  transform: translateY(-4px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 
+              0 0 15px rgba(232, 157, 70, 0.05); /* Douce lueur ambre sur fond bleu */
+}
+
+.faq-ci {
+  width: 44px;
+  height: 44px;
+  background: rgba(232, 157, 70, 0.04); 
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  border: 1px solid rgba(232, 157, 70, 0.08);
+}
+
+.faq-ci svg {
+  width: 18px;
+  height: 18px;
+  stroke: #E89D46;
+  fill: none;
+  stroke-width: 1.5;
+}
+
+.faq-ct {
+  font-size: 1.26rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 12px;
+  margin-top: 0;
+  letter-spacing: -0.01em;
+}
+
+.faq-cp {
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.6;
+  font-size: 0.94rem;
+  margin: 0;
+}
+
+.faq-copy {
+  text-align: center;
+  margin-top: 100px;
+  font-size: 0.83rem;
+  color: rgba(255,255,255, 0.3);
+}
+
+@media screen and (max-width: 900px) {
+  .faq-gr { grid-template-columns: 1fr; }
+}
+
+@media screen and (max-width: 768px) {
+  .faq-sub { padding: 60px 2rem; }
+  .faq-h2 { font-size: 1.65rem; }
+  .faq-c { padding: 32px; border-radius: 20px; }
+}
+</style>
+
+<section class="faq-sub">
+  <div class="faq-i">
+    
+    <div class="faq-bg">
+      <div class="faq-ht">
+        <h2 class="faq-h2">
+          <div class="faq-ic">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+               <path d="M9 12l2 2 4-4"/>
+            </svg>
+          </div>
+          {{ section.settings.title_1 }}
+        </h2>
+        {% if section.settings.desc_1 != blank %}
+          <p class="faq-d">{{ section.settings.desc_1 }}</p>
+        {% endif %}
+      </div>
+
+      <div class="faq-gr">
+        {% for block in section.blocks %}
+          {% if block.type == 'quality' %}
+            <div class="faq-c" {{ block.shopify_attributes }}>
+              <div class="faq-ci">
+                {% if block.settings.icon != blank %}
+                  {{ block.settings.icon }}
+                {% else %}
+                  {% if block.settings.titre contains 'Utilisation' %}
+                    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"/>
+                      <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                  {% else %}
+                    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                      <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                  {% endif %}
+                {% endif %}
+              </div>
+              <h3 class="faq-ct">{{ block.settings.titre }}</h3>
+              <p class="faq-cp">{{ block.settings.texte }}</p>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+
+
+    <div class="faq-bg">
+      <div class="faq-ht">
+        <h2 class="faq-h2">
+          <div class="faq-ic">
+             <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+                <line x1="9" y1="9" x2="9.01" y2="9"/>
+                <line x1="15" y1="9" x2="15.01" y2="9"/>
+             </svg>
+          </div>
+          {{ section.settings.title_2 }}
+        </h2>
+        {% if section.settings.desc_2 != blank %}
+          <p class="faq-d">{{ section.settings.desc_2 }}</p>
+        {% endif %}
+      </div>
+
+      <div class="faq-gr">
+        {% for block in section.blocks %}
+          {% if block.type == 'experience' %}
+            <div class="faq-c" {{ block.shopify_attributes }}>
+              <div class="faq-ci">
+                {% if block.settings.icon != blank %}
+                  {{ block.settings.icon }}
+                {% else %}
+                  {% if block.settings.titre contains 'Suivi' %}
+                    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="1" y="3" width="15" height="13"/>
+                      <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+                      <circle cx="5.5" cy="18.5" r="2.5"/>
+                      <circle cx="18.5" cy="18.5" r="2.5"/>
+                    </svg>
+                  {% else %}
+                    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                      <path d="M3 3v5h5"/>
+                    </svg>
+                  {% endif %}
+                {% endif %}
+              </div>
+              <h3 class="faq-ct">{{ block.settings.titre }}</h3>
+              <p class="faq-cp">{{ block.settings.texte }}</p>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="faq-copy">
+      © 2024 Illuminées. L'excellence de la lumière.
+    </div>
+
+  </div>
+</section>

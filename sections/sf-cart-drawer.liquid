@@ -1,0 +1,654 @@
+{%- if template != 'cart' -%}
+  <style>
+    /* variables and scope */
+    :root {
+      --drawer-bg: var(--illu-bg-night, #081A32);
+      --drawer-text: var(--illu-text-cream, #F9F9F9);
+      --drawer-accent: var(--illu-accent-amber, #E89D46);
+      --drawer-border: rgba(255, 255, 255, 0.05);
+    }
+
+    /* Overlay Background */
+    .sf-drawer-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(3, 10, 20, 0.6);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.4s ease, visibility 0.4s ease;
+      z-index: 2147483646; /* Just below drawer */
+      cursor: pointer;
+    }
+
+    .sf-drawer-overlay.is-active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Drawer Container (Right Sidebar) */
+    .sf-cart-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 100%;
+      max-width: 480px;
+      height: 100vh;
+      background-color: var(--drawer-bg);
+      border-left: 1px solid var(--drawer-border);
+      box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5);
+      z-index: 2147483647; /* Highest */
+      transform: translateX(100%);
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      font-family: 'Inter', sans-serif;
+      color: var(--drawer-text);
+    }
+
+    .sf-cart-drawer.is-active {
+      transform: translateX(0);
+    }
+
+    /* Drawer Header */
+    .sf-cart-drawer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 2rem;
+      border-bottom: 1px solid var(--drawer-border);
+    }
+
+    .sf-cart-drawer-title {
+      font-family: 'Manrope', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .sf-cart-drawer-count {
+      background: rgba(255,255,255,0.1);
+      font-size: 1rem;
+      padding: 2px 10px;
+      border-radius: 99px;
+      color: var(--drawer-accent);
+    }
+
+    .sf-drawer-close {
+      background: none;
+      border: none;
+      color: var(--drawer-text);
+      cursor: pointer;
+      opacity: 0.6;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+    }
+
+    .sf-drawer-close:hover {
+      opacity: 1;
+      color: var(--drawer-accent);
+      transform: rotate(90deg);
+    }
+
+    /* Drawer Body (Scrollable items) */
+    .sf-cart-drawer-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    
+    .sf-cart-drawer-body::-webkit-scrollbar {
+        width: 6px;
+    }
+    .sf-cart-drawer-body::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    .sf-cart-drawer-body::-webkit-scrollbar-thumb {
+        background: rgba(255,255,255,0.1);
+        border-radius: 10px;
+    }
+
+    .sf-drawer-empty {
+      text-align: center;
+      margin: auto;
+      opacity: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+      color: #ffffff;
+    }
+
+    /* Single Item */
+    .sf-drawer-item {
+      display: flex;
+      gap: 1.5rem;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.04);
+      padding: 1.25rem;
+      border-radius: 20px;
+      position: relative;
+    }
+
+    .sf-drawer-item-img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 12px;
+      background: #111;
+    }
+
+    .sf-drawer-item-details {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .sf-drawer-item-title {
+      font-weight: 600;
+      font-size: 1.05rem;
+      color: var(--drawer-text);
+      text-decoration: none;
+      padding-right: 20px; /* space for trash */
+      display: block;
+      line-height: 1.3;
+    }
+
+    .sf-drawer-item-price {
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--drawer-accent);
+      margin-top: 4px;
+    }
+
+    /* Quantity Selector Mini */
+    .sf-drawer-qty-wrapper {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(255,255,255,0.05);
+      border-radius: 99px;
+      padding: 2px 6px;
+      margin-top: 8px;
+      width: fit-content;
+    }
+
+    .sf-drawer-qty-btn {
+      background: none;
+      border: none;
+      color: var(--drawer-text);
+      cursor: pointer;
+      opacity: 0.7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px;
+      transition: opacity 0.2s;
+    }
+
+    .sf-drawer-qty-btn:hover {
+      opacity: 1;
+      color: var(--drawer-accent);
+    }
+
+    .sf-drawer-qty-input {
+      background: transparent;
+      border: none;
+      color: var(--drawer-text);
+      text-align: center;
+      width: 24px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      pointer-events: none; /* read only visually */
+    }
+
+    .sf-drawer-remove {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.4);
+      cursor: pointer;
+      transition: all 0.2s;
+      padding: 4px;
+    }
+
+    .sf-drawer-remove:hover {
+      color: #EF4444;
+      transform: scale(1.1);
+    }
+
+    /* Drawer Footer (Summary & Checkout) */
+    .sf-cart-drawer-footer {
+      padding: 2rem;
+      background: rgba(8, 26, 50, 0.95);
+      border-top: 1px solid var(--drawer-border);
+      box-shadow: 0 -10px 30px rgba(0,0,0,0.3);
+      backdrop-filter: blur(10px);
+    }
+
+    .sf-drawer-summary-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.75rem;
+      font-size: 1.05rem;
+      opacity: 0.8;
+    }
+
+    .sf-drawer-summary-total {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--drawer-border);
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--drawer-text);
+    }
+    
+    .sf-drawer-summary-total span:last-child {
+        color: var(--drawer-accent);
+    }
+
+    .sf-drawer-checkout-btn {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: var(--drawer-accent);
+      color: #081A32;
+      border: none;
+      border-radius: 99px;
+      padding: 1.25rem;
+      font-size: 1.15rem;
+      font-weight: 800;
+      cursor: pointer;
+      margin-top: 1.5rem;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      box-shadow: 0 0 30px rgba(232, 157, 70, 0.2);
+    }
+
+    .sf-drawer-checkout-btn:hover {
+      box-shadow: 0 0 40px rgba(232, 157, 70, 0.4);
+      transform: translateY(-2px);
+    }
+
+    /* Loader / Updating state */
+    .sf-cart-drawer.is-updating .sf-cart-drawer-body {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+    
+    @media screen and (max-width: 480px) {
+        .sf-cart-drawer {
+            max-width: 100%;
+        }
+        .sf-cart-drawer-body {
+            padding: 1.25rem;
+        }
+        .sf-cart-drawer-footer {
+            padding: 1.25rem;
+        }
+    }
+  </style>
+
+  <!-- Overlay -->
+  <div class="sf-drawer-overlay" id="sf-drawer-overlay"></div>
+
+  <!-- Drawer -->
+  <div class="sf-cart-drawer" id="sf-cart-drawer">
+    <div class="sf-cart-drawer-header">
+      <h2 class="sf-cart-drawer-title">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+        Panier 
+        <span class="sf-cart-drawer-count" id="sf-drawer-count">{{ cart.item_count }}</span>
+      </h2>
+      <button class="sf-drawer-close" aria-label="Close" id="sf-drawer-close">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+
+    <!-- AJAX INJECTED BODY -->
+    <div class="sf-cart-drawer-body" id="sf-drawer-body">
+      <!-- Fallback empty state while loading/if actually empty -->
+      {% if cart.item_count == 0 %}
+        <div class="sf-drawer-empty">
+          <svg style="opacity: 0.3; color: #ffffff;" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+          <h3 style="margin: 0; color: #ffffff;">Votre panier est vide</h3>
+          <p style="margin: 0; font-size: 0.95rem; color: #ffffff;">Il est temps de s'illuminer.</p>
+        </div>
+      {% else %}
+        <!-- Filled server-side so it works immediately -->
+        {% for item in cart.items %}
+          <div class="sf-drawer-item">
+            <img src="{{ item.image | image_url: width: 200 }}" alt="{{ item.title | escape }}" class="sf-drawer-item-img">
+            <div class="sf-drawer-item-details">
+              <a href="{{ item.url }}" class="sf-drawer-item-title">{{ item.product.title }}</a>
+              {% unless item.product.has_only_default_variant %}
+                <span style="font-size: 0.85rem; opacity: 0.6; margin-top: 2px;">{{ item.variant.title }}</span>
+              {% endunless %}
+              <div class="sf-drawer-item-price">{{ item.final_line_price | money }}</div>
+              
+              <div class="sf-drawer-qty-wrapper">
+                <button type="button" class="sf-drawer-qty-btn sf-drawer-minus" data-line="{{ forloop.index }}" data-qty="{{ item.quantity | minus: 1 }}">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                </button>
+                <input class="sf-drawer-qty-input" type="text" value="{{ item.quantity }}" readonly>
+                <button type="button" class="sf-drawer-qty-btn sf-drawer-plus" data-line="{{ forloop.index }}" data-qty="{{ item.quantity | plus: 1 }}">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                </button>
+              </div>
+            </div>
+            <button type="button" class="sf-drawer-remove" data-line="{{ forloop.index }}" aria-label="Remove">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6"></path></svg>
+            </button>
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+
+    <!-- AJAX INJECTED FOOTER -->
+    <div class="sf-cart-drawer-footer" id="sf-drawer-footer" {% if cart.item_count == 0 %}style="display: none;"{% endif %}>
+      <div id="sf-drawer-discounts">
+        {% if cart.cart_level_discount_applications.size > 0 %}
+          <div style="margin-bottom: 16px; padding: 12px; background: rgba(74, 222, 128, 0.1); border: 1px dashed rgba(74, 222, 128, 0.4); border-radius: 12px;">
+            <span style="font-size: 0.85rem; color: #4ade80; font-weight: 600; display: block; margin-bottom: 8px;">Réductions appliquées :</span>
+            {% for discount in cart.cart_level_discount_applications %}
+              <div style="font-size: 0.9rem; color: #F9F9F9; display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                <span style="display: flex; align-items: center; gap: 6px;">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+                  {{ discount.title }}
+                </span>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                  <span style="color: #4ade80; font-weight: 600;">-{{ discount.total_allocated_amount | money }}</span>
+                  <button type="button" onclick="removeCartDiscount()" title="Supprimer ce code promo" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #F9F9F9; transition: all 0.2s ease;" onmouseover="this.style.background='rgba(255,50,50,0.2)'; this.style.borderColor='rgba(255,50,50,0.5)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.borderColor='rgba(255,255,255,0.1)'">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"></path></svg>
+                  </button>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+      <div class="sf-drawer-summary-row">
+        <span>Livraison</span>
+        <span style="color: #4ade80;">Gratuite aujourd'hui</span>
+      </div>
+      <div class="sf-drawer-summary-total">
+        <span>Total TTC</span>
+        <span id="sf-drawer-total">{{ cart.total_price | money }}</span>
+      </div>
+      <a href="javascript:void(0);" onclick="window.location.href='/checkout'" class="sf-drawer-checkout-btn">
+        Commander
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      </a>
+      <div style="text-align: center; margin-top: 12px; font-size: 0.85rem; opacity: 0.5;">Taxes incluses. Codes promo applicables à l'étape suivante.</div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const drawer = document.getElementById('sf-cart-drawer');
+      const overlay = document.getElementById('sf-drawer-overlay');
+      const closeBtn = document.getElementById('sf-drawer-close');
+      
+      // State
+      window.isDrawerOpen = false;
+
+      // Global open/close functions
+      window.openCartDrawer = function() {
+        if(!drawer) return;
+        drawer.classList.add('is-active');
+        overlay.classList.add('is-active');
+        window.isDrawerOpen = true;
+        document.body.style.overflow = 'hidden'; // prevent bg scroll
+      };
+
+      window.closeCartDrawer = function() {
+        if(!drawer) return;
+        drawer.classList.remove('is-active');
+        overlay.classList.remove('is-active');
+        window.isDrawerOpen = false;
+        document.body.style.overflow = '';
+      };
+
+      if(closeBtn) closeBtn.addEventListener('click', window.closeCartDrawer);
+      if(overlay) overlay.addEventListener('click', window.closeCartDrawer);
+
+      // Utility: Format Money
+      function formatMoney(cents) {
+        return (cents / 100).toFixed(2).replace('.', ',') + ' €'; 
+      }
+
+      // Utility: Render Cart HTML from JSON API
+      function renderDrawerContent(cart) {
+        document.getElementById('sf-drawer-count').textContent = cart.item_count;
+        
+        // Update global header badge count
+        const headerCartCount = document.getElementById('header-cart-count');
+        if (headerCartCount) {
+          headerCartCount.textContent = cart.item_count;
+        }
+
+        const bodyEl = document.getElementById('sf-drawer-body');
+        const footerEl = document.getElementById('sf-drawer-footer');
+
+        if (cart.item_count === 0) {
+          bodyEl.innerHTML = `
+            <div class="sf-drawer-empty">
+              <svg style="opacity: 0.3; color: #ffffff;" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+              <h3 style="margin: 0; color: #ffffff;">Votre panier est vide</h3>
+              <p style="margin: 0; font-size: 0.95rem; color: #ffffff;">Il est temps de s'illuminer.</p>
+            </div>
+          `;
+          footerEl.style.display = 'none';
+          return;
+        }
+
+        let html = '';
+        cart.items.forEach((item, index) => {
+          const lineToken = index + 1; // Shopify 1-indexed line items for change.js
+          const variantSuffix = item.variant_title && item.variant_title !== 'Default Title' ? `<span style="font-size: 0.85rem; opacity: 0.6; margin-top: 2px;">${item.variant_title}</span>` : '';
+          
+          html += `
+            <div class="sf-drawer-item">
+              <img src="${item.image}" alt="${item.title}" class="sf-drawer-item-img">
+              <div class="sf-drawer-item-details">
+                <a href="${item.url}" class="sf-drawer-item-title">${item.product_title}</a>
+                ${variantSuffix}
+                <div class="sf-drawer-item-price">${formatMoney(item.final_line_price)}</div>
+                
+                <div class="sf-drawer-qty-wrapper">
+                  <button type="button" class="sf-drawer-qty-btn sf-drawer-action" data-line="${lineToken}" data-qty="${item.quantity - 1}">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                  </button>
+                  <input class="sf-drawer-qty-input" type="text" value="${item.quantity}" readonly>
+                  <button type="button" class="sf-drawer-qty-btn sf-drawer-action" data-line="${lineToken}" data-qty="${item.quantity + 1}">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                  </button>
+                </div>
+              </div>
+              <button type="button" class="sf-drawer-remove sf-drawer-action" data-line="${lineToken}" data-qty="0" aria-label="Remove">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6"></path></svg>
+              </button>
+            </div>
+          `;
+        });
+
+        bodyEl.innerHTML = html;
+        document.getElementById('sf-drawer-total').textContent = formatMoney(cart.total_price);
+        
+        const sfDrawerDiscounts = document.getElementById('sf-drawer-discounts');
+        if (sfDrawerDiscounts) {
+          let discountsHtml = '';
+          if (cart.cart_level_discount_applications && cart.cart_level_discount_applications.length > 0) {
+            discountsHtml = `<div style="margin-bottom: 16px; padding: 12px; background: rgba(74, 222, 128, 0.1); border: 1px dashed rgba(74, 222, 128, 0.4); border-radius: 12px;">
+              <span style="font-size: 0.85rem; color: #4ade80; font-weight: 600; display: block; margin-bottom: 8px;">Réductions appliquées :</span>`;
+            cart.cart_level_discount_applications.forEach(discount => {
+              discountsHtml += `
+                <div style="font-size: 0.9rem; color: #F9F9F9; display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                  <span style="display: flex; align-items: center; gap: 6px;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+                    ${discount.title}
+                  </span>
+                  <div style="display: flex; align-items: center; gap: 10px;">
+                    <span style="color: #4ade80; font-weight: 600;">-${formatMoney(discount.total_allocated_amount)}</span>
+                    <button type="button" onclick="removeCartDiscount()" title="Supprimer ce code promo" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #F9F9F9; transition: all 0.2s ease;" onmouseover="this.style.background='rgba(255,50,50,0.2)'; this.style.borderColor='rgba(255,50,50,0.5)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.borderColor='rgba(255,255,255,0.1)'">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"></path></svg>
+                    </button>
+                  </div>
+                </div>
+              `;
+            });
+            discountsHtml += `</div>`;
+          }
+          sfDrawerDiscounts.innerHTML = discountsHtml;
+        }
+
+        footerEl.style.display = 'block';
+      }
+
+      // Fetch Cart JSON
+      window.refreshDrawerCart = function() {
+        if(drawer) drawer.classList.add('is-updating');
+        return fetch(window.Shopify.routes.root + 'cart.js')
+          .then(res => res.json())
+          .then(cart => {
+            renderDrawerContent(cart);
+            if(drawer) drawer.classList.remove('is-updating');
+          })
+          .catch(err => {
+            console.error('Error fetching cart JSON', err);
+            if(drawer) drawer.classList.remove('is-updating');
+          });
+      };
+
+      // Remove Discount
+      window.removeCartDiscount = function(e) {
+        if(e) e.preventDefault();
+        fetch('/cart/update.js', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({ discount: "" })
+        })
+        .then(response => response.json())
+        .then(cart => {
+          // Recharge la page pour que tout (drawer & page) soit synchronisé
+          window.location.reload(); 
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+          window.location.reload();
+        });
+      };
+
+      // INITIAL FETCH
+      window.refreshDrawerCart();
+
+      // Handle Change Quantity / Remove
+      document.addEventListener('click', function(e) {
+        const btn = e.target.closest('.sf-drawer-action, .sf-drawer-remove, .sf-drawer-minus, .sf-drawer-plus');
+        if (btn && document.getElementById('sf-cart-drawer').contains(btn)) {
+            e.preventDefault();
+            const line = btn.getAttribute('data-line');
+            const qty = btn.getAttribute('data-qty');
+            
+            if(!line || qty == null) return;
+            
+            drawer.classList.add('is-updating');
+
+            fetch(window.Shopify.routes.root + 'cart/change.js', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ 'line': line, 'quantity': qty })
+            })
+            .then(res => res.json())
+            .then(cart => {
+              renderDrawerContent(cart);
+              drawer.classList.remove('is-updating');
+              
+              // Emulate DOM event so header icons can update
+              document.dispatchEvent(new CustomEvent('cart:updated', {detail: cart}));
+            })
+            .catch(err => {
+              console.error('Change Cart Error:', err);
+              drawer.classList.remove('is-updating');
+            });
+        }
+      });
+
+      // Intercept Global "Add to Cart" forms IF they have action="/cart/add"
+      document.addEventListener('submit', function(e) {
+        const form = e.target;
+        if (form.getAttribute('action') && form.getAttribute('action').indexOf('/cart/add') !== -1) {
+          // Si on est sur la page produit standard de Dawn, on la laisse faire (Dawn a son propre JS)
+          // Mais on force l'ouverture du tiroir.
+          
+          // Exception: Some apps or specific Dawn features might break if we prevent default blindly.
+          // For a clean custom implementation:
+          e.preventDefault();
+          
+          const submitBtn = form.querySelector('button[type="submit"]');
+          if (submitBtn) {
+            submitBtn.style.opacity = '0.5';
+            submitBtn.style.pointerEvents = 'none';
+          }
+
+          const formData = new FormData(form);
+          fetch(window.Shopify.routes.root + 'cart/add.js', {
+            method: 'POST',
+            body: formData
+          })
+          .then(res => res.json())
+          .then(item => {
+            if (submitBtn) {
+              submitBtn.style.opacity = '1';
+              submitBtn.style.pointerEvents = '';
+            }
+            window.refreshDrawerCart();
+            window.openCartDrawer();
+          })
+          .catch(err => {
+             console.error('Add to Cart Error:', err);
+             // fallback
+             window.location.href = '/cart';
+          });
+        }
+      });
+
+    });
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "SF Cart Drawer",
+  "settings": [],
+  "presets": [
+    {
+      "name": "SF Cart Drawer"
+    }
+  ]
+}
+{% endschema %}

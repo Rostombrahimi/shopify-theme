@@ -1,0 +1,325 @@
+{% schema %}
+{
+  "name": "SF Header",
+  "tag": "header",
+  "class": "section-header",
+  "settings": [
+    {
+      "type": "text",
+      "id": "logo_text",
+      "label": "Logo Text",
+      "default": "Illuminées"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Primary Menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "color_scheme",
+      "id": "menu_color_scheme",
+      "label": "Menu Color Scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sticky_header",
+      "default": true,
+      "label": "Enable Sticky Header"
+    }
+  ],
+  "presets": [
+    {
+      "name": "SF Header"
+    }
+  ]
+}
+{% endschema %}
+
+
+<header class="sf-stitch sf-header header-wrapper{% if section.settings.enable_sticky_header %} is-sticky{% endif %}">
+  <style>
+    /* Force Shopify wrapper to dominate all other sections (Hero) */
+    .shopify-section-group-header-group,
+    #shopify-section-sf-header,
+    .section-header {
+      position: sticky;
+      top: 0;
+      z-index: 999999 !important;
+    }
+
+    /* Navigation Illuminées - sf-navbar.css */
+    .sf-header {
+      position: sticky;
+      top: 0;
+      z-index: 9999;
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    
+    .sf-header .nav-container {
+      position: relative;
+      z-index: 9999; /* Higher than the overlay */
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 4rem;
+      background: rgba(8, 26, 50, 0.98); /* Bleu Nuit beaucoup plus opaque/sombre */
+      backdrop-filter: blur(12px); /* Effet Glassmorphism */
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      font-family: var(--illu-font-main);
+    }
+    
+    @media (max-width: 767px) {
+      .sf-header .nav-container {
+        padding: 1rem 1.5rem;
+      }
+    }
+
+    .sf-header .sf-menu-toggle {
+      flex: 1; /* Prends 1 part (comme les icônes à droite) */
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      background: none;
+      border: none;
+      color: var(--illu-text-cream);
+      padding: 0;
+      cursor: pointer;
+    }
+    
+    @media (min-width: 990px) {
+      .sf-header .sf-menu-toggle {
+        display: none;
+      }
+    }
+
+    .sf-header .sf-mobile-menu-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: rgba(8, 26, 50, 0.98) !important;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      display: none;
+      flex-direction: column;
+      padding: 0 2rem 2rem 2rem; /* Top padding is dynamic */
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      overflow-y: auto;
+      z-index: 9998; /* Below nav-container */
+      box-sizing: border-box; /* PREVENT CADRE DEBORDE (Horizontal bleed) */
+    }
+
+    .sf-header .sf-mobile-menu-overlay.is-open {
+      display: flex;
+    }
+
+    .sf-header .sf-mobile-link {
+      color: var(--illu-text-cream);
+      font-size: 1.65rem;
+      font-weight: var(--fw-bold);
+      text-decoration: none;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      transition: color 0.3s ease;
+    }
+
+    .sf-header .sf-mobile-link:hover {
+      color: var(--illu-accent-amber);
+    }
+    
+    @media (min-width: 990px) {
+      .sf-header .sf-mobile-menu-overlay {
+        display: none !important;
+      }
+    }
+
+    .sf-header .nav-logo {
+      /* Mobile: Center logo strictly between the two `flex: 1` side elements */
+      flex: unset; 
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      font-weight: var(--fw-bold);
+      font-size: 1.79rem;
+      color: var(--illu-text-cream);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    @media (min-width: 990px) {
+      .sf-header .nav-logo {
+        position: static;
+        transform: none;
+        justify-content: flex-start;
+        flex: 1; /* Reset flex for desktop where menu is in the middle */
+      }
+    }
+    
+    .sf-header .nav-logo-icon {
+      font-size: 2.2rem;
+      filter: drop-shadow(0 0 8px #E89D46);
+      /* assuming material icons are loaded */
+      color: var(--illu-accent-amber);
+    }
+
+    .sf-header .nav-links {
+      display: none; /* Mobile hidden by default */
+    }
+    
+    @media (min-width: 990px) {
+      .sf-header .nav-links {
+        display: flex;
+        gap: 2.5rem;
+        align-items: center;
+      }
+    }
+
+    .sf-header .nav-link-item {
+      color: var(--illu-text-cream);
+      opacity: 0.8;
+      font-size: 1.24rem;
+      font-weight: var(--fw-medium);
+      text-decoration: none;
+      transition: var(--illu-transition-soft);
+      position: relative;
+    }
+
+    .sf-header .nav-link-item:hover {
+      opacity: 1;
+      color: var(--illu-accent-amber);
+    }
+
+    .sf-header .nav-icons {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 1.5rem;
+      color: var(--illu-text-cream);
+    }
+    
+    .sf-header .nav-icons .material-symbols-outlined {
+      font-size: 1.93rem;
+    }
+    
+    .sf-header .nav-icon-link {
+      color: var(--illu-text-cream);
+      text-decoration: none;
+      transition: filter 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative; /* Important for badge positioning */
+    }
+    
+    .sf-header .nav-icon-link:hover {
+      filter: brightness(1.2);
+    }
+
+    .sf-header .cart-pill-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--illu-accent-amber);
+      color: var(--illu-bg-night);
+      padding: 0.45rem 1.1rem;
+      border-radius: 99px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 12px rgba(232, 157, 70, 0.2);
+    }
+
+    @media (max-width: 767px) {
+      .sf-header .cart-pill-btn {
+        padding: 0.35rem 0.7rem;
+        font-size: 0.8rem;
+        gap: 6px;
+      }
+      .sf-header .cart-pill-btn svg {
+        width: 14px;
+        height: 14px;
+      }
+    }
+
+    .sf-header .cart-pill-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(232, 157, 70, 0.4);
+    }
+    
+    .sf-header .cart-pill-btn svg {
+      width: 16px;
+      height: 16px;
+      stroke-width: 2.5;
+    }
+  </style>
+
+  <div class="nav-container">
+    <!-- Mobile Menu Toggle (Left) -->
+    <button class="sf-menu-toggle" onclick="toggleSfMenu()" aria-label="Menu">
+      <span class="material-symbols-outlined sf-menu-icon" style="font-size: 2.2rem;">menu</span>
+    </button>
+
+    <!-- Logo (Center on mobile, Left on desktop) -->
+    <a href="{{ routes.root_url }}" class="nav-logo">
+      <span class="material-symbols-outlined nav-logo-icon">lightbulb</span>
+      <span>{{ section.settings.logo_text }}</span>
+    </a>
+
+    <!-- Navigation Links -->
+    <nav class="nav-links">
+      {% for link in linklists[section.settings.menu].links %}
+        <a href="{{ link.url }}" class="nav-link-item">
+          {{ link.title }}
+        </a>
+      {% endfor %}
+    </nav>
+    <div class="nav-icons">
+      <a href="{{ routes.cart_url }}" class="cart-pill-btn" id="cart-icon-bubble" onclick="event.preventDefault(); window.refreshDrawerCart(); window.openCartDrawer();">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+        <span>Panier (<span id="header-cart-count">{{ cart.item_count }}</span>)</span>
+        <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Mobile Menu Panel (OUTSIDE nav-container, inside fixed header) -->
+  <div class="sf-mobile-menu-overlay" id="sfMobileMenu">
+    {% for link in linklists[section.settings.menu].links %}
+      <a href="{{ link.url }}" class="sf-mobile-link">{{ link.title }}</a>
+    {% endfor %}
+  </div>
+</header>
+
+<script>
+  function toggleSfMenu() {
+    const menu = document.getElementById('sfMobileMenu');
+    const icon = document.querySelector('.sf-menu-icon');
+    const navBar = document.querySelector('.sf-header .nav-container');
+    
+    if (menu.classList.contains('is-open')) {
+      menu.classList.remove('is-open');
+      icon.textContent = 'menu';
+      document.body.style.overflow = '';
+    } else {
+      // Calculate the padding dynamically based on nav bar height to push links down
+      const navHeight = navBar.getBoundingClientRect().height;
+      menu.style.paddingTop = (navHeight + 20) + 'px';
+      menu.style.top = '0';
+      menu.classList.add('is-open');
+      icon.textContent = 'close';
+      document.body.style.overflow = 'hidden';
+    }
+  }
+</script>

@@ -1,0 +1,369 @@
+{% schema %}
+{
+  "name": "Chill Navigation",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Heading",
+      "default": "Comment vivez-vous votre nuit ?"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Plongez dans une collection pensée pour vos rituels nocturnes. Choisissez l'ambiance qui guidera votre soirée."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Navigation Card",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Card Image"
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "headphones", "label": "Headphones" },
+            { "value": "pen", "label": "Pen" },
+            { "value": "home", "label": "Home/Lamp" }
+          ],
+          "default": "headphones"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Se poser & écouter"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "Pour les moments de détente absolue, bercés par vos vinyles préférés. Une lumière tamisée qui accompagne la musique."
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "Voir les ambiances ad..."
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Chill Navigation",
+      "blocks": [
+        { "type": "card", "settings": { "icon": "headphones", "title": "Se poser & écouter", "text": "Pour les moments de détente absolue, bercés par vos vinyles préférés. Une lumière tamisée qui accompagne la musique." } },
+        { "type": "card", "settings": { "icon": "pen", "title": "Créer la nuit", "text": "Lumière focalisée et inspirante pour vos sessions créatives nocturnes. Idéale pour écrire, dessiner ou concevoir." } },
+        { "type": "card", "settings": { "icon": "home", "title": "Installer une atmosphère", "text": "Sculptez l'espace avec des ombres et des reliefs dramatiques. Transformez votre pièce en un tableau vivant." } }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+.chill-nav-section {
+  background-color: #081A32;
+  padding: 100px 4rem 120px 4rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Base custom variables logic matching mockup */
+:root {
+  --illu-bg-night-light: #0D1F38; /* A bit lighter than main background for cards */
+}
+
+/* Header */
+.chill-nav-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 4rem auto;
+}
+
+.chill-nav-h2 {
+  font-size: clamp(2.48rem, 4.95vw, 3.85rem);
+  color: #F9F9F9;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+
+.chill-nav-desc {
+  font-size: 1.26rem;
+  color: rgba(249, 249, 249, 0.75);
+  line-height: 1.6;
+}
+
+/* Grid */
+.chill-nav-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+/* Card Styling */
+.chill-nav-card {
+  background: var(--illu-bg-night-light, #0D1F38);
+  border-radius: 32px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.chill-nav-card:hover {
+  transform: translateY(-12px);
+  border-color: rgba(232, 157, 70, 0.3);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* Image Container */
+.chill-nav-img-container {
+  width: 100%;
+  aspect-ratio: 4/3; /* Adjusting ratio based on mockup */
+  position: relative;
+  overflow: hidden;
+  background-color: #000;
+}
+
+/* Overlay for text inside image container */
+.chill-nav-img-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 40px 32px 24px 32px;
+  background: linear-gradient(to top, rgba(13, 31, 56, 1) 0%, rgba(13, 31, 56, 0.8) 40%, transparent 100%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+/* Saturation au survol overlay */
+.chill-nav-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  aspect-ratio: 4/3; /* Match image container */
+  background: radial-gradient(circle at center, rgba(232, 157, 70, 0.8) 0%, transparent 70%);
+  mix-blend-mode: overlay;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 1; /* Above image, below gradient floor */
+  pointer-events: none;
+}
+
+.chill-nav-card:hover::after {
+  opacity: 1;
+}
+
+.chill-nav-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.7;
+  transition: opacity 0.5s ease, transform 0.8s ease;
+}
+
+.chill-nav-card:hover .chill-nav-img {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* Elements on Image */
+.chill-card-icon {
+  color: #E89D46;
+}
+
+.chill-card-icon svg {
+  width: 24px;
+  height: 24px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Specific filled svg tweaks */
+.chill-card-icon svg.fill-needed {
+  fill: currentColor;
+  stroke: none;
+}
+
+.chill-card-title {
+  color: #FFFFFF;
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* Bottom Body */
+.chill-nav-body {
+  padding: 0 32px 40px 32px;
+  text-align: left;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 32px;
+  background: var(--illu-bg-night-light, #0D1F38);
+}
+
+.chill-nav-body p {
+  color: rgba(249, 249, 249, 0.65);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Button */
+.chill-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  padding: 16px 24px;
+  border-radius: 99px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03); /* slight white for depth */
+  color: #F9F9F9;
+  font-size: 1.05rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  /* Glassmorphism Bouton */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.chill-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.chill-btn svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.3s ease;
+}
+
+.chill-btn:hover svg {
+  transform: translateX(4px);
+}
+
+@media screen and (max-width: 1024px) {
+  .chill-nav-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .chill-nav-section {
+    padding: 80px 2rem;
+  }
+  .chill-nav-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+</style>
+
+<section class="chill-nav-section">
+  <div class="chill-nav-header">
+    {% if section.settings.title != blank %}
+      <h2 class="chill-nav-h2">{{ section.settings.title }}</h2>
+    {% endif %}
+    {% if section.settings.description != blank %}
+      <p class="chill-nav-desc">{{ section.settings.description }}</p>
+    {% endif %}
+  </div>
+
+  <div class="chill-nav-grid">
+    {% for block in section.blocks %}
+      <div class="chill-nav-card" {{ block.shopify_attributes }}>
+        
+        <div class="chill-nav-img-container">
+          {% if block.settings.image != blank %}
+            <img src="{{ block.settings.image | image_url: width: 800 }}" 
+                 alt="{{ block.settings.title | escape }}" 
+                 class="chill-nav-img"
+                 loading="lazy">
+          {% else %}
+            {{ 'image' | placeholder_svg_tag: 'chill-nav-img placeholder' }}
+          {% endif %}
+          
+          <div class="chill-nav-img-overlay">
+            <div class="chill-card-icon">
+              {% case block.settings.icon %}
+                {% when 'headphones' %}
+                  <svg viewBox="0 0 24 24">
+                    <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+                    <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+                  </svg>
+                {% when 'pen' %}
+                  <svg viewBox="0 0 24 24">
+                    <path d="M12 20h9"></path>
+                    <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+                  </svg>
+                {% when 'home' %}
+                  <svg viewBox="0 0 24 24" class="fill-needed">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                  </svg>
+              {% endcase %}
+            </div>
+            <h3 class="chill-card-title">{{ block.settings.title }}</h3>
+          </div>
+        </div>
+
+        <div class="chill-nav-body">
+          <p>{{ block.settings.text }}</p>
+          
+          {% if block.settings.button_text != blank %}
+            <a href="{{ block.settings.button_link | default: '#' }}" class="chill-btn">
+              {{ block.settings.button_text }}
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 12H19M19 12L12 5M19 12L12 19"></path>
+              </svg>
+            </a>
+          {% endif %}
+        </div>
+        
+      </div>
+    {% endfor %}
+  </div>
+</section>

@@ -1,0 +1,391 @@
+{% schema %}
+{
+  "name": "Charte Qualité",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "NOTRE CHARTE QUALITÉ"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Heading",
+      "default": "Les 5 Points de <span class=\"amber-text\">Contrôle</span>",
+      "info": "Use <span class=\"amber-text\">text</span> to highlight in amber."
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Chaque luminaire traverse un processus rigoureux pour garantir une expérience lumineuse parfaite, alliant sécurité, esthétique et durabilité."
+    },
+    {
+      "type": "header",
+      "content": "Call To Action"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Text",
+      "default": "Voir le catalogue certifié →"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "control_point",
+      "name": "Control Point",
+      "limit": 5,
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "plug", "label": "Plug / Electricity" },
+            { "value": "waves", "label": "Waves / Flux" },
+            { "value": "palette", "label": "Palette" },
+            { "value": "diamond", "label": "Diamond" },
+            { "value": "touch", "label": "Touch / Interaction" }
+          ],
+          "default": "plug"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Sécurité Électrique"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Description",
+          "default": "Conformité stricte aux normes européennes. Chaque pièce est testée individuellement pour assurer une installation sans risque."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Charte Qualité",
+      "blocks": [
+        { "type": "control_point", "settings": { "icon": "plug", "title": "Sécurité Électrique", "text": "Conformité stricte aux normes européennes. Chaque pièce est testée individuellement pour assurer une installation sans risque et une protection optimale contre les surtensions." } },
+        { "type": "control_point", "settings": { "icon": "waves", "title": "Stabilité du Flux", "text": "Une lumière constante sans scintillement (\"flicker-free\"). Nos drivers haute performance garantissent un confort visuel absolu, réduisant la fatigue oculaire." } },
+        { "type": "control_point", "settings": { "icon": "palette", "title": "Fidélité des Couleurs", "text": "Un indice de rendu des couleurs (IRC) supérieur à 90. Nous veillons à ce que votre intérieur soit sublimé par une restitution naturelle et vibrante des teintes." } },
+        { "type": "control_point", "settings": { "icon": "diamond", "title": "Durabilité des Matériaux", "text": "Des finitions premium en laiton massif, verre soufflé et aluminium anodisé. Conçus pour résister au temps et à l'usure sans perdre leur éclat." } },
+        { "type": "control_point", "settings": { "icon": "touch", "title": "Simplicité d'Usage", "text": "Assemblage intuitif et systèmes de contrôle ergonomiques. L'expérience utilisateur est au cœur de notre conception, de l'installation à l'utilisation quotidienne." } }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+/* CSS Compilé Final */
+.charter-section {
+  background-color: #081A32;
+  padding: 100px 4rem 140px 4rem; /* Padding extra pour le bouton en bas */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.charter-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 5rem auto;
+}
+
+.charter-badge {
+  display: inline-block;
+  color: #E89D46;
+  font-size: 0.83rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  padding: 8px 24px;
+  border-radius: 99px;
+  border: 1px solid rgba(232, 157, 70, 0.3);
+  background: rgba(232, 157, 70, 0.05); 
+  backdrop-filter: blur(8px);
+}
+
+.charter-h2 {
+  font-size: clamp(2.75rem, 5.5vw, 4.4rem);
+  color: #F9F9F9;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+.charter-h2 span.amber-text {
+  color: #E89D46;
+  text-shadow: 0 0 20px rgba(232, 157, 70, 0.3);
+}
+
+.charter-desc {
+  font-size: 1.26rem;
+  color: rgba(249, 249, 249, 0.65);
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Grille List */
+.charter-list {
+  max-width: 1000px; /* Slightly wider for the big numbers */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.charter-card {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 32px;
+  padding: 32px 48px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  position: relative; /* For the absolute number */
+  overflow: hidden;
+}
+
+.charter-card:hover {
+  transform: translateX(20px);
+  border-color: rgba(232, 157, 70, 0.4);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* Icon Box */
+.charter-icon-box {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: 16px; /* Squircle look based on mockup */
+  background: rgba(232, 157, 70, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+  position: relative;
+  z-index: 2;
+}
+
+/* Icon internal styling */
+.charter-icon-box svg {
+  width: 24px;
+  height: 24px;
+  stroke: #E89D46;
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  /* Saturation Base */
+  filter: drop-shadow(0 0 10px rgba(232, 157, 70, 0.3));
+  transition: all 0.4s ease;
+}
+
+/* Saturation au survol (increases the glow) */
+.charter-card:hover .charter-icon-box svg {
+  filter: drop-shadow(0 0 15px rgba(232, 157, 70, 0.8));
+  stroke-width: 2; /* slight thickening */
+}
+
+.charter-card:hover .charter-icon-box {
+  background: rgba(232, 157, 70, 0.1);
+}
+
+/* Text Content Container */
+.charter-content {
+  flex-grow: 1;
+  z-index: 2;
+}
+
+.charter-content h3 {
+  color: #F9F9F9;
+  font-size: 1.54rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+}
+
+.charter-content p {
+  color: rgba(249, 249, 249, 0.55);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 600px;
+}
+
+/* Big Ghost Number */
+.charter-number-ghost {
+  position: absolute;
+  right: 48px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 5.5rem;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.03); /* Very faint greyish transparent */
+  line-height: 1;
+  z-index: 1;
+  pointer-events: none;
+  transition: color 0.4s ease;
+  font-family: inherit;
+}
+
+.charter-card:hover .charter-number-ghost {
+  color: rgba(255, 255, 255, 0.05);
+}
+
+/* CTA Wrapper */
+.charter-cta-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 5rem;
+}
+
+.btn-pill-amber-charter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #E89D46;
+  color: #081A32;
+  border: 1.5px solid #E89D46;
+  padding: 16px 32px;
+  border-radius: 99px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: 0 10px 25px rgba(232, 157, 70, 0.2);
+}
+
+.btn-pill-amber-charter:hover {
+  transform: translateY(-5px);
+  background: #F0A956;
+  border-color: #F0A956;
+  box-shadow: 0 15px 35px rgba(232, 157, 70, 0.35);
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .charter-section {
+    padding: 80px 2rem;
+  }
+  .charter-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 32px;
+  }
+  .charter-card:hover {
+    transform: translateY(-10px); /* Vertical movement instead of horizontal */
+  }
+  .charter-number-ghost {
+    top: 24px;
+    right: 24px;
+    transform: translateY(0);
+    font-size: 4.4rem;
+  }
+  .charter-h2 {
+    font-size: 2.75rem;
+  }
+}
+</style>
+
+<section class="charter-section">
+  <div class="charter-header">
+    {% if section.settings.badge_text != blank %}
+      <div class="charter-badge">{{ section.settings.badge_text }}</div>
+    {% endif %}
+    
+    {% if section.settings.title != blank %}
+      <h2 class="charter-h2">{{ section.settings.title }}</h2>
+    {% endif %}
+    
+    {% if section.settings.description != blank %}
+      <p class="charter-desc">{{ section.settings.description }}</p>
+    {% endif %}
+  </div>
+
+  <div class="charter-list">
+    {% for block in section.blocks %}
+      <div class="charter-card" {{ block.shopify_attributes }}>
+        
+        <div class="charter-icon-box">
+          {% case block.settings.icon %}
+            {% when 'plug' %}
+              <!-- Plug Icon for Sécurité -->
+              <svg viewBox="0 0 24 24">
+                <path d="M12 22V15"></path>
+                <path d="M7 6H17V9C17 11.761 14.761 14 12 14C9.239 14 7 11.761 7 9V6Z"></path>
+                <path d="M9 2V6"></path>
+                <path d="M15 2V6"></path>
+              </svg>
+            {% when 'waves' %}
+              <!-- Waves/Flicker free for Stabilité -->
+              <svg viewBox="0 0 24 24">
+                <path d="M3 6C5.5 6 5.5 8 8 8C10.5 8 10.5 6 13 6C15.5 6 15.5 8 18 8C20.5 8 20.5 6 23 6"></path>
+                <path d="M3 12C5.5 12 5.5 14 8 14C10.5 14 10.5 12 13 12C15.5 12 15.5 14 18 14C20.5 14 20.5 12 23 12"></path>
+                <path d="M3 18C5.5 18 5.5 20 8 20C10.5 20 10.5 18 13 18C15.5 18 15.5 20 18 20C20.5 20 20.5 18 23 18"></path>
+              </svg>
+            {% when 'palette' %}
+              <!-- Palette for Fidélité -->
+              <svg viewBox="0 0 24 24">
+                <path d="M12 21.5C7.266 21.5 3.5 17.584 3.5 12.5C3.5 7.416 7.266 3.5 12 3.5C16.945 3.5 21.5 6.916 21.5 12.5C21.5 13.916 20 16.5 17.5 16.5H16C15 16.5 15 18.5 15 19.5C15 20.605 13.105 21.5 12 21.5Z"></path>
+                <circle cx="8" cy="10" r="1.5" fill="#E89D46" stroke="none"></circle>
+                <circle cx="11.5" cy="7.5" r="1.5" fill="#E89D46" stroke="none"></circle>
+                <circle cx="15.5" cy="10.5" r="1.5" fill="#E89D46" stroke="none"></circle>
+              </svg>
+            {% when 'diamond' %}
+              <!-- Diamond for Durabilité -->
+              <svg viewBox="0 0 24 24">
+                <path d="M3.5 8L12 22L20.5 8L16.5 2H7.5L3.5 8Z"></path>
+                <path d="M3.5 8H20.5"></path>
+                <path d="M7.5 2L12 8L16.5 2"></path>
+                <path d="M7.5 8L12 22"></path>
+                <path d="M16.5 8L12 22"></path>
+              </svg>
+            {% when 'touch' %}
+              <!-- Touch Pointer for Simplicité -->
+              <svg viewBox="0 0 24 24">
+                <path d="M8 11V5C8 3.89543 8.89543 3 10 3C11.1046 3 12 3.89543 12 5V14"></path>
+                <path d="M12 11V9C12 7.89543 12.89543 7 14 7C15.1046 7 16 7.89543 16 9V14"></path>
+                <path d="M16 12C16 10.8954 16.8954 10 18 10C19.1046 10 20 10.8954 20 12V16.6373C20 18.2323 19.3496 19.7578 18.1965 20.86L17.7291 21.3065C16.2736 22.6974 14.2818 23.4913 12.2132 23.5002C9.53982 23.5117 7.00994 22.3768 5.21557 20.3644L4.03212 19.0371L8 16.5V11"></path>
+              </svg>
+          {% endcase %}
+        </div>
+
+        <div class="charter-content">
+          <h3>{{ block.settings.title }}</h3>
+          <p>{{ block.settings.text }}</p>
+        </div>
+        
+        <!-- Generate 01, 02 automatically with loop.index -->
+        <div class="charter-number-ghost">0{{ forloop.index }}</div>
+        
+      </div>
+    {% endfor %}
+  </div>
+
+  <div class="charter-cta-container">
+    {% if section.settings.cta_text != blank %}
+      <a href="{{ section.settings.cta_link | default: '#' }}" class="btn-pill-amber-charter">
+        {{ section.settings.cta_text }}
+      </a>
+    {% endif %}
+  </div>
+</section>

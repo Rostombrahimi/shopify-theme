@@ -1,0 +1,160 @@
+{% schema %}
+{
+  "name": "Univers Hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "UNIVERS VISUEL"
+    },
+    {
+      "type": "textarea",
+      "id": "title_white",
+      "label": "Title (White Part)",
+      "default": "Univers Visuel Ados –"
+    },
+    {
+      "type": "textarea",
+      "id": "title_amber",
+      "label": "Title (Amber Part)",
+      "default": "Ambiances lumineuses\npour exprimer sa passion"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Anime, pop culture, setup visuel ou déco de chambre : ici, la lumière devient une signature."
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Univers Hero",
+      "settings": {
+        "badge_text": "UNIVERS VISUEL",
+        "title_white": "Univers Visuel Ados –",
+        "title_amber": "Ambiances lumineuses\npour exprimer sa passion",
+        "subtitle": "Anime, pop culture, setup visuel ou déco de chambre : ici, la lumière devient une signature."
+      }
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+/* Reset and Globals */
+body { margin: 0; display: flex; flex-direction: column; -webkit-font-smoothing: antialiased; }
+
+#shopify-section-{{ section.id }} .hero-univers-centered {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: var(--illu-bg-night, #081A32);
+  overflow: hidden;
+  padding: 0 2rem;
+  color: #fff;
+  {% if section.settings.background_image %}
+  background-image: url('{{ section.settings.background_image | image_url: width: 2500 }}');
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.0); /* Base for parallax if needed */
+  {% endif %}
+}
+
+#shopify-section-{{ section.id }} .hero-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(8, 26, 50, 0.4) 0%, rgba(8, 26, 50, 1) 100%);
+  z-index: 1;
+}
+
+#shopify-section-{{ section.id }} .hero-bg-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, transparent 0%, rgba(8, 26, 50, 0.9) 80%);
+  z-index: 2;
+}
+
+#shopify-section-{{ section.id }} .hero-badge {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  padding: 8px 20px;
+  border-radius: 99px;
+  color: var(--illu-accent-amber, #E89D46);
+  font-size: 0.94rem;
+  letter-spacing: 0.15em;
+  margin-bottom: 2rem;
+  z-index: 3;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+#shopify-section-{{ section.id }} .hero-title {
+  font-size: clamp(2.5rem, 6vw, 5.5rem);
+  line-height: 1.05;
+  max-width: 1000px;
+  z-index: 3;
+  margin-bottom: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+#shopify-section-{{ section.id }} .title-white { color: var(--illu-text-light, #F9F9F9); }
+#shopify-section-{{ section.id }} .title-amber { color: var(--illu-accent-amber, #E89D46); }
+
+#shopify-section-{{ section.id }} .hero-subtitle {
+  color: rgba(249, 249, 249, 0.85);
+  font-size: 1.24rem;
+  max-width: 600px;
+  z-index: 3;
+  margin-bottom: 3rem;
+  line-height: 1.6;
+}
+
+#shopify-section-{{ section.id }} .hero-chevron {
+  margin-top: 3rem;
+  z-index: 3;
+  animation: bounce-slow 3s infinite;
+  color: rgba(249, 249, 249, 0.6);
+  cursor: pointer;
+}
+
+@keyframes bounce-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+}
+</style>
+
+<div class="sf-stitch hero-univers-centered">
+  <div class="hero-bg-overlay"></div>
+  
+  {% if section.settings.badge_text != blank %}
+    <div class="hero-badge">{{ section.settings.badge_text }}</div>
+  {% endif %}
+  
+  <h1 class="hero-title">
+    <span class="title-white">{{ section.settings.title_white | newline_to_br }}</span><br/>
+    <span class="title-amber">{{ section.settings.title_amber | newline_to_br }}</span>
+  </h1>
+  
+  {% if section.settings.subtitle != blank %}
+    <p class="hero-subtitle">{{ section.settings.subtitle }}</p>
+  {% endif %}
+  
+  <div class="hero-chevron" onclick="window.scrollTo({top: window.innerHeight, behavior: 'smooth'})">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  </div>
+</div>

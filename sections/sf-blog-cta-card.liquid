@@ -1,0 +1,373 @@
+{% schema %}
+{
+  "name": "Blog - Card CTA",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "card_layout",
+      "label": "Type d'affichage",
+      "options": [
+        {
+          "value": "collection",
+          "label": "Style Collection (Centré, Icône)"
+        },
+        {
+          "value": "product",
+          "label": "Style Produit (Image à gauche, Texte à droite)"
+        }
+      ],
+      "default": "collection"
+    },
+    {
+      "type": "header",
+      "content": "Contenu Style Collection (Options)"
+    },
+    {
+      "type": "textarea",
+      "id": "col_icon",
+      "label": "Icône SVG (Style Collection)",
+      "info": "Mettre le code SVG de l'icône."
+    },
+    {
+      "type": "text",
+      "id": "col_title",
+      "label": "Titre (Style Collection)",
+      "default": "Ambiances sculptées"
+    },
+    {
+      "type": "textarea",
+      "id": "col_desc",
+      "label": "Description (Style Collection)",
+      "default": "Pour aller plus loin, découvrez notre sélection dédiée..."
+    },
+    {
+      "type": "header",
+      "content": "Contenu Style Produit (Options)"
+    },
+    {
+      "type": "image_picker",
+      "id": "prod_image",
+      "label": "Image Produit (Style Produit)"
+    },
+    {
+      "type": "text",
+      "id": "prod_subtitle",
+      "label": "Sur-titre (Style Produit)",
+      "default": "L'EXPERTISE ILLUMINÉES"
+    },
+    {
+      "type": "text",
+      "id": "prod_title",
+      "label": "Titre Produit (Style Produit)",
+      "default": "Screenbar Pro"
+    },
+    {
+      "type": "textarea",
+      "id": "prod_desc",
+      "label": "Description Produit (Style Produit)",
+      "default": "Pour un éclairage stable directement fixé..."
+    },
+    {
+      "type": "header",
+      "content": "Bouton d'Action (Commun aux deux)"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Texte du bouton",
+      "default": "Explorer les ambiances"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Lien du bouton"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Blog - Card CTA"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+/* CSS - sf-blog-cta-card.liquid */
+
+.blog-cta-wrapper {
+  background-color: #081A32;
+  padding: 60px 2rem;
+  font-family: 'Inter', sans-serif;
+}
+
+.blog-cta-inner {
+  max-width: 800px; /* Même largeur max que l'article de texte pour rester flowé */
+  margin: 0 auto;
+}
+
+/* Card Globale (Glassmorphism & Lueur) */
+.cta-glass-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.4s ease, border-color 0.4s ease;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  /* Lueur interne subtile */
+  box-shadow: inset 0 0 40px rgba(255, 255, 255, 0.01),
+              0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.cta-glass-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(232, 157, 70, 0.15);
+}
+
+/* --- VARIATION 1 : COLLECTION (Centré) --- */
+.layout-collection {
+  padding: 60px 40px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.col-icon-circle {
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.col-icon-circle svg {
+  width: 20px;
+  height: 20px;
+  stroke: #E89D46;
+  fill: none;
+  stroke-width: 1.5;
+}
+
+.col-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #F9F9F9;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.02em;
+}
+
+.col-desc {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: rgba(249, 249, 249, 0.7);
+  max-width: 500px;
+  margin: 0 0 32px 0;
+}
+
+/* --- VARIATION 2 : PRODUCT (Image/Texte) --- */
+.layout-product {
+  display: flex;
+  align-items: stretch;
+}
+
+.prod-image-col {
+  width: 45%;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+  background-color: #0d1e34; /* fallback */
+  padding: 16px 0 16px 16px; /* Pour que l'image ait de l'espace autour si besoin, ou on la met full bleed */
+}
+
+/* Ajustement pour coller au screenshot : image arrondie à l'intérieur */
+.prod-img-inner {
+  width: 100%;
+  height: 100%;
+  min-height: 250px;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #030a13; /* Simuler le noir de la screenbar */
+  position: relative;
+}
+
+.prod-img-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.prod-content-col {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 55%;
+}
+
+.prod-subtitle {
+  font-size: 0.83rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #E89D46;
+  margin: 0 0 8px 0;
+}
+
+.prod-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #F9F9F9;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.02em;
+}
+
+.prod-desc {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: rgba(249, 249, 249, 0.7);
+  margin: 0 0 24px 0;
+}
+
+
+/* --- BOUTON COMMUN --- */
+.btn-blog-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #E89D46;
+  color: #081A32;
+  font-weight: 700;
+  font-size: 1.05rem;
+  padding: 14px 28px;
+  border-radius: 99px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  /* Lueur bouton ambre */
+  box-shadow: 0 0 20px rgba(232, 157, 70, 0.2);
+}
+
+.btn-blog-cta:hover {
+  transform: scale(1.02);
+  filter: brightness(1.05);
+  box-shadow: 0 0 30px rgba(232, 157, 70, 0.4);
+}
+
+.btn-blog-cta svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+  transition: transform 0.3s ease;
+}
+
+.btn-blog-cta:hover svg {
+  transform: translateX(4px);
+}
+
+
+/* --- RESPONSIVE --- */
+@media screen and (max-width: 768px) {
+  .blog-cta-wrapper {
+    padding: 40px 1.5rem;
+  }
+  
+  .layout-collection {
+    padding: 40px 24px;
+  }
+  
+  .col-title, .prod-title {
+    font-size: 1.5rem;
+  }
+  
+  .layout-product {
+    flex-direction: column;
+  }
+  
+  .prod-image-col {
+    width: 100%;
+    padding: 16px 16px 0 16px; /* Pad top, right, left */
+  }
+  
+  .prod-img-inner {
+    min-height: 200px;
+  }
+  
+  .prod-content-col {
+    width: 100%;
+    padding: 24px 24px 32px 24px;
+    align-items: flex-start;
+  }
+}
+</style>
+
+<section class="blog-cta-wrapper">
+  <div class="blog-cta-inner">
+    
+    <div class="cta-glass-card">
+      
+      {% if section.settings.card_layout == 'collection' %}
+        <!-- LAYOUT 1 : COLLECTION (Centré) -->
+        <div class="layout-collection">
+          <div class="col-icon-circle">
+            {% if section.settings.col_icon != blank %}
+              {{ section.settings.col_icon }}
+            {% else %}
+               <!-- Default Desk Icon -->
+               <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                  <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+               </svg>
+            {% endif %}
+          </div>
+          <h3 class="col-title">{{ section.settings.col_title }}</h3>
+          <p class="col-desc">{{ section.settings.col_desc }}</p>
+          <a href="{{ section.settings.cta_link | default: '#' }}" class="btn-blog-cta">
+            {{ section.settings.cta_text }}
+            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      {% endif %}
+
+      {% if section.settings.card_layout == 'product' %}
+        <!-- LAYOUT 2 : PRODUIT (Split Image/Texte) -->
+        <div class="layout-product">
+          <div class="prod-image-col">
+            <div class="prod-img-inner">
+              {% if section.settings.prod_image != blank %}
+                <img src="{{ section.settings.prod_image | img_url: '600x' }}" alt="{{ section.settings.prod_title }}" loading="lazy">
+              {% else %}
+                 <!-- Placeholder sombre si pas d'image -->
+                 <div style="width:100%;height:100%;background:linear-gradient(45deg, #05101E, #091D38);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.1);">Image</div>
+              {% endif %}
+            </div>
+          </div>
+          <div class="prod-content-col">
+            <p class="prod-subtitle">{{ section.settings.prod_subtitle }}</p>
+            <h3 class="prod-title">{{ section.settings.prod_title }}</h3>
+            <p class="prod-desc">{{ section.settings.prod_desc }}</p>
+            <div>
+              <a href="{{ section.settings.cta_link | default: '#' }}" class="btn-blog-cta">
+                {{ section.settings.cta_text }}
+                <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+      
+    </div>
+    
+  </div>
+</section>

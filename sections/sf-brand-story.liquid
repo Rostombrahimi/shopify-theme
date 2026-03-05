@@ -1,0 +1,377 @@
+<div class="sf-stitch sf-brand-story brand-story-section">
+  <style>
+    /* Section Pourquoi Illuminées - sf-brand-story.css */
+    .brand-story-section {
+      background-color: var(--illu-bg-night);
+      padding: 8rem 2rem;
+    }
+
+    .brand-story-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 4rem;
+    }
+
+    .brand-story-content {
+      flex: 1 1 50%;
+      max-width: 540px;
+    }
+
+    .brand-story-subtitle {
+      color: var(--illu-accent-amber);
+      font-size: 1.24rem; /* ~18px for better PC visibility */
+      font-weight: var(--fw-bold);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 1.5rem;
+      opacity: 0.9;
+    }
+
+    .brand-story-title {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      color: var(--illu-text-cream);
+      line-height: 1.1;
+      margin-bottom: 2rem;
+    }
+
+    .brand-story-title em {
+      font-style: italic;
+      color: var(--illu-accent-amber);
+    }
+
+    .brand-story-separator {
+      width: 40px;
+      height: 2px;
+      background-color: var(--illu-accent-amber);
+      margin: 2rem 0;
+      opacity: 0.4;
+    }
+
+    .brand-story-quote {
+      border-left: 2px solid rgba(255, 255, 255, 0.2);
+      padding-left: 1.5rem;
+      margin: 0 0 2rem 0;
+      font-size: 1.65rem;
+      font-style: italic;
+      color: var(--illu-text-cream);
+      line-height: 1.4;
+      font-weight: var(--fw-light);
+    }
+
+    .brand-story-text {
+      font-size: 1.24rem;
+      color: var(--illu-text-cream);
+      line-height: 1.6;
+      opacity: 0.65;
+      margin-bottom: 3rem;
+    }
+
+    .brand-story-text strong {
+      color: var(--illu-text-cream); /* standard bold if needed */
+      font-weight: var(--fw-semibold);
+    }
+
+    .brand-story-text em {
+      font-style: normal;
+      color: var(--illu-accent-amber);
+      text-shadow: 0 0 15px rgba(232, 157, 70, 0.45);
+    }
+
+    .btn-story {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      padding: 1rem 2rem;
+      background-color: var(--illu-text-cream);
+      color: var(--illu-bg-night);
+      border-radius: var(--illu-radius-pill);
+      font-weight: var(--fw-bold);
+      transition: var(--illu-transition-soft);
+      text-decoration: none;
+    }
+
+    .btn-story:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    .btn-story svg {
+      width: 18px;
+      height: 18px;
+      transition: transform 0.3s ease;
+    }
+
+    .btn-story:hover svg {
+      transform: translateX(4px);
+    }
+
+    .brand-story-media {
+      flex: 0 0 42%;
+      max-width: 500px;
+      position: relative;
+    }
+
+    .brand-story-media::after {
+      /* Vignettage Image */
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 40%;
+      background: linear-gradient(to bottom, rgba(8, 26, 50, 0) 0%, #081A32 100%);
+      border-bottom-left-radius: var(--illu-radius-chubby);
+      border-bottom-right-radius: var(--illu-radius-chubby);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .brand-story-img {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      border-radius: var(--illu-radius-chubby);
+      box-shadow: var(--illu-shadow-card);
+    }
+
+    .brand-story-glass-card {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 4rem);
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 16px;
+      padding: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      z-index: 2; /* above vignettage */
+    }
+
+    .glass-card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(232, 157, 70, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--illu-accent-amber);
+      flex-shrink: 0;
+    }
+
+    .glass-card-text {
+      flex: 1;
+    }
+
+    .glass-card-text h4 {
+      color: var(--illu-text-cream);
+      margin: 0 0 0.25rem 0;
+      font-size: 1.1rem;
+      font-weight: var(--fw-bold);
+      letter-spacing: 0.01em;
+    }
+
+    .glass-card-text p {
+      color: var(--illu-text-cream);
+      margin: 0;
+      font-size: 0.94rem;
+      opacity: 0.75;
+      line-height: 1.5;
+    }
+
+    /* Mobile Responsive */
+    @media screen and (max-width: 990px) {
+      .brand-story-section {
+        padding: 5rem 1.5rem;
+      }
+      .brand-story-container {
+        flex-direction: column-reverse; /* Usually stack image top, text bottom on mobile */
+        gap: 3rem;
+      }
+
+      .brand-story-title {
+        font-size: 2.5rem;
+      }
+      
+      .brand-story-media,
+      .brand-story-content {
+        flex: 1 1 100%;
+        max-width: 100%;
+        width: 100%;
+      }
+      
+      .brand-story-glass-card {
+        bottom: 1.5rem;
+        width: calc(100% - 3rem);
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+
+  <div class="brand-story-container">
+    <div class="brand-story-content">
+    {%- if section.settings.subtitle != blank -%}
+      <div class="brand-story-subtitle">{{ section.settings.subtitle | escape }}</div>
+    {%- endif -%}
+
+    {%- if section.settings.title != blank -%}
+      <h2 class="brand-story-title">
+        {{ section.settings.title | replace: '<em>', '<em>' | replace: '</em>', '</em>' }}
+      </h2>
+    {%- endif -%}
+
+    <div class="brand-story-separator"></div>
+
+    {%- if section.settings.quote != blank -%}
+      <blockquote class="brand-story-quote">
+        {{ section.settings.quote }}
+      </blockquote>
+    {%- endif -%}
+
+    {%- if section.settings.text != blank -%}
+      <div class="brand-story-text">
+        {{ section.settings.text }}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.button_label != blank and section.settings.button_link != blank -%}
+      <a href="{{ section.settings.button_link }}" class="btn-story">
+        {{ section.settings.button_label | escape }}
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    {%- endif -%}
+  </div>
+
+  <div class="brand-story-media">
+    {%- if section.settings.image != blank -%}
+      <img
+        src="{{ section.settings.image | image_url: width: 1000 }}"
+        alt="{{ section.settings.image.alt | escape }}"
+        class="brand-story-img"
+        loading="lazy"
+        width="{{ section.settings.image.width }}"
+        height="{{ section.settings.image.height }}"
+      >
+    {%- else -%}
+      {{ 'image' | placeholder_svg_tag: 'brand-story-img placeholder-svg' }}
+    {%- endif -%}
+
+    {%- if section.settings.card_title != blank -%}
+    <div class="brand-story-glass-card">
+      <div class="glass-card-icon">
+        {%- if section.settings.card_icon != blank -%}
+          {{ section.settings.card_icon }}
+        {%- else -%}
+          <svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
+            <path d='M6 16 A6 6 0 0 1 18 16' stroke='currentColor' stroke-width='1.5' stroke-linecap='round'/>
+            <path d='M3 16H21' stroke='currentColor' stroke-width='1.5' stroke-linecap='round'/>
+            <path d='M12 7V4' stroke='currentColor' stroke-width='1.5' stroke-linecap='round'/>
+            <path d='M17 9L19 7' stroke='currentColor' stroke-width='1.5' stroke-linecap='round'/>
+            <path d='M7 9L5 7' stroke='currentColor' stroke-width='1.5' stroke-linecap='round'/>
+          </svg>
+        {%- endif -%}
+      </div>
+      <div class="glass-card-text">
+        <h4>{{ section.settings.card_title | escape }}</h4>
+        <p>{{ section.settings.card_text | escape }}</p>
+      </div>
+    </div>
+    {%- endif -%}
+  </div>
+</div>
+</div>
+
+{% schema %}
+{
+  "name": "SF Brand Story",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Surtitre (Subtitle)",
+      "default": "NOTRE PHILOSOPHIE"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Titre",
+      "default": "Pourquoi <em>Illuminées</em> ?",
+      "info": "Utilisez <em>mot</em> pour appliquer l'effet italique et couleur ambre."
+    },
+    {
+      "type": "textarea",
+      "id": "quote",
+      "label": "Citation text (Blockquote)",
+      "default": "\"On ne vend pas un objet qui éclaire. On vend une ambiance, un confort visuel, une émotion.\""
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Texte principal",
+      "default": "<p>En supprimant les intermédiaires, nous nous concentrons sur l'essentiel : la qualité de la lumière et le design de votre intérieur. Chaque pièce est pensée pour transformer votre espace en un sanctuaire de sérénité.</p>",
+      "info": "Utilisez l'Italique dans l'éditeur riche pour créer un mot avec effet 'Glow Ambre'."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Texte du bouton",
+      "default": "Découvrir notre histoire"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Lien du bouton"
+    },
+    {
+      "type": "header",
+      "content": "Image & Glass Card"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image (Portrait 4:5 recommended)"
+    },
+    {
+      "type": "text",
+      "id": "card_title",
+      "label": "Titre de la carte image",
+      "default": "Ambiance chaleureuse"
+    },
+    {
+      "type": "textarea",
+      "id": "card_text",
+      "label": "Texte de la carte image",
+      "default": "La lumière idéale pour vos soirées détente, conçue pour apaiser l'esprit."
+    },
+    {
+      "type": "html",
+      "id": "card_icon",
+      "label": "SVG Icon (HTML) pour la carte",
+      "default": "<svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M6 16 A6 6 0 0 1 18 16' stroke='currentColor' stroke-width='1.5' stroke-linecap='round'/><path d='M3 16H21' stroke='currentColor' stroke-width='1.5' stroke-linecap='round'/><path d='M12 7V4' stroke='currentColor' stroke-width='1.5' stroke-linecap='round'/><path d='M17 9L19 7' stroke='currentColor' stroke-width='1.5' stroke-linecap='round'/><path d='M7 9L5 7' stroke='currentColor' stroke-width='1.5' stroke-linecap='round'/></svg>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "SF Brand Story",
+      "category": "Image with text"
+    }
+  ]
+}
+{% endschema %}

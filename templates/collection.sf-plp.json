@@ -1,0 +1,14 @@
+{
+    "sections": {
+        "plp-gallery": {
+            "type": "sf-collection-plp",
+            "settings": {
+                "title": "Toutes nos Créations",
+                "subtitle": "L'EXPERTISE DE LA LUMIÈRE AU SERVICE DE VOS ÉMOTIONS"
+            }
+        }
+    },
+    "order": [
+        "plp-gallery"
+    ]
+}

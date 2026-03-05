@@ -1,0 +1,293 @@
+{% schema %}
+{
+  "name": "Blog - FAQ Technique",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titre Principal",
+      "default": "La FAQ Technique"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Sous-titre (Optionnel)",
+      "default": "Réponses d'experts pour optimiser votre confort visuel et comprendre les nuances de l'éclairage domestique."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "Question FAQ",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question (Titre)",
+          "default": "Quelle puissance pour une chambre d'enfant ?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Réponse",
+          "default": "<p>Pour une chambre d'enfant, une puissance de <strong>1 à 3 watts (LED)</strong> est recommandée pour une veilleuse, offrant une lueur douce sans perturber le sommeil. Pour l'éclairage général, optez pour 300 à 500 lumens avec une température de couleur chaude (2700K) pour favoriser l'apaisement avant le coucher.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Blog - FAQ Technique",
+      "blocks": [
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Quelle puissance pour une chambre d'enfant ?",
+            "answer": "<p>Pour une chambre d'enfant, une puissance de <strong>1 à 3 watts (LED)</strong> est recommandée pour une veilleuse, offrant une lueur douce sans perturber le sommeil.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Peut-on laisser une veilleuse allumée 10h ?",
+            "answer": "<p>Oui, avec la technologie LED intégrée par notre atelier, aucune surchauffe n'est possible même après plus de 12h d'utilisation continue.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Pourquoi privilégier la lumière ambrée le soir ?",
+            "answer": "<p>La lumière ambrée (<2500K) n'inhibe pas la sécrétion de la mélatonine, hormone essentielle pour l'endormissement, contrairement aux spectres bleutés des écrans ou LED froides.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+/* Blog FAQ - sf-blog-faq.css */
+
+.blog-faq-wrapper {
+  padding: 80px 2rem 100px;
+  background-color: #081A32; /* illu-night */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
+  color: #F9F9F9;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Icon Point d'interrogation */
+.blog-faq-icon-top {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(232, 157, 70, 0.1);
+  border: 1px solid rgba(232, 157, 70, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #E89D46;
+  margin-bottom: 24px;
+}
+
+.blog-faq-icon-top svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+}
+
+/* Titles */
+.blog-faq-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #F9F9F9;
+  margin: 0 0 16px 0;
+  text-align: center;
+  letter-spacing: -0.02em;
+}
+
+.blog-faq-subtitle {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: rgba(249, 249, 249, 0.6);
+  max-width: 500px;
+  text-align: center;
+  margin: 0 0 48px 0;
+}
+
+/* Accordion Container */
+.faq-accordion-container {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Native Details/Summary Reset & Style */
+.faq-accordion-container details {
+  background: rgba(255, 255, 255, 0.02);
+  /* Micro vignette request: léger dégradé linéaire au fond */
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 20px; /* Moins énorme que 32px sur la capture pour être esthétique, mais on peut remettre 32px si tu préfères */
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.faq-accordion-container details:hover {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border-color: rgba(232, 157, 70, 0.2);
+}
+
+.faq-accordion-container details[open] {
+  border-color: rgba(255, 255, 255, 0.1);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+}
+
+.blog-faq-summary {
+  padding: 24px 32px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 700;
+  font-size: 1.21rem;
+  color: #F9F9F9;
+  list-style: none; /* Hide default marker */
+  transition: color 0.3s ease;
+}
+
+/* Hide default marker in Safari */
+.blog-faq-summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Chevron Background (Sombre) */
+.chevron-wrapper {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-left: 20px;
+  transition: background 0.3s ease;
+}
+
+/* Glow Discret request : filter drop-shadow */
+.faq-icon-chevron {
+  color: #E89D46; /* illu-amber */
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  fill: none;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: drop-shadow(0 0 8px rgba(232, 157, 70, 0.4));
+}
+
+.faq-accordion-container details:hover .chevron-wrapper {
+  background: rgba(232, 157, 70, 0.1);
+}
+
+/* Rotation de l'icône à l'ouverture (chevron down -> chevron up, ou rotate) */
+.faq-accordion-container details[open] .faq-icon-chevron {
+  transform: rotate(180deg);
+}
+
+.blog-faq-content {
+  padding: 0 32px 32px 32px;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: rgba(249, 249, 249, 0.7);
+  animation: fadeInDown 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.blog-faq-content p {
+  margin: 0;
+}
+
+/* Mise en évidence du texte (les mots en gras de la réponse) */
+.blog-faq-content strong,
+.blog-faq-content b {
+  color: #E89D46;
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(232, 157, 70, 0.1);
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* RESPONSIVE */
+@media screen and (max-width: 768px) {
+  .blog-faq-wrapper {
+    padding: 60px 1.5rem;
+  }
+  .blog-faq-title {
+    font-size: 1.8rem;
+  }
+  .blog-faq-summary {
+    padding: 20px 24px;
+    font-size: 1.1rem;
+  }
+  .blog-faq-content {
+    padding: 0 24px 24px 24px;
+  }
+}
+</style>
+
+<section class="blog-faq-wrapper">
+  
+  <div class="blog-faq-icon-top">
+    <svg viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10"></circle>
+      <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+      <line x1="12" y1="17" x2="12.01" y2="17"></line>
+    </svg>
+  </div>
+
+  <h2 class="blog-faq-title">{{ section.settings.title }}</h2>
+  
+  {% if section.settings.subtitle != blank %}
+    <p class="blog-faq-subtitle">{{ section.settings.subtitle }}</p>
+  {% endif %}
+
+  <div class="faq-accordion-container">
+    {% for block in section.blocks %}
+      <details {{ block.shopify_attributes }}>
+        <summary class="blog-faq-summary">
+          {{ block.settings.question }}
+          <div class="chevron-wrapper">
+            <!-- Chevron Down par défaut -->
+            <svg class="faq-icon-chevron" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+        </summary>
+        <div class="blog-faq-content">
+          {{ block.settings.answer }}
+        </div>
+      </details>
+    {% endfor %}
+  </div>
+  
+</section>

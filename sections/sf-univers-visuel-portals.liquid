@@ -1,0 +1,364 @@
+{% schema %}
+{
+  "name": "Portails d'Univers",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titre Principal",
+      "default": "Portails d'Univers"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Sous-titre",
+      "default": "Plongez au cœur de l'atmosphère. Une immersion lumineuse dans vos sagas préférées."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "portal",
+      "name": "Portail Animé",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image de fond"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Nom de l'animé",
+          "default": "NARUTO"
+        },
+        {
+          "type": "checkbox",
+          "id": "text_outline",
+          "label": "Texte en contour (transparent)",
+          "default": false,
+          "info": "Si coché, le texte sera transparent avec un bord blanc (ex: One Piece, A.O.T)."
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Ressentez la volonté du feu. Une lueur ambrée chaleureuse."
+        },
+        {
+          "type": "header",
+          "content": "Bloc Atmosphère & Bouton",
+          "info": "Laissez ces champs vides si vous voulez afficher l'image sans texte."
+        },
+        {
+          "type": "text",
+          "id": "atmosphere_label",
+          "label": "Label (ex: ATMOSPHÈRE)",
+          "default": "ATMOSPHÈRE"
+        },
+        {
+          "type": "text",
+          "id": "atmosphere_value",
+          "label": "Valeur (ex: Chaleur & Chakra)",
+          "default": "Chaleur & Chakra"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Texte du bouton",
+          "default": "Entrer dans la légende"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Lien du bouton"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Portails d'Univers",
+      "category": "Image",
+      "blocks": [
+        { "type": "portal" },
+        { "type": "portal" },
+        { "type": "portal" }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+/* Reset global section background */
+#shopify-section-{{ section.id }} .portal-section-wrapper {
+  background-color: var(--illu-night, #081A32);
+  padding: 80px 4rem;
+}
+
+/* Header (Title & Subtitle) */
+#shopify-section-{{ section.id }} .portal-section-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 64px auto;
+}
+
+#shopify-section-{{ section.id }} .portal-section-title {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 800;
+  color: #F9F9F9;
+  letter-spacing: -0.02em;
+  margin: 0 0 16px 0;
+}
+
+#shopify-section-{{ section.id }} .portal-section-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.24rem;
+  color: rgba(249, 249, 249, 0.7);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Grille de Portails Animé */
+#shopify-section-{{ section.id }} .portal-grid-balanced {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+#shopify-section-{{ section.id }} .portal-card-item {
+  position: relative;
+  aspect-ratio: 4/5; /* Format portrait élégant */
+  border-radius: 32px;
+  overflow: hidden;
+  background-color: #081A32;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  text-decoration: none;
+  display: block;
+}
+
+#shopify-section-{{ section.id }} .portal-card-item:hover {
+  transform: translateY(-10px);
+  border-color: rgba(232, 157, 70, 0.4);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+#shopify-section-{{ section.id }} .portal-art-full {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.65) saturate(0.9);
+  transition: all 0.8s ease;
+}
+
+#shopify-section-{{ section.id }} .portal-card-item:hover .portal-art-full {
+  filter: brightness(0.85) saturate(1.1);
+  transform: scale(1.05);
+}
+
+#shopify-section-{{ section.id }} .portal-overlay-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 40px;
+  background: linear-gradient(to top, rgba(8, 26, 50, 0.95) 0%, rgba(8, 26, 50, 0) 65%);
+}
+
+#shopify-section-{{ section.id }} .portal-h2 {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(2.2rem, 3.3vw, 2.75rem);
+  font-weight: 900;
+  color: #F9F9F9;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  margin: 0 0 8px 0;
+  line-height: 1.1;
+  transition: text-shadow 0.3s ease;
+}
+
+/* Options d'outline pour One Piece & A.O.T par exemple */
+#shopify-section-{{ section.id }} .portal-h2.outline-text {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(249, 249, 249, 0.5);
+}
+
+#shopify-section-{{ section.id }} .portal-card-item:hover .portal-h2:not(.outline-text) {
+  text-shadow: 0 0 20px rgba(232, 157, 70, 0.4);
+}
+
+#shopify-section-{{ section.id }} .portal-card-item:hover .portal-h2.outline-text {
+  -webkit-text-stroke: 1px #F9F9F9;
+  filter: drop-shadow(0 0 10px rgba(249, 249, 249, 0.3));
+}
+
+#shopify-section-{{ section.id }} .portal-tagline {
+  font-family: 'Inter', sans-serif;
+  color: rgba(249, 249, 249, 0.8);
+  font-weight: 500;
+  font-size: 1.05rem;
+  line-height: 1.5;
+  margin: 0 0 24px 0;
+}
+
+/* Architecture interne de la carte (Atmosphère & CTA) */
+#shopify-section-{{ section.id }} .portal-meta-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 24px;
+}
+
+#shopify-section-{{ section.id }} .portal-atmosphere-block {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+#shopify-section-{{ section.id }} .portal-atmosphere-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #E89D46;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+#shopify-section-{{ section.id }} .portal-atmosphere-value {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #F9F9F9;
+}
+
+#shopify-section-{{ section.id }} .portal-card-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.08); /* Semi-transparent button */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 12px 24px;
+  border-radius: 99px;
+  color: #F9F9F9;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.96rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  width: max-content;
+}
+
+#shopify-section-{{ section.id }} .portal-arrow {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.3s ease;
+}
+
+#shopify-section-{{ section.id }} .portal-card-item:hover .portal-card-action {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+#shopify-section-{{ section.id }} .portal-card-item:hover .portal-arrow {
+  transform: translateX(4px);
+}
+
+@media (max-width: 1024px) {
+  #shopify-section-{{ section.id }} .portal-grid-balanced {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  #shopify-section-{{ section.id }} .portal-section-wrapper {
+    padding: 60px 1.5rem;
+  }
+  
+  #shopify-section-{{ section.id }} .portal-grid-balanced {
+    grid-template-columns: 1fr;
+  }
+  
+  #shopify-section-{{ section.id }} .portal-card-item {
+    aspect-ratio: 3/4;
+  }
+  
+  #shopify-section-{{ section.id }} .portal-overlay-content {
+    padding: 30px;
+  }
+}
+</style>
+
+<div class="sf-stitch portal-section-wrapper" id="licences">
+  <div class="portal-section-header">
+    {%- if section.settings.title != blank -%}
+      <h2 class="portal-section-title">{{ section.settings.title }}</h2>
+    {%- endif -%}
+    
+    {%- if section.settings.subtitle != blank -%}
+      <p class="portal-section-subtitle">{{ section.settings.subtitle }}</p>
+    {%- endif -%}
+  </div>
+
+  <div class="portal-grid-balanced">
+    {%- for block in section.blocks -%}
+      <a href="{{ block.settings.button_link | default: '#' }}" class="portal-card-item" {{ block.shopify_attributes }}>
+        
+        {%- if block.settings.image != blank -%}
+          {{ block.settings.image | image_url: width: 800 | image_tag: class: 'portal-art-full', loading: 'lazy' }}
+        {%- else -%}
+          {{ 'image' | placeholder_svg_tag: 'portal-art-full' }}
+        {%- endif -%}
+        
+        <div class="portal-overlay-content">
+          {%- if block.settings.title != blank -%}
+            <h3 class="portal-h2 {% if block.settings.text_outline %}outline-text{% endif %}">
+              {{ block.settings.title }}
+            </h3>
+          {%- endif -%}
+          
+          {%- if block.settings.description != blank -%}
+            <p class="portal-tagline">{{ block.settings.description }}</p>
+          {%- endif -%}
+          
+          {%- if block.settings.atmosphere_label != blank or block.settings.atmosphere_value != blank or block.settings.button_text != blank -%}
+            <div class="portal-meta-container">
+              
+              {%- if block.settings.atmosphere_label != blank or block.settings.atmosphere_value != blank -%}
+                <div class="portal-atmosphere-block">
+                  {%- if block.settings.atmosphere_label != blank -%}
+                    <span class="portal-atmosphere-label">{{ block.settings.atmosphere_label }}</span>
+                  {%- endif -%}
+                  {%- if block.settings.atmosphere_value != blank -%}
+                    <span class="portal-atmosphere-value">{{ block.settings.atmosphere_value }}</span>
+                  {%- endif -%}
+                </div>
+              {%- endif -%}
+              
+              {%- if block.settings.button_text != blank -%}
+                <div class="portal-card-action">
+                  <span>{{ block.settings.button_text }}</span>
+                  <svg viewBox="0 0 24 24" fill="none" class="portal-arrow" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
+                </div>
+              {%- endif -%}
+              
+            </div>
+          {%- endif -%}
+          
+        </div>
+      </a>
+    {%- endfor -%}
+  </div>
+</div>

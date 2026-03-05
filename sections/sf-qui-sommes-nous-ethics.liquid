@@ -1,0 +1,664 @@
+{% schema %}
+{
+  "name": "About - Ethics",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge",
+      "label": "Section Badge",
+      "default": "NOS VALEURS"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Heading",
+      "default": "Proximité & <span>Éthique</span>",
+      "info": "Use <span> to highlight text in blue with a neon glow."
+    },
+    {
+      "type": "textarea",
+      "id": "intro_text",
+      "label": "Intro Text",
+      "default": "Plus qu'une boutique en ligne, nous sommes des passionnés d'éclairage engagés dans une relation transparente et durable avec chacun de nos clients."
+    },
+    {
+      "type": "header",
+      "content": "Left Card (Proximity)"
+    },
+    {
+      "type": "text",
+      "id": "left_card_title",
+      "label": "Left Card Title",
+      "default": "Une marque proche de ses clients"
+    },
+    {
+      "type": "textarea",
+      "id": "left_card_text",
+      "label": "Left Card Text",
+      "default": "Chez Illuminées, nous croyons en une relation de confiance. Basés localement, nous privilégions le contact humain et des retours authentiques pour vous offrir le meilleur de l'éclairage haut de gamme."
+    },
+    {
+      "type": "text",
+      "id": "left_card_badge_1_title",
+      "label": "Badge 1 Title",
+      "default": "Basé à Lyon"
+    },
+    {
+      "type": "text",
+      "id": "left_card_badge_1_text",
+      "label": "Badge 1 Text",
+      "default": "Service client français & disponible"
+    },
+    {
+      "type": "text",
+      "id": "left_card_badge_2_title",
+      "label": "Badge 2 Title",
+      "default": "Avis Vérifiés"
+    },
+    {
+      "type": "text",
+      "id": "left_card_badge_2_text",
+      "label": "Badge 2 Text",
+      "default": "100% authentiques"
+    },
+    {
+      "type": "header",
+      "content": "Right Card (Commitments)"
+    },
+    {
+      "type": "text",
+      "id": "right_card_title",
+      "label": "Right Card Title",
+      "default": "Notre engagement qualité"
+    },
+    {
+      "type": "text",
+      "id": "right_card_subtitle",
+      "label": "Right Card Subtitle",
+      "default": "Ce que nous faisons vs Ce que nous ne faisons pas"
+    },
+    {
+      "type": "header",
+      "content": "Bottom CTA Banner"
+    },
+    {
+      "type": "text",
+      "id": "cta_title",
+      "label": "CTA Title",
+      "default": "Prêt à illuminer votre intérieur ?"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Text",
+      "default": "Découvrez notre sélection exclusive testée et approuvée."
+    },
+    {
+      "type": "text",
+      "id": "cta_btn_text",
+      "label": "Button Text",
+      "default": "Voir les collections"
+    },
+    {
+      "type": "url",
+      "id": "cta_btn_link",
+      "label": "Button Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "do_item",
+      "name": "Quality DO (Blue)",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "custom_svg",
+          "label": "Custom SVG (Overrides default check)"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Sélectionner"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Description",
+          "default": "Nous choisissons méticuleusement chaque pièce pour son design unique et sa qualité de fabrication irréprochable."
+        }
+      ]
+    },
+    {
+      "type": "dont_item",
+      "name": "Quality DONT (Red)",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "custom_svg",
+          "label": "Custom SVG (Overrides default slash)"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Vendre n'importe quoi"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Description",
+          "default": "Nous refusons la quantité au détriment de la qualité. Pas de produits jetables ou bas de gamme."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "About - Ethics",
+      "blocks": [
+        { "type": "do_item", "settings": { "title": "Sélectionner", "text": "Nous choisissons méticuleusement chaque pièce pour son design unique et sa qualité de fabrication irréprochable." } },
+        { "type": "dont_item", "settings": { "title": "Vendre n'importe quoi", "text": "Nous refusons la quantité au détriment de la qualité. Pas de produits jetables ou bas de gamme." } },
+        { "type": "do_item", "settings": { "title": "Tester", "text": "Chaque luminaire est inspecté et testé par nos experts techniques avant d'être référencé au catalogue." } },
+        { "type": "dont_item", "settings": { "title": "Pousser à l'achat", "text": "Nous privilégions le conseil juste et honnête plutôt que la vente forcée ou le suréquipement." } },
+        { "type": "do_item", "settings": { "title": "Guider", "text": "Nous vous accompagnons de A à Z avec des conseils personnalisés pour trouver l'éclairage parfait pour votre espace." } },
+        { "type": "dont_item", "settings": { "title": "Multiplier les références", "text": "Nous gardons une collection cohérente et maîtrisée pour éviter de vous noyer sous des milliers d'options." } }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+/* Proximité & Éthique - sf-ethics-section.css */
+.ethics-wrapper {
+  padding: 80px 4rem;
+  background-color: #081A32;
+  font-family: 'Inter', sans-serif;
+  color: #F9F9F9;
+  -webkit-font-smoothing: antialiased;
+  background-image: radial-gradient(circle at 20% 30%, rgba(232, 157, 70, 0.04) 0%, transparent 50%);
+}
+
+.ethics-wrapper h2, 
+.ethics-wrapper h3, 
+.ethics-wrapper h4,
+.ethics-wrapper .ethics-card-p,
+.ethics-wrapper .ethics-intro,
+.ethics-wrapper .item-title,
+.ethics-wrapper .ethics-card-subtitle,
+.ethics-wrapper .item-desc,
+.ethics-wrapper p {
+  color: #F9F9F9; /* Force text color to override explicit Dawn theme rules */
+}
+
+/* Specific text opacities matching mockup and explicit user CSS */
+.ethics-wrapper .ethics-intro,
+.ethics-wrapper .ethics-card-p,
+.ethics-wrapper .item-desc {
+  color: rgba(249, 249, 249, 0.7);
+}
+
+.ethics-wrapper .ethics-card-subtitle,
+.ethics-wrapper .info-badge-content p {
+  color: rgba(249, 249, 249, 0.5);
+}
+
+/* Couleurs Spécifiques (User provided) */
+.text-expert-amber { color: #E89D46 !important; }
+.text-ethic-red { color: #EF4444; }
+
+.ethics-main-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 32px;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+/* Style des Cartes Glassmorphism */
+.ethics-card {
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 48px;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.ethics-card:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(232, 157, 70, 0.2); /* Lueur Ambre au hover */
+}
+
+/* Titres & Headers de section */
+.ethics-header {
+  max-width: 1300px;
+  margin: 0 auto 4rem auto;
+}
+
+.ethics-badge {
+  display: inline-block;
+  background: rgba(232, 157, 70, 0.1); 
+  color: #E89D46 !important; 
+  padding: 6px 16px;
+  border-radius: 99px;
+  font-size: 0.83rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(232, 157, 70, 0.2);
+}
+
+.ethics-h2 {
+  font-size: clamp(2.75rem, 4.4vw, 3.85rem);
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+/* Ensure intense neon glow on the blue word */
+.ethics-h2 span.text-expert-amber {
+  text-shadow: 0 0 20px rgba(232, 157, 70, 0.3);
+}
+
+.ethics-intro {
+  font-size: 1.26rem;
+  line-height: 1.6;
+  max-width: 700px;
+}
+
+/* Contenu des Cartes Gauche/Droite */
+.ethics-card-h3 {
+  font-size: 1.93rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.ethics-card-subtitle {
+  font-size: 1.05rem;
+  margin-bottom: 3rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: 1rem;
+}
+
+.ethics-card-p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 2;
+}
+
+.left-card-inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.ethics-card-watermark {
+  position: absolute;
+  top: 40px;
+  right: -20px;
+  width: 250px;
+  height: 250px;
+  opacity: 0.02;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Bottom Badges on Left Card */
+.ethics-badges-flex {
+  display: flex;
+  gap: 24px;
+  margin-top: auto;
+}
+
+.info-badge-box {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 16px 20px;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  flex: 1;
+}
+
+.info-badge-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(232, 157, 70, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.info-badge-icon.green-variant {
+  background: rgba(16, 185, 129, 0.1);
+}
+
+.info-badge-content h4 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0 0 4px 0;
+}
+
+.info-badge-content p {
+  font-size: 0.88rem;
+  margin: 0;
+  line-height: 1.3;
+}
+
+/* Liste de Qualité (Do's vs Don'ts) */
+.quality-flex-container {
+  display: flex;
+  gap: 40px;
+}
+
+.quality-col { flex: 1; }
+
+.quality-item {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.quality-icon-wrap {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+}
+
+/* Mix-blend-mode plus-lighter on red icon parent */
+.quality-item.dont-item .quality-icon-wrap {
+  mix-blend-mode: plus-lighter;
+}
+
+.item-title {
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+}
+
+.item-desc {
+  font-size: 0.99rem;
+  line-height: 1.5;
+}
+
+/* Bannière CTA Basse */
+.ethics-bottom-cta {
+  margin-top: 60px;
+  background: linear-gradient(90deg, rgba(13, 35, 63, 1) 0%, rgba(8, 26, 50, 1) 100%);
+  border-radius: 32px;
+  padding: 32px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  max-width: 1300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.bottom-cta-left {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.cta-sun-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(232, 157, 70, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(232, 157, 70, 0.2);
+}
+
+.cta-sun-icon svg {
+  width: 28px;
+  height: 28px;
+  stroke: #E89D46;
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.bottom-cta-text h4 {
+  font-size: 1.38rem;
+  font-weight: 700;
+  margin: 0 0 6px 0;
+}
+
+.bottom-cta-text p {
+  font-size: 1.05rem;
+  color: rgba(249, 249, 249, 0.6) !important;
+  margin: 0;
+}
+
+.btn-ethics-amber {
+  background: #E89D46;
+  color: #081A32 !important; 
+  padding: 16px 32px;
+  border-radius: 99px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(232, 157, 70, 0.3);
+  display: inline-block;
+  text-align: center;
+}
+
+.btn-ethics-amber:hover {
+  background: #F0A956;
+  color: #081A32 !important; 
+  box-shadow: 0 8px 25px rgba(232, 157, 70, 0.5);
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media screen and (max-width: 1100px) {
+  .ethics-main-grid {
+    grid-template-columns: 1fr;
+  }
+  .ethics-badges-flex {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .ethics-wrapper {
+    padding: 60px 2rem;
+  }
+  .quality-flex-container {
+    flex-direction: column;
+    gap: 32px;
+  }
+  .ethics-bottom-cta {
+    flex-direction: column;
+    text-align: center;
+    padding: 32px 24px;
+    gap: 24px;
+  }
+  .bottom-cta-left {
+    flex-direction: column;
+  }
+  .ethics-card {
+    padding: 32px 24px;
+  }
+}
+</style>
+
+<section class="ethics-wrapper">
+  
+  <div class="ethics-header">
+    {% if section.settings.badge != blank %}
+      <div class="ethics-badge">{{ section.settings.badge }}</div>
+    {% endif %}
+    {% if section.settings.title != blank %}
+      <!-- Adding the colorized span directly via Liquid replace -->
+      <h2 class="ethics-h2">{{ section.settings.title | replace: '<span>', '<span class="text-expert-amber">' }}</h2>
+    {% endif %}
+    {% if section.settings.intro_text != blank %}
+      <p class="ethics-intro">{{ section.settings.intro_text }}</p>
+    {% endif %}
+  </div>
+
+  <div class="ethics-main-grid">
+    
+    <!-- LEFT CARD -->
+    <div class="ethics-card">
+      <svg class="ethics-card-watermark" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="50" y="20" width="40" height="40" transform="rotate(45 50 20)" stroke="white" stroke-width="2"/>
+        <rect x="50" y="40" width="40" height="40" transform="rotate(45 50 40)" stroke="white" stroke-width="2"/>
+      </svg>
+      
+      <div class="left-card-inner">
+        {% if section.settings.left_card_title != blank %}
+          <h3 class="ethics-card-h3">{{ section.settings.left_card_title }}</h3>
+        {% endif %}
+        {% if section.settings.left_card_text != blank %}
+          <p class="ethics-card-p">{{ section.settings.left_card_text }}</p>
+        {% endif %}
+        
+        <div class="ethics-badges-flex">
+          
+          <div class="info-badge-box">
+            <div class="info-badge-icon">
+              <!-- Pin Map Icon -->
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M21 10C21 17 12 23 12 23C12 23 3 17 3 10C3 5.02944 7.02944 1 12 1C16.9706 1 21 5.02944 21 10Z" stroke="#E89D46" stroke-width="1.5"/>
+                <circle cx="12" cy="10" r="3" stroke="#E89D46" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <div class="info-badge-content">
+              <h4>{{ section.settings.left_card_badge_1_title }}</h4>
+              <p>{{ section.settings.left_card_badge_1_text }}</p>
+            </div>
+          </div>
+          
+          <div class="info-badge-box">
+            <div class="info-badge-icon green-variant">
+              <!-- Verified Shield Icon -->
+              <svg viewBox="0 0 24 24" fill="none" width="20" height="20" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M9 12l2 2 4-4" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="info-badge-content">
+              <h4>{{ section.settings.left_card_badge_2_title }}</h4>
+              <p>{{ section.settings.left_card_badge_2_text }}</p>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    
+    <!-- RIGHT CARD (Lists) -->
+    <div class="ethics-card">
+      {% if section.settings.right_card_title != blank %}
+        <h3 class="ethics-card-h3">{{ section.settings.right_card_title }}</h3>
+      {% endif %}
+      {% if section.settings.right_card_subtitle != blank %}
+        <div class="ethics-card-subtitle">{{ section.settings.right_card_subtitle }}</div>
+      {% endif %}
+      
+      <div class="quality-flex-container">
+        
+        <!-- Dos Column -->
+        <div class="quality-col">
+          {% for block in section.blocks %}
+            {% if block.type == 'do_item' %}
+              <div class="quality-item do-item" {{ block.shopify_attributes }}>
+                <div class="quality-icon-wrap">
+                  {% if block.settings.custom_svg != blank %}
+                    {{ block.settings.custom_svg }}
+                  {% else %}
+                    <!-- Exact Expert Amber Check -->
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="12" cy="12" r="10" stroke="#E89D46" stroke-width="1.5" opacity="0.2"/>
+                      <path d="M8 12L11 15L16 9" stroke="#E89D46" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  {% endif %}
+                </div>
+                <div class="item-content">
+                  <div class="item-title">{{ block.settings.title }}</div>
+                  <p class="item-desc">{{ block.settings.text }}</p>
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+        
+        <!-- Donts Column -->
+        <div class="quality-col">
+          {% for block in section.blocks %}
+            {% if block.type == 'dont_item' %}
+              <div class="quality-item dont-item" {{ block.shopify_attributes }}>
+                <div class="quality-icon-wrap">
+                  {% if block.settings.custom_svg != blank %}
+                    {{ block.settings.custom_svg }}
+                  {% else %}
+                    <!-- Exact Slash Red user provided -->
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="12" cy="12" r="10" stroke="#EF4444" stroke-width="1.5" opacity="0.2"/>
+                      <path d="M15 9L9 15M9 9L15 15" stroke="#EF4444" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  {% endif %}
+                </div>
+                <div class="item-content">
+                  <div class="item-title">{{ block.settings.title }}</div>
+                  <p class="item-desc">{{ block.settings.text }}</p>
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+        
+      </div>
+    </div>
+    
+  </div>
+
+  <!-- BOTTOM CTA -->
+  <div class="ethics-bottom-cta">
+    <div class="bottom-cta-left">
+      <div class="cta-sun-icon">
+        <svg viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="5"></circle>
+          <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+        </svg>
+      </div>
+      <div class="bottom-cta-text">
+        <h4>{{ section.settings.cta_title }}</h4>
+        <p>{{ section.settings.cta_text }}</p>
+      </div>
+    </div>
+    <a href="{{ section.settings.cta_btn_link | default: '#' }}" class="btn-ethics-amber">
+      {{ section.settings.cta_btn_text }}
+    </a>
+  </div>
+
+</section>

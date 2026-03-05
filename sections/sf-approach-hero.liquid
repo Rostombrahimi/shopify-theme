@@ -1,0 +1,359 @@
+{% schema %}
+{
+  "name": "Approach Hero",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "NOTRE MÉTHODE"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Heading",
+      "default": "Notre Approche –<br><span>La lumière utile, sculptée<br>par l’expertise</span>",
+      "info": "Use <span>text</span> to highlight in amber with glow."
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Nous ne sommes pas de simples revendeurs. Nous sommes des curateurs. Découvrez comment nous sélectionnons, testons et validons chaque luminaire pour votre confort."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature Card",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "compass", "label": "Compass" },
+            { "value": "device", "label": "Testing Device" },
+            { "value": "award", "label": "Award/Medal" }
+          ],
+          "default": "compass"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Sélection Rigoureuse"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "Chaque pièce est analysée pour sa qualité de fabrication et son rendu lumineux réel."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Approach Hero",
+      "blocks": [
+        { "type": "feature", "settings": { "icon": "compass", "title": "Sélection Rigoureuse", "text": "Chaque pièce est analysée pour sa qualité de fabrication et son rendu lumineux réel." } },
+        { "type": "feature", "settings": { "icon": "device", "title": "Test en Situation", "text": "Nous testons les luminaires dans nos laboratoires pour garantir un confort visuel optimal." } },
+        { "type": "feature", "settings": { "icon": "award", "title": "Garantie Expert", "text": "Une validation technique complète pour une durabilité et une esthétique sans compromis." } }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+/* Hero Notre Approche - sf-approach-hero.css */
+.approach-hero {
+  position: relative;
+  /* Instead of 80vh which might cut content, min-height with padding is safer */
+  min-height: 80vh; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  background-color: #081A32;
+  overflow: hidden;
+  padding: 100px 5% 80px 5%; /* Padding top for header, padding bottom for features */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.approach-hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.3; /* Adjusted to blend well with the overlay */
+  z-index: 0;
+}
+
+.approach-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(8, 26, 50, 0.4) 0%, #081A32 100%);
+  z-index: 1;
+}
+
+.approach-hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 900px;
+  margin: 0 auto;
+  flex-grow: 1;
+  justify-content: center;
+}
+
+.approach-badge {
+  display: inline-block;
+  color: #E89D46;
+  font-size: 0.83rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  padding: 8px 20px;
+  border-radius: 99px;
+  border: 1px solid rgba(232, 157, 70, 0.3);
+  background: rgba(232, 157, 70, 0.05); /* Very subtle background */
+  backdrop-filter: blur(8px);
+}
+
+.approach-h1 {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 700;
+  color: #F9F9F9;
+  line-height: 1.1;
+  margin-bottom: 2rem;
+  letter-spacing: -0.02em;
+}
+
+.approach-h1 span {
+  color: #E89D46;
+  text-shadow: 0 0 30px rgba(232, 157, 70, 0.4);
+}
+
+.approach-desc {
+  font-size: 1.26rem;
+  color: rgba(249, 249, 249, 0.85); /* Legerement grisé */
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto 4rem auto;
+}
+
+/* Decoration line with badge */
+.approach-separator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto 4rem auto;
+  opacity: 0.8;
+}
+
+.approach-line {
+  flex-grow: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(232, 157, 70, 0.3), transparent);
+}
+
+.approach-icon-small {
+  width: 20px;
+  height: 20px;
+  color: #E89D46;
+}
+
+/* Chevron down animation */
+.approach-scroll-indicator {
+  margin-bottom: 4rem;
+  color: rgba(249, 249, 249, 0.4);
+  animation: bounce 2s infinite ease-in-out;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+/* Features Grid at the bottom of hero */
+.approach-features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  width: 100%;
+  max-width: 1200px;
+  position: relative;
+  z-index: 2;
+  margin-top: auto; /* Pushes to bottom if flex-grow is on content */
+}
+
+.approach-feature-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 24px;
+  padding: 40px 32px;
+  text-align: left;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.4s ease;
+}
+
+.approach-feature-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(232, 157, 70, 0.2);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.approach-icon-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(232, 157, 70, 0.08); /* Amber subtle bg */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.approach-icon-circle svg {
+  width: 20px;
+  height: 20px;
+  stroke: #E89D46;
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.approach-feature-card h3 {
+  color: #F9F9F9;
+  font-size: 1.32rem;
+  font-weight: 600;
+  margin: 0 0 0.75rem 0;
+}
+
+.approach-feature-card p {
+  color: rgba(249, 249, 249, 0.5);
+  font-size: 0.99rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Responsive */
+@media screen and (max-width: 900px) {
+  .approach-features-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .approach-hero {
+    padding: 120px 2rem 60px 2rem;
+  }
+  .approach-h1 {
+    font-size: 2.5rem;
+  }
+}
+</style>
+
+<section class="approach-hero">
+  {% if section.settings.background_image != blank %}
+    <img src="{{ section.settings.background_image | image_url: width: 2000 }}" 
+         alt="" 
+         class="approach-hero-bg" 
+         loading="lazy">
+  {% else %}
+    <!-- Placeholder or gradient background if no image -->
+    <div style="position: absolute; inset: 0; background: linear-gradient(135deg, #0a1b32, #0d2545); z-index: 0;"></div>
+  {% endif %}
+  
+  <div class="approach-hero-overlay"></div>
+
+  <div class="approach-hero-content">
+    {% if section.settings.badge_text != blank %}
+      <div class="approach-badge">{{ section.settings.badge_text }}</div>
+    {% endif %}
+    
+    {% if section.settings.title != blank %}
+      <h1 class="approach-h1">{{ section.settings.title }}</h1>
+    {% endif %}
+    
+    {% if section.settings.description != blank %}
+      <p class="approach-desc">{{ section.settings.description }}</p>
+    {% endif %}
+
+    <div class="approach-separator">
+      <div class="approach-line"></div>
+      <svg class="approach-icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        <path d="M9 12l2 2 4-4"/>
+      </svg>
+      <div class="approach-line"></div>
+    </div>
+    
+    <div class="approach-scroll-indicator">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="6 9 12 15 18 9"></polyline>
+      </svg>
+    </div>
+  </div>
+
+  <div class="approach-features-grid">
+    {% for block in section.blocks %}
+      <div class="approach-feature-card" {{ block.shopify_attributes }}>
+        <div class="approach-icon-circle">
+          {% case block.settings.icon %}
+            {% when 'compass' %}
+              <!-- Compass One Line -->
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+              </svg>
+            {% when 'device' %}
+              <!-- Test Device One Line -->
+              <svg viewBox="0 0 24 24">
+                <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+                <rect x="9" y="9" width="6" height="6"></rect>
+                <line x1="9" y1="1" x2="9" y2="4"></line>
+                <line x1="15" y1="1" x2="15" y2="4"></line>
+                <line x1="9" y1="20" x2="9" y2="23"></line>
+                <line x1="15" y1="20" x2="15" y2="23"></line>
+                <line x1="20" y1="9" x2="23" y2="9"></line>
+                <line x1="20" y1="14" x2="23" y2="14"></line>
+                <line x1="1" y1="9" x2="4" y2="9"></line>
+                <line x1="1" y1="14" x2="4" y2="14"></line>
+              </svg>
+            {% when 'award' %}
+              <!-- Award One Line -->
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="8" r="7"></circle>
+                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+              </svg>
+          {% endcase %}
+        </div>
+        <h3>{{ block.settings.title }}</h3>
+        <p>{{ block.settings.text }}</p>
+      </div>
+    {% endfor %}
+  </div>
+</section>

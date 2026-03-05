@@ -1,0 +1,397 @@
+{% schema %}
+{
+  "name": "Empathie Forêt",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "EMPATHIE"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Heading",
+      "default": "Une présence bienveillante, au<br>moment où ils en ont le plus besoin."
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Les nuits sont parfois longues pour les petits comme pour les grands. Nos créations sont pensées pour adoucir ces instants fragiles."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Main Image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature List Item",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon_name",
+          "label": "Icon",
+          "options": [
+            { "value": "heart", "label": "Heart" },
+            { "value": "shield", "label": "Shield" },
+            { "value": "sun", "label": "Sun/Morning" }
+          ],
+          "default": "heart"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Réconfort"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "Pour les réveils nocturnes qui appellent un repère rassurant."
+        }
+      ]
+    },
+    {
+      "type": "pill",
+      "name": "Image Pill",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Réveils nocturnes"
+        },
+        {
+          "type": "select",
+          "id": "icon_name",
+          "label": "Icon",
+          "options": [
+            { "value": "moon", "label": "Moon" },
+            { "value": "eye-off", "label": "Eye Off" },
+            { "value": "star", "label": "Star" },
+            { "value": "none", "label": "None" }
+          ],
+          "default": "moon"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Empathie Forêt",
+      "blocks": [
+        { "type": "pill", "settings": { "text": "Réveils nocturnes", "icon_name": "moon" } },
+        { "type": "pill", "settings": { "text": "Apprivoiser le noir", "icon_name": "eye-off" } },
+        { "type": "pill", "settings": { "text": "Sommeil préservé", "icon_name": "star" } },
+        { "type": "feature", "settings": { "title": "Réconfort", "text": "Pour les réveils nocturnes qui appellent un repère rassurant.", "icon_name": "heart" } },
+        { "type": "feature", "settings": { "title": "Sérénité", "text": "Pour apprivoiser la peur du noir et s'endormir en toute sérénité.", "icon_name": "shield" } },
+        { "type": "feature", "settings": { "title": "Douceur", "text": "Pour une lumière douce qui veille, sans jamais perturber le cycle du sommeil.", "icon_name": "sun" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+/* Section 2 - Empathie Forest */
+.forest-empathy-section {
+  position: relative;
+  background-color: #081A32;
+  padding: 100px 4rem 140px 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #F9F9F9;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Lueur de Fond : dégradé radial à 5% d'opacité */
+.forest-empathy-glow {
+  position: absolute;
+  top: 55%;
+  left: 75%;
+  transform: translate(-50%, -50%);
+  width: 900px;
+  height: 900px;
+  background: radial-gradient(circle, rgba(232, 157, 70, 0.05) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.forest-empathy-container {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.forest-empathy-header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.empathy-badge {
+  display: inline-block;
+  background: rgba(232, 157, 70, 0.1);
+  border: 1px solid rgba(232, 157, 70, 0.2);
+  padding: 6px 18px;
+  border-radius: 99px;
+  color: #E89D46;
+  font-size: 0.83rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
+
+.forest-empathy-h2 {
+  font-size: clamp(2.2rem, 4.4vw, 3.52rem);
+  color: #F9F9F9;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  margin: 0;
+  font-weight: 600;
+}
+
+.forest-empathy-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+}
+
+.forest-empathy-media {
+  position: relative;
+  border-radius: 32px;
+  overflow: hidden;
+  aspect-ratio: 4/5;
+  background: #112642; /* fallback */
+}
+
+.forest-empathy-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 32px;
+}
+
+.empathy-pills-container {
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+  right: 2rem;
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  z-index: 2;
+}
+
+.empathy-pill {
+  padding: 10px 18px;
+  background: #081A32;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 32px;
+  color: #E89D46;
+  font-weight: 500;
+  font-size: 0.99rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.empathy-pill svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.forest-empathy-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.forest-empathy-description {
+  font-size: 1.26rem;
+  color: rgba(249, 249, 249, 0.8);
+  line-height: 1.6;
+  margin-bottom: 3.5rem;
+  max-width: 500px;
+}
+
+.forest-empathy-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.empathy-feature {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fade-in-up 0.8s ease forwards;
+}
+
+/* On utilise Liquid pour ne pas avoir de délai si bloqué, mais CSS pour scroll animation plus tard si besoin */
+.empathy-feature:nth-child(1) { animation-delay: 0.1s; }
+.empathy-feature:nth-child(2) { animation-delay: 0.3s; }
+.empathy-feature:nth-child(3) { animation-delay: 0.5s; }
+
+@keyframes fade-in-up {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.empathy-feature-icon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.03);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #E89D46;
+}
+
+.empathy-feature-icon svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+}
+
+.empathy-feature-text h3 {
+  color: #F9F9F9;
+  font-size: 1.21rem;
+  font-weight: 600;
+  margin: 0 0 0.4rem 0;
+}
+
+.empathy-feature-text p {
+  color: rgba(249, 249, 249, 0.65);
+  font-size: 1.1rem;
+  line-height: 1.5;
+  margin: 0;
+  max-width: 400px;
+}
+
+.empathy-decorative-line {
+  margin-top: 3.5rem;
+  width: 60px;
+  height: 2px;
+  background-color: rgba(232, 157, 70, 0.3);
+}
+
+@media screen and (max-width: 1024px) {
+  .forest-empathy-grid {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+  
+  .forest-empathy-section {
+    padding: 80px 2rem;
+  }
+  
+  .forest-empathy-media {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+</style>
+
+<section class="forest-empathy-section">
+  <div class="forest-empathy-glow"></div>
+  
+  <div class="forest-empathy-container">
+    <div class="forest-empathy-header">
+      {% if section.settings.badge_text != blank %}
+        <div class="empathy-badge">{{ section.settings.badge_text }}</div>
+      {% endif %}
+      {% if section.settings.title != blank %}
+        <h2 class="forest-empathy-h2">{{ section.settings.title }}</h2>
+      {% endif %}
+    </div>
+
+    <div class="forest-empathy-grid">
+      <div class="forest-empathy-media">
+        {% if section.settings.image != blank %}
+          {{ section.settings.image | image_url: width: 1200 | image_tag: loading: 'lazy', alt: section.settings.title }}
+        {% else %}
+          <div style="width: 100%; height: 100%; background: #112642; display: flex; align-items: center; justify-content: center;">
+            <span style="color: rgba(255,255,255,0.2);">Sélectionnez une image</span>
+          </div>
+        {% endif %}
+        
+        <div class="empathy-pills-container">
+          {% for block in section.blocks %}
+            {% if block.type == 'pill' %}
+              <div class="empathy-pill" {{ block.shopify_attributes }}>
+                {% case block.settings.icon_name %}
+                  {% when 'moon' %}
+                    <svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                  {% when 'eye-off' %}
+                    <svg viewBox="0 0 24 24"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
+                  {% when 'star' %}
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                {% endcase %}
+                {{ block.settings.text }}
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+      
+      <div class="forest-empathy-content">
+        {% if section.settings.description != blank %}
+          <p class="forest-empathy-description">{{ section.settings.description }}</p>
+        {% endif %}
+        
+        <div class="forest-empathy-list">
+          {% for block in section.blocks %}
+            {% if block.type == 'feature' %}
+              <div class="empathy-feature" {{ block.shopify_attributes }}>
+                <div class="empathy-feature-icon">
+                  {% case block.settings.icon_name %}
+                    {% when 'heart' %}
+                      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.27 2 8.5C2 5.41 4.41 3 7.5 3C9.24 3 10.91 3.81 12 5.08C13.09 3.81 14.76 3 16.5 3C19.59 3 22 5.41 22 8.5C22 12.27 18.6 15.36 13.45 20.03L12 21.35Z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    {% when 'shield' %}
+                      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 22C12 22 20 18 20 12V5L12 2L4 5V12C4 18 12 22 12 22Z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/></svg>
+                    {% when 'sun' %}
+                      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 17V12M12 12L14 10M12 12L10 10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 17H22" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/><path d="M12 4C7.58172 4 4 7.58172 4 12C4 13.8487 4.62883 15.5496 5.68797 16.9048" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.8"/><path d="M18.312 16.9048C19.3712 15.5496 20 13.8487 20 12C20 7.58172 16.4183 4 12 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.8"/></svg>
+                  {% endcase %}
+                </div>
+                <div class="empathy-feature-text">
+                  <h3>{{ block.settings.title }}</h3>
+                  <p>{{ block.settings.text }}</p>
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+        
+        <div class="empathy-decorative-line"></div>
+      </div>
+    </div>
+  </div>
+</section>

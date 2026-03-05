@@ -1,0 +1,256 @@
+{
+  "sections": {
+    "sf_hero": {
+      "type": "sf-hero",
+      "blocks": {
+        "slide_1": {
+          "type": "slide",
+          "settings": {
+            "item_id": "pro",
+            "icon": "💼",
+            "label": "Pro",
+            "material_icon": "edit_note",
+            "accent_color": "#E89D46",
+            "card_title": "Lampe Bureau Focus",
+            "card_subtitle": "Lumière précise 4000K"
+          }
+        },
+        "slide_2": {
+          "type": "slide",
+          "settings": {
+            "item_id": "setup",
+            "icon": "🎮",
+            "label": "Setup",
+            "material_icon": "sports_esports",
+            "accent_color": "#6366f1",
+            "card_title": "Neon Stream V2",
+            "card_subtitle": "Ambiance RGB Dynamic"
+          }
+        },
+        "slide_3": {
+          "type": "slide",
+          "settings": {
+            "item_id": "cocon",
+            "icon": "🧸",
+            "label": "Cocon",
+            "material_icon": "nightlight",
+            "accent_color": "#fcd34d",
+            "card_title": "Veilleuse Lune Douce",
+            "card_subtitle": "Glow apaisant 2700K"
+          }
+        }
+      },
+      "block_order": [
+        "slide_1",
+        "slide_2",
+        "slide_3"
+      ],
+      "settings": {
+        "badge_text": "Nouvelle Collection",
+        "heading_1": "L'art de",
+        "heading_2": "l'ambiance utile",
+        "description": "Des luminaires conçus pour sculpter votre espace. Une lumière chaude et précise pour chaque moment de vie, du bureau au salon.",
+        "carousel_label": "Choisir votre ambiance"
+      }
+    },
+    "sf_trustbar": {
+      "type": "sf-trustbar",
+      "settings": {},
+      "blocks": {
+        "block_0": {
+          "type": "trust_feature",
+          "settings": {
+            "icon": "<svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M1 5H15V19H1M15 11H20L23 14V19H15V11ZM15 8V11M3 19C3 20.1046 3.89543 21 5 21C6.10457 21 7 20.1046 7 19M17 19C17 20.1046 17.8954 21 19 21C20.1046 21 21 20.1046 21 19' stroke='currentColor' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+            "title": "EXPÉDITION SOIGNÉE",
+            "subtitle": "Livraison rapide et protégée"
+          }
+        },
+        "block_1": {
+          "type": "trust_feature",
+          "settings": {
+            "icon": "<svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M12 2L15.09 5.26L19.47 6.1L20.12 10.5L23.18 13.56L20.12 16.62L19.47 21.02L15.09 21.86L12 25L8.91 21.86L4.53 21.02L3.88 16.62L0.82 13.56L3.88 10.5L4.53 6.1L8.91 5.26L12 2Z' stroke='currentColor' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/><path d='M9 12L11 14L15 10' stroke='currentColor' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+            "title": "TESTÉS & APPROUVÉS",
+            "subtitle": "Qualité lumière garantie"
+          }
+        },
+        "block_2": {
+          "type": "trust_feature",
+          "settings": {
+            "icon": "<svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'><rect x='5' height='12' width='14' y='11' rx='2' stroke='currentColor' stroke-width='1.5'/><path d='M8 11V7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7V11' stroke='currentColor' stroke-width='1.5' stroke-linecap='round'/><circle cx='12' cy='16' r='1' fill='currentColor'/></svg>",
+            "title": "PAIEMENT SÉCURISÉ",
+            "subtitle": "Transaction chiffrée SSL"
+          }
+        },
+        "block_3": {
+          "type": "trust_feature",
+          "settings": {
+            "icon": "<svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M4 15C4 15 5 14 8 14C11 14 13 16 16 16C19 16 20 15 20 15V5C20 5 19 6 16 6C13 6 11 4 8 4C5 4 4 5 4 5V20' stroke='currentColor' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+            "title": "NORMES EUROPÉENNES",
+            "subtitle": "Respect conformité CE"
+          }
+        }
+      },
+      "block_order": [
+        "block_0",
+        "block_1",
+        "block_2",
+        "block_3"
+      ]
+    },
+    "sf_bento_grid": {
+      "type": "sf-bento-grid",
+      "settings": {},
+      "blocks": {
+        "block_0": {
+          "type": "universe_card",
+          "settings": {
+            "badge_icon": "<svg width='20' height='20' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M7 21H17M12 21V18M12 18L8 8H16L12 18ZM12 8V3M12 3C10.3431 3 9 4.34315 9 6C9 7.65685 10.3431 9 12 9C13.6569 9 15 7.65685 15 6C15 4.34315 13.6569 3 12 3Z' stroke='currentColor' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+            "badge_text": "PRODUCTIVITÉ & CLARTÉ",
+            "title": "Espace Quotidien",
+            "text": "Des luminaires conçus pour l'efficacité. Une lumière pure qui accompagne votre concentration sans fatigue visuelle.",
+            "btn_text": "Explorer l'Espace Quotidien"
+          }
+        },
+        "block_1": {
+          "type": "universe_card",
+          "settings": {
+            "badge_icon": "<svg width='20' height='20' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M6 12H8M7 11V13M15 11V11.01M18 13V13.01M15 16C15 16 14 14.5 12 14.5C10 14.5 9 16 9 16M18 9C18 7.34315 16.6569 6 15 6H9C7.34315 6 6 7.34315 6 9V15C6 16.6569 7.34315 18 9 18H15C16.6569 18 18 16.6569 18 15V9Z' stroke='currentColor' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+            "badge_text": "IMMERSION & GAMING",
+            "title": "Univers Visuel",
+            "text": "Plongez au cœur de l'action avec nos solutions RGB dynamiques pour une ambiance sur-mesure.",
+            "btn_text": "Découvrir le setup"
+          }
+        },
+        "block_2": {
+          "type": "universe_card",
+          "settings": {
+            "badge_icon": "<svg width='20' height='20' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79Z' stroke='currentColor' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'/><path d='M11 7L11.5 8L12.5 8.5L11.5 9L11 10L10.5 9L9.5 8.5L10.5 8L11 7Z' fill='currentColor'/></svg>",
+            "badge_text": "DOUCEUR & REPOS",
+            "title": "Petit Cocon",
+            "text": "Créez un havre de paix pour les petits et les grands avec des lueurs douces et apaisantes.",
+            "btn_text": "Entrer dans le cocon"
+          }
+        }
+      },
+      "block_order": [
+        "block_0",
+        "block_1",
+        "block_2"
+      ]
+    },
+    "sf_brand_story": {
+      "type": "sf-brand-story",
+      "settings": {}
+    },
+    "sf_wall_of_love": {
+      "type": "sf-wall-of-love",
+      "settings": {},
+      "blocks": {
+        "block_0": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "text": "Depuis que j'ai cette lampe, mon bureau est transformé. La lumière est douce, parfaite pour le code tard le soir sans fatiguer les yeux.",
+            "author_name": "Julien",
+            "author_role": "Développeur Fullstack",
+            "is_verified": true
+          }
+        },
+        "block_1": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "text": "Juste incroyable. La finition laiton est sublime.",
+            "author_name": "Clara L.",
+            "author_role": "Paris, France",
+            "is_verified": true,
+            "is_featured": true
+          }
+        },
+        "block_2": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "text": "Une qualité de fabrication rare de nos jours. Le design minimaliste s'intègre partout. J'ai commandé le modèle 'Aurore' pour un client, et j'en ai pris un pour moi le lendemain.",
+            "author_name": "Sophie L.",
+            "author_role": "Architecte d'intérieur",
+            "is_verified": true
+          }
+        },
+        "block_3": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "text": "J'avais un doute sur l'installation de l'applique murale. J'ai contacté le support un dimanche et j'ai eu une réponse en 15 minutes avec une vidéo explicative. C'est rare d'avoir un tel niveau de service. La lampe est installée et elle est magnifique.",
+            "author_name": "Thomas R.",
+            "author_role": "Chef de projet",
+            "is_verified": true
+          }
+        },
+        "block_4": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "text": "Livraison rapide et emballage très soigné, aucune casse possible. Je recommande vivement pour une ambiance tamisée dans un studio photo ou un salon cosy.",
+            "author_name": "Marc D.",
+            "author_role": "Photographe",
+            "is_verified": true
+          }
+        }
+      },
+      "block_order": [
+        "block_0",
+        "block_1",
+        "block_2",
+        "block_3",
+        "block_4"
+      ]
+    },
+    "sf_atelier": {
+      "type": "sf-atelier",
+      "settings": {},
+      "blocks": {
+        "block_0": {
+          "type": "article",
+          "settings": {
+            "tag": "Workspace",
+            "title": "Comment choisir sa lumière de bureau",
+            "excerpt": "Maximize productivity and reduce eye strain with our guide to color temperature and lux levels. Learn how specific kelvin...",
+            "read_time": 5
+          }
+        },
+        "block_1": {
+          "type": "article",
+          "settings": {
+            "tag": "Interior Design",
+            "title": "The Art of Layering Light",
+            "excerpt": "Combine ambient, task, and accent lighting to add depth and drama to any room. Discover the secrets of professiona...",
+            "read_time": 8
+          }
+        },
+        "block_2": {
+          "type": "article",
+          "settings": {
+            "tag": "Technical",
+            "title": "Warm vs. Cool: A Kelvin Guide",
+            "excerpt": "Understanding the spectrum to create the right mood for relaxation or focus. From 2700K cozy evenings to 5000K daylight...",
+            "read_time": 6
+          }
+        }
+      },
+      "block_order": [
+        "block_0",
+        "block_1",
+        "block_2"
+      ]
+    }
+  },
+  "order": [
+    "sf_hero",
+    "sf_trustbar",
+    "sf_bento_grid",
+    "sf_brand_story",
+    "sf_wall_of_love",
+    "sf_atelier"
+  ]
+}

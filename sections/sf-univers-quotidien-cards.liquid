@@ -1,0 +1,173 @@
+{% schema %}
+{
+  "name": "Univers Quotidien Cards",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Expertise Card",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "html",
+          "id": "svg_icon",
+          "label": "SVG Icon (Code)"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Card Title",
+          "default": "Titre"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Card Text",
+          "default": "Description de l'expertise."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Univers Quotidien Cards",
+      "blocks": [
+        {
+          "type": "card",
+          "settings": {
+            "title": "Bureau",
+            "text": "Une clarté sans éblouissement pour vos heures de concentration.",
+            "svg_icon": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 19v-4M4 15V9a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v6M20 19v-4M8 15v4M16 15v4M4 15h16\"/></svg>"
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "title": "Salon",
+            "text": "Ambiance chaleureuse pour vos moments de détente et de partage.",
+            "svg_icon": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M20 9V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v2M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2M4 12v4M20 12v4M4 12h16\"/></svg>"
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "title": "Coin Lecture",
+            "text": "Une lumière dirigée qui respecte le calme de votre environnement.",
+            "svg_icon": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 19.5A2.5 2.5 0 0 1 6.5 17H20\"></path><path d=\"M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z\"></path><polyline points=\"14 2 14 8 20 8\"></polyline></svg>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+#shopify-section-{{ section.id }} {
+  background-color: #081A32;
+  position: relative;
+}
+
+/* CARDS SECTION */
+#shopify-section-{{ section.id }} .daily-cards-section {
+  position: relative;
+  z-index: 2;
+  padding: 4rem 5% 6rem; /* Ajout d'un padding supérieur maintenant que c'est détaché du hero */
+}
+
+#shopify-section-{{ section.id }} .expertise-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+#shopify-section-{{ section.id }} .expertise-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 32px;
+  padding: 40px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+#shopify-section-{{ section.id }} .expertise-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(232, 157, 70, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 40px -10px rgba(232, 157, 70, 0.4);
+}
+
+#shopify-section-{{ section.id }} .expertise-icon {
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  color: #E89D46;
+  transition: transform 0.3s ease;
+}
+
+#shopify-section-{{ section.id }} .expertise-card:hover .expertise-icon {
+  transform: scale(1.1);
+}
+
+#shopify-section-{{ section.id }} .expertise-icon svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+}
+
+#shopify-section-{{ section.id }} .expertise-title {
+  color: #F9F9F9;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 12px 0;
+  letter-spacing: -0.01em;
+}
+
+#shopify-section-{{ section.id }} .expertise-text {
+  color: rgba(249, 249, 249, 0.7);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  #shopify-section-{{ section.id }} .expertise-card {
+    padding: 30px;
+  }
+}
+</style>
+
+{%- if section.blocks.size > 0 -%}
+<div class="daily-cards-section sf-stitch">
+  <div class="expertise-grid">
+    {%- for block in section.blocks -%}
+      <div class="expertise-card" {{ block.shopify_attributes }}>
+        <div class="expertise-icon">
+          {%- if block.settings.svg_icon != blank -%}
+            {{ block.settings.svg_icon }}
+          {%- else -%}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
+          {%- endif -%}
+        </div>
+        <h3 class="expertise-title">{{ block.settings.title }}</h3>
+        <p class="expertise-text">{{ block.settings.text }}</p>
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+{%- endif -%}

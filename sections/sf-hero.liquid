@@ -1,0 +1,664 @@
+{% schema %}
+{
+  "name": "SF Hero Ignition",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "Nouvelle Collection"
+    },
+    {
+      "type": "text",
+      "id": "heading_1",
+      "label": "Heading Line 1",
+      "default": "L'art de"
+    },
+    {
+      "type": "text",
+      "id": "heading_2",
+      "label": "Heading Line 2 (Highlight)",
+      "default": "l'ambiance utile"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Des luminaires conçus pour sculpter votre espace. Une lumière chaude et précise pour chaque moment de vie, du bureau au salon."
+    },
+    {
+      "type": "text",
+      "id": "carousel_label",
+      "label": "Carousel Label",
+      "default": "Choisir votre ambiance"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "text",
+          "id": "item_id",
+          "label": "Item ID (Internal)",
+          "default": "pro"
+        },
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Emoji Icon",
+          "default": "💼"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Button Label",
+          "default": "Pro"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Background Image"
+        },
+        {
+          "type": "html",
+          "id": "card_svg",
+          "label": "SVG Icon (Optionnel)",
+          "info": "Remplace l'icône Material si rempli."
+        },
+        {
+          "type": "text",
+          "id": "material_icon",
+          "label": "Material Icon Name",
+          "default": "edit_note"
+        },
+        {
+          "type": "color",
+          "id": "accent_color",
+          "label": "Accent Color",
+          "default": "#E89D46"
+        },
+        {
+          "type": "text",
+          "id": "card_title",
+          "label": "Card Title",
+          "default": "Lampe Bureau Focus"
+        },
+        {
+          "type": "text",
+          "id": "card_subtitle",
+          "label": "Card Subtitle",
+          "default": "Lumière précise 4000K"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "SF Hero Ignition",
+      "blocks": [
+        {
+          "type": "slide",
+          "settings": {
+            "item_id": "pro",
+            "icon": "💼",
+            "label": "Pro",
+            "card_svg": "<svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M12 22C12 22 20 18 20 12V5L12 2L4 5V12C4 18 12 22 12 22Z' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/><path d='M9 12L11 14L15 10' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+            "material_icon": "verified_user",
+            "accent_color": "#E89D46",
+            "card_title": "Sélection Illuminées",
+            "card_subtitle": "Testé & Approuvé"
+          }
+        },
+        {
+          "type": "slide",
+          "settings": {
+            "item_id": "setup",
+            "icon": "🎮",
+            "label": "Setup",
+            "material_icon": "sports_esports",
+            "accent_color": "#6366f1",
+            "card_title": "Neon Stream V2",
+            "card_subtitle": "Ambiance RGB Dynamic"
+          }
+        },
+        {
+          "type": "slide",
+          "settings": {
+            "item_id": "cocon",
+            "icon": "🧸",
+            "label": "Cocon",
+            "material_icon": "nightlight",
+            "accent_color": "#fcd34d",
+            "card_title": "Veilleuse Lune Douce",
+            "card_subtitle": "Glow apaisant 2700K"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<section class="sf-stitch sf-hero">
+  <style>
+    .sf-hero {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: var(--illu-space-md2);
+      padding-bottom: var(--illu-space-md2);
+      overflow: visible; /* Changed from hidden to allow glow bleeding */
+      background-color: var(--illu-bg-night);
+      color: var(--illu-text-cream);
+      font-family: var(--illu-font-main);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    @media (min-width: 1024px) {
+      .sf-hero {
+        padding-top: var(--illu-space-lg);
+        padding-bottom: var(--illu-space-lg);
+      }
+    }
+
+    /* Background Orbs */
+    .sf-hero__orb-container,
+    .sf-hero__orbs,
+    .sf-hero [data-orb] {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .sf-hero__orb-1 {
+      position: absolute;
+      top: -20%;
+      left: -10%;
+      width: 600px;
+      height: 600px;
+      border-radius: var(--illu-radius-pill);
+      background-color: rgba(232, 157, 70, 0.1); /* Primary / 10 */
+      filter: blur(120px);
+      mix-blend-mode: screen;
+    }
+    .sf-hero__orb-2 {
+      position: absolute;
+      bottom: -10%;
+      right: 20%;
+      width: 500px;
+      height: 500px;
+      border-radius: var(--illu-radius-pill);
+      background-color: rgba(232, 157, 70, 0.05); /* Primary / 5 */
+      filter: blur(100px);
+      mix-blend-mode: screen;
+    }
+    
+    .sf-hero__container {
+      width: 100%;
+      max-width: var(--page-width);
+      margin: 0 auto;
+      padding-left: var(--illu-space-sm2);
+      padding-right: var(--illu-space-sm2);
+    }
+    
+    @media (min-width: 768px) {
+      .sf-hero__container {
+        padding-left: var(--illu-space-md2);
+        padding-right: var(--illu-space-md2);
+      }
+    }
+
+    .sf-hero__grid {
+      display: grid;
+      align-items: center;
+      gap: var(--illu-space-md2);
+    }
+    
+    @media (min-width: 1024px) {
+      .sf-hero__grid {
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        gap: 5rem;
+      }
+    }
+
+    /* Content Area */
+    .sf-hero__content {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+      position: relative;
+      z-index: 10;
+    }
+    
+    @media (min-width: 1024px) {
+      .sf-hero__content {
+        grid-column: span 5 / span 5;
+      }
+    }
+    
+    .sf-hero__text-group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--illu-space-sm2);
+    }
+
+    .sf-hero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--illu-space-xs);
+      padding: 0.25rem 0.75rem;
+      border-radius: var(--illu-radius-pill);
+      background-color: rgba(232, 157, 70, 0.1);
+      border: 1px solid rgba(232, 157, 70, 0.2);
+      width: fit-content;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.5));
+    }
+    
+    .sf-hero__badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: var(--illu-radius-pill);
+      background-color: var(--illu-accent-amber);
+      animation: sf-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    
+    @keyframes sf-pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: .5; }
+    }
+
+    .sf-hero__badge-text {
+      font-size: 0.83rem;
+      font-weight: var(--fw-bold);
+      color: var(--illu-accent-amber);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .sf-hero__title {
+      font-family: var(--illu-font-display);
+      font-size: 4.4rem;
+      font-weight: var(--fw-extrabold);
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+      color: var(--illu-text-cream);
+      margin-bottom: 0.5rem;
+    }
+    
+    @media (min-width: 768px) { .sf-hero__title { font-size: 6.05rem; } }
+    @media (min-width: 1024px) { .sf-hero__title { font-size: 7.15rem; } }
+    
+    .sf-hero__title-highlight {
+      color: transparent;
+      background-clip: text;
+      -webkit-background-clip: text;
+      background-image: linear-gradient(to right, var(--illu-accent-amber), #fdba74);
+      text-shadow: 0 0 30px rgba(232, 156, 69, 0.4);
+    }
+
+    .sf-hero__desc {
+      font-size: 1.38rem;
+      color: rgba(249, 249, 249, 0.7); /* text-cream/70 */
+      line-height: 1.6;
+      max-width: 32rem;
+      font-weight: var(--fw-medium);
+      margin-bottom: 1rem;
+    }
+    
+    /* Carousel Controls */
+    .sf-hero__controls {
+      display: flex;
+      flex-direction: column;
+      gap: var(--illu-space-sm2);
+    }
+    
+    .sf-hero__controls-label {
+      font-size: 0.96rem;
+      font-weight: var(--fw-bold);
+      color: rgba(249, 249, 249, 0.5);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding-left: 0.25rem;
+    }
+    
+    .sf-hero__tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--illu-space-sm);
+    }
+    
+    .sf-hero__tab-label {
+      position: relative;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0 1.5rem;
+      height: 4rem;
+      border-radius: var(--illu-radius-pill);
+      background-color: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: var(--illu-transition-soft);
+      min-width: 130px;
+    }
+    
+    .sf-hero__tab-label:hover {
+      background-color: var(--illu-accent-amber);
+      color: var(--illu-bg-night);
+      box-shadow: 0 0 20px rgba(232, 157, 70, 0.4);
+      transform: translateY(-2px);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .sf-hero__tab-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: var(--illu-radius-pill);
+      background-color: var(--illu-bg-night);
+      font-size: 1.38rem;
+      transition: transform 0.3s;
+      flex-shrink: 0;
+    }
+    
+    .sf-hero__tab-label:hover .sf-hero__tab-icon {
+      transform: scale(1.1);
+    }
+    
+    .sf-hero__tab-text {
+      font-size: 1.24rem;
+      font-weight: var(--fw-bold);
+      transition: color 0.3s;
+    }
+    
+    .sf-hero__tab-label:hover .sf-hero__tab-text {
+      color: var(--illu-bg-night);
+    }
+    
+    .sf-hero__tab-ring {
+      position: absolute;
+      inset: 0;
+      border-radius: var(--illu-radius-pill);
+      box-shadow: 0 0 0 0 transparent;
+      transition: var(--illu-transition-soft);
+    }
+    
+    .sf-hero__tab-label:hover .sf-hero__tab-ring {
+      box-shadow: 0 0 0 2px rgba(232, 157, 70, 0.2);
+    }
+
+    /* Input Checking Logic */
+    .sf-hero__input {
+      display: none;
+    }
+    
+    .sf-hero__input:checked + .sf-hero__tab-label {
+      background-color: var(--illu-accent-amber);
+      color: var(--illu-bg-night);
+      box-shadow: 0 0 20px rgba(232, 157, 70, 0.4);
+      transform: translateY(-2px);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .sf-hero__input:checked + .sf-hero__tab-label .sf-hero__tab-icon {
+      background-color: var(--illu-accent-amber);
+      color: var(--illu-bg-night);
+    }
+    
+    .sf-hero__input:checked + .sf-hero__tab-label .sf-hero__tab-text {
+      color: var(--illu-bg-night);
+    }
+    
+    .sf-hero__input:checked + .sf-hero__tab-label .sf-hero__tab-ring {
+      border: 2px solid rgba(232, 157, 70, 0.2);
+      box-shadow: none;
+    }
+
+    /* Carousel Logic */
+    {% for block in section.blocks %}
+      #sf-hero-slide-{{ block.id }}:checked ~ .sf-hero__viewport .sf-hero__track {
+        transform: translateX(-{{ forloop.index0 | times: 100 }}%);
+      }
+    {% endfor %}
+    
+    /* Visual Area */
+    .sf-hero__visual {
+      position: relative;
+      height: 600px;
+      width: 100%;
+    }
+    @media (min-width: 1024px) {
+      .sf-hero__visual {
+        grid-column: span 7 / span 7;
+        height: 750px;
+      }
+    }
+    
+    .sf-hero__viewport {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: var(--illu-radius-chubby);
+      overflow: hidden;
+      background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 100%);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      z-index: 10;
+    }
+    
+    .sf-hero__track {
+      display: flex;
+      height: 100%;
+      width: 100%;
+      transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .sf-hero__slide {
+      min-width: 100%;
+      height: 100%;
+      position: relative;
+      transition: filter 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .sf-hero__slide:hover {
+      filter: brightness(1.1) contrast(1.05);
+    }
+    
+    .sf-hero__slide-image {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      background-color: var(--illu-bg-night);
+    }
+    
+    .sf-hero__slide-gradient-1 {
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(to top, rgba(8, 26, 50, 0.9), transparent, transparent);
+      opacity: 0.8;
+    }
+    
+    .sf-hero__slide-gradient-2 {
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(to right, rgba(8, 26, 50, 0.4), transparent, transparent);
+    }
+    
+    /* Slide Card */
+    .sf-hero__card {
+      position: absolute;
+      bottom: 2.5rem;
+      right: 2.5rem;
+      background-color: rgba(8, 26, 50, 0.85);
+      backdrop-filter: var(--illu-blur-glass);
+      -webkit-backdrop-filter: var(--illu-blur-glass);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 1.5rem;
+      border-radius: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      max-width: 24rem;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+    
+    .sf-hero__card-icon {
+      width: 3.5rem;
+      height: 3.5rem;
+      border-radius: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .sf-hero__card-icon svg {
+      width: 24px;
+      height: 24px;
+    }
+    
+    .sf-hero__card-text {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .sf-hero__card-title {
+      color: var(--illu-text-cream);
+      font-weight: var(--fw-bold);
+      font-size: 1.125rem;
+      margin: 0;
+    }
+    
+    .sf-hero__card-subtitle {
+      font-size: 0.96rem;
+      font-weight: var(--fw-semibold);
+      margin-top: 0.25rem;
+      margin-bottom: 0;
+    }
+    
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 26px;  /* Preferred icon size */
+      display: inline-block;
+      line-height: 1;
+      text-transform: none;
+      letter-spacing: normal;
+      word-wrap: normal;
+      white-space: nowrap;
+      direction: ltr;
+      /* Support for all WebKit browsers. */
+      -webkit-font-smoothing: antialiased;
+      /* Support for Safari and Chrome. */
+      text-rendering: optimizeLegibility;
+      /* Support for Firefox. */
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+  </style>
+
+  <div class="sf-hero__orb-container">
+    <div class="sf-hero__orb-1"></div>
+    <div class="sf-hero__orb-2"></div>
+  </div>
+
+  <div class="sf-hero__container">
+    <div class="sf-hero__grid">
+      
+      <!-- Text Content -->
+      <div class="sf-hero__content">
+        <div class="sf-hero__text-group">
+          {% if section.settings.badge_text != blank %}
+            <div class="sf-hero__badge">
+              <span class="sf-hero__badge-dot"></span>
+              <span class="sf-hero__badge-text">{{ section.settings.badge_text }}</span>
+            </div>
+          {% endif %}
+          
+          <h1 class="sf-hero__title">
+            {{ section.settings.heading_1 }} <br/>
+            <span class="sf-hero__title-highlight">{{ section.settings.heading_2 }}</span>
+          </h1>
+          
+          {% if section.settings.description != blank %}
+            <p class="sf-hero__desc">
+              {{ section.settings.description }}
+            </p>
+          {% endif %}
+        </div>
+        
+        <div class="sf-hero__controls">
+          <span class="sf-hero__controls-label">{{ section.settings.carousel_label }}</span>
+          
+          <div class="sf-hero__tabs">
+            {% for block in section.blocks %}
+              <input class="sf-hero__input" type="radio" name="sf-hero-carousel" id="sf-hero-slide-{{ block.id }}" {% if forloop.first %}checked{% endif %} />
+              <label class="sf-hero__tab-label group" for="sf-hero-slide-{{ block.id }}">
+                <span class="sf-hero__tab-icon">{{ block.settings.icon }}</span>
+                <span class="sf-hero__tab-text">{{ block.settings.label }}</span>
+                <div class="sf-hero__tab-ring"></div>
+              </label>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      
+      <!-- Visual Content (Carousel) -->
+      <div class="sf-hero__visual">
+        <div class="sf-hero__viewport">
+          <div class="sf-hero__track">
+            {% for block in section.blocks %}
+              <div class="sf-hero__slide">
+                {% if block.settings.image != blank %}
+                  <div class="sf-hero__slide-image" style="background-image: url('{{ block.settings.image | image_url: width: 1400 }}');"></div>
+                {% else %}
+                  <div class="sf-hero__slide-image" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDLDmw_wnM5YKwrekD1E81vEnheylg6IxAfXI7QP4pK0pxAe72seYZ4IZ89NyTDnqv0-DWqXDIRqQDxwJOiSBerfD3QT-Ju4osDbFXjUxnWORS7vGD9JQp-6lHuB3m2D_VF1GrULBPbXugmW1_4tfRnCLDWeJugzvPf62-nsdg_8K0V_ATsR_50yqjKzfTHOeljBV9q4Ga_KJTbaWNFXaxo7BR-zrsYafTP65xn5QcJ6H9BUKCt8euq3bx4rZYhgMj9HoMAkcflHc8A');"></div>
+                {% endif %}
+                
+                <div class="sf-hero__slide-gradient-1"></div>
+                <div class="sf-hero__slide-gradient-2" {% if forloop.index == 2 %}style="background-image: linear-gradient(to right, rgba(99, 102, 241, 0.3), transparent, transparent); mix-blend-mode: overlay;"{% elsif forloop.index == 3 %}style="background-image: none; background-color: rgba(120, 53, 15, 0.2); mix-blend-mode: multiply;"{% endif %}></div>
+                
+                <div class="sf-hero__card">
+                  <div class="sf-hero__card-icon" style="background-color: {{ block.settings.accent_color }}; color: {% if forloop.first or forloop.last %}var(--illu-bg-night){% else %}#fff{% endif %};">
+                    {% if block.settings.card_svg != blank %}
+                      {{ block.settings.card_svg }}
+                    {% else %}
+                      <span class="material-symbols-outlined">{{ block.settings.material_icon }}</span>
+                    {% endif %}
+                  </div>
+                  <div class="sf-hero__card-text">
+                    <h3 class="sf-hero__card-title">{{ block.settings.card_title }}</h3>
+                    <p class="sf-hero__card-subtitle" style="color: {{ block.settings.accent_color }};">{{ block.settings.card_subtitle }}</p>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+        
+        <!-- Additional visual orbs specific to the visual area -->
+        <div style="position: absolute; z-index: -10; top: 2.5rem; right: -2.5rem; width: 8rem; height: 8rem; border-radius: 9999px; background-color: rgba(232, 157, 70, 0.2); filter: blur(40px);"></div>
+        <div style="position: absolute; z-index: -10; bottom: 5rem; left: -2.5rem; width: 12rem; height: 12rem; border-radius: 9999px; background-color: rgba(59, 130, 246, 0.1); filter: blur(60px);"></div>
+      </div>
+      
+    </div>
+  </div>
+</section>

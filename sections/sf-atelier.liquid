@@ -1,0 +1,434 @@
+<div class="sf-stitch sf-atelier atelier-section">
+  <style>
+    /* L'Atelier Illuminées - sf-atelier.css */
+    .atelier-section {
+      background-color: var(--illu-bg-night);
+      padding: 100px 40px;
+    }
+
+    .atelier-header {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 60px auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .atelier-top-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 6px 16px;
+      /* Glassmorphism */
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 99px;
+      font-size: 1.24rem; /* Match "Notre philosophie" size */
+      font-weight: var(--fw-bold);
+      text-transform: uppercase;
+      letter-spacing: 0.15em; /* Match "Notre philosophie" spacing */
+      margin-bottom: 2rem;
+      color: var(--illu-text-cream);
+    }
+    
+    .atelier-top-badge svg {
+        width: 16px;
+        height: 16px;
+        color: var(--illu-accent-amber);
+    }
+
+    .atelier-title {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      color: var(--illu-text-cream);
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      font-weight: var(--fw-bold);
+    }
+
+    /* Effet brillant sur les mots accentués dans le titre */
+    .atelier-title em {
+      font-style: normal;
+      color: var(--illu-accent-amber);
+      text-shadow: 0 0 15px rgba(232, 157, 70, 0.45);
+    }
+
+    .atelier-desc {
+      font-size: 1.24rem;
+      color: var(--illu-text-cream);
+      opacity: 0.75;
+      line-height: 1.6;
+      max-width: 600px;
+    }
+
+    .atelier-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .atelier-card {
+      display: flex;
+      flex-direction: column;
+      background: var(--illu-bg-night-light);
+      border-radius: var(--illu-radius-chubby);
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: var(--illu-transition-soft);
+      text-decoration: none;
+      position: relative; /* For the tag overlay */
+    }
+
+    .atelier-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(232, 157, 70, 0.3);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .atelier-media {
+      width: 100%;
+      aspect-ratio: 16/10;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .atelier-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+      /* Filtre de Lecture: effet papier/archive d'expert */
+      filter: sepia(10%); 
+    }
+
+    .atelier-card:hover .atelier-img {
+      transform: scale(1.08);
+      filter: sepia(0%); /* Optional: remove sepia on hover for clarity */
+    }
+    
+    /* Overlay Tag "Journal Premium" */
+    .atelier-tag-overlay {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 12px;
+      font-size: 0.83rem;
+      font-weight: var(--fw-bold);
+      color: var(--illu-text-cream);
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 99px;
+      z-index: 2;
+    }
+
+    .atelier-content {
+      padding: 32px 24px 24px 24px; /* More top padding */
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1; /* Push footer down */
+    }
+
+    .atelier-card-title {
+      color: var(--illu-text-cream);
+      font-size: 1.5rem;
+      font-weight: var(--fw-bold);
+      line-height: 1.4;
+      margin-bottom: 16px;
+    }
+
+    .atelier-excerpt {
+      color: var(--illu-text-cream);
+      opacity: 0.7;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      /* Typography Smoothing */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      margin-bottom: 24px;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    
+    .atelier-card-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: auto;
+        padding-top: 16px;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .atelier-read-time {
+        font-size: 0.88rem;
+        color: var(--illu-text-cream);
+        opacity: 0.5;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+    
+    .atelier-read-more {
+        color: var(--illu-accent-amber);
+        font-size: 0.99rem;
+        font-weight: var(--fw-bold);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: color 0.3s ease;
+    }
+    
+    .atelier-read-more svg {
+        transition: transform 0.3s ease;
+    }
+    
+    .atelier-card:hover .atelier-read-more svg {
+        transform: translateX(4px);
+    }
+
+    /* Bottom CTA area */
+    .atelier-cta-container {
+      text-align: center;
+      margin-top: 60px;
+    }
+
+    .btn-atelier {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background: var(--illu-accent-amber);
+      color: var(--illu-bg-night);
+      padding: 1rem 2.5rem;
+      border-radius: var(--illu-radius-pill);
+      font-weight: var(--fw-bold);
+      text-decoration: none;
+      transition: var(--illu-transition-soft);
+      box-shadow: var(--illu-glow-amber);
+    }
+
+    .btn-atelier:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(232, 157, 70, 0.4);
+    }
+
+    /* Mobile Responsive */
+    @media screen and (max-width: 990px) {
+      .atelier-section {
+        padding: 60px 20px;
+      }
+      .atelier-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .atelier-title {
+        font-size: 2.5rem;
+      }
+    }
+    
+    /* Tablet */
+    @media screen and (min-width: 768px) and (max-width: 1024px) {
+        .atelier-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+  </style>
+
+  <div class="atelier-header">
+    {%- if section.settings.badge_text != blank -%}
+      <div class="atelier-top-badge">
+        {{ section.settings.badge_text | escape }}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.title != blank -%}
+      <h2 class="atelier-title">
+        {{ section.settings.title | replace: '<em>', '<em>' | replace: '</em>', '</em>' }}
+      </h2>
+    {%- endif -%}
+
+    {%- if section.settings.description != blank -%}
+      <div class="atelier-desc">
+        {{ section.settings.description }}
+      </div>
+    {%- endif -%}
+  </div>
+
+  <div class="atelier-grid">
+    {%- for block in section.blocks -%}
+      <a href="{{ block.settings.article_link | default: '#' }}" class="atelier-card" {{ block.shopify_attributes }}>
+        <div class="atelier-media">
+          {%- if block.settings.tag != blank -%}
+            <span class="atelier-tag-overlay">{{ block.settings.tag | escape }}</span>
+          {%- endif -%}
+          
+          {%- if block.settings.image != blank -%}
+            <img
+              src="{{ block.settings.image | image_url: width: 800 }}"
+              alt="{{ block.settings.title | escape }}"
+              class="atelier-img"
+              loading="lazy"
+              width="{{ block.settings.image.width }}"
+              height="{{ block.settings.image.height }}"
+            >
+          {%- else -%}
+            <!-- Placeholder if no image -->
+            <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #1a2a40; color: #fff; font-size: 0.8rem; opacity: 0.5;">Image d'article</div>
+          {%- endif -%}
+        </div>
+
+        <div class="atelier-content">
+          <h3 class="atelier-card-title">{{ block.settings.title | escape }}</h3>
+          
+          <p class="atelier-excerpt">{{ block.settings.excerpt | escape }}</p>
+          
+          <div class="atelier-card-footer">
+              <span class="atelier-read-time">
+                  {{ block.settings.read_time }} min read
+              </span>
+              <span class="atelier-read-more">
+                  Read Article
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+              </span>
+          </div>
+        </div>
+      </a>
+    {%- endfor -%}
+  </div>
+
+  <div class="atelier-cta-container">
+    {%- if section.settings.btn_text != blank -%}
+      <a href="{{ section.settings.btn_link | default: '#' }}" class="btn-atelier">
+        {{ section.settings.btn_text | escape }}
+      </a>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "SF L'Atelier",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Texte du badge",
+      "default": "LE BLOG DES EXPERTS"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titre principal",
+      "default": "L'Atelier <em>Atmosphère</em>",
+      "info": "Utilisez <em>mot</em> pour appliquer l'effet brillant ambre."
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Lighting is an art, not just a utility. Discover our expert guides on sculpting your space with the perfect luminescence, from warm bedroom ambiances to focused office clarity."
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Texte Bouton CTA",
+      "default": "View All Guides"
+    },
+    {
+      "type": "url",
+      "id": "btn_link",
+      "label": "Lien Bouton CTA"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "article",
+      "name": "Article Guide",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image de couverture",
+          "info": "Ratio recommandé: 16:10"
+        },
+        {
+          "type": "text",
+          "id": "tag",
+          "label": "Tag",
+          "default": "Workspace"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Titre de l'article",
+          "default": "Comment choisir sa lumière de bureau"
+        },
+        {
+          "type": "textarea",
+          "id": "excerpt",
+          "label": "Extrait",
+          "default": "Maximize productivity and reduce eye strain with our guide to color temperature and lux levels."
+        },
+        {
+          "type": "number",
+          "id": "read_time",
+          "label": "Temps de lecture (minutes)",
+          "default": 5
+        },
+        {
+          "type": "url",
+          "id": "article_link",
+          "label": "Lien vers l'article"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "SF L'Atelier",
+      "category": "Blog",
+      "blocks": [
+        {
+          "type": "article",
+          "settings": {
+            "tag": "Workspace",
+            "title": "Comment choisir sa lumière de bureau",
+            "excerpt": "Maximize productivity and reduce eye strain with our guide to color temperature and lux levels. Learn how specific kelvin...",
+            "read_time": 5
+          }
+        },
+        {
+          "type": "article",
+          "settings": {
+            "tag": "Interior Design",
+            "title": "The Art of Layering Light",
+            "excerpt": "Combine ambient, task, and accent lighting to add depth and drama to any room. Discover the secrets of professiona...",
+            "read_time": 8
+          }
+        },
+        {
+          "type": "article",
+          "settings": {
+            "tag": "Technical",
+            "title": "Warm vs. Cool: A Kelvin Guide",
+            "excerpt": "Understanding the spectrum to create the right mood for relaxation or focus. From 2700K cozy evenings to 5000K daylight...",
+            "read_time": 6
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

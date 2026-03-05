@@ -1,0 +1,224 @@
+{% schema %}
+{
+  "name": "Univers Visuel Guide",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titre du guide",
+      "default": "Comment choisir ?"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Texte explicatif",
+      "default": "Choisissez d'abord l'univers qui vous parle, puis personnalisez votre lampe avec le personnage ou l'ambiance qui vous correspond."
+    },
+    {
+      "type": "text",
+      "id": "expert_text",
+      "label": "Texte Guide Expert",
+      "default": "GUIDE EXPERT"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Univers Visuel Guide",
+      "category": "Text"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+/* Section 2 - Guide de Choix */
+#shopify-section-{{ section.id }} .choice-guide-section {
+  background-color: var(--illu-night, #081A32);
+  padding: 40px 2rem;
+  display: flex;
+  justify-content: center;
+  z-index: 10;
+  position: relative;
+  margin-top: -30px; /* Chevauchement léger sur le hero pour la continuité */
+}
+
+/* Lueur de Fond (Ambre) */
+#shopify-section-{{ section.id }} .choice-guide-section::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(232, 157, 70, 0.05) 0%, transparent 70%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+#shopify-section-{{ section.id }} .choice-guide-card {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 24px 40px;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  max-width: 900px;
+  width: 100%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+/* Hover Micro-move */
+#shopify-section-{{ section.id }} .choice-guide-card:hover {
+  transform: scale(1.02);
+  border-color: rgba(232, 157, 70, 0.15);
+}
+
+/* Identité Visuelle Gauche */
+#shopify-section-{{ section.id }} .choice-guide-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(232, 157, 70, 0.2);
+  flex-shrink: 0;
+}
+
+#shopify-section-{{ section.id }} .choice-guide-icon {
+  color: #E89D46;
+  width: 24px;
+  height: 24px;
+  filter: drop-shadow(0 0 8px rgba(232, 157, 70, 0.3));
+}
+
+/* Contenu Central */
+#shopify-section-{{ section.id }} .choice-guide-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#shopify-section-{{ section.id }} .choice-guide-title {
+  color: #E89D46;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+#shopify-section-{{ section.id }} .choice-guide-text {
+  color: #F9F9F9;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  font-weight: 400; /* Regular reading text */
+  margin: 0;
+}
+
+#shopify-section-{{ section.id }} .choice-guide-text strong {
+  color: #E89D46;
+  font-weight: 700;
+}
+
+/* Élément Droit (Guide Expert) */
+#shopify-section-{{ section.id }} .choice-guide-expert {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding-left: 32px;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+#shopify-section-{{ section.id }} .choice-guide-expert:hover {
+  opacity: 0.8;
+}
+
+#shopify-section-{{ section.id }} .expert-icon {
+  color: #F9F9F9;
+  width: 24px;
+  height: 24px;
+}
+
+#shopify-section-{{ section.id }} .expert-text {
+  color: #F9F9F9;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  #shopify-section-{{ section.id }} .choice-guide-card {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+    padding: 30px 24px;
+  }
+  
+  #shopify-section-{{ section.id }} .choice-guide-expert {
+    padding-left: 0;
+    border-left: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+    width: 100%;
+  }
+}
+</style>
+
+<div class="sf-stitch choice-guide-section">
+  <div class="choice-guide-card">
+    
+    <!-- Left Icon -->
+    <div class="choice-guide-icon-wrapper">
+      <svg class="choice-guide-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2v2"></path>
+        <path d="M8 4h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V6c0-1.1.9-2 2-2z"></path>
+        <path d="M12 4v14"></path>
+        <path d="M9 18v3"></path>
+        <path d="M15 18v3"></path>
+        <path d="M7 21h10"></path>
+        <path d="M5 10h14"></path>
+      </svg>
+    </div>
+
+    <!-- Center Content -->
+    <div class="choice-guide-content">
+      {%- if section.settings.title != blank -%}
+        <h3 class="choice-guide-title">{{ section.settings.title }}</h3>
+      {%- endif -%}
+      
+      {%- if section.settings.text != blank -%}
+        <p class="choice-guide-text">{{ section.settings.text }}</p>
+      {%- endif -%}
+    </div>
+
+    <!-- Right Shield / Expert -->
+    <a href="#" class="choice-guide-expert">
+      <svg class="expert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+        <path d="M9 12l2 2 4-4" />
+      </svg>
+      <span class="expert-text">{{ section.settings.expert_text }}</span>
+    </a>
+
+  </div>
+</div>

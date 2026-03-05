@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Illuminées - Hero Section</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        @layer base {
+            :root {--illu-bg-night: #081A32;
+                --illu-accent-amber: #E89D46;
+                --illu-text-cream: #F9F9F9;
+                --illu-expert-blue: #3B82F6;--illu-font-primary: 'Manrope', sans-serif;
+                --fw-regular: 400;
+                --fw-medium: 500;
+                --fw-bold: 700;--illu-radius-chubby: 32px;--illu-glow-amber: 0 0 40px -10px rgba(232, 157, 70, 0.3);
+                --illu-shadow-card: 0 10px 30px rgba(0,0,0,0.5);--illu-blur-glass: 10px;--illu-space-xs: 8px;
+                --illu-space-sm: 16px;
+                --illu-space-md: 32px;
+                --illu-space-lg: 64px;
+            }
+        }
+    </style>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "var(--illu-accent-amber)", // Amber Orange
+                        "background-light": "#f8f7f6",
+                        "background-dark": "var(--illu-bg-night)", // Deep Night Blue
+                        "text-cream": "var(--illu-text-cream)", // Cream White
+                    },
+                    fontFamily: {
+                        "display": ["var(--illu-font-primary)", "sans-serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "chubby": "var(--illu-radius-chubby)",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        "glow-amber": "var(--illu-glow-amber)",
+                        "card-dark": "var(--illu-shadow-card)",
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glow-amber {
+            box-shadow: var(--illu-glow-amber);
+        }
+        .glow-text {
+            text-shadow: 0 0 30px rgba(232, 156, 69, 0.4);
+        }
+        input[name="carousel"]:checked + label {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: rgba(232, 156, 69, 0.5);
+        }
+        input[name="carousel"]:checked + label span.icon-bg {
+            background-color: var(--illu-accent-amber);
+            color: var(--illu-bg-night);
+        }
+        input[name="carousel"]:checked + label span.text-label {
+            color: var(--illu-accent-amber);
+        }
+        input[name="carousel"]:checked + label div.ring-indicator {
+            border-color: rgba(232, 156, 69, 0.2);
+            border-width: 2px;
+        }
+        #slide-pro:checked ~ .carousel-viewport .carousel-track {
+            transform: translateX(0%);
+        }
+        #slide-setup:checked ~ .carousel-viewport .carousel-track {
+            transform: translateX(-100%);
+        }
+        #slide-cocon:checked ~ .carousel-viewport .carousel-track {
+            transform: translateX(-200%);
+        }
+        .group:hover .group-hover\:visible {
+            visibility: visible;
+        }
+        .group:hover .group-hover\:opacity-100 {
+            opacity: 1;
+        }
+        .group:hover .group-hover\:translate-y-0 {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-text-cream antialiased min-h-screen flex flex-col">
+<header class="w-full flex items-center justify-between px-6 py-5 md:px-12 lg:px-20 z-50 relative bg-background-dark">
+<div class="flex items-center gap-3 text-text-cream">
+<h2 class="text-2xl font-extrabold tracking-tight">Illuminées</h2>
+</div>
+<nav class="hidden lg:flex items-center gap-10">
+<div class="relative group">
+<button class="flex items-center gap-1 text-text-cream/80 hover:text-primary transition-colors text-sm font-semibold py-2">
+                    Univers
+                    <span class="material-symbols-outlined text-sm pt-0.5 transition-transform group-hover:-rotate-180">expand_more</span>
+</button>
+<div class="absolute top-full left-1/2 -translate-x-1/2 pt-4 invisible opacity-0 translate-y-2 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 w-64 z-50">
+<div class="bg-background-dark border border-white/10 rounded-2xl p-2 shadow-xl backdrop-blur-md overflow-hidden">
+<a class="block p-3 hover:bg-white/5 rounded-xl group/item transition-colors" href="#">
+<div class="text-text-cream font-bold text-sm group-hover/item:text-primary">Espace Quotidien</div>
+<div class="text-xs text-text-cream/50 mt-0.5">Lumière pour la vie active</div>
+</a>
+<a class="block p-3 hover:bg-white/5 rounded-xl group/item transition-colors" href="#">
+<div class="text-text-cream font-bold text-sm group-hover/item:text-primary">Univers Visuel</div>
+<div class="text-xs text-text-cream/50 mt-0.5">Gaming et création</div>
+</a>
+<a class="block p-3 hover:bg-white/5 rounded-xl group/item transition-colors" href="#">
+<div class="text-text-cream font-bold text-sm group-hover/item:text-primary">Petit Cocon</div>
+<div class="text-xs text-text-cream/50 mt-0.5">Douceur pour les petits</div>
+</a>
+</div>
+</div>
+</div>
+<a class="text-text-cream/80 hover:text-primary transition-colors text-sm font-semibold" href="#">Inspirations</a>
+<a class="text-text-cream/80 hover:text-primary transition-colors text-sm font-semibold" href="#">L’Atelier</a>
+<a class="text-text-cream/80 hover:text-primary transition-colors text-sm font-semibold" href="#">Notre Approche</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center rounded-full size-10 hover:bg-white/5 text-text-cream transition-colors">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="flex items-center justify-center rounded-full size-10 hover:bg-white/5 text-text-cream transition-colors relative">
+<span class="material-symbols-outlined">shopping_bag</span>
+</button>
+</div>
+</header>
+<main class="flex-1 relative flex flex-col justify-center lg:py-10">
+<div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
+<div class="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-primary/10 blur-[120px]"></div>
+<div class="absolute bottom-[-10%] right-[20%] w-[500px] h-[500px] rounded-full bg-primary/5 blur-[100px]"></div>
+</div>
+<input checked="" class="hidden" id="slide-pro" name="carousel" type="radio"/>
+<input class="hidden" id="slide-setup" name="carousel" type="radio"/>
+<input class="hidden" id="slide-cocon" name="carousel" type="radio"/>
+<div class="layout-container w-full px-6 md:px-12 lg:px-20 h-full">
+<div class="grid lg:grid-cols-12 gap-12 lg:gap-20 items-center h-full">
+<div class="lg:col-span-5 flex flex-col gap-10 relative z-10">
+<div class="flex flex-col gap-6">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 w-fit">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="text-xs font-bold text-primary uppercase tracking-wider">Nouvelle Collection</span>
+</div>
+<h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.1] tracking-tight text-text-cream">
+                            L'art de <br/>
+<span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-orange-300 glow-text">l'ambiance utile</span>
+</h1>
+<p class="text-lg text-text-cream/70 leading-relaxed max-w-lg font-medium">
+                            Des luminaires conçus pour sculpter votre espace. Une lumière chaude et précise pour chaque moment de vie, du bureau au salon.
+                        </p>
+</div>
+<div class="flex flex-col gap-4">
+<span class="text-sm font-bold text-text-cream/50 uppercase tracking-widest pl-1">Choisir votre ambiance</span>
+<div class="flex flex-wrap gap-4">
+<label class="group relative cursor-pointer flex items-center gap-3 px-8 h-16 rounded-full bg-white/5 border border-white/10 hover:border-primary/50 hover:bg-white/10 transition-all duration-300 min-w-[140px]" for="slide-pro">
+<span class="icon-bg flex items-center justify-center size-10 rounded-full bg-background-dark text-xl group-hover:scale-110 transition-transform">💼</span>
+<span class="text-label text-lg font-bold text-text-cream group-hover:text-primary transition-colors">Pro</span>
+<div class="ring-indicator absolute inset-0 rounded-full ring-2 ring-primary/0 group-hover:ring-primary/20 transition-all"></div>
+</label>
+<label class="group relative cursor-pointer flex items-center gap-3 px-8 h-16 rounded-full bg-white/5 border border-white/10 hover:border-primary/50 hover:bg-white/10 transition-all duration-300 min-w-[140px]" for="slide-setup">
+<span class="icon-bg flex items-center justify-center size-10 rounded-full bg-background-dark text-xl group-hover:scale-110 transition-transform">🎮</span>
+<span class="text-label text-lg font-bold text-text-cream group-hover:text-primary transition-colors">Setup</span>
+<div class="ring-indicator absolute inset-0 rounded-full ring-2 ring-primary/0 group-hover:ring-primary/20 transition-all"></div>
+</label>
+<label class="group relative cursor-pointer flex items-center gap-3 px-8 h-16 rounded-full bg-white/5 border border-white/10 hover:border-primary/50 hover:bg-white/10 transition-all duration-300 min-w-[140px]" for="slide-cocon">
+<span class="icon-bg flex items-center justify-center size-10 rounded-full bg-background-dark text-xl group-hover:scale-110 transition-transform">🧸</span>
+<span class="text-label text-lg font-bold text-text-cream group-hover:text-primary transition-colors">Cocon</span>
+<div class="ring-indicator absolute inset-0 rounded-full ring-2 ring-primary/0 group-hover:ring-primary/20 transition-all"></div>
+</label>
+</div>
+</div>
+</div>
+<div class="lg:col-span-7 relative h-[500px] lg:h-[700px] w-full">
+<div class="carousel-viewport relative w-full h-full rounded-chubby overflow-hidden shadow-card-dark border border-white/5 group z-10">
+<div class="carousel-track flex h-full w-full transition-transform duration-700 ease-in-out">
+<div class="min-w-full h-full relative">
+<div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDLDmw_wnM5YKwrekD1E81vEnheylg6IxAfXI7QP4pK0pxAe72seYZ4IZ89NyTDnqv0-DWqXDIRqQDxwJOiSBerfD3QT-Ju4osDbFXjUxnWORS7vGD9JQp-6lHuB3m2D_VF1GrULBPbXugmW1_4tfRnCLDWeJugzvPf62-nsdg_8K0V_ATsR_50yqjKzfTHOeljBV9q4Ga_KJTbaWNFXaxo7BR-zrsYafTP65xn5QcJ6H9BUKCt8euq3bx4rZYhgMj9HoMAkcflHc8A');"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark/90 via-transparent to-transparent opacity-80"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-background-dark/40 via-transparent to-transparent"></div>
+<div class="absolute bottom-8 right-8 bg-background-dark/80 backdrop-blur-md border border-white/10 p-5 rounded-3xl flex items-center gap-4 max-w-xs shadow-xl">
+<div class="size-12 rounded-2xl bg-primary flex items-center justify-center text-background-dark shrink-0">
+<span class="material-symbols-outlined">edit_note</span>
+</div>
+<div>
+<h3 class="text-text-cream font-bold text-sm">Lampe Bureau Focus</h3>
+<p class="text-primary text-xs font-semibold mt-1">Lumière précise 4000K</p>
+</div>
+<button class="ml-auto size-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-text-cream transition-colors">
+<span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="min-w-full h-full relative">
+<div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDBeanyhJzGcKdjyqS8gOfa8HYRNTO92G4ebTk25I9-B2BWMkPPxG-0kD4l391X4nO4-lj-dq6sj_ESe397WgrGDlSFGMMBYczDydKZRk7Drf4NRkr0tJdJf5TSGnAKVDJxbKDENiTctgD7e2N-oAASWucC4SX2jeRM7MteSINbrmVIb7rPIseBKOg340NjbBOqNMP31DQcmrtHD-bcf_fuWl5o0zmurP-ySf4FeJ3qCFQif4JFZ8lxmK7cm-ZnCvAhoqEwF3xzXOnF');"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark/90 via-transparent to-transparent opacity-80"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-blue-900/30 via-transparent to-transparent mix-blend-overlay"></div>
+<div class="absolute bottom-8 right-8 bg-background-dark/80 backdrop-blur-md border border-white/10 p-5 rounded-3xl flex items-center gap-4 max-w-xs shadow-xl">
+<div class="size-12 rounded-2xl bg-indigo-500 flex items-center justify-center text-white shrink-0">
+<span class="material-symbols-outlined">sports_esports</span>
+</div>
+<div>
+<h3 class="text-text-cream font-bold text-sm">Neon Stream V2</h3>
+<p class="text-indigo-300 text-xs font-semibold mt-1">Ambiance RGB Dynamic</p>
+</div>
+<button class="ml-auto size-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-text-cream transition-colors">
+<span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="min-w-full h-full relative">
+<div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuApJlHcDSmLhwEjclJGHwj1moerTuJWanwv3fOOZhfN4MgTIoVJXBPZcLpf_0Yk4W54BUOoBfOFUOXQP11D4nCscRBDW--CnDUpRm4pimbEkmaxHb8HKYWRkOdS7Bvy_kG0GNizI261G-VQUw5TfvXLBhaVciRCiJomOcSw8OXVQk0UexNk0-541ze0rMdvvA2UlBlaYbFK0_91Tb2EHvkr0REBVfJLj-rWxDdmVXrAwHafVn90m9ap-sRDnMm_py9ItG6pCCkewRin');"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark/90 via-transparent to-transparent opacity-70"></div>
+<div class="absolute inset-0 bg-amber-900/20 mix-blend-multiply"></div>
+<div class="absolute bottom-8 right-8 bg-background-dark/80 backdrop-blur-md border border-white/10 p-5 rounded-3xl flex items-center gap-4 max-w-xs shadow-xl">
+<div class="size-12 rounded-2xl bg-orange-300 flex items-center justify-center text-background-dark shrink-0">
+<span class="material-symbols-outlined">nightlight</span>
+</div>
+<div>
+<h3 class="text-text-cream font-bold text-sm">Veilleuse Lune Douce</h3>
+<p class="text-orange-300 text-xs font-semibold mt-1">Glow apaisant 2700K</p>
+</div>
+<button class="ml-auto size-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-text-cream transition-colors">
+<span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="absolute -z-10 top-10 -right-10 w-32 h-32 bg-primary/20 rounded-full blur-2xl"></div>
+<div class="absolute -z-10 bottom-20 -left-10 w-48 h-48 bg-blue-500/10 rounded-full blur-3xl"></div>
+</div>
+</div>
+</div>
+</main>
+<footer class="w-full px-6 py-8 md:px-12 lg:px-20 border-t border-white/5 mt-10">
+<div class="flex flex-col md:flex-row justify-between items-center gap-6 text-text-cream/50 text-sm">
+<p>© 2024 Illuminées. Tous droits réservés.</p>
+<div class="flex gap-6">
+<a class="hover:text-primary transition-colors" href="#">Mentions légales</a>
+<a class="hover:text-primary transition-colors" href="#">Politique de confidentialité</a>
+<a class="hover:text-primary transition-colors" href="#">CGV</a>
+</div>
+<div class="flex gap-4">
+<a class="hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">share</span></a>
+<a class="hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">alternate_email</span></a>
+</div>
+</div>
+</footer>
+
+</body></html>

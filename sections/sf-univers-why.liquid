@@ -1,0 +1,330 @@
+{% schema %}
+{
+  "name": "Univers Pourquoi",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Overline Label",
+      "default": "LE POURQUOI"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Plus qu'une\nchambre, un\nterritoire\nd'expression."
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+      "default": "À l'adolescence, une chambre n'est pas qu'un endroit pour dormir. C'est un refuge, une arène de jeu, et surtout, le miroir d'une identité en pleine construction. Dans cet Univers Visuel, chaque source lumineuse raconte une histoire..."
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Philosophie Illuminées"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "card_badge",
+      "label": "Card Top Badge",
+      "default": "AMBIANCE"
+    },
+    {
+      "type": "text",
+      "id": "card_label",
+      "label": "Card Footer Label",
+      "default": "Expertise Ados"
+    },
+    {
+      "type": "textarea",
+      "id": "card_title",
+      "label": "Card Footer Title",
+      "default": "Configuré pour la victoire\net le repos."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "value_pill",
+      "name": "Value Pill",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Univers Pourquoi",
+      "settings": {
+        "label": "LE POURQUOI",
+        "heading": "Plus qu'une\nchambre, un\nterritoire\nd'expression.",
+        "text": "À l'adolescence, une chambre n'est pas qu'un endroit pour dormir. C'est un refuge, une arène de jeu, et surtout, le miroir d'une identité en pleine construction. Dans cet Univers Visuel, chaque source lumineuse raconte une histoire...",
+        "button_text": "Philosophie Illuminées",
+        "card_badge": "AMBIANCE",
+        "card_label": "Expertise Ados",
+        "card_title": "Configuré pour la victoire\net le repos."
+      }
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+/* Section 2 - Pourquoi Univers Visuel */
+#shopify-section-{{ section.id }} .univers-why-section {
+  background-color: var(--illu-bg-night, #081A32);
+  padding: 120px 2rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  font-family: inherit;
+  line-height: 1.5;
+}
+
+#shopify-section-{{ section.id }} .univers-why-container {
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 6rem;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  #shopify-section-{{ section.id }} .univers-why-container {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+}
+
+#shopify-section-{{ section.id }} .why-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+#shopify-section-{{ section.id }} .why-label {
+  color: var(--illu-accent-amber, #E89D46);
+  font-size: 1.24rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  opacity: 0.9;
+}
+
+#shopify-section-{{ section.id }} .univers-why-h2 {
+  font-size: clamp(3.85rem, 5.5vw, 4.95rem);
+  color: var(--illu-text-light, #F9F9F9);
+  margin-bottom: 2rem;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  font-weight: 800;
+}
+
+#shopify-section-{{ section.id }} .univers-why-text {
+  font-size: 1.24rem;
+  line-height: 1.6;
+  color: rgba(249, 249, 249, 0.85);
+  margin-bottom: 3.5rem;
+  max-width: 450px;
+}
+
+#shopify-section-{{ section.id }} .why-link {
+  color: var(--illu-text-light, #F9F9F9);
+  font-size: 1.65rem;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--illu-accent-amber, #E89D46);
+  padding-bottom: 4px;
+  transition: opacity 0.3s;
+}
+
+#shopify-section-{{ section.id }} .why-link svg {
+  color: var(--illu-accent-amber, #E89D46);
+  transition: transform 0.3s;
+}
+
+#shopify-section-{{ section.id }} .why-link:hover {
+  opacity: 0.8;
+}
+
+#shopify-section-{{ section.id }} .why-link:hover svg {
+  transform: translateX(4px);
+}
+
+/* Value Pills */
+#shopify-section-{{ section.id }} .univers-values-flex {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 3rem;
+}
+
+#shopify-section-{{ section.id }} .value-pill {
+  padding: 12px 24px;
+  background: rgba(232, 157, 70, 0.1);
+  border: 1px solid rgba(232, 157, 70, 0.3);
+  border-radius: 32px;
+  color: var(--illu-accent-amber, #E89D46);
+  font-weight: 600;
+  font-size: 1.05rem;
+  box-shadow: 0 0 20px rgba(232, 157, 70, 0.05);
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+#shopify-section-{{ section.id }} .value-pill:hover {
+  background: rgba(232, 157, 70, 0.2);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 25px rgba(232, 157, 70, 0.15);
+}
+
+/* Right Card */
+#shopify-section-{{ section.id }} .why-card {
+  position: relative;
+  background: var(--illu-bg-deep, #0A1118);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+}
+
+#shopify-section-{{ section.id }} .why-card-image {
+  width: 100%;
+  height: 600px; /* Tall image like in reference */
+  object-fit: cover;
+}
+
+#shopify-section-{{ section.id }} .why-card-image-placeholder {
+  width: 100%;
+  height: 600px;
+  background: #111e2f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#shopify-section-{{ section.id }} .why-card-badge {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  padding: 8px 16px;
+  border-radius: 99px;
+  color: rgba(255,255,255,0.9);
+  font-size: 0.83rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid rgba(255,255,255,0.1);
+  text-transform: uppercase;
+}
+
+#shopify-section-{{ section.id }} .why-card-footer {
+  padding: 32px 32px;
+  background: #121820;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+#shopify-section-{{ section.id }} .footer-label {
+  display: inline-block;
+  background: var(--illu-accent-amber, #E89D46);
+  color: var(--illu-bg-night, #081A32);
+  padding: 6px 16px;
+  border-radius: 99px;
+  font-weight: 700;
+  font-size: 0.83rem;
+  letter-spacing: 0.05em;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+#shopify-section-{{ section.id }} .footer-title {
+  color: var(--illu-text-light, #F9F9F9);
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin: 0;
+}
+</style>
+
+<div class="sf-stitch univers-why-section">
+  <div class="univers-why-container">
+    
+    <div class="why-content">
+      <div class="why-label">{{ section.settings.label }}</div>
+      <h2 class="univers-why-h2">{{ section.settings.heading | newline_to_br }}</h2>
+      <p class="univers-why-text">{{ section.settings.text }}</p>
+      
+      <a href="{{ section.settings.button_link | default: '#' }}" class="why-link">
+        {{ section.settings.button_text }}
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </a>
+      
+      {% if section.blocks.size > 0 %}
+      <div class="univers-values-flex">
+        {% for block in section.blocks %}
+          {% if block.type == 'value_pill' %}
+            <div class="value-pill" {{ block.shopify_attributes }}>
+              {{ block.settings.title }}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+
+    <div class="why-card">
+      <div class="why-card-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--illu-accent-amber, #E89D46)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+        {{ section.settings.card_badge }}
+      </div>
+      
+      {% if section.settings.image %}
+        <img src="{{ section.settings.image | image_url: width: 1000 }}" class="why-card-image" alt="Ambiance Image">
+      {% else %}
+        <div class="why-card-image-placeholder">
+          <svg style="width:60px; height:60px; opacity:0.1; color: white;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+        </div>
+      {% endif %}
+      
+      <div class="why-card-footer">
+        <div class="footer-label">{{ section.settings.card_label }}</div>
+        <h3 class="footer-title">{{ section.settings.card_title | newline_to_br }}</h3>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,330 @@
+{% schema %}
+{
+  "name": "Conclusion Approche",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "NOTRE PHILOSOPHIE"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Heading",
+      "default": "Pourquoi la curation est une élévation"
+    },
+    {
+      "type": "textarea",
+      "id": "cta_text_above",
+      "label": "Text above CTA",
+      "default": "Prêt à illuminer votre intérieur avec discernement ?"
+    },
+    {
+      "type": "text",
+      "id": "cta_button_text",
+      "label": "CTA Button Text",
+      "default": "Découvrir nos univers lumineux →"
+    },
+    {
+      "type": "url",
+      "id": "cta_button_link",
+      "label": "CTA Button Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "difference",
+      "name": "Différence Card",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "focus", "label": "Focus / Moins de choix" },
+            { "value": "infinity", "label": "Infinity / Meilleure expérience" },
+            { "value": "check", "label": "Check / Décisions simples" },
+            { "value": "diamond", "label": "Diamond / Produits durables" }
+          ],
+          "default": "focus"
+        },
+        {
+          "type": "textarea",
+          "id": "custom_svg",
+          "label": "Custom SVG (Overrides Icon Select)"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Moins de choix"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Parce que la clarté commence par l'épure."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Conclusion Approche",
+      "blocks": [
+        { "type": "difference", "settings": { "icon": "focus", "title": "Moins de choix", "description": "Parce que la clarté commence par l'épure." } },
+        { "type": "difference", "settings": { "icon": "infinity", "title": "Meilleure expérience", "description": "Un accompagnement expert à chaque étape." } },
+        { "type": "difference", "settings": { "icon": "check", "title": "Décisions plus simples", "description": "Fini le paradoxe du choix, place au ressenti." } },
+        { "type": "difference", "settings": { "icon": "diamond", "title": "Produits plus durables", "description": "Une sélection pensée pour durer, pas pour être remplacée." } }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+/* CSS Compilé Final */
+.approach-conclusion-section {
+  background-color: #081A32;
+  padding: 100px 4rem 120px 4rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.conclusion-header {
+  text-align: left;
+  max-width: 1400px;
+  margin: 0 auto 4rem auto;
+}
+
+.conclusion-badge {
+  display: inline-block;
+  color: #E89D46;
+  font-size: 0.83rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.conclusion-h2 {
+  font-size: clamp(2.2rem, 4.4vw, 3.3rem);
+  color: #F9F9F9;
+  font-weight: 700;
+  line-height: 1.1;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+/* Grille de 4 cartes */
+.difference-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.diff-card {
+  /* Darker blueish grey, similar to mockup */
+  background: #111C2C; 
+  border-radius: 32px;
+  padding: 40px 32px;
+  text-align: left;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.diff-card:hover {
+  border-color: rgba(232, 157, 70, 0.3);
+  transform: translateY(-8px);
+  background: #152233;
+}
+
+/* Icon Box inside card */
+.diff-icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.diff-card:hover .diff-icon-box {
+  background: rgba(232, 157, 70, 0.08);
+  border-color: rgba(232, 157, 70, 0.2);
+}
+
+.diff-icon-box svg {
+  width: 24px;
+  height: 24px;
+  stroke: #E89D46;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  transition: all 0.3s ease;
+}
+
+.diff-card:hover .diff-icon-box svg {
+  filter: drop-shadow(0 0 8px rgba(232, 157, 70, 0.4));
+}
+
+.diff-title {
+  color: #F9F9F9;
+  font-weight: 600;
+  font-size: 1.25rem;
+  margin: 0 0 1rem 0;
+  line-height: 1.3;
+}
+
+.diff-text {
+  color: rgba(249, 249, 249, 0.6);
+  font-size: 1.05rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* CTA Section at bottom */
+.conclusion-cta-area {
+  text-align: center;
+  margin-top: 6rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 6rem; /* extra space from grid */
+}
+
+.conclusion-cta-text {
+  color: #F9F9F9;
+  font-size: 1.21rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+.btn-pill-amber-conclusion {
+  background: #E89D46;
+  color: #081A32;
+  border: none;
+  padding: 18px 40px;
+  border-radius: 99px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  /* Permanent glow to show it's "on" */
+  filter: drop-shadow(0 0 15px rgba(232, 157, 70, 0.4));
+}
+
+.btn-pill-amber-conclusion:hover {
+  transform: translateY(-4px);
+  background: #F0A956;
+  filter: drop-shadow(0 0 25px rgba(232, 157, 70, 0.6));
+}
+
+/* Responsive */
+@media screen and (max-width: 1200px) {
+  .difference-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .approach-conclusion-section {
+    padding: 80px 2rem;
+  }
+  .difference-grid {
+    grid-template-columns: 1fr;
+  }
+  .conclusion-h2 {
+    font-size: 2.42rem;
+  }
+}
+</style>
+
+<section class="approach-conclusion-section">
+  
+  <div class="conclusion-header">
+    {% if section.settings.badge_text != blank %}
+      <div class="conclusion-badge">{{ section.settings.badge_text }}</div>
+    {% endif %}
+    {% if section.settings.title != blank %}
+      <h2 class="conclusion-h2">{{ section.settings.title }}</h2>
+    {% endif %}
+  </div>
+
+  <div class="difference-grid">
+    {% for block in section.blocks %}
+      <div class="diff-card" {{ block.shopify_attributes }}>
+        
+        <div class="diff-icon-box">
+          {% if block.settings.custom_svg != blank %}
+            {{ block.settings.custom_svg }}
+          {% else %}
+            {% case block.settings.icon %}
+              {% when 'focus' %}
+                <!-- Focus / Target icon for Moins de choix -->
+                <svg viewBox="0 0 24 24">
+                  <path d="M5 9V5H9"></path>
+                  <path d="M19 9V5H15"></path>
+                  <path d="M19 15V19H15"></path>
+                  <path d="M5 15V19H9"></path>
+                  <circle cx="12" cy="12" r="2"></circle>
+                </svg>
+              {% when 'infinity' %}
+                <!-- Infinity icon for Meilleure expérience -->
+                <svg viewBox="0 0 24 24">
+                  <path d="M8.56 16.5C11.56 16.5 13.06 12 15.56 12C16.892 12 18.232 12.612 19.344 14C20.457 15.388 21.06 17.5 19.344 19.5C17.629 21.5 14.892 21.5 12.56 21.5C9.56 21.5 8.06 16.5 5.56 16.5C4.228 16.5 2.888 15.888 1.776 14.5C0.663 13.112 0.0600004 11 1.776 9C3.491 7 6.228 7 8.56 7"></path>
+                  <path d="M15.44 7.5C12.44 7.5 10.94 12 8.44 12C7.108 12 5.768 11.388 4.656 10C3.543 8.612 2.94 6.5 4.656 4.5C6.371 2.5 9.108 2.5 11.44 2.5C14.44 2.5 15.94 7.5 18.44 7.5C19.772 7.5 21.112 8.112 22.224 9.5C23.337 10.888 23.94 13 22.224 15C20.509 17 17.772 17 15.44 17"></path>
+                </svg>
+              {% when 'check' %}
+                <!-- Check Circle icon for Décisions simples -->
+                <svg viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="9"></circle>
+                  <path d="M8 12L11 15L16 9"></path>
+                </svg>
+              {% when 'diamond' %}
+                <!-- Diamond icon for Produits durables -->
+                <svg viewBox="0 0 24 24">
+                  <path d="M3.5 8L12 22L20.5 8L16.5 2H7.5L3.5 8Z"></path>
+                  <path d="M3.5 8H20.5"></path>
+                  <path d="M7.5 2L12 8L16.5 2"></path>
+                  <path d="M7.5 8L12 22"></path>
+                  <path d="M16.5 8L12 22"></path>
+                </svg>
+            {% endcase %}
+          {% endif %}
+        </div>
+
+        <h3 class="diff-title">{{ block.settings.title }}</h3>
+        <p class="diff-text">{{ block.settings.description }}</p>
+      
+      </div>
+    {% endfor %}
+  </div>
+
+  <div class="conclusion-cta-area">
+    {% if section.settings.cta_text_above != blank %}
+      <div class="conclusion-cta-text">{{ section.settings.cta_text_above }}</div>
+    {% endif %}
+    {% if section.settings.cta_button_text != blank %}
+      <a href="{{ section.settings.cta_button_link | default: '#' }}" class="btn-pill-amber-conclusion">
+        {{ section.settings.cta_button_text }}
+      </a>
+    {% endif %}
+  </div>
+
+</section>

@@ -1,0 +1,754 @@
+{% schema %}
+{
+  "name": "Panier - Sélection",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titre",
+      "default": "Votre sélection"
+    },
+    {
+      "type": "text",
+      "id": "title_amber",
+      "label": "Titre (Mot Ambré)",
+      "default": "lumineuse"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Sous-titre",
+      "default": "Sublimez votre intérieur avec nos pièces d'exception, conçues pour créer une atmosphère unique et chaleureuse."
+    },
+    {
+      "type": "text",
+      "id": "free_shipping_text",
+      "label": "Texte Livraison (gauche)",
+      "default": "Vous bénéficiez de la livraison offerte pour cette commande."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Panier - Sélection"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+/* sf-cart.css */
+body {
+  /* Globals & Resets impératif */
+  -webkit-font-smoothing: antialiased;
+}
+html {
+  scroll-padding-top: 100px;
+}
+
+.sf-cart-section {
+  background-color: #081A32; /* illu-night constant */
+  min-height: 80vh;
+  padding: 60px 4rem 100px;
+  font-family: 'Inter', sans-serif;
+  color: #F9F9F9;
+}
+
+.sf-cart-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header Panier */
+.sf-cart-header {
+  margin-bottom: 40px;
+}
+.sf-cart-h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  color: #F9F9F9;
+  line-height: 1.1;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.02em;
+}
+.sf-cart-h1 .text-amber {
+  color: #E89D46;
+  text-shadow: 0 0 20px rgba(232, 157, 70, 0.2);
+}
+.sf-cart-subtitle {
+  font-size: 1.21rem;
+  line-height: 1.6;
+  color: rgba(249, 249, 249, 0.6);
+  max-width: 550px;
+  margin: 0;
+}
+
+/* Grid Layout */
+.sf-cart-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr; /* Equivalent à la vue sur desktop, gauche un poil plus large */
+  gap: 32px;
+  align-items: start;
+}
+
+/* --- Left Column: Items --- */
+.sf-cart-items-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Card Chubby Produit */
+.sf-cart-item {
+  display: flex;
+  gap: 24px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 32px;
+  padding: 24px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+/* Visuels Produits : Hover Saturation */
+.sf-cart-item-image {
+  width: 140px;
+  height: 140px;
+  border-radius: 20px;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: #030A14; /* Fallback skeleton */
+  filter: grayscale(20%) brightness(0.9);
+  transition: filter 0.4s ease;
+}
+
+.sf-cart-item:hover .sf-cart-item-image {
+  filter: grayscale(0%) brightness(1.1);
+}
+
+.sf-cart-item-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 8px 0;
+}
+
+.item-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.item-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #F9F9F9;
+  margin: 0 0 4px 0;
+  letter-spacing: -0.01em;
+}
+
+.item-variant {
+  font-size: 0.94rem;
+  color: rgba(249, 249, 249, 0.5);
+  margin: 0;
+}
+
+/* Trash Icon (Poubelle) */
+.item-remove {
+  color: rgba(249, 249, 249, 0.3);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  transition: color 0.3s ease;
+}
+
+.item-remove:hover {
+  color: #F9F9F9;
+}
+
+.item-remove svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+}
+
+.item-bottom-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+/* Quantité Ajusteur */
+.qty-selector {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 99px;
+  padding: 6px 12px;
+}
+
+.qty-btn {
+  background: none;
+  border: none;
+  color: #F9F9F9;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  transition: color 0.2s ease;
+}
+
+.qty-btn:hover {
+  color: #E89D46;
+}
+
+.qty-input {
+  background: transparent;
+  border: none;
+  color: #F9F9F9;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: center;
+  width: 20px;
+  -moz-appearance: textfield;
+}
+
+.qty-input::-webkit-outer-spin-button,
+.qty-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.item-price {
+  font-size: 1.54rem;
+  font-weight: 800;
+  color: #F9F9F9;
+}
+
+/* Shipping Notice Banner */
+.cart-shipping-notice {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 99px;
+  padding: 16px 24px;
+  margin-top: 12px;
+  font-size: 0.99rem;
+  color: rgba(249, 249, 249, 0.6);
+}
+
+.cart-shipping-notice svg {
+  width: 20px;
+  height: 20px;
+  stroke: #E89D46; /* Icon en ambre */
+  fill: none;
+  stroke-width: 2;
+  flex-shrink: 0;
+}
+
+.cart-shipping-notice span {
+  color: #E89D46;
+  font-weight: 600;
+}
+
+
+/* --- Right Column: Summary --- */
+
+.sf-cart-summary-sticky {
+  position: sticky;
+  top: 140px; /* Offset for typical header height */
+}
+
+/* Le Glassmorphism profond "luxueux" */
+.sf-cart-summary {
+  background: rgba(255, 255, 255, 0.015);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 32px;
+  padding: 40px;
+  font-family: 'Inter', sans-serif;
+}
+
+.summary-h2 {
+  font-size: 1.43rem;
+  font-weight: 700;
+  color: #F9F9F9;
+  margin: 0 0 32px 0;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  font-size: 1.05rem;
+  color: rgba(249, 249, 249, 0.7);
+}
+
+.summary-row.shipping .text-green {
+  color: #4CAF50; /* Gratuite */
+  font-weight: 600;
+}
+
+.summary-divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.05);
+  margin: 24px 0;
+}
+
+/* Highlight Total TTC */
+.summary-total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.summary-total-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #F9F9F9;
+}
+
+.summary-total-price-wrap {
+  text-align: right;
+}
+
+.summary-total-price {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #E89D46; /* illu-amber */
+  text-shadow: 0 0 20px rgba(232, 157, 70, 0.2);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.summary-total-tax {
+  font-size: 0.83rem;
+  color: rgba(249, 249, 249, 0.4);
+}
+
+/* Bouton Checkout Lueur Vibrante */
+.btn-checkout {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: #E89D46;
+  color: #081A32;
+  font-size: 1.21rem;
+  font-weight: 800;
+  padding: 18px 24px;
+  border-radius: 99px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 30px rgba(232, 157, 70, 0.4); /* Checkout Glow */
+}
+
+.btn-checkout:hover {
+  transform: scale(1.02);
+  filter: brightness(1.1);
+  box-shadow: 0 0 40px rgba(232, 157, 70, 0.6);
+}
+
+.btn-checkout svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  fill: none;
+  transition: transform 0.3s ease;
+}
+
+.btn-checkout:hover svg {
+  transform: translateX(4px);
+}
+
+.summary-legal {
+  text-align: center;
+  font-size: 0.83rem;
+  color: rgba(249, 249, 249, 0.4);
+  margin-top: 20px;
+  line-height: 1.4;
+}
+
+/* Trust Badges under summary */
+.summary-trust-badges {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0 16px;
+}
+
+.trust-badge-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: rgba(249, 249, 249, 0.7);
+  font-size: 0.94rem;
+  font-weight: 500;
+}
+.sf-trust-icon svg,
+.trust-badge-item > svg {
+  width: 20px;
+  height: 20px;
+  stroke: #E89D46;
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+/* Empty Cart State */
+.cart-empty-message {
+  text-align: center;
+  padding: 80px 0;
+  color: rgba(249, 249, 249, 0.6);
+}
+
+.cart-empty-message h2 {
+  color: #F9F9F9;
+  font-size: 1.65rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* --- RESPONSIVE --- */
+@media screen and (max-width: 1024px) {
+  .sf-cart-grid {
+    grid-template-columns: 1fr;
+  }
+  .sf-cart-summary-sticky {
+    position: static;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .sf-cart-section {
+    padding: 40px 1.5rem 80px;
+  }
+  .sf-cart-h1 {
+    font-size: 2rem;
+  }
+  .sf-cart-item {
+    flex-direction: column;
+    padding: 20px;
+    gap: 16px;
+  }
+  .sf-cart-item-image {
+    width: 100%;
+    height: 200px;
+  }
+  .item-title-row {
+    margin-bottom: 24px;
+  }
+  .cart-shipping-notice {
+    padding: 12px 16px;
+    font-size: 0.94rem;
+  }
+  .sf-cart-summary {
+    padding: 32px 24px;
+  }
+}
+</style>
+
+<div class="sf-cart-section">
+  <div class="sf-cart-inner">
+    
+    <!-- Title -->
+    <div class="sf-cart-header">
+      <h1 class="sf-cart-h1">
+        {{ section.settings.title }} <span class="text-amber">{{ section.settings.title_amber }}</span>
+      </h1>
+      {% if section.settings.subtitle != blank %}
+        <p class="sf-cart-subtitle">{{ section.settings.subtitle }}</p>
+      {% endif %}
+    </div>
+
+    <!-- The Form Wrapping everything to handle updates & checkout -->
+    <form action="{{ routes.cart_url }}" method="post" id="sf-cart-form" class="sf-cart-form">
+      
+      {% if cart.item_count > 0 %}
+        <div class="sf-cart-grid">
+          
+          <!-- LEFT COL: Items -->
+          <div class="sf-cart-items-wrapper">
+            
+            {% for item in cart.items %}
+              <div class="sf-cart-item" id="CartItem-{{ item.index | plus: 1 }}">
+                
+                <!-- Image -->
+                {% if item.image %}
+                  <a href="{{ item.url }}">
+                    <img class="sf-cart-item-image" src="{{ item.image | img_url: '400x' }}" alt="{{ item.title | escape }}" loading="lazy">
+                  </a>
+                {% else %}
+                  <div class="sf-cart-item-image" style="display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,0.2);">Image</div>
+                {% endif %}
+
+                <!-- Content -->
+                <div class="sf-cart-item-details">
+                  
+                  <div class="item-title-row">
+                    <div>
+                      <a href="{{ item.url }}" style="text-decoration:none;">
+                        <h3 class="item-title">{{ item.product.title }}</h3>
+                      </a>
+                      
+                      <!-- Variants -->
+                      {%- if item.product.has_only_default_variant == false or item.properties.size != 0 -%}
+                        <p class="item-variant">
+                          {%- if item.product.has_only_default_variant == false -%}
+                            {%- for option in item.options_with_values -%}
+                              {{ option.value }}{% unless forloop.last %} — {% endunless %}
+                            {%- endfor -%}
+                          {%- endif -%}
+                          
+                          {%- for property in item.properties -%}
+                            {%- assign property_first_char = property.first | slice: 0 -%}
+                            {%- if property.last != blank and property_first_char != '_' -%}
+                              <br>
+                              {{ property.first }}: 
+                              {%- if property.last contains '/uploads/' -%}
+                                <a href="{{ property.last }}" target="_blank">Fichier</a>
+                              {%- else -%}
+                                {{ property.last }}
+                              {%- endif -%}
+                            {%- endif -%}
+                          {%- endfor -%}
+                        </p>
+                      {%- endif -%}
+                    </div>
+                    
+                    <!-- Delete -->
+                    <a href="#" class="item-remove sf-qty-trash" data-line="{{ forloop.index }}" aria-label="Supprimer">
+                       <svg viewBox="0 0 24 24">
+                          <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                       </svg>
+                    </a>
+
+                  </div>
+
+                  <div class="item-bottom-row">
+                    
+                    <!-- Qty -->
+                    <div class="qty-selector">
+                      <button type="button" class="qty-btn sf-qty-minus" data-line="{{ forloop.index }}" aria-label="Moins">
+                        <svg width="10" height="2" viewBox="0 0 10 2" fill="currentColor"><rect width="10" height="2"/></svg>
+                      </button>
+                      
+                      <input type="number" name="updates[]" id="updates_{{ item.key }}" class="qty-input sf-qty-input" value="{{ item.quantity }}" min="0" readonly>
+                      
+                      <button type="button" class="qty-btn sf-qty-plus" data-line="{{ forloop.index }}" aria-label="Plus">
+                        <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="M4 4V0H6V4H10V6H6V10H4V6H0V4H4Z"/></svg>
+                      </button>
+                    </div>
+
+                    <!-- Price -->
+                    <div class="item-price">
+                       {{ item.final_line_price | money }}
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+            
+            <!-- Shipping Banner (Below products list) -->
+            <div class="cart-shipping-notice">
+               <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+               Vous bénéficiez de la <span>livraison offerte</span> pour cette commande.
+            </div>
+
+          </div>
+
+          <!-- RIGHT COL: Summary -->
+          <div class="sf-cart-summary-sticky">
+            <div class="sf-cart-summary">
+              
+              <h2 class="summary-h2">Résumé de la commande</h2>
+              
+              <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                  const minusBtns = document.querySelectorAll('.sf-qty-minus');
+                  const plusBtns = document.querySelectorAll('.sf-qty-plus');
+                  const trashBtns = document.querySelectorAll('.sf-qty-trash');
+
+                  function updateCartQuantity(line, quantity) {
+                    fetch(window.Shopify.routes.root + 'cart/change.js', {
+                      method: 'POST',
+                      headers: {
+                        'Content-Type': 'application/json'
+                      },
+                      body: JSON.stringify({
+                        'line': line,
+                        'quantity': quantity
+                      })
+                    })
+                    .then(response => {
+                      return response.json();
+                    })
+                    .then(state => {
+                      // Recharge la page une fois le serveur mis à jour
+                      window.location.reload();
+                    })
+                    .catch((error) => {
+                      console.error('Error updating cart:', error);
+                    });
+                  }
+
+                  minusBtns.forEach(btn => {
+                    btn.addEventListener('click', function(e) {
+                      e.preventDefault();
+                      const line = this.getAttribute('data-line');
+                      const input = this.nextElementSibling;
+                      let currentVal = parseInt(input.value);
+                      if (currentVal > 0) {
+                        updateCartQuantity(line, currentVal - 1);
+                      }
+                    });
+                  });
+
+                  plusBtns.forEach(btn => {
+                    btn.addEventListener('click', function(e) {
+                      e.preventDefault();
+                      const line = this.getAttribute('data-line');
+                      const input = this.previousElementSibling;
+                      let currentVal = parseInt(input.value);
+                      updateCartQuantity(line, currentVal + 1);
+                    });
+                  });
+
+                  trashBtns.forEach(btn => {
+                    btn.addEventListener('click', function(e) {
+                      e.preventDefault();
+                      const line = this.getAttribute('data-line');
+                      updateCartQuantity(line, 0); // 0 quantity completely removes the item from the cart
+                    });
+                  });
+                });
+              </script>
+              <div class="summary-row">
+                <span>Sous-total</span>
+                <span>{{ cart.total_price | money }}</span>
+              </div>
+              
+              <div class="summary-row shipping">
+                <span>Livraison</span>
+                <span class="text-green">Gratuite</span>
+              </div>
+              
+              <div class="summary-divider"></div>
+              
+              <div class="summary-total-row">
+                <span class="summary-total-title">Total TTC</span>
+                <div class="summary-total-price-wrap">
+                  <div class="summary-total-price">{{ cart.total_price | money }}</div>
+                  <div class="summary-total-tax">TVA incluse / Hors frais éventuels</div>
+                </div>
+              </div>
+              
+              <a href="/checkout" class="btn-checkout">
+                Passer commande
+                <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+
+              <div class="summary-legal">
+                En validant votre commande, vous acceptez nos conditions générales de vente.
+              </div>
+            </div>
+
+            <div class="summary-trust-badges">
+              {%- for block in section.blocks -%}
+                {%- if block.type == 'trust_badge' -%}
+                  <div class="trust-badge-item" {{ block.shopify_attributes }}>
+                    <div class="sf-trust-icon">
+                      {{ block.settings.icon }}
+                    </div>
+                    <span>{{ block.settings.text }}</span>
+                  </div>
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+
+          </div>
+
+        </div>
+      {% else %}
+        <!-- Panier Vide -->
+        <div class="cart-empty-message">
+          <h2>Votre panier est actuellement vide</h2>
+          <a href="{{ routes.all_products_collection_url }}" style="color:#E89D46; text-decoration:underline; font-weight:700; margin-top:20px; display:inline-block;">Continuer vos achats</a>
+        </div>
+      {% endif %}
+
+    </form>
+    
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Panier - Sélection",
+  "settings": [],
+  "enabled_on": {
+    "templates": ["cart"]
+  },
+  "blocks": [
+    {
+      "type": "trust_badge",
+      "name": "Badge de réassurance",
+      "settings": [
+        {
+          "type": "html",
+          "id": "icon",
+          "label": "Code SVG de l'icône",
+          "default": "<svg viewBox=\"0 0 24 24\"><rect x=\"3\" y=\"11\" width=\"18\" height=\"11\" rx=\"2\" ry=\"2\"/><path d=\"M7 11V7a5 5 0 0 1 10 0v4\"/></svg>"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Texte de réassurance",
+          "default": "Paiement 100% sécurisé via SSL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Panier - Sélection",
+      "blocks": [
+        {
+          "type": "trust_badge"
+        },
+        {
+          "type": "trust_badge",
+          "settings": {
+            "icon": "<svg viewBox=\"0 0 24 24\"><rect x=\"1\" y=\"3\" width=\"15\" height=\"13\"/><polygon points=\"16 8 20 8 23 11 23 16 16 16 16 8\"/><circle cx=\"5.5\" cy=\"18.5\" r=\"2.5\"/><circle cx=\"18.5\" cy=\"18.5\" r=\"2.5\"/></svg>",
+            "text": "Expédition soignée sous 48h"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

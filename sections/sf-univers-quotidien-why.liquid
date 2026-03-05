@@ -1,0 +1,340 @@
+{% schema %}
+{
+  "name": "Univers Quotidien Why",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "L'EXPERTISE DU QUOTIDIEN"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Title",
+      "default": "Une lumière qui s'adapte à\nvotre vie, pas l'inverse."
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+      "default": "Une bonne lumière change tout. Elle fatigue moins les yeux, apaise l'esprit, met en valeur un espace. Chez Illuminées, nous concevons des luminaires qui s'intègrent naturellement dans le quotidien, sans compromis entre esthétique et confort."
+    },
+    {
+      "type": "image_picker",
+      "id": "main_image",
+      "label": "Main Image"
+    },
+    {
+      "type": "text",
+      "id": "image_label",
+      "label": "Image Label",
+      "default": "Ambiance — Salon Solaire"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "html",
+          "id": "svg_icon",
+          "label": "SVG Icon (Code)"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Feature Name",
+          "default": "CONFORT"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Univers Quotidien Why",
+      "category": "Image with text",
+      "blocks": [
+        {
+          "type": "feature",
+          "settings": {
+            "title": "CONFORT",
+            "svg_icon": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M20 9V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v2M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2M4 12v4M20 12v4M4 12h16\"/></svg>"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "title": "FLUIDITÉ",
+            "svg_icon": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1zM4 22v-7\"/></svg>"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "title": "BIEN-ÊTRE",
+            "svg_icon": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"/></svg>"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "title": "SIMPLICITÉ",
+            "svg_icon": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 2v10l4.5-4.5\"/><path d=\"M12 22V12l-4.5 4.5\"/><path d=\"M2 12h10l-4.5-4.5\"/><path d=\"M22 12H12l4.5 4.5\"/></svg>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+/* Section 2 - Pourquoi Espace Quotidien (Refonte) */
+#shopify-section-{{ section.id }} {
+  background-color: var(--illu-night, #081A32);
+}
+
+#shopify-section-{{ section.id }} .daily-why-section {
+  padding: 100px 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Vignettage Soft : Overlay radial très léger pour focaliser l'attention */
+#shopify-section-{{ section.id }} .daily-why-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center 30%, transparent 20%, rgba(8, 26, 50, 0.6) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+#shopify-section-{{ section.id }} .daily-why-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Le petit badge "L'EXPERTISE DU QUOTIDIEN" au sommet */
+#shopify-section-{{ section.id }} .daily-badge {
+  background: rgba(255, 255, 255, 0.05); /* Fond plus opaque pour détacher */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 8px 24px;
+  border-radius: 99px; 
+  color: #E89D46;
+  font-weight: 700;
+  font-size: 0.83rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 2.5rem;
+}
+
+#shopify-section-{{ section.id }} .daily-badge .dot {
+  width: 6px;
+  height: 6px;
+  background-color: #E89D46;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(232, 157, 70, 0.8);
+}
+
+#shopify-section-{{ section.id }} .daily-why-h2 {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(2.75rem, 5.5vw, 4.4rem); /* Match EXACT L'Atelier Atmosphère size */
+  font-weight: 800;
+  color: #F9F9F9;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  max-width: 900px;
+}
+
+/* Style commun pour les mots mis en valeur en italique <em> ou <i> */
+#shopify-section-{{ section.id }} .daily-why-h2 em,
+#shopify-section-{{ section.id }} .daily-why-h2 i {
+  color: #E89D46;
+  font-style: normal;
+  display: inline-block;
+}
+
+#shopify-section-{{ section.id }} .daily-why-p {
+  max-width: 700px;
+  margin: 0 auto 4rem; 
+  font-family: 'Inter', sans-serif;
+  font-size: 1.24rem;
+  line-height: 1.6;
+  color: rgba(249, 249, 249, 0.6);
+  font-weight: 400;
+}
+
+/* Image Principale Centrale */
+#shopify-section-{{ section.id }} .daily-featured-image-container {
+  width: 100%;
+  max-width: 1000px;
+  position: relative;
+  border-radius: 32px;
+  overflow: hidden;
+  margin-bottom: 5rem;
+  aspect-ratio: 2.2 / 1;
+  background: rgba(255, 255, 255, 0.02); /* Skeleton background */
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+#shopify-section-{{ section.id }} .daily-featured-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+#shopify-section-{{ section.id }} .daily-image-label {
+  position: absolute;
+  bottom: 24px;
+  left: 32px;
+  color: rgba(255,255,255,0.8);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.94rem;
+  font-weight: 600;
+  z-index: 2;
+  letter-spacing: 0.05em;
+  background: rgba(0,0,0,0.4);
+  padding: 6px 14px;
+  border-radius: 8px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Grille des 4 icônes en bas */
+#shopify-section-{{ section.id }} .daily-features-row {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1000px;
+}
+
+#shopify-section-{{ section.id }} .daily-feature-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+#shopify-section-{{ section.id }} .feature-icon-circle {
+  width: 72px;
+  height: 72px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #E89D46;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+#shopify-section-{{ section.id }} .daily-feature-item:hover .feature-icon-circle {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+#shopify-section-{{ section.id }} .feature-icon-circle svg {
+  width: 28px;
+  height: 28px;
+  filter: drop-shadow(0 0 12px rgba(232, 157, 70, 0.5));
+}
+
+#shopify-section-{{ section.id }} .feature-label-pill {
+  background: rgba(255, 255, 255, 0.06);
+  padding: 8px 18px;
+  border-radius: 20px;
+  color: rgba(255,255,255,0.9);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.77rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: background 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  #shopify-section-{{ section.id }} .daily-why-section {
+    padding: 80px 20px;
+  }
+  
+  #shopify-section-{{ section.id }} .daily-features-row {
+    gap: 2rem;
+  }
+  
+  #shopify-section-{{ section.id }} .daily-featured-image-container {
+    aspect-ratio: 16 / 9;
+    border-radius: 20px;
+    margin-bottom: 3rem;
+  }
+}
+</style>
+
+<div class="daily-why-section sf-stitch">
+  <div class="daily-why-vignette"></div>
+  
+  <div class="daily-why-content">
+    {%- if section.settings.badge_text != blank -%}
+      <div class="daily-badge">
+        <span class="dot"></span>
+        {{ section.settings.badge_text }}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.title != blank -%}
+      <h2 class="daily-why-h2">{{ section.settings.title | newline_to_br | replace: '<em>', '<em>' | replace: '</em>', '</em>' | replace: '<i>', '<i>' | replace: '</i>', '</i>' }}</h2>
+    {%- endif -%}
+    
+    {%- if section.settings.text != blank -%}
+      <p class="daily-why-p">{{ section.settings.text }}</p>
+    {%- endif -%}
+    
+    {%- if section.settings.main_image != blank -%}
+      <div class="daily-featured-image-container">
+        {{ section.settings.main_image | image_url: width: 1500 | image_tag: loading: 'lazy', widths: '500, 1000, 1500' }}
+        {%- if section.settings.image_label != blank -%}
+          <div class="daily-image-label">{{ section.settings.image_label }}</div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="daily-features-row">
+        {%- for block in section.blocks -%}
+          <div class="daily-feature-item" {{ block.shopify_attributes }}>
+            <div class="feature-icon-circle">
+              {%- if block.settings.svg_icon != blank -%}
+                {{ block.settings.svg_icon }}
+              {%- else -%}
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
+              {%- endif -%}
+            </div>
+            <div class="feature-label-pill">{{ block.settings.title }}</div>
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>

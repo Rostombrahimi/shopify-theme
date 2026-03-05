@@ -1,0 +1,426 @@
+{% schema %}
+{
+  "name": "Hero Lumière Douce",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "LUMIÈRE DOUCE & APAISANTE"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Heading",
+      "default": "Lumière Douce &<br>Apaisante –<br><span>Voir sans réveiller,<br>accompagner sans<br>perturber</span>"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subheading",
+      "default": "Une lumière tamisée pensée pour les réveils nocturnes, les soins et les<br>moments calmes."
+    },
+    {
+      "type": "text",
+      "id": "button_text_1",
+      "label": "Primary Button Text",
+      "default": "Découvrir la Collection →"
+    },
+    {
+      "type": "url",
+      "id": "button_link_1",
+      "label": "Primary Button Link"
+    },
+    {
+      "type": "text",
+      "id": "button_text_2",
+      "label": "Secondary Button Text",
+      "default": "En savoir plus"
+    },
+    {
+      "type": "url",
+      "id": "button_link_2",
+      "label": "Secondary Button Link"
+    },
+    {
+       "type": "image_picker",
+       "id": "background_image",
+       "label": "Background Image (Optional)"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature Bottom",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "moon", "label": "Moon" },
+            { "value": "eye", "label": "Eye" },
+            { "value": "leaf", "label": "Leaf" }
+          ],
+          "default": "moon"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Respect du cycle"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Lumière ambrée sans lumière bleue"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Lumière Douce",
+      "blocks": [
+        { "type": "feature", "settings": { "icon": "moon", "title": "Respect du cycle", "text": "Lumière ambrée sans lumière bleue" } },
+        { "type": "feature", "settings": { "icon": "eye", "title": "Visibilité douce", "text": "Suffisant pour voir, trop faible pour réveiller" } },
+        { "type": "feature", "settings": { "icon": "leaf", "title": "Sérénité absolue", "text": "Crée une bulle de calme instantanée" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+/* Hero Lumière Douce - sf-hero-softlight.css */
+.hero-softlight {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #081A32;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Texture Grain */
+.softlight-grain {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: 0.15;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+.softlight-aura {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(232, 157, 70, 0.15) 0%, rgba(8, 26, 50, 0.6) 60%, rgba(8, 26, 50, 0.95) 100%);
+  z-index: 2;
+  pointer-events: none;
+  animation: slow-breathe 8s ease-in-out infinite alternate;
+}
+
+@keyframes slow-breathe {
+  0% { opacity: 0.7; transform: scale(0.98); }
+  100% { opacity: 1; transform: scale(1.02); }
+}
+
+{% if section.settings.background_image %}
+.hero-softlight-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.35;
+  z-index: 0;
+}
+{% endif %}
+
+.hero-softlight-top {
+  position: relative;
+  z-index: 3;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 100px 2rem 4rem 2rem;
+  opacity: 0;
+  animation: soft-reveal 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes soft-reveal {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.softlight-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(8, 26, 50, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 6px 16px;
+  border-radius: 99px;
+  color: #E89D46;
+  font-size: 0.77rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  margin-bottom: 2rem;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  text-transform: uppercase;
+}
+
+.softlight-badge .badge-dot {
+  width: 6px;
+  height: 6px;
+  background-color: #E89D46;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(232, 157, 70, 0.5);
+}
+
+.softlight-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1.1;
+  color: #F9F9F9;
+  max-width: 900px;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.softlight-title span {
+  color: #E89D46;
+  display: block;
+}
+
+.softlight-subtitle {
+  font-size: 1.26rem;
+  line-height: 1.6;
+  color: rgba(249, 249, 249, 0.8);
+  max-width: 700px;
+  margin-bottom: 3rem;
+}
+
+.softlight-buttons {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-softlight-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 32px;
+  border-radius: 99px;
+  background-color: #E89D46;
+  color: #081A32;
+  font-weight: 600;
+  font-size: 1.16rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(232, 157, 70, 0.2);
+}
+
+.btn-softlight-primary:hover {
+  transform: translateY(-2px);
+  background-color: #F0A956;
+  box-shadow: 0 12px 25px rgba(232, 157, 70, 0.3);
+}
+
+.btn-softlight-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 32px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #F9F9F9;
+  font-weight: 500;
+  font-size: 1.16rem;
+  text-decoration: none;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.btn-softlight-secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Bottom Features */
+.hero-softlight-bottom {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  padding: 2rem 2rem 4rem 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  background: linear-gradient(180deg, rgba(8, 26, 50, 0) 0%, rgba(8, 26, 50, 0.4) 100%);
+}
+
+.softlight-features-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.softlight-feature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+/* Separators */
+.softlight-feature:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: -1rem;
+  top: 10%;
+  height: 80%;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.feature-icon {
+  color: #E89D46;
+  margin-bottom: 1rem;
+}
+
+.feature-icon svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.feature-title {
+  color: #F9F9F9;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0 0 0.4rem 0;
+}
+
+.feature-text {
+  color: rgba(249, 249, 249, 0.5);
+  font-size: 0.94rem;
+  line-height: 1.4;
+  margin: 0;
+  max-width: 220px;
+}
+
+@media screen and (max-width: 768px) {
+  .hero-softlight-top {
+    padding-top: 80px;
+  }
+  .softlight-title {
+    font-size: 2.5rem;
+  }
+  .softlight-subtitle {
+    font-size: 1.21rem;
+  }
+  .softlight-buttons {
+    flex-direction: column;
+    width: 100%;
+    padding: 0 1rem;
+  }
+  .btn-softlight-primary, .btn-softlight-secondary {
+    width: 100%;
+  }
+  
+  .softlight-features-container {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .softlight-feature:not(:last-child)::after {
+    display: none;
+  }
+}
+</style>
+
+<div class="hero-softlight">
+  {% if section.settings.background_image != blank %}
+    <img src="{{ section.settings.background_image | image_url: width: 2000 }}"
+         alt="{{ section.settings.background_image.alt | default: 'Lumière Douce' }}"
+         class="hero-softlight-image"
+         loading="eager"
+         width="2000"
+         height="{{ 2000 | divided_by: section.settings.background_image.aspect_ratio | round }}">
+  {% endif %}
+  <div class="softlight-grain"></div>
+  <div class="softlight-aura"></div>
+  
+  <div class="hero-softlight-top">
+    {% if section.settings.badge_text != blank %}
+      <div class="softlight-badge">
+        <span class="badge-dot"></span>
+        {{ section.settings.badge_text }}
+      </div>
+    {% endif %}
+
+    {% if section.settings.title != blank %}
+      <h1 class="softlight-title">{{ section.settings.title }}</h1>
+    {% endif %}
+
+    {% if section.settings.subtitle != blank %}
+      <div class="softlight-subtitle">{{ section.settings.subtitle }}</div>
+    {% endif %}
+
+    <div class="softlight-buttons">
+      {% if section.settings.button_text_1 != blank %}
+        <a href="{{ section.settings.button_link_1 | default: '#' }}" class="btn-softlight-primary">
+          {{ section.settings.button_text_1 }}
+        </a>
+      {% endif %}
+      {% if section.settings.button_text_2 != blank %}
+        <a href="{{ section.settings.button_link_2 | default: '#' }}" class="btn-softlight-secondary">
+          {{ section.settings.button_text_2 }}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+
+  {% if section.blocks.size > 0 %}
+    <div class="hero-softlight-bottom">
+      <div class="softlight-features-container">
+        {% for block in section.blocks %}
+          <div class="softlight-feature" {{ block.shopify_attributes }}>
+            <div class="feature-icon">
+              {% case block.settings.icon %}
+                {% when 'moon' %}
+                  <svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79Z"/></svg>
+                {% when 'eye' %}
+                  <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                {% when 'leaf' %}
+                  <svg viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+              {% endcase %}
+            </div>
+            <h3 class="feature-title">{{ block.settings.title }}</h3>
+            <p class="feature-text">{{ block.settings.text }}</p>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+</div>

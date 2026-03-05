@@ -1,0 +1,453 @@
+{% schema %}
+{
+  "name": "Identification Quotidien",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text (Top)",
+      "default": "POUR QUI, QUAND, POURQUOI"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Heading",
+      "default": "Parce que la nuit<br>demande de la justesse."
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Découvrez une approche de la lumière conçue pour respecter la physiologie du sommeil et la sensibilité de ceux que vous aimez."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Main Image"
+    },
+    {
+      "type": "text",
+      "id": "image_overlay_badge",
+      "label": "Image Overlay Badge",
+      "default": "MOMENT DOUCEUR"
+    },
+    {
+      "type": "textarea",
+      "id": "image_overlay_text",
+      "label": "Image Overlay Text",
+      "default": "La lumière qui accompagne, sans jamais réveiller."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature List Item",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "drop", "label": "Drop/Soins" },
+            { "value": "eye-crossed", "label": "Eye Crossed" },
+            { "value": "plane", "label": "Plane/Transition" }
+          ],
+          "default": "drop"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Soins et repas nocturnes"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "Pour les gestes qui demandent clarté et précision, sans perturber l'ambiance feutrée nécessaire au rendormissement."
+        }
+      ]
+    },
+    {
+      "type": "pill",
+      "name": "Pill Item",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "bottle", "label": "Bottle/Soins" },
+            { "value": "ban", "label": "Ban/Zero" },
+            { "value": "moon", "label": "Moon" }
+          ],
+          "default": "bottle"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Soins nocturnes"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Identification Quotidien",
+      "blocks": [
+        { "type": "feature", "settings": { "icon": "drop", "title": "Soins et repas nocturnes", "text": "Pour les gestes qui demandent clarté et précision, sans perturber l'ambiance feutrée nécessaire au rendormissement." } },
+        { "type": "feature", "settings": { "icon": "eye-crossed", "title": "Éviter le choc visuel", "text": "Préservez vos yeux d'une lumière crue qui briserait brutalement le calme de la nuit et la production de mélatonine." } },
+        { "type": "feature", "settings": { "icon": "plane", "title": "Transition douce", "text": "Pour les enfants sensibles qui ont besoin d'une présence lumineuse rassurante, infiniment douce et modulable." } },
+        { "type": "pill", "settings": { "icon": "bottle", "text": "Soins nocturnes" } },
+        { "type": "pill", "settings": { "icon": "ban", "text": "Zéro éblouissement" } },
+        { "type": "pill", "settings": { "icon": "moon", "text": "Respect du cycle" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+.daily-identification-section {
+  position: relative;
+  background-color: #081A32;
+  padding: 100px 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Vignettage Soft en bas */
+.daily-identification-section::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 200px;
+  background: linear-gradient(to top, rgba(8, 26, 50, 1) 0%, rgba(8, 26, 50, 0) 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.daily-identification-container {
+  max-width: 1400px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: stretch;
+  position: relative;
+  z-index: 3;
+}
+
+/* --- Left Column (Image) --- */
+.daily-media-col {
+  position: relative;
+  border-radius: 32px;
+  overflow: hidden;
+  box-shadow: 0 0 50px rgba(0,0,0,0.3);
+  background: #112642;
+  display: flex;
+}
+
+/* On force un glow externe au container d'image pour coller au mockup (halo bleu) */
+.daily-media-col::before {
+  content: '';
+  position: absolute;
+  inset: -10px;
+  background: transparent;
+  box-shadow: 0 0 40px rgba(100, 150, 255, 0.2);
+  border-radius: 40px;
+  z-index: -1;
+  pointer-events: none;
+}
+
+
+.daily-media-col img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Overlay Glassmorphism "Moment Douceur" */
+.daily-media-overlay {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 2.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 1.5rem;
+  border-radius: 16px;
+  max-width: 280px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.overlay-badge {
+  color: #E89D46;
+  font-size: 0.83rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.overlay-text {
+  color: #F9F9F9;
+  font-size: 1.05rem;
+  line-height: 1.5;
+  margin: 0;
+  opacity: 0.9;
+}
+
+
+/* --- Right Column (Content) --- */
+.daily-content-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem 0;
+}
+
+.daily-badge {
+  color: #E89D46;
+  font-size: 0.83rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+.daily-identification-h2 {
+  font-size: clamp(2.75rem, 4.4vw, 3.85rem);
+  color: #F9F9F9;
+  font-weight: 600;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+.daily-description {
+  font-size: 1.26rem;
+  color: rgba(249, 249, 249, 0.65);
+  line-height: 1.6;
+  margin-bottom: 4rem;
+  max-width: 600px;
+}
+
+/* Feature List (Right col) */
+.usage-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  margin-bottom: 4rem;
+}
+
+.usage-item {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.usage-icon-wrapper {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.03);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #E89D46;
+}
+
+.usage-icon-wrapper svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.usage-text h3 {
+  color: #F9F9F9;
+  font-size: 1.26rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+}
+
+.usage-text p {
+  color: rgba(249, 249, 249, 0.55);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 500px;
+}
+
+/* Pills (Bottom Right) */
+.usage-pill-flex {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.usage-pill {
+  padding: 10px 24px;
+  background: rgba(232, 157, 70, 0.05); /* Plus sombre/opaque d'après mockup */
+  border: 1px solid rgba(232, 157, 70, 0.2);
+  border-radius: 32px;
+  color: #E89D46;
+  font-weight: 500;
+  font-size: 0.94rem;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  /* Micro-Glow Badge */
+  filter: drop-shadow(0 0 10px rgba(232, 157, 70, 0.15));
+}
+
+.usage-pill svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+
+@media screen and (max-width: 1024px) {
+  .daily-identification-container {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+  .daily-media-col {
+    aspect-ratio: 4/3;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .daily-identification-section {
+    padding: 80px 2rem;
+  }
+  .daily-media-overlay {
+    bottom: 1.5rem;
+    left: 1.5rem;
+    right: 1.5rem;
+    max-width: none;
+  }
+}
+</style>
+
+<section class="daily-identification-section">
+  <div class="daily-identification-container">
+    
+    <!-- Left Col : Image -->
+    <div class="daily-media-col">
+      {% if section.settings.image != blank %}
+        {{ section.settings.image | image_url: width: 1000 | image_tag: loading: 'lazy', alt: section.settings.title }}
+      {% else %}
+        <div style="width: 100%; height: 100%; min-height: 600px; background: #E6E1DC; display: flex; align-items: center; justify-content: center;">
+          <span style="color: #081A32; opacity: 0.5;">Image Parent/Enfant</span>
+        </div>
+      {% endif %}
+      
+      {% if section.settings.image_overlay_badge != blank or section.settings.image_overlay_text != blank %}
+        <div class="daily-media-overlay">
+          {% if section.settings.image_overlay_badge != blank %}
+            <span class="overlay-badge">{{ section.settings.image_overlay_badge }}</span>
+          {% endif %}
+          {% if section.settings.image_overlay_text != blank %}
+            <p class="overlay-text">{{ section.settings.image_overlay_text }}</p>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+
+    <!-- Right Col : Content -->
+    <div class="daily-content-col">
+      {% if section.settings.badge_text != blank %}
+        <span class="daily-badge">{{ section.settings.badge_text }}</span>
+      {% endif %}
+      
+      {% if section.settings.title != blank %}
+        <h2 class="daily-identification-h2">{{ section.settings.title }}</h2>
+      {% endif %}
+      
+      {% if section.settings.description != blank %}
+        <p class="daily-description">{{ section.settings.description }}</p>
+      {% endif %}
+
+      <div class="usage-list">
+        {% for block in section.blocks %}
+          {% if block.type == 'feature' %}
+            <div class="usage-item" {{ block.shopify_attributes }}>
+              <div class="usage-icon-wrapper">
+                {% case block.settings.icon %}
+                  {% when 'drop' %}
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12 21.5C8 21.5 5 18.5 5 13.5C5 8 12 2.5 12 2.5C12 2.5 19 8 19 13.5C19 18.5 16 21.5 12 21.5Z" stroke="#E89D46" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  {% when 'eye-crossed' %}
+                    <!-- Exact replication based on mockup eye-slash -->
+                    <svg viewBox="0 0 24 24">
+                      <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+                      <line x1="1" y1="1" x2="23" y2="23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></line>
+                    </svg>
+                  {% when 'plane' %}
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M22 2L11 13" stroke="#E89D46" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="#E89D46" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                {% endcase %}
+              </div>
+              <div class="usage-text">
+                <h3>{{ block.settings.title }}</h3>
+                <p>{{ block.settings.text }}</p>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <div class="usage-pill-flex">
+        {% for block in section.blocks %}
+          {% if block.type == 'pill' %}
+            <div class="usage-pill" {{ block.shopify_attributes }}>
+              {% case block.settings.icon %}
+                {% when 'bottle' %}
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="8" y="10" width="8" height="10" rx="2" stroke="#E89D46" stroke-width="2"/>
+                    <path d="M10 10V8C10 6.89543 10.8954 6 12 6C13.1046 6 14 6.89543 14 8V10" stroke="#E89D46" stroke-width="2"/>
+                    <rect x="11" y="3" width="2" height="3" fill="#E89D46"/>
+                    <path d="M10 6H14" stroke="#E89D46" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                {% when 'ban' %}
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg>
+                {% when 'moon' %}
+                  <svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+              {% endcase %}
+              {{ block.settings.text }}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+    </div>
+  </div>
+</section>

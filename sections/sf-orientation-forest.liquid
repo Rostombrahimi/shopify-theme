@@ -1,0 +1,368 @@
+{% schema %}
+{
+  "name": "Orientation Forêt",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Choisir la bonne présence pour leur nuit."
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Pourquoi choisir <span>Amis de la Forêt</span> ? Cette ambiance est pensée pour rassurer et sécuriser. Contrairement à Nuit Étoilée, orientée vers l'endormissement, Amis de la Forêt est idéale pour les enfants qui ont besoin d'un repère visible pendant la nuit."
+    },
+    {
+      "type": "header",
+      "content": "Link Settings"
+    },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "Link Text",
+      "default": "Consultez notre guide des lumières"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Link URL"
+    },
+    {
+      "type": "text",
+      "id": "link_prefix",
+      "label": "Link Prefix text",
+      "default": "Vous hésitez encore ?"
+    },
+    {
+      "type": "text",
+      "id": "link_suffix",
+      "label": "Link Suffix text",
+      "default": "pour trouver l'ami parfait."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Orientation Forêt"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+/* Section 4 - Orientation Forest */
+.orientation-forest-section {
+  position: relative;
+  background-color: #081A32;
+  padding: 100px 4rem;
+  text-align: center;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Lueur de Focus : dégradé radial à 5% d'opacité centré */
+.orientation-forest-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1200px;
+  height: 1200px;
+  background: radial-gradient(circle, rgba(232, 157, 70, 0.05) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.orientation-header {
+  position: relative;
+  z-index: 1;
+  max-width: 850px;
+  margin: 0 auto 4rem auto;
+}
+
+.orientation-h2 {
+  font-size: clamp(1.98rem, 3.85vw, 2.75rem);
+  color: #F9F9F9;
+  margin-bottom: 2rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.orientation-description {
+  font-size: 1.26rem;
+  color: rgba(249, 249, 249, 0.7);
+  line-height: 1.6;
+}
+
+.orientation-description span {
+  color: #E89D46;
+  font-weight: 500;
+}
+
+.orientation-container {
+  position: relative;
+  z-index: 1;
+  max-width: 1000px;
+  margin: 0 auto;
+  background: rgba(17, 38, 66, 0.4); /* Base légèrement bleutée pour le contraste */
+  border-radius: 40px;
+  padding: 3rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+.orientation-comparison {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  position: relative;
+}
+
+.comparison-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  flex-shrink: 0;
+  z-index: 2;
+}
+
+.comparison-box {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #0B192C; /* Fond très sombre pour contraster dans la carte */
+  border-radius: 24px;
+  padding: 3rem 2rem 2rem 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+
+.comparison-box.active {
+  border-color: rgba(232, 157, 70, 0.2);
+  background: linear-gradient(180deg, #0B192C 0%, rgba(232, 157, 70, 0.05) 100%);
+  box-shadow: inset 0 0 40px rgba(232, 157, 70, 0.03);
+}
+
+.recommended-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #E89D46;
+  color: #081A32;
+  font-size: 0.77rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 6px 20px 6px 30px;
+  border-bottom-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.comparison-icon {
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.comparison-box.active .comparison-icon {
+  background: rgba(232, 157, 70, 0.1);
+}
+
+.comparison-icon svg {
+  width: 32px;
+  height: 32px;
+}
+
+/* Nuit Etoilee Icon Custom (pour coller à la maquette) */
+.comparison-icon .moon-icon {
+  stroke: #A8B8D0;
+}
+.comparison-box h3 {
+  color: #F9F9F9;
+  font-size: 1.54rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+}
+
+.comparison-label {
+  color: #A8B8D0;
+  font-weight: 700;
+  font-size: 0.88rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 2rem;
+}
+
+.comparison-box.active .comparison-label {
+  color: #E89D46;
+}
+
+.comparison-text {
+  color: rgba(249, 249, 249, 0.6);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  max-width: 300px;
+}
+
+.comparison-feature {
+  margin-top: auto;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #A8B8D0;
+  font-size: 0.94rem;
+  width: 100%;
+  justify-content: center;
+}
+
+.comparison-box.active .comparison-feature {
+  color: #E89D46;
+  border-top-color: rgba(232, 157, 70, 0.1);
+}
+
+.comparison-feature svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+
+.orientation-footer {
+  position: relative;
+  z-index: 1;
+  margin-top: 4rem;
+  font-size: 1.1rem;
+  color: rgba(249, 249, 249, 0.6);
+}
+
+.orientation-footer a {
+  color: #E89D46;
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px solid rgba(232, 157, 70, 0.4);
+  padding-bottom: 2px;
+  transition: border-color 0.3s ease;
+}
+
+.orientation-footer a:hover {
+  border-color: #E89D46;
+}
+
+@media screen and (max-width: 1024px) {
+  .orientation-container {
+    padding: 2rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .orientation-forest-section {
+    padding: 80px 2rem;
+  }
+  .orientation-comparison {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .comparison-divider {
+    transform: rotate(90deg);
+  }
+  .comparison-box {
+    width: 100%;
+  }
+}
+</style>
+
+<section class="orientation-forest-section">
+  <div class="orientation-forest-glow"></div>
+  
+  <div class="orientation-header">
+    {% if section.settings.title != blank %}
+      <h2 class="orientation-h2">{{ section.settings.title }}</h2>
+    {% endif %}
+    {% if section.settings.description != blank %}
+      <p class="orientation-description">{{ section.settings.description }}</p>
+    {% endif %}
+  </div>
+
+  <div class="orientation-container">
+    <div class="orientation-comparison">
+      
+      <!-- Box Nuit Étoilée (Grise) -->
+      <div class="comparison-box">
+        <div class="comparison-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="moon-icon">
+            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79Z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="0.8" stroke-dasharray="2 4" opacity="0.4"/>
+          </svg>
+        </div>
+        <h3>Nuit Étoilée</h3>
+        <span class="comparison-label" style="color:#A8B8D0">ENDORMISSEMENT</span>
+        <p class="comparison-text">Lumière projetée au plafond pour créer un rituel du coucher et aider à s'endormir paisiblement.</p>
+        <div class="comparison-feature" style="color:#A8B8D0">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Extinction automatique
+        </div>
+      </div>
+
+      <!-- Divider Arrow -->
+      <div class="comparison-divider">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6"></polyline>
+          <polyline points="5 18 11 12 5 6"></polyline>
+        </svg>
+      </div>
+
+      <!-- Box Amis de la Forêt (Active/Ambre) -->
+      <div class="comparison-box active">
+        <div class="recommended-badge">RECOMMANDÉ</div>
+        <div class="comparison-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18Z" stroke="currentColor" stroke-width="1.2"/>
+            <circle cx="12" cy="12" r="2" fill="currentColor" opacity="0.6"/>
+            <path d="M12 22V20M12 4V2M22 12H20M4 12H2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.3"/>
+          </svg>
+        </div>
+        <h3>Amis de la Forêt</h3>
+        <span class="comparison-label">REPÈRE NOCTURNE</span>
+        <p class="comparison-text">Lumière douce et diffuse au sol, une présence rassurante qui reste visible toute la nuit.</p>
+        <div class="comparison-feature">
+          <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          Visibilité continue
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="orientation-footer">
+    {{ section.settings.link_prefix }} 
+    <a href="{{ section.settings.link_url | default: '#' }}">{{ section.settings.link_text }}</a> 
+    {{ section.settings.link_suffix }}
+  </div>
+</section>

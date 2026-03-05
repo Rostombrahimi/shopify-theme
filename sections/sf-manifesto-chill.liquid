@@ -1,0 +1,306 @@
+{% schema %}
+{
+  "name": "Philosophie Manifesto",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "PHILOSOPHIE"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Heading",
+      "default": "Une lumière qui <span class=\"amber-text\">s'assume.</span>",
+      "info": "Use <span class=\"amber-text\">text</span> to highlight in amber with glow."
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Nous ne cherchons pas à proposer des lumières neutres ou invisibles. Dans l'univers Visuel, la lumière fait partie intégrante de l'ambiance : elle est visible, ressentie, assumée, tout en restant confortable pour les yeux."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Pillar",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "bulb", "label": "Bulb" },
+            { "value": "eye-crossed", "label": "Eye Crossed" },
+            { "value": "sparkle", "label": "Sparkle" }
+          ],
+          "default": "bulb"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Présence Affirmée"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "Une luminosité qui sculpte l'espace et définit le ton de la pièce."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Philosophie Manifesto",
+      "blocks": [
+        { "type": "card", "settings": { "icon": "bulb", "title": "Présence Affirmée", "text": "Une luminosité qui sculpte l'espace et définit le ton de la pièce." } },
+        { "type": "card", "settings": { "icon": "eye-crossed", "title": "Confort Absolu", "text": "Douceur pour le regard, sans éblouissement ni fatigue." } },
+        { "type": "card", "settings": { "icon": "sparkle", "title": "Signature Visuelle", "text": "L'esthétique de la lumière devient aussi importante que l'objet." } }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+.manifesto-chill-section {
+  background-color: #081A32;
+  padding: 120px 4rem;
+  display: flex;
+  justify-content: center;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.manifesto-glass-card {
+  max-width: 1000px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 80px 60px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Lueur de Fond */
+.manifesto-glass-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(232, 157, 70, 0.1) 0%, transparent 50%);
+  z-index: -1;
+  mix-blend-mode: plus-lighter;
+  pointer-events: none;
+}
+
+/* Header Content */
+.manifesto-badge-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 2.5rem;
+}
+
+.manifesto-badge-line {
+  height: 1px;
+  width: 40px;
+  background-color: rgba(232, 157, 70, 0.3);
+}
+
+.manifesto-badge {
+  color: #E89D46;
+  font-size: 0.83rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.manifesto-h2 {
+  font-size: clamp(2.75rem, 4.4vw, 3.85rem);
+  color: #F9F9F9;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 2rem;
+}
+
+/* Saturation Texte */
+.amber-text {
+  color: #E89D46;
+  text-shadow: 0 0 20px rgba(232, 157, 70, 0.3);
+}
+
+.manifesto-desc {
+  font-size: 1.26rem;
+  color: rgba(249, 249, 249, 0.85); /* Legérement plus vif basé sur la maquette */
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Pillars Grid */
+.manifesto-pillars-flex {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  margin-top: 5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 4rem;
+}
+
+.pillar-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pillar-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.02);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  /* Lueur d'icone très douce (sur la maquette, on voit un léger halo clair) */
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05), 0 0 20px rgba(255,255,255,0.02);
+}
+
+.pillar-icon svg {
+  width: 24px;
+  height: 24px;
+  stroke: #E89D46;
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.pillar-item h3 {
+  color: #F9F9F9;
+  font-size: 1.38rem;
+  font-weight: 600;
+  margin: 0 0 0.75rem 0;
+}
+
+.pillar-item p {
+  color: rgba(249, 249, 249, 0.5);
+  font-size: 1.05rem;
+  line-height: 1.5;
+  margin: 0;
+  max-width: 220px;
+}
+
+@media screen and (max-width: 900px) {
+  .manifesto-pillars-flex {
+    flex-direction: column;
+    gap: 3rem;
+  }
+  .pillar-item {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .manifesto-chill-section {
+    padding: 80px 2rem;
+  }
+  .manifesto-glass-card {
+    padding: 60px 24px;
+  }
+  .manifesto-pillars-flex {
+    margin-top: 4rem;
+    padding-top: 3rem;
+  }
+}
+</style>
+
+<section class="manifesto-chill-section">
+  <div class="manifesto-glass-card">
+    
+    <div class="manifesto-badge-wrapper">
+      <div class="manifesto-badge-line"></div>
+      {% if section.settings.badge_text != blank %}
+        <span class="manifesto-badge">{{ section.settings.badge_text }}</span>
+      {% endif %}
+      <div class="manifesto-badge-line"></div>
+    </div>
+    
+    {% if section.settings.title != blank %}
+      <h2 class="manifesto-h2">{{ section.settings.title }}</h2>
+    {% endif %}
+    
+    {% if section.settings.description != blank %}
+      <p class="manifesto-desc">{{ section.settings.description }}</p>
+    {% endif %}
+    
+    <div class="manifesto-pillars-flex">
+      {% for block in section.blocks %}
+        <div class="pillar-item" {{ block.shopify_attributes }}>
+          <div class="pillar-icon">
+            {% case block.settings.icon %}
+              {% when 'bulb' %}
+                <!-- Ampoule stylisée avec petit point central et 3 rayons externes -->
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <!-- Petit point lumineux central -->
+                  <circle cx="12" cy="11.5" r="1.5" fill="#E89D46"/>
+                  <!-- Verre de l'ampoule -->
+                  <path d="M16.5 11.5C16.5 13.5 15.5 15.3 14 16.5V18.5H10V16.5C8.5 15.3 7.5 13.5 7.5 11.5C7.5 9 9.5 7 12 7C14.5 7 16.5 9 16.5 11.5Z" stroke="#E89D46" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  <!-- Rayons -->
+                  <path d="M12 4V7" stroke="#E89D46" stroke-width="1.8" stroke-linecap="round"/>
+                  <path d="M4 11.5H7.5" stroke="#E89D46" stroke-width="1.8" stroke-linecap="round"/>
+                  <path d="M16.5 11.5H20" stroke="#E89D46" stroke-width="1.8" stroke-linecap="round"/>
+                  <!-- Base -->
+                  <path d="M10 21.5H14" stroke="#E89D46" stroke-width="1.8" stroke-linecap="round"/>
+                </svg>
+              {% when 'eye-crossed' %}
+                <!-- Œil barré -->
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M2.5 12C2.5 12 6 5.5 12 5.5C14 5.5 15.8 6.2 17.3 7.3M21.5 12C21.5 12 18 18.5 12 18.5C9.7 18.5 7.7 17.6 6 16.2" stroke="#E89D46" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M9 12A3 3 0 0 0 14 14.5M10.5 9A3 3 0 0 1 15 12" stroke="#E89D46" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  <line x1="3.5" y1="3.5" x2="20.5" y2="20.5" stroke="#E89D46" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              {% when 'sparkle' %}
+                <!-- Signature visuelle - Étoile centrale avec points et rayons -->
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <!-- Étoile centrale 4 branches -->
+                  <path d="M12 7.5L13.2 10.8L16.5 12L13.2 13.2L12 16.5L10.8 13.2L7.5 12L10.8 10.8L12 7.5Z" fill="#E89D46" stroke="#E89D46" stroke-width="1.2" stroke-linejoin="round"/>
+                  <!-- Lignes principales (axes rectilignes) -->
+                  <path d="M12 2.5V4.5" stroke="#E89D46" stroke-width="1.8" stroke-linecap="round"/>
+                  <path d="M12 19.5V21.5" stroke="#E89D46" stroke-width="1.8" stroke-linecap="round"/>
+                  <path d="M2.5 12H4.5" stroke="#E89D46" stroke-width="1.8" stroke-linecap="round"/>
+                  <path d="M19.5 12H21.5" stroke="#E89D46" stroke-width="1.8" stroke-linecap="round"/>
+                  <!-- Diagonales (petits ronds/traits) -->
+                  <circle cx="6.5" cy="6.5" r="1.2" fill="#E89D46"/>
+                  <circle cx="17.5" cy="6.5" r="1.2" fill="#E89D46"/>
+                  <circle cx="6.5" cy="17.5" r="1.2" fill="#E89D46"/>
+                  <circle cx="17.5" cy="17.5" r="1.2" fill="#E89D46"/>
+                </svg>
+            {% endcase %}
+          </div>
+          <h3>{{ block.settings.title }}</h3>
+          <p>{{ block.settings.text }}</p>
+        </div>
+      {% endfor %}
+    </div>
+    
+  </div>
+</section>

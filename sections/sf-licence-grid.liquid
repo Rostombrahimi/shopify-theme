@@ -1,0 +1,182 @@
+{% schema %}
+{
+  "name": "Grille Catalogue Licence",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection à afficher"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 12,
+      "step": 2,
+      "default": 4,
+      "label": "Nombre de produits à afficher"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Grille Premium Licence",
+      "category": "Collection"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+/* Catalogue Premium Minimalist - sf-premium-grid.css */
+#shopify-section-{{ section.id }} .premium-grid-section {
+  padding: 80px 4rem;
+  background-color: var(--illu-night, #081A32);
+}
+
+#shopify-section-{{ section.id }} .premium-product-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 64px; /* Gutter généreux */
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+#shopify-section-{{ section.id }} .premium-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent; /* Clean touch interaction */
+}
+
+#shopify-section-{{ section.id }} .premium-card:hover {
+  transform: translateY(-12px);
+}
+
+#shopify-section-{{ section.id }} .premium-img-container {
+  width: 100%;
+  aspect-ratio: 1/1;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 32px; /* radius-chubby */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 32px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Soft Aura: Lueur ambre diffuse en fond de carte */
+#shopify-section-{{ section.id }} .premium-img-container::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 80%;
+  background: radial-gradient(circle, rgba(232, 157, 70, 0.05) 0%, transparent 70%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+#shopify-section-{{ section.id }} .product-cutout-img {
+  width: 75%;
+  height: 75%;
+  object-fit: contain;
+  /* Optionnel: Si vos images sont sur fond transparent, l'ombre portée donne un effet néon très puissant */
+  /* filter: drop-shadow(0 0 20px rgba(232, 157, 70, 0.2)); */
+  transition: filter 0.4s ease, transform 0.4s ease;
+  position: relative;
+  z-index: 1;
+}
+
+#shopify-section-{{ section.id }} .premium-card:hover .product-cutout-img {
+  /* filter: drop-shadow(0 0 35px rgba(232, 157, 70, 0.4)); */
+  transform: scale(1.03); /* Léger zoom sur le produit au hover */
+}
+
+#shopify-section-{{ section.id }} .premium-info {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#shopify-section-{{ section.id }} .premium-name {
+  color: #F9F9F9;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.54rem; /* Augmenté pour l'impact visuel */
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+#shopify-section-{{ section.id }} .premium-price {
+  color: #E89D46;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.26rem; /* Augmenté pour l'impact visuel */
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  #shopify-section-{{ section.id }} .premium-grid-section {
+    padding: 60px 1.5rem;
+  }
+  
+  #shopify-section-{{ section.id }} .premium-product-grid {
+    grid-template-columns: 1fr; /* 1 colonne sur mobile */
+    gap: 48px;
+  }
+  
+  #shopify-section-{{ section.id }} .premium-img-container {
+    border-radius: 24px;
+    margin-bottom: 24px;
+  }
+}
+</style>
+
+<div class="sf-stitch premium-grid-section">
+  <div class="premium-product-grid">
+    
+    {%- assign collection = section.settings.collection -%}
+    
+    {%- if collection != blank and collection.products_count > 0 -%}
+      {%- for product in collection.products limit: section.settings.products_to_show -%}
+        <a href="{{ product.url }}" class="premium-card">
+          <div class="premium-img-container">
+            {%- if product.featured_image != blank -%}
+              {{ product.featured_image | image_url: width: 800 | image_tag: class: 'product-cutout-img', loading: 'lazy', alt: product.title }}
+            {%- else -%}
+              {{ 'product-1' | placeholder_svg_tag: 'product-cutout-img' }}
+            {%- endif -%}
+          </div>
+          <div class="premium-info">
+            <h3 class="premium-name">{{ product.title }}</h3>
+            <span class="premium-price">{{ product.price | money }}</span>
+          </div>
+        </a>
+      {%- endfor -%}
+    {%- else -%}
+      <!-- Placeholders si aucune collection n'est sélectionnée -->
+      {%- for i in (1..section.settings.products_to_show) -%}
+        <div class="premium-card">
+          <div class="premium-img-container">
+            {{ 'product-' | append: i | placeholder_svg_tag: 'product-cutout-img' }}
+          </div>
+          <div class="premium-info">
+            <h3 class="premium-name">Produit de collection</h3>
+            <span class="premium-price">129.00 €</span>
+          </div>
+        </div>
+      {%- endfor -%}
+    {%- endif -%}
+    
+  </div>
+</div>

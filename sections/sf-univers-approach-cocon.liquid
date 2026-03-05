@@ -1,0 +1,353 @@
+{% schema %}
+{
+  "name": "Approche Cocon",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Texte du Badge Vertical",
+      "default": "CURATION MAÎTRISÉE"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Titre principal",
+      "default": "Une sélection courte pour une <em>sérénité totale.</em>",
+      "info": "Utilisez <em>mot</em> pour appliquer l'effet brillant ambre, ou <i>mot</i> pour la couleur ambre sans surbrillance."
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Texte principal",
+      "default": "Dans l'univers Petit Cocon, nous avons fait le choix de ne pas multiplier les modèles. Chaque lampe est conçue comme une base lumineuse sûre et douce, déclinée ensuite par formes, ambiances et usages, afin de garantir une expérience cohérente et sécurisée pour chaque enfant."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "pillar",
+      "name": "Pilier",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "html",
+          "id": "icon",
+          "label": "Code SVG de l'icône",
+          "info": "Copiez-collez le code SVG de l'icône. Laissez vide pour ne pas mettre d'icône."
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Titre du Pilier",
+          "default": "Catalogue maîtrisé"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Ligne de description",
+          "default": "Un choix assumé pour la qualité plutôt que la quantité."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Approche Cocon Editorial",
+      "blocks": [
+        {
+          "type": "pillar",
+          "settings": {
+            "title": "Catalogue maîtrisé",
+            "text": "Un choix assumé pour la qualité plutôt que la quantité.",
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect width=\"18\" height=\"18\" x=\"3\" y=\"3\" rx=\"2\"/><path d=\"M8 7h8\"/><path d=\"M8 11h8\"/><path d=\"M8 15h4\"/></svg>"
+          }
+        },
+        {
+          "type": "pillar",
+          "settings": {
+            "title": "Exigence technique",
+            "text": "Normes de sécurité strictes sans compromis.",
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10\"/><path d=\"m9 12 2 2 4-4\"/></svg>"
+          }
+        },
+        {
+          "type": "pillar",
+          "settings": {
+            "title": "Expérience cohérente",
+            "text": "Une ambiance rassurante pour chaque enfant.",
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20\"/><path d=\"M2 12h20\"/></svg>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+/* Section 4 - Notre Approche Cocon */
+#shopify-section-{{ section.id }} .cocon-approach-section {
+  background-color: var(--illu-night, #081A32);
+  padding: 100px 5%;
+  font-family: inherit;
+  display: flex;
+  justify-content: center;
+}
+
+#shopify-section-{{ section.id }} .cocon-approach-container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 32px;
+  padding: 60px;
+  display: flex;
+  gap: 80px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Colonne Badge Vertical */
+#shopify-section-{{ section.id }} .approach-badge-col {
+  flex: 0 0 100px; /* Réduit un peu par rapport à la maquette pour laisser respirer le texte */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+}
+
+#shopify-section-{{ section.id }} .approach-badge-col::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: -40px; /* Ligne de séparation plus proche du contenu */
+  width: 1px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+#shopify-section-{{ section.id }} .approach-badge-pill {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 99px;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+#shopify-section-{{ section.id }} .approach-badge-icon {
+  color: var(--illu-accent-amber, #E89D46);
+  filter: drop-shadow(0 0 10px rgba(232, 157, 70, 0.3)); /* Le bleu dans tes tokens a été changé pour l'ambre pour coller à la marque */
+}
+
+#shopify-section-{{ section.id }} .approach-badge-icon svg {
+  width: 32px;
+  height: 32px;
+}
+
+#shopify-section-{{ section.id }} .approach-badge-text {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  color: var(--illu-accent-amber, #E89D46);
+  font-size: 0.94rem;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+/* Colonne Contenu Principal */
+#shopify-section-{{ section.id }} .approach-content-col {
+  flex: 1;
+  text-align: left; /* Alignement Éditorial */
+}
+
+#shopify-section-{{ section.id }} .approach-h2 {
+  font-size: clamp(2.2rem, 4.4vw, 3.3rem);
+  color: var(--illu-cream, #F9F9F9);
+  margin-bottom: 2rem;
+  line-height: 1.2;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+/* Em pour l'effet brillant */
+#shopify-section-{{ section.id }} .approach-h2 em {
+  font-style: normal;
+  color: var(--illu-accent-amber, #E89D46);
+  text-shadow: 0 0 15px rgba(232, 157, 70, 0.45);
+}
+
+/* I pour l'ambre simple */
+#shopify-section-{{ section.id }} .approach-h2 i {
+  font-style: normal;
+  color: var(--illu-accent-amber, #E89D46);
+}
+
+#shopify-section-{{ section.id }} .approach-p {
+  font-size: clamp(1.1rem, 2.2vw, 1.24rem);
+  color: rgba(249, 249, 249, 0.85); /* Opacité ajustée pour la lecture */
+  line-height: 1.8; /* Relaxed conforme aux directives */
+  margin-bottom: 50px;
+  font-weight: 300;
+  max-width: 90%;
+}
+
+/* Séparateur horizontal avant les piliers */
+#shopify-section-{{ section.id }} .approach-divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  margin-bottom: 50px;
+}
+
+/* Les Piliers CSS */
+#shopify-section-{{ section.id }} .approach-pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+#shopify-section-{{ section.id }} .pillar-item {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#shopify-section-{{ section.id }} .pillar-icon-wrapper {
+  color: var(--illu-accent-amber, #E89D46);
+  background: rgba(232, 157, 70, 0.08);
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  border: 1px solid rgba(232, 157, 70, 0.2);
+}
+
+#shopify-section-{{ section.id }} .pillar-icon-wrapper svg {
+  width: 24px;
+  height: 24px;
+}
+
+#shopify-section-{{ section.id }} .pillar-label {
+  color: var(--illu-cream, #F9F9F9); /* En blanc crème pour la lisibilité sur fond sombre complet */
+  font-weight: 800;
+  font-size: 1.16rem;
+}
+
+#shopify-section-{{ section.id }} .pillar-desc {
+  color: rgba(249, 249, 249, 0.6);
+  font-size: 0.99rem;
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  #shopify-section-{{ section.id }} .cocon-approach-container {
+    padding: 50px 40px;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 900px) {
+  #shopify-section-{{ section.id }} .cocon-approach-container {
+    flex-direction: column;
+  }
+  
+  #shopify-section-{{ section.id }} .approach-badge-col {
+    flex-direction: row;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 30px;
+    display: none; /* Cache le badge vertical sur mobile pour gagner de la place */
+  }
+
+  #shopify-section-{{ section.id }} .approach-badge-col::after {
+    display: none;
+  }
+  
+  #shopify-section-{{ section.id }} .approach-p {
+    max-width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .approach-pillars-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 500px) {
+  #shopify-section-{{ section.id }} .cocon-approach-section {
+    padding: 80px 20px;
+  }
+  #shopify-section-{{ section.id }} .cocon-approach-container {
+    padding: 40px 20px;
+  }
+}
+</style>
+
+<div class="sf-stitch cocon-approach-section">
+  <div class="cocon-approach-container">
+    
+    <!-- Colonne 1 : Badge Vertical -->
+    <div class="approach-badge-col">
+      <div class="approach-badge-pill">
+        <div class="approach-badge-icon">
+          <!-- Icône Verified (Badge) par défaut -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+            <path d="M9 12l2 2 4-4"/>
+          </svg>
+        </div>
+        {%- if section.settings.badge_text != blank -%}
+          <span class="approach-badge-text">{{ section.settings.badge_text | escape }}</span>
+        {%- endif -%}
+      </div>
+    </div>
+
+    <!-- Colonne 2 : Contenu Editorial & Piliers -->
+    <div class="approach-content-col">
+      {%- if section.settings.title != blank -%}
+        <h2 class="approach-h2">
+          {{ section.settings.title | replace: '<em>', '<em>' | replace: '</em>', '</em>' | replace: '<i>', '<i>' | replace: '</i>', '</i>' }}
+        </h2>
+      {%- endif -%}
+
+      {%- if section.settings.text != blank -%}
+        <p class="approach-p">{{ section.settings.text | escape }}</p>
+      {%- endif -%}
+
+      <div class="approach-divider"></div>
+
+      {%- if section.blocks.size > 0 -%}
+        <div class="approach-pillars-grid">
+          {%- for block in section.blocks -%}
+            <div class="pillar-item" {{ block.shopify_attributes }}>
+              {%- if block.settings.icon != blank -%}
+                <div class="pillar-icon-wrapper">
+                  {{ block.settings.icon }}
+                </div>
+              {%- endif -%}
+
+              {%- if block.settings.title != blank -%}
+                <div class="pillar-label">{{ block.settings.title | escape }}</div>
+              {%- endif -%}
+
+              {%- if block.settings.text != blank -%}
+                <div class="pillar-desc">{{ block.settings.text | escape }}</div>
+              {%- endif -%}
+            </div>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+
+    </div>
+
+  </div>
+</div>

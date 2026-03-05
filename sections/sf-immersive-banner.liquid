@@ -1,0 +1,181 @@
+{% schema %}
+{
+  "name": "Bannière Immersive",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titre",
+      "default": "L'art de la lumière <em>immersive</em>",
+      "info": "Utilisez <em>mot</em> pour appliquer l'effet brillant ambre."
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Texte",
+      "default": "Découvrez comment nos structures accueillent les plus grandes licences avec une fidélité inégalée."
+    },
+    {
+      "type": "text",
+      "id": "btn_1_text",
+      "label": "Texte Bouton 1 (Outline)",
+      "default": "Nos Collections"
+    },
+    {
+      "type": "url",
+      "id": "btn_1_link",
+      "label": "Lien Bouton 1"
+    },
+    {
+      "type": "text",
+      "id": "btn_2_text",
+      "label": "Texte Bouton 2 (Solid)",
+      "default": "Explorer l'Univers"
+    },
+    {
+      "type": "url",
+      "id": "btn_2_link",
+      "label": "Lien Bouton 2"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Bannière Immersive"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+/* sf-immersive-banner.css */
+#shopify-section-{{ section.id }} .ib-section {
+  background-color: #050B14; /* Très sombre pour contraster avec le #081A32 */
+  padding: 60px 5%;
+  border-top: 1px solid rgba(255, 255, 255, 0.05); /* Séparation subtile */
+  font-family: inherit;
+}
+
+#shopify-section-{{ section.id }} .ib-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+}
+
+#shopify-section-{{ section.id }} .ib-content {
+  flex: 1;
+  max-width: 600px;
+}
+
+#shopify-section-{{ section.id }} .ib-title {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: var(--illu-cream, #F9F9F9);
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+#shopify-section-{{ section.id }} .ib-title em {
+  font-style: normal;
+  color: var(--illu-accent-amber, #E89D46);
+  text-shadow: 0 0 15px rgba(232, 157, 70, 0.45);
+}
+
+#shopify-section-{{ section.id }} .ib-text {
+  font-size: 1.1rem;
+  color: rgba(249, 249, 249, 0.7);
+  line-height: 1.5;
+}
+
+#shopify-section-{{ section.id }} .ib-actions {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+#shopify-section-{{ section.id }} .ib-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  border-radius: 99px;
+  border: 1px solid rgba(249, 249, 249, 0.2);
+  color: var(--illu-cream, #F9F9F9);
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  background: transparent;
+  font-size: 1.05rem;
+}
+
+#shopify-section-{{ section.id }} .ib-btn-outline:hover {
+  background: rgba(249, 249, 249, 0.05);
+  border-color: rgba(249, 249, 249, 0.4);
+}
+
+#shopify-section-{{ section.id }} .ib-btn-solid {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  border-radius: 99px;
+  background: var(--illu-cream, #F9F9F9);
+  color: var(--illu-night, #081A32);
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 1.05rem;
+}
+
+#shopify-section-{{ section.id }} .ib-btn-solid:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
+}
+
+/* Responsivité Mobile */
+@media (max-width: 900px) {
+  #shopify-section-{{ section.id }} .ib-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  #shopify-section-{{ section.id }} .ib-content {
+    margin-bottom: 16px;
+  }
+  #shopify-section-{{ section.id }} .ib-actions {
+    width: 100%;
+    justify-content: center;
+    flex-direction: column;
+  }
+  #shopify-section-{{ section.id }} .ib-btn-outline,
+  #shopify-section-{{ section.id }} .ib-btn-solid {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+</style>
+
+<div class="sf-stitch ib-section">
+  <div class="ib-container">
+    <div class="ib-content">
+      {%- if section.settings.title != blank -%}
+        <h2 class="ib-title">{{ section.settings.title }}</h2>
+      {%- endif -%}
+      {%- if section.settings.text != blank -%}
+        <p class="ib-text">{{ section.settings.text | escape }}</p>
+      {%- endif -%}
+    </div>
+    
+    <div class="ib-actions">
+      {%- if section.settings.btn_1_text != blank -%}
+        <a href="{{ section.settings.btn_1_link | default: '#' }}" class="ib-btn-outline">{{ section.settings.btn_1_text | escape }}</a>
+      {%- endif -%}
+      {%- if section.settings.btn_2_text != blank -%}
+        <a href="{{ section.settings.btn_2_link | default: '#' }}" class="ib-btn-solid">{{ section.settings.btn_2_text | escape }}</a>
+      {%- endif -%}
+    </div>
+  </div>
+</div>

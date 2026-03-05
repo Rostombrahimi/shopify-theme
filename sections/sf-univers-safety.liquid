@@ -1,0 +1,297 @@
+{% schema %}
+{
+  "name": "Sécurité Cocon",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Étiquette (Sur-titre)",
+      "default": "SÉCURITÉ & RÉASSURANCE"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Titre",
+      "default": "Une lumière pensée pour les tout-petits",
+      "info": "Utilisez <em>mot</em> pour appliquer l'effet brillant ambre, ou <i>mot</i> pour la couleur ambre sans surbrillance."
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Texte principal",
+      "default": "Parce que la sécurité de votre enfant est notre priorité absolue, nous concevons chaque lampe avec le plus grand soin, sans compromis."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "safety_item",
+      "name": "Point Sécurité",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "html",
+          "id": "icon",
+          "label": "Code SVG de l'icône"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Titre",
+          "default": "Matériaux testés et adaptés"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Texte explicatif",
+          "default": "Des matériaux doux, durables et sans danger pour les petites mains curieuses."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sécurité Cocon (Grille)",
+      "blocks": [
+        {
+          "type": "safety_item",
+          "settings": {
+            "title": "Matériaux testés et adaptés",
+            "text": "Des matériaux doux, durables et sans danger pour les petites mains curieuses.",
+            "icon": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#E89D46\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z\"/></svg>"
+          }
+        },
+        {
+          "type": "safety_item",
+          "settings": {
+            "title": "Lumière non agressive",
+            "text": "Une intensité lumineuse étudiée scientifiquement pour protéger les yeux sensibles.",
+            "icon": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#E89D46\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z\"/><circle cx=\"12\" cy=\"12\" r=\"3\"/></svg>"
+          }
+        },
+        {
+          "type": "safety_item",
+          "settings": {
+            "title": "Normes européennes",
+            "text": "Certifié selon les standards de sécurité les plus rigoureux (CE, RoHS).",
+            "icon": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#E89D46\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z\"/><path d=\"m9 12 2 2 4-4\"/></svg>"
+          }
+        },
+        {
+          "type": "safety_item",
+          "settings": {
+            "title": "Usage simple et sécurisé",
+            "text": "Des interrupteurs sécurisés et une conception intuitive pour les parents.",
+            "icon": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#E89D46\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"20\" height=\"12\" x=\"2\" y=\"6\" rx=\"6\"/><circle cx=\"16\" cy=\"12\" r=\"2\"/></svg>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+/* Section 5 - Sécurité et Réassurance */
+#shopify-section-{{ section.id }} .safety-section {
+  background-color: var(--illu-night, #081A32);
+  padding: 100px 5%;
+  font-family: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#shopify-section-{{ section.id }} .safety-header {
+  text-align: center;
+  margin-bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 800px;
+}
+
+#shopify-section-{{ section.id }} .safety-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 20px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.05); /* Bouton dark chic */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--illu-accent-amber, #E89D46);
+  font-size: 0.94rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+#shopify-section-{{ section.id }} .safety-title {
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  color: var(--illu-cream, #F9F9F9);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+  text-wrap: balance;
+}
+
+/* Em pour effet brillant */
+#shopify-section-{{ section.id }} .safety-title em {
+  font-style: normal;
+  color: var(--illu-accent-amber, #E89D46);
+  text-shadow: 0 0 15px rgba(232, 157, 70, 0.45);
+}
+
+/* I pour l'ambre simple */
+#shopify-section-{{ section.id }} .safety-title i {
+  font-style: normal;
+  color: var(--illu-accent-amber, #E89D46);
+}
+
+#shopify-section-{{ section.id }} .safety-desc {
+  font-size: clamp(1.1rem, 2.2vw, 1.24rem);
+  color: rgba(249, 249, 249, 0.7);
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+/* Grille principale */
+#shopify-section-{{ section.id }} .safety-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  width: 100%;
+  max-width: 1400px;
+}
+
+/* Carte Sécurité (Glassmorphism) */
+#shopify-section-{{ section.id }} .safety-item {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 2.5rem 1.5rem;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.03); /* Glassmorphism ultra subtil */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.05); /* Bordure light */
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Animation bounce douce */
+}
+
+#shopify-section-{{ section.id }} .safety-item:hover {
+  transform: translateY(-8px);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Icône SVG avec l'aura "Veilleuse" */
+#shopify-section-{{ section.id }} .safety-icon-wrapper {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05); /* Cercle de fond */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--illu-accent-amber, #E89D46);
+  filter: drop-shadow(0 0 10px rgba(232, 157, 70, 0.3)); /* Lueur ambre de base */
+  transition: filter 0.3s ease, background 0.3s ease;
+}
+
+#shopify-section-{{ section.id }} .safety-item:hover .safety-icon-wrapper {
+  filter: drop-shadow(0 0 20px rgba(232, 157, 70, 0.6)); /* Lueur intensifiée */
+  background: rgba(232, 157, 70, 0.1);
+}
+
+#shopify-section-{{ section.id }} .safety-icon-wrapper svg {
+  width: 32px;
+  height: 32px;
+}
+
+/* Texte des cartes */
+#shopify-section-{{ section.id }} .safety-item-title {
+  font-size: 1.15rem;
+  color: var(--illu-cream, #F9F9F9);
+  font-weight: 800;
+  line-height: 1.3;
+  margin: 0;
+}
+
+#shopify-section-{{ section.id }} .safety-item-desc {
+  font-size: 0.99rem;
+  color: rgba(249, 249, 249, 0.65);
+  line-height: 1.5;
+  margin: 0;
+  font-weight: 300;
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+  #shopify-section-{{ section.id }} .safety-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 colonnes sur tablette */
+    max-width: 800px;
+    gap: 32px;
+  }
+}
+
+@media (max-width: 600px) {
+  #shopify-section-{{ section.id }} .safety-section {
+    padding: 80px 20px;
+  }
+  #shopify-section-{{ section.id }} .safety-grid {
+    grid-template-columns: 1fr; /* 1 colonne sur mobile */
+    gap: 24px;
+  }
+  #shopify-section-{{ section.id }} .safety-item {
+    padding: 2rem;
+  }
+}
+</style>
+
+<div class="sf-stitch safety-section">
+  <!-- En-tête -->
+  <div class="safety-header">
+    {%- if section.settings.label != blank -%}
+      <div class="safety-label">{{ section.settings.label | escape }}</div>
+    {%- endif -%}
+
+    {%- if section.settings.title != blank -%}
+      <h2 class="safety-title">
+        {{ section.settings.title | replace: '<em>', '<em>' | replace: '</em>', '</em>' | replace: '<i>', '<i>' | replace: '</i>', '</i>' }}
+      </h2>
+    {%- endif -%}
+
+    {%- if section.settings.text != blank -%}
+      <p class="safety-desc">{{ section.settings.text | escape }}</p>
+    {%- endif -%}
+  </div>
+
+  <!-- Grille -->
+  {%- if section.blocks.size > 0 -%}
+    <div class="safety-grid">
+      {%- for block in section.blocks -%}
+        <div class="safety-item" {{ block.shopify_attributes }}>
+          
+          {%- if block.settings.icon != blank -%}
+            <div class="safety-icon-wrapper">
+              {{ block.settings.icon }}
+            </div>
+          {%- endif -%}
+
+          {%- if block.settings.title != blank -%}
+            <h3 class="safety-item-title">{{ block.settings.title | escape }}</h3>
+          {%- endif -%}
+
+          {%- if block.settings.text != blank -%}
+            <p class="safety-item-desc">{{ block.settings.text | escape }}</p>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+</div>

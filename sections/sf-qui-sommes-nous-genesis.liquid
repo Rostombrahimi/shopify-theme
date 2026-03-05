@@ -1,0 +1,547 @@
+{% schema %}
+{
+  "name": "About - Genesis & Why",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Hero Genesis Section"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero Background Image",
+      "info": "Image is automatically filtered to match dark mode."
+    },
+    {
+      "type": "text",
+      "id": "hero_badge",
+      "label": "Hero Badge",
+      "default": "GENÈSE"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_title",
+      "label": "Hero Title",
+      "default": "<span>Illuminées</span> - Une marque de luminaires née d’un usage réel",
+      "info": "Use <span> to highlight text in amber with glow effect."
+    },
+    {
+      "type": "textarea",
+      "id": "hero_text",
+      "label": "Hero Description",
+      "default": "Tout a commencé en 2019, non pas par envie de créer de belles images, mais par une quête personnelle : celle de vivre mieux la lumière au quotidien."
+    },
+    {
+      "type": "text",
+      "id": "hero_btn_text",
+      "label": "Hero Button Text",
+      "default": "Découvrir notre genèse"
+    },
+    {
+      "type": "url",
+      "id": "hero_btn_link",
+      "label": "Hero Button Link"
+    },
+    {
+      "type": "header",
+      "content": "Why Section (Left Column)"
+    },
+    {
+      "type": "textarea",
+      "id": "why_title",
+      "label": "Why Title",
+      "default": "Pourquoi <span>Illuminées</span> existe"
+    },
+    {
+      "type": "textarea",
+      "id": "why_text",
+      "label": "Why Text",
+      "default": "Nous sommes nés d'un constat simple et d'une volonté de changer les choses. Le marché était saturé d'objets, mais vide de sens. Nous avons voulu ramener l'humain au centre de la conception lumineuse."
+    },
+    {
+      "type": "textarea",
+      "id": "why_quote",
+      "label": "Why Quote",
+      "default": "\"La lumière ne devrait pas seulement éclairer une pièce, elle devrait accompagner nos vies, nos moments de calme comme nos instants de partage.\""
+    },
+    {
+      "type": "text",
+      "id": "why_author",
+      "label": "Quote Author",
+      "default": "— L'équipe fondatrice"
+    },
+    {
+      "type": "text",
+      "id": "why_link_text",
+      "label": "Why Link Text",
+      "default": "En savoir plus sur nos valeurs →"
+    },
+    {
+      "type": "url",
+      "id": "why_link_url",
+      "label": "Why Link URL"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "reason_card",
+      "name": "Reason Card",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "custom_svg",
+          "label": "Custom SVG (Overrides default icon)"
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Default Icon",
+          "options": [
+            { "value": "forbidden", "label": "Forbidden / Ras-le-bol" },
+            { "value": "shield", "label": "Shield / Protection" },
+            { "value": "circle", "label": "Circle / Simplicity" },
+            { "value": "star", "label": "Star / Quality" }
+          ],
+          "default": "forbidden"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Card Title",
+          "default": "Ras-le-bol des gadgets"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Card Description",
+          "default": "Fini les objets inutiles qui encombrent sans servir. Nous prônons l'utile et le durable avant tout."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "About - Genesis & Why",
+      "blocks": [
+        { "type": "reason_card", "settings": { "icon": "forbidden", "title": "Ras-le-bol des gadgets", "description": "Fini les objets inutiles qui encombrent sans servir. Nous prônons l'utile et le durable avant tout." } },
+        { "type": "reason_card", "settings": { "icon": "shield", "title": "Lumière trop agressive", "description": "Protéger vos yeux et votre ambiance des éclats violents avec une diffusion douce et maîtrisée." } },
+        { "type": "reason_card", "settings": { "icon": "circle", "title": "Besoin de simplicité", "description": "Le retour à l'essentiel, sans fioritures complexes. Un design pur qui s'efface devant la fonction." } },
+        { "type": "reason_card", "settings": { "icon": "star", "title": "Envie de mieux faire", "description": "L'exigence de la qualité pour un usage réel, testé et approuvé dans de vrais intérieurs." } }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+/* --- VARIABLES SCOPED --- */
+.about-page-wrapper {
+  --illu-night: #081A32;
+  --illu-amber: #E89D46;
+  --illu-cream: #F9F9F9;
+  --illu-radius-chubby: 32px;
+  --illu-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  background-color: var(--illu-night);
+  color: var(--illu-cream);
+  -webkit-font-smoothing: antialiased;
+  padding: 80px 4rem 140px 4rem; /* Generous padding */
+}
+
+/* --- SECTION HERO GENESIS --- */
+.hero-genesis {
+  position: relative;
+  height: 70vh;
+  min-height: 500px;
+  border-radius: var(--illu-radius-chubby);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 100px; /* Space between Hero and Intro */
+  background: #000; /* Backup background */
+}
+
+.hero-genesis-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.8;
+  /* Cinematic filter from user instruction */
+  filter: brightness(0.7) contrast(1.1); 
+}
+
+.hero-genesis-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(8, 26, 50, 0.4) 0%, #081A32 100%);
+  z-index: 1;
+}
+
+.hero-genesis-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  padding: 0 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-badge {
+  display: inline-block;
+  color: var(--illu-amber);
+  font-size: 0.83rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  padding: 8px 16px;
+  border-radius: 99px;
+  background: rgba(4, 12, 24, 0.6);
+  border: 1px solid rgba(232, 157, 70, 0.3);
+  backdrop-filter: blur(8px);
+}
+
+.hero-genesis-h1 {
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  color: var(--illu-cream);
+  letter-spacing: -0.02em;
+}
+
+.hero-genesis-h1 span {
+  color: var(--illu-amber);
+  /* Lueur de Titre per instruction */
+  text-shadow: 0 0 30px rgba(232, 157, 70, 0.4); 
+}
+
+.hero-genesis-text {
+  font-size: 1.26rem;
+  color: rgba(249, 249, 249, 0.85);
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto 2.5rem auto;
+}
+
+.btn-genesis {
+  background: var(--illu-amber);
+  color: var(--illu-night);
+  padding: 16px 40px;
+  border-radius: 99px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-genesis:hover {
+  transform: translateY(-3px);
+  background: #F0A956;
+  box-shadow: 0 10px 25px rgba(232, 157, 70, 0.3);
+}
+
+
+/* --- SECTION BENTO DES RAISONS --- */
+.why-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: flex-start;
+}
+
+/* Left Column - Intro */
+.why-intro-col {
+  padding-right: 40px;
+  position: sticky;
+  top: 100px;
+}
+
+.why-h2 {
+  font-size: 2.75rem;
+  font-weight: 800;
+  margin-bottom: 2rem;
+  color: var(--illu-cream);
+}
+
+.why-h2 span {
+  color: var(--illu-amber);
+}
+
+.why-text {
+  font-size: 1.21rem;
+  line-height: 1.7;
+  opacity: 0.8;
+  color: var(--illu-cream);
+  margin-bottom: 2rem;
+}
+
+.why-quote-block {
+  border-left: 2px solid rgba(232, 157, 70, 0.4);
+  padding-left: 24px;
+  margin-bottom: 3rem;
+}
+
+.why-quote-text {
+  font-size: 1.26rem;
+  font-style: italic;
+  color: rgba(249, 249, 249, 0.7);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  font-family: Georgia, serif; /* Premium quote feel */
+}
+
+.why-quote-author {
+  color: var(--illu-amber);
+  font-weight: 600;
+  font-size: 0.99rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.why-link {
+  color: var(--illu-amber);
+  font-weight: 700;
+  font-size: 1.05rem;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+  display: inline-block;
+  padding-bottom: 4px;
+}
+
+.why-link:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+/* Right Column - Bento */
+.why-bento {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.why-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: var(--illu-radius-chubby);
+  padding: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: var(--illu-transition);
+  display: flex;
+  flex-direction: column;
+}
+
+.why-card:hover {
+  border-color: rgba(232, 157, 70, 0.3);
+  transform: translateY(-5px);
+  /* background: var(--illu-bg-card-hover); Removed to match user spec */
+}
+
+.why-icon {
+  width: 40px;
+  height: 40px;
+  color: var(--illu-amber);
+  margin-bottom: 20px;
+  filter: drop-shadow(0 0 8px rgba(232, 157, 70, 0.3));
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  transition: var(--illu-transition);
+}
+
+/* Base icon SVG styling */
+.why-icon svg {
+  width: 28px;
+  height: 28px;
+  stroke: var(--illu-amber);
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: var(--illu-transition);
+}
+
+/* Optional fill for custom icons that need it */
+.why-icon svg.fill-amber {
+  fill: var(--illu-amber);
+  stroke: none;
+}
+
+/* Saturation Bento per instruction */
+.why-card:hover .why-icon svg {
+  filter: drop-shadow(0 0 15px rgba(232, 157, 70, 0.6)) saturate(1.2);
+}
+
+.why-card-h3 {
+  font-size: 1.38rem;
+  font-weight: 700;
+  margin: 0 0 12px 0;
+  color: var(--illu-cream);
+  line-height: 1.3;
+}
+
+.why-card-p {
+  font-size: 1.05rem;
+  line-height: 1.5;
+  opacity: 0.6;
+  color: var(--illu-cream);
+  margin: 0;
+}
+
+/* --- Responsive Design --- */
+@media screen and (max-width: 1024px) {
+  .about-page-wrapper {
+    padding: 60px 2rem 100px 2rem;
+  }
+  .why-grid {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+  .why-intro-col {
+    padding-right: 0;
+    position: relative;
+    top: 0;
+    max-width: 800px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .hero-genesis {
+    height: 60vh;
+    border-radius: 20px;
+    margin-bottom: 60px;
+  }
+  .why-bento {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .why-card {
+    padding: 32px 24px;
+  }
+}
+</style>
+
+<div class="about-page-wrapper">
+  
+  <!-- HERO GENESIS -->
+  <section class="hero-genesis">
+    {% if section.settings.hero_image != blank %}
+      <img src="{{ section.settings.hero_image | image_url: width: 1400 }}" alt="{{ section.settings.hero_title | strip_html }}" class="hero-genesis-img" loading="lazy">
+    {% endif %}
+    
+    <div class="hero-genesis-overlay"></div>
+    
+    <div class="hero-genesis-content">
+      {% if section.settings.hero_badge != blank %}
+        <div class="hero-badge">{{ section.settings.hero_badge }}</div>
+      {% endif %}
+      
+      {% if section.settings.hero_title != blank %}
+        <h1 class="hero-genesis-h1">{{ section.settings.hero_title }}</h1>
+      {% endif %}
+      
+      {% if section.settings.hero_text != blank %}
+        <p class="hero-genesis-text">{{ section.settings.hero_text }}</p>
+      {% endif %}
+      
+      {% if section.settings.hero_btn_text != blank %}
+        <a href="{{ section.settings.hero_btn_link | default: '#' }}" class="btn-genesis">
+          {{ section.settings.hero_btn_text }}
+        </a>
+      {% endif %}
+    </div>
+  </section>
+
+  <!-- WHY SECTION -->
+  <section class="why-grid">
+    
+    <!-- Left Column: Intro -->
+    <div class="why-intro-col">
+      {% if section.settings.why_title != blank %}
+        <h2 class="why-h2">{{ section.settings.why_title }}</h2>
+      {% endif %}
+      
+      {% if section.settings.why_text != blank %}
+        <p class="why-text">{{ section.settings.why_text }}</p>
+      {% endif %}
+      
+      {% if section.settings.why_quote != blank %}
+        <div class="why-quote-block">
+          <div class="why-quote-text">{{ section.settings.why_quote }}</div>
+          {% if section.settings.why_author != blank %}
+            <div class="why-quote-author">{{ section.settings.why_author }}</div>
+          {% endif %}
+        </div>
+      {% endif %}
+      
+      {% if section.settings.why_link_text != blank %}
+        <a href="{{ section.settings.why_link_url | default: '#' }}" class="why-link">
+          {{ section.settings.why_link_text }}
+        </a>
+      {% endif %}
+    </div>
+    
+    <!-- Right Column: Bento Cards -->
+    <div class="why-bento">
+      {% for block in section.blocks %}
+        <div class="why-card" {{ block.shopify_attributes }}>
+          
+          <div class="why-icon">
+            {% if block.settings.custom_svg != blank %}
+              {{ block.settings.custom_svg }}
+            {% else %}
+              {% case block.settings.icon %}
+                {% when 'forbidden' %}
+                  <!-- Ras-le-bol / Forbidden Icon -->
+                  <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line>
+                  </svg>
+                {% when 'shield' %}
+                  <!-- Protection / Shield Icon -->
+                  <svg viewBox="0 0 24 24">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    <path d="M12 8v4"></path>
+                    <circle cx="12" cy="16" r="1" class="fill-amber" stroke="none"></circle>
+                  </svg>
+                {% when 'circle' %}
+                  <!-- Simplicity / Ring Icon -->
+                  <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="9"></circle>
+                  </svg>
+                {% when 'star' %}
+                  <!-- Quality / Star Icon -->
+                  <svg viewBox="0 0 24 24">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                  </svg>
+              {% endcase %}
+            {% endif %}
+          </div>
+          
+          <h3 class="why-card-h3">{{ block.settings.title }}</h3>
+          <p class="why-card-p">{{ block.settings.description }}</p>
+          
+        </div>
+      {% endfor %}
+    </div>
+    
+  </section>
+  
+</div>

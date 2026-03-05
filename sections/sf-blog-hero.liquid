@@ -1,0 +1,283 @@
+{% schema %}
+{
+  "name": "Blog - Hero & Snapshot",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Image de fond (Full-bleed texturée)"
+    },
+    {
+      "type": "text",
+      "id": "tag",
+      "label": "Tag",
+      "default": "SANTÉ & BIEN-ÊTRE"
+    },
+    {
+      "type": "textarea",
+      "id": "title_white",
+      "label": "Titre Blanc",
+      "default": "Sommeil enfant : pourquoi la lumière bleue est votre pire ennemie"
+    },
+    {
+      "type": "text",
+      "id": "title_amber",
+      "label": "Phrase Ambrée",
+      "default": "(et comment la remplacer)"
+    },
+    {
+      "type": "textarea",
+      "id": "intro_desc",
+      "label": "Introduction",
+      "default": "Nous connaissons tous ces nuits fragmentées où le sommeil semble hors de portée. Au-delà de la fatigue, c'est l'équilibre de nos petits qui est en jeu."
+    },
+    {
+      "type": "header",
+      "content": "Bloc: L'essentiel en 30 sec"
+    },
+    {
+      "type": "text",
+      "id": "snapshot_title",
+      "label": "Titre du snapshot",
+      "default": "L'ESSENTIEL EN 30 SECONDES"
+    },
+    {
+      "type": "richtext",
+      "id": "snapshot_text",
+      "label": "Texte de la pépite",
+      "default": "<p>\"Pour un endormissement rapide, privilégiez une lumière ambrée de moins de <strong>2000K</strong>, placée au niveau du sol pour simuler le coucher du soleil.\"</p>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Blog - Hero & Snapshot"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+/* CSS - sf-blog-hero.liquid */
+
+.blog-hero-wrapper {
+  position: relative;
+  background-color: #081A32;
+  font-family: 'Inter', sans-serif;
+  color: #F9F9F9;
+  -webkit-font-smoothing: antialiased;
+  padding-top: 100px;
+  padding-bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Background Image with Dark Overlay */
+.blog-hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.blog-hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.blog-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(8, 26, 50, 0.7), rgba(8, 26, 50, 0.95) 80%, #081A32 100%);
+  z-index: 2;
+}
+
+.blog-hero-content {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 900px;
+  padding: 0 2rem;
+  margin-top: 40px;
+}
+
+/* Tag Pill */
+.blog-hero-tag {
+  display: inline-flex;
+  border: 1px solid rgba(232, 157, 70, 0.3);
+  background: rgba(232, 157, 70, 0.1);
+  color: #E89D46;
+  font-size: 0.83rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 6px 16px;
+  border-radius: 99px;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+}
+
+/* H1 Title */
+.blog-hero-h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  color: #F9F9F9;
+  line-height: 1.1;
+  margin: 0 0 32px 0;
+  letter-spacing: -0.02em;
+}
+
+.blog-hero-h1 span.amber-italic {
+  display: block;
+  font-family: 'Lora', serif; /* Or keep Inter based on exact font in screenshot, using generic serif/italic for the elegant feel */
+  font-style: italic;
+  font-weight: 700;
+  color: #E89D46;
+  text-shadow: 0 0 15px rgba(232, 157, 70, 0.3);
+  mix-blend-mode: normal;
+  margin-top: 8px;
+}
+
+/* Intro Paragraph */
+.blog-hero-intro {
+  font-size: 1.21rem;
+  line-height: 1.6;
+  color: rgba(249, 249, 249, 0.85);
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+/* Expert Snapshot (Le bloc de verre vaporeux) */
+.expert-snapshot {
+  max-width: 600px;
+  margin: 60px auto 40px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 32px;
+  border: 1px solid rgba(232, 157, 70, 0.2);
+  padding: 40px 32px;
+  text-align: center;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3),
+              inset 0 0 20px rgba(255, 255, 255, 0.02); /* Effet chubby/verre interne */
+  position: relative;
+}
+
+/* Lightning effect at bottom of card */
+.expert-snapshot::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 2px;
+  background: radial-gradient(circle, rgba(232,157,70,0.8) 0%, rgba(232,157,70,0) 100%);
+  box-shadow: 0 -5px 15px rgba(232, 157, 70, 0.4);
+}
+
+.snapshot-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #E89D46;
+  margin-bottom: 24px;
+}
+
+.snapshot-header svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2.5;
+}
+
+.snapshot-content {
+  font-size: 1.26rem;
+  line-height: 1.6;
+  color: #F9F9F9;
+  font-weight: 400;
+  margin: 0;
+}
+
+.snapshot-content strong,
+.snapshot-content b {
+  color: #E89D46; /* L'ambre pour "2000K" */
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(232, 157, 70, 0.2);
+}
+
+/* RESPONSIVE */
+@media screen and (max-width: 768px) {
+  .blog-hero-wrapper {
+    padding-top: 80px;
+    padding-bottom: 40px;
+  }
+  .expert-snapshot {
+    padding: 32px 24px;
+    margin-top: 40px;
+  }
+  .blog-hero-h1 {
+    font-size: 2.2rem;
+  }
+  .snapshot-content {
+    font-size: 1.16rem;
+  }
+}
+</style>
+
+<section class="blog-hero-wrapper">
+  
+  <div class="blog-hero-bg">
+    {% if section.settings.bg_image != blank %}
+      <img src="{{ section.settings.bg_image | img_url: 'master' }}" alt="Background" loading="lazy">
+    {% else %}
+      <div style="background-color: #05101E; width: 100%; height: 100%;"></div>
+    {% endif %}
+    <div class="blog-hero-overlay"></div>
+  </div>
+
+  <div class="blog-hero-content">
+    {% if section.settings.tag != blank %}
+      <div class="blog-hero-tag">{{ section.settings.tag }}</div>
+    {% endif %}
+
+    <h1 class="blog-hero-h1">
+      {{ section.settings.title_white }}
+      {% if section.settings.title_amber != blank %}
+        <span class="amber-italic">{{ section.settings.title_amber }}</span>
+      {% endif %}
+    </h1>
+
+    {% if section.settings.intro_desc != blank %}
+      <p class="blog-hero-intro">{{ section.settings.intro_desc }}</p>
+    {% endif %}
+
+    <!-- LA PÉPITE EN 30 SECONDES -->
+    <div class="expert-snapshot">
+      <div class="snapshot-header">
+        <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        {{ section.settings.snapshot_title }}
+      </div>
+      <div class="snapshot-content">
+        {{ section.settings.snapshot_text }}
+      </div>
+    </div>
+  </div>
+
+</section>

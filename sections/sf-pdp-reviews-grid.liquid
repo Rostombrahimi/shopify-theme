@@ -1,0 +1,204 @@
+{{ 'sf-pdp-reviews-grid.css' | asset_url | stylesheet_tag }}
+
+<div id="sf-reviews-section" class="sf-reviews-wrapper">
+  <div class="sf-reviews-container">
+    
+    {%- if section.settings.show_header -%}
+      <div class="sf-reviews-header">
+        <div class="sf-reviews-header-score">
+          <h2>{{ section.settings.average_score }}</h2>
+          <div class="sf-reviews-header-stars">
+            {%- for i in (1..5) -%}
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            {%- endfor -%}
+          </div>
+          <p>{{ section.settings.total_reviews }}</p>
+        </div>
+        <button class="sf-reviews-write-btn" onclick="document.getElementById('sf-review-form-container').classList.toggle('active')">Rédiger un avis</button>
+      </div>
+
+      <div id="sf-review-form-container" class="sf-review-form-container">
+        {% form 'contact', id: 'sf-review-form' %}
+          {% if form.posted_successfully? %}
+            <div class="sf-review-success">
+              Merci ! Votre avis a été soumis avec succès et est en cours de modération.
+            </div>
+            <style>
+              #sf-review-form-container { display: block !important; }
+              .sf-review-form-fields { display: none; }
+            </style>
+          {% endif %}
+
+          <div class="sf-review-form-fields">
+            <div class="sf-review-form-group sf-review-rating-group">
+              <label>Votre note</label>
+              <div class="sf-review-form-stars" id="sf-review-interactive-stars">
+                {%- for i in (1..5) -%}
+                  <svg data-value="{{ i }}" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                {%- endfor -%}
+              </div>
+              <input type="hidden" name="contact[rating]" id="sf-review-rating-input" value="5" required>
+            </div>
+
+            <div class="sf-review-form-row">
+              <div class="sf-review-form-group">
+                <label for="review-name">Nom et Prénom</label>
+                <input type="text" id="review-name" name="contact[name]" required>
+              </div>
+              <div class="sf-review-form-group">
+                <label for="review-email">Email (non publié)</label>
+                <input type="email" id="review-email" name="contact[email]" required>
+              </div>
+            </div>
+
+            <div class="sf-review-form-group">
+              <label for="review-title">Titre de l'avis</label>
+              <input type="text" id="review-title" name="contact[review_title]" required>
+            </div>
+
+            <div class="sf-review-form-group">
+              <label for="review-body">Votre message</label>
+              <textarea id="review-body" name="contact[body]" rows="4" required></textarea>
+            </div>
+
+            <button type="submit" class="sf-reviews-submit-btn">Envoyer l'avis</button>
+          </div>
+        {% endform %}
+      </div>
+    {%- endif -%}
+
+    <div class="sf-reviews-grid">
+      {%- for block in section.blocks -%}
+        <div class="sf-review-card" {{ block.shopify_attributes }}>
+          <div class="sf-review-card-header">
+            <div class="sf-review-stars">
+              {%- for i in (1..5) -%}
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="{% if i <= block.settings.rating %}currentColor{% else %}none{% endif %}" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              {%- endfor -%}
+            </div>
+            <span class="sf-review-date">{{ block.settings.date }}</span>
+          </div>
+          <h3 class="sf-review-title">{{ block.settings.title | escape }}</h3>
+          <div class="sf-review-content">{{ block.settings.content }}</div>
+          <div class="sf-review-author">
+            <span class="sf-review-author-name">{{ block.settings.author }}</span>
+            <span class="sf-review-verified">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+              Acheteur certifié
+            </span>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const starContainer = document.getElementById('sf-review-interactive-stars');
+    if (!starContainer) return;
+
+    const stars = starContainer.querySelectorAll('svg');
+    const ratingInput = document.getElementById('sf-review-rating-input');
+
+    function setStars(value) {
+      stars.forEach(star => {
+        if (parseInt(star.dataset.value) <= value) {
+          star.setAttribute('fill', 'currentColor');
+        } else {
+          star.setAttribute('fill', 'none');
+        }
+      });
+    }
+
+    stars.forEach(star => {
+      star.addEventListener('click', function() {
+        const val = parseInt(this.dataset.value);
+        ratingInput.value = val;
+        setStars(val);
+      });
+    });
+
+    // Set initial 5-star state
+    setStars(5);
+  });
+</script>
+
+{% schema %}
+{
+  "name": "✨ Grille d'Avis Premium",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_header",
+      "label": "Afficher l'en-tête global",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "average_score",
+      "label": "Note Moyenne",
+      "default": "4.9"
+    },
+    {
+      "type": "text",
+      "id": "total_reviews",
+      "label": "Texte total des avis",
+      "default": "Basé sur 128 avis"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Avis Client",
+      "settings": [
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Nom de l'auteur",
+          "default": "Jean D."
+        },
+        {
+          "type": "text",
+          "id": "date",
+          "label": "Date",
+          "default": "Il y a 2 jours"
+        },
+        {
+          "type": "range",
+          "id": "rating",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "label": "Note",
+          "default": 5
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Titre de l'avis",
+          "default": "Incroyable qualité"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Contenu de l'avis",
+          "default": "<p>La finition est parfaite. Cet objet attire tous les regards dans mon salon, je recommande à 100%.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "✨ Grille d'Avis Premium",
+      "blocks": [
+        { "type": "review" },
+        { "type": "review" },
+        { "type": "review" },
+        { "type": "review" }
+      ]
+    }
+  ]
+}
+{% endschema %}

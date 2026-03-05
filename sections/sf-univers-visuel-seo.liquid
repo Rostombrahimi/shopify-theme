@@ -1,0 +1,79 @@
+{% schema %}
+{
+  "name": "SEO Texte Discret (Animé)",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "seo_text",
+      "label": "Texte SEO (Discret)",
+      "default": "Nos lampes animé sont pensées pour mettre en valeur les univers manga et pop culture sans sacrifier le confort visuel. Chaque licence est travaillée comme une ambiance à part entière, afin de créer une immersion cohérente dans une chambre, un setup visuel ou un espace de collection."
+    }
+  ],
+  "presets": [
+    {
+      "name": "SEO Texte Discret (Animé)",
+      "category": "Text"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+/* Section SEO Discrète - Univers Animé */
+#shopify-section-{{ section.id }} .seo-discreet-anime-section {
+  background-color: var(--illu-night, #081A32);
+  padding: 60px 2rem 80px 2rem;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+/* Léger séparateur supérieur très discret */
+#shopify-section-{{ section.id }} .seo-discreet-anime-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  max-width: 600px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+}
+
+#shopify-section-{{ section.id }} .seo-anime-content {
+  max-width: 800px;
+  text-align: center;
+}
+
+#shopify-section-{{ section.id }} .seo-anime-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1rem; /* Augmenté pour la lisibilité client */
+  line-height: 1.7;
+  color: rgba(249, 249, 249, 0.5); /* Opacité de base plus lisible */
+  margin: 0;
+  font-weight: 400;
+  transition: color 0.3s ease;
+}
+
+/* L'opacité remonte si on survole le bloc */
+#shopify-section-{{ section.id }} .seo-anime-content:hover .seo-anime-text {
+  color: rgba(249, 249, 249, 0.85); /* Devient quasi blanc au survol */
+}
+
+@media (max-width: 768px) {
+  #shopify-section-{{ section.id }} .seo-discreet-anime-section {
+    padding: 40px 1.5rem 60px 1.5rem;
+  }
+}
+</style>
+
+<div class="sf-stitch seo-discreet-anime-section">
+  <div class="seo-anime-content">
+    {%- if section.settings.seo_text != blank -%}
+      <p class="seo-anime-text">{{ section.settings.seo_text | newline_to_br }}</p>
+    {%- endif -%}
+  </div>
+</div>

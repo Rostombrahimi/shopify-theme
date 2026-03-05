@@ -1,0 +1,386 @@
+{% schema %}
+{
+  "name": "Expertise Univers",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "NOTRE APPROCHE"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Heading",
+      "default": "Une expertise qui s'adapte à<br>vos besoins."
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Découvrez comment Illuminées transforme chaque espace grâce à une lumière pensée pour votre mode de vie."
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Main Button",
+      "default": "Explorer tous nos univers"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "universe",
+      "name": "Universe Card",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "lamp", "label": "Desk Lamp (Quotidien)" },
+            { "value": "gamepad", "label": "Gamepad (Visuel)" },
+            { "value": "moon", "label": "Moon (Cocon)" }
+          ],
+          "default": "lamp"
+        },
+        {
+          "type": "textarea",
+          "id": "custom_svg",
+          "label": "Custom SVG (Overrides Icon Select)"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Espace Quotidien"
+        },
+        {
+          "type": "text",
+          "id": "tags",
+          "label": "Tags (Separated by •)",
+          "default": "CLARTÉ • FONCTIONNALITÉ • SOBRIÉTÉ"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Une approche pragmatique pour vos espaces de travail et de vie, alliant efficacité lumineuse et design épuré pour un quotidien simplifié."
+        },
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "Link Text",
+          "default": "Découvrir l'approche Quotidien →"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Link Target"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Expertise Univers",
+      "blocks": [
+        { "type": "universe", "settings": { "icon": "lamp", "title": "Espace Quotidien", "tags": "CLARTÉ • FONCTIONNALITÉ • SOBRIÉTÉ", "description": "Une approche pragmatique pour vos espaces de travail et de vie, alliant efficacité lumineuse et design épuré pour un quotidien simplifié.", "link_text": "Découvrir l'approche Quotidien →" } },
+        { "type": "universe", "settings": { "icon": "gamepad", "title": "Univers Visuel", "tags": "AMBIANCE • EXPRESSION • IDENTITÉ", "description": "Pour les passionnés de pop-culture et de gaming, nous créons des atmosphères immersives et uniques qui affirment votre style personnel.", "link_text": "Découvrir l'approche Visuelle →" } },
+        { "type": "universe", "settings": { "icon": "moon", "title": "Petit Cocon", "tags": "DOUCEUR • SÉCURITÉ • SÉRÉNITÉ", "description": "Une conception pensée pour la tranquillité des parents et le bien-être des enfants, utilisant des matériaux sûrs et une lumière apaisante.", "link_text": "Découvrir l'approche Cocon →" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+/* CSS Compilé Final */
+.universe-specifics-section {
+  background-color: #081A32;
+  padding: 100px 4rem 140px 4rem; /* Padding bottom extra for CTA */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.universe-specifics-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 5rem auto;
+}
+
+.universe-badge {
+  display: inline-block;
+  color: #E89D46;
+  font-size: 0.83rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  padding: 8px 24px;
+  border-radius: 99px;
+  border: 1px solid rgba(232, 157, 70, 0.3);
+  background: rgba(232, 157, 70, 0.05); 
+  backdrop-filter: blur(8px);
+}
+
+.universe-h2 {
+  font-size: clamp(2.75rem, 5.5vw, 4.4rem);
+  color: #F9F9F9;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+.universe-desc {
+  font-size: 1.26rem;
+  color: rgba(249, 249, 249, 0.7);
+  line-height: 1.6;
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+/* Grille des Univers */
+.universe-specifics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem; /* ~40px */
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Style de Carte Expert */
+.universe-card-expert {
+  /* Match mockup color (#17212F approx or slightly lighter than bg) */
+  background: #17212F; 
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 32px;
+  padding: 48px 40px;
+  text-align: left; /* Text aligns left on the mockup */
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align elements left */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  color: inherit;
+}
+
+.universe-card-expert:hover {
+  transform: translateY(-12px);
+  border-color: rgba(232, 157, 70, 0.3);
+  background: #1A2636;
+  /* Contrast Enhancement as requested */
+  filter: contrast(1.05); 
+}
+
+/* Icon Container */
+.universe-card-icon-box {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: rgba(232, 157, 70, 0.08); /* Amber subtle */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2.5rem;
+}
+
+/* Base icon svg styling */
+.universe-card-icon-box svg {
+  width: 32px;
+  height: 32px;
+  /* Lueur de Badge / Icon glow */
+  filter: drop-shadow(0 0 12px rgba(232, 157, 70, 0.25));
+  transition: all 0.3s ease;
+}
+
+.universe-card-expert:hover .universe-card-icon-box svg {
+  filter: drop-shadow(0 0 15px rgba(232, 157, 70, 0.5));
+}
+
+/* Card Text */
+.universe-card-expert h3 {
+  color: #F9F9F9;
+  font-size: 1.76rem;
+  font-weight: 600;
+  margin: 0 0 0.75rem 0;
+  letter-spacing: -0.01em;
+}
+
+.universe-tags {
+  color: #E89D46;
+  font-size: 0.83rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
+
+.universe-card-expert p {
+  color: rgba(249, 249, 249, 0.65);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 0;
+  flex-grow: 1; 
+  padding-bottom: 3rem; /* Push the link down */
+}
+
+/* Footer Link */
+.universe-link {
+  margin-top: auto;
+  color: #E89D46;
+  font-weight: 700;
+  font-size: 0.99rem;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+}
+
+.universe-card-expert:hover .universe-link {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+/* Main Call To Action Button at the very bottom */
+.universe-cta-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 6rem;
+}
+
+.btn-pill-amber-main {
+  background: #E89D46;
+  color: #081A32;
+  border: 1px solid #E89D46;
+  padding: 18px 40px;
+  border-radius: 99px;
+  font-weight: 700;
+  font-size: 1.21rem;
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: 0 10px 25px rgba(232, 157, 70, 0.2);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-pill-amber-main svg {
+  width: 18px;
+  height: 18px;
+  stroke: #081A32;
+  fill: none;
+  stroke-width: 2;
+}
+
+.btn-pill-amber-main:hover {
+  transform: translateY(-5px);
+  background: #F0A956;
+  border-color: #F0A956;
+  box-shadow: 0 15px 35px rgba(232, 157, 70, 0.35);
+}
+
+/* Responsive */
+@media screen and (max-width: 1024px) {
+  .universe-specifics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .universe-specifics-section {
+    padding: 80px 2rem;
+  }
+  .universe-specifics-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .universe-h2 {
+    font-size: 2.75rem;
+  }
+}
+</style>
+
+<section class="universe-specifics-section">
+  
+  <div class="universe-specifics-header">
+    {% if section.settings.badge_text != blank %}
+      <div class="universe-badge">{{ section.settings.badge_text }}</div>
+    {% endif %}
+    
+    {% if section.settings.title != blank %}
+      <h2 class="universe-h2">{{ section.settings.title }}</h2>
+    {% endif %}
+    
+    {% if section.settings.description != blank %}
+      <p class="universe-desc">{{ section.settings.description }}</p>
+    {% endif %}
+  </div>
+
+  <div class="universe-specifics-grid">
+    {% for block in section.blocks %}
+      <a href="{{ block.settings.link_url | default: '#' }}" class="universe-card-expert" {{ block.shopify_attributes }}>
+        
+        <div class="universe-card-icon-box">
+          {% if block.settings.custom_svg != blank %}
+            {{ block.settings.custom_svg }}
+          {% else %}
+            {% case block.settings.icon %}
+              {% when 'lamp' %}
+                <!-- Desk Lamp style matching mockup -->
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 3C7.58172 3 4 6.58172 4 11V15H20V11C20 6.58172 16.4183 3 12 3Z" stroke="#E89D46" stroke-width="1.2" stroke-linecap="round"/>
+                  <path d="M2 15H22M12 15V21M7 21H17" stroke="#E89D46" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              {% when 'gamepad' %}
+                <!-- Gamepad style matching mockup -->
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6 12H8M7 11V13M15 11V11.01M18 13V13.01M6 9C6 7.34315 7.34315 6 9 6H15C16.6569 6 18 7.34315 18 9V15C18 16.6569 16.6569 18 15 18H9C7.34315 18 6 16.6569 6 15V9Z" stroke="#E89D46" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M12 15s-2.5-1-2.5-2.5M12 15s2.5-1 2.5-2.5" stroke="#E89D46" stroke-width="1" opacity="0.5"/>
+                </svg>
+              {% when 'moon' %}
+                <!-- Moon Solid style matching mockup -->
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79Z" stroke="#E89D46" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M11 7L11.5 8L12.5 8.5L11.5 9L11 10L10.5 9L9.5 8.5L10.5 8L11 7Z" fill="#E89D46" opacity="0.6"/>
+                </svg>
+            {% endcase %}
+          {% endif %}
+        </div>
+        
+        <h3>{{ block.settings.title }}</h3>
+        <div class="universe-tags">{{ block.settings.tags }}</div>
+        <p>{{ block.settings.description }}</p>
+        
+        <span class="universe-link">
+          {{ block.settings.link_text }}
+        </span>
+      </a>
+    {% endfor %}
+  </div>
+
+  <div class="universe-cta-container">
+    {% if section.settings.cta_text != blank %}
+      <a href="{{ section.settings.cta_link | default: '#' }}" class="btn-pill-amber-main">
+        {{ section.settings.cta_text }}
+        <!-- Grid Icon -->
+        <svg viewBox="0 0 24 24">
+          <rect x="3" y="3" width="7" height="7" rx="1"></rect>
+          <rect x="14" y="3" width="7" height="7" rx="1"></rect>
+          <rect x="14" y="14" width="7" height="7" rx="1"></rect>
+          <rect x="3" y="14" width="7" height="7" rx="1"></rect>
+        </svg>
+      </a>
+    {% endif %}
+  </div>
+  
+</section>

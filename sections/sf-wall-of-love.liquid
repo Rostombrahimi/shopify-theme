@@ -1,0 +1,578 @@
+<div class="sf-stitch sf-wall-of-love wol-section">
+  <style>
+    /* Section Ils Nous Aiment - sf-wall-of-love.css */
+    .wol-section {
+      background-color: var(--illu-bg-night);
+      padding: 100px 40px;
+    }
+
+    .wol-header {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 60px auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Heartbeat Animation */
+    @keyframes heartbeat {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.15); } /* Slightly stronger scale for better visibility */
+      100% { transform: scale(1); }
+    }
+
+    .icon-heart {
+      animation: heartbeat 1.5s infinite ease-in-out;
+      color: #EF4444; /* Force red icon color */
+    }
+
+    .wol-top-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 6px 16px;
+      /* Glassmorphism */
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 99px;
+      font-size: 1.24rem; /* Matched with 'Notre philosophie' subtitle size */
+      font-weight: var(--fw-bold);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 2rem;
+      color: var(--illu-text-cream);
+    }
+
+    .wol-title {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      color: var(--illu-text-cream);
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      font-weight: var(--fw-bold);
+    }
+
+    /* Lueur du titre */
+    .wol-title em {
+      font-style: italic;
+      color: var(--illu-accent-amber);
+      text-shadow: 0 0 20px rgba(232, 157, 70, 0.4);
+    }
+
+    .wol-desc {
+      font-size: 1.24rem;
+      color: var(--illu-text-cream);
+      opacity: 0.75;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+      max-width: 600px;
+    }
+
+    .wol-global-rating {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--illu-text-cream);
+      font-size: 0.99rem;
+      font-weight: var(--fw-semibold);
+    }
+
+    .wol-global-rating .stars {
+      color: var(--illu-accent-amber);
+      display: flex;
+      gap: 2px;
+    }
+
+    .wol-global-rating span {
+      opacity: 0.6;
+      font-size: 0.88rem;
+      font-weight: var(--fw-light);
+      margin-left: 0.5rem;
+    }
+
+    .wol-grid {
+      column-count: 3; /* Masonry effect simple sur desktop */
+      column-gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .wol-card {
+      break-inside: avoid;
+      margin-bottom: 24px;
+      background-color: var(--illu-bg-night-light);
+      border-radius: var(--illu-radius-chubby);
+      padding: 32px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: var(--illu-transition-soft);
+      position: relative;
+    }
+
+    .wol-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(232, 157, 70, 0.2);
+    }
+
+    /* Traitement Image (si présent) */
+    .wol-card-image {
+      width: 100%;
+      height: auto;
+      border-radius: calc(var(--illu-radius-chubby) / 1.5);
+      margin-bottom: 1.5rem;
+      object-fit: cover;
+      aspect-ratio: 4/3;
+      filter: grayscale(20%) contrast(1.1); /* Esthétique sobre */
+    }
+
+    .wol-card-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+    }
+
+    .wol-stars {
+      color: var(--illu-accent-amber);
+      display: flex;
+      gap: 3px;
+    }
+
+    .wol-quote-icon {
+      color: rgba(255,255,255,0.05);
+      width: 32px;
+      height: 32px;
+      position: absolute;
+      top: 32px;
+      right: 32px;
+    }
+    
+    .wol-card-header.has-image .wol-quote-icon {
+        display: none; /* Hide huge quote mark if there's an image block there */
+    }
+
+    .wol-text {
+      color: var(--illu-text-cream);
+      font-size: 1.1rem;
+      line-height: 1.6;
+      opacity: 0.9;
+      margin-bottom: 2rem;
+    }
+
+    /* Increased quote text size for variation if needed based on design */
+    .wol-card[data-featured="true"] .wol-text {
+        font-size: 1.38rem;
+        font-weight: var(--fw-bold);
+    }
+
+    .wol-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .wol-author-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: var(--illu-accent-amber);
+      color: var(--illu-bg-night);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: var(--fw-bold);
+      flex-shrink: 0;
+      object-fit: cover; /* if it's an image */
+    }
+
+    .wol-author-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .wol-author-name {
+      color: var(--illu-text-cream);
+      font-weight: var(--fw-bold);
+      font-size: 0.99rem;
+    }
+
+    .wol-author-role {
+      color: var(--illu-text-cream);
+      font-size: 0.88rem;
+      opacity: 0.6;
+    }
+
+    .wol-verified {
+      color: var(--illu-expert-blue);
+      font-size: 0.83rem;
+      font-weight: var(--fw-bold);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 4px;
+    }
+
+    .wol-verified svg {
+        width: 12px;
+        height: 12px;
+    }
+
+    /* Bottom CTA area */
+    .wol-cta-container {
+      text-align: center;
+      margin-top: 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .btn-wol {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      background: #EF4444; /* Rouge passion/coeur */
+      color: white;
+      padding: 1rem 2.5rem;
+      border-radius: var(--illu-radius-pill);
+      font-weight: var(--fw-bold);
+      text-decoration: none;
+      transition: var(--illu-transition-soft);
+      box-shadow: 0 10px 20px rgba(239, 68, 68, 0.2);
+    }
+
+    .btn-wol:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 25px rgba(239, 68, 68, 0.3);
+    }
+    
+    .wol-trust-footer {
+        display: flex;
+        gap: 2rem;
+        color: var(--illu-text-cream);
+        opacity: 0.75; /* Slightly increased visibility */
+        font-size: 0.97rem; /* +10% increase */
+        font-weight: var(--fw-light);
+    }
+    
+    .wol-trust-footer span {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    /* Mobile Responsive */
+    @media screen and (max-width: 990px) {
+      .wol-section {
+        padding: 60px 20px;
+      }
+      .wol-grid {
+        columns: 1; /* Fallback to 1 column on mobile */
+      }
+      .wol-title {
+        font-size: 2.5rem;
+      }
+      .wol-trust-footer {
+          flex-direction: column;
+          gap: 1rem;
+          align-items: center;
+      }
+    }
+    
+    @media screen and (min-width: 991px) and (max-width: 1200px) {
+        .wol-grid {
+            columns: 2; /* 2 columns on tablet landscape */
+        }
+    }
+  </style>
+
+  <div class="wol-header">
+    {%- if section.settings.badge_text != blank -%}
+      <div class="wol-top-badge">
+        <svg class="icon-heart" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+        {{ section.settings.badge_text | escape }}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.title != blank -%}
+      <h2 class="wol-title">
+        {{ section.settings.title | replace: '<em>', '<em>' | replace: '</em>', '</em>' }}
+      </h2>
+    {%- endif -%}
+
+    {%- if section.settings.description != blank -%}
+      <div class="wol-desc">
+        {{ section.settings.description }}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.show_global_rating -%}
+    <div class="wol-global-rating">
+        <div class="stars">
+            {%- for i in (1..5) -%}
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
+            {%- endfor -%}
+        </div>
+        {{ section.settings.global_rating_text | escape }}
+    </div>
+    {%- endif -%}
+  </div>
+
+  <div class="wol-grid">
+    {%- for block in section.blocks -%}
+      <div class="wol-card" {{ block.shopify_attributes }} {% if block.settings.is_featured %}data-featured="true"{% endif %}>
+        
+        <div class="wol-card-header {% if block.settings.image != blank %}has-image{% endif %}">
+          <div class="wol-stars">
+             {%- assign star_count = block.settings.stars | times: 1 -%}
+             {%- for i in (1..5) -%}
+                {%- if i <= star_count -%}
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                {%- else -%}
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                {%- endif -%}
+             {%- endfor -%}
+          </div>
+          {%- if block.settings.image == blank -%}
+            <svg class="wol-quote-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M14.017 18L14.017 10.609C14.017 4.905 17.748 1.039 23 0L23.995 2.151C21.563 3.068 20 5.084 20 8.352V8.412C21.656 8.526 23 9.871 23 11.531V18H14.017ZM0 18V10.609C0 4.905 3.748 1.038 9 0L9.996 2.151C7.563 3.068 6 5.084 6 8.352V8.412C7.656 8.526 9 9.871 9 11.531V18H0Z"/>
+            </svg>
+          {%- endif -%}
+        </div>
+
+        {%- if block.settings.image != blank -%}
+          <img
+            src="{{ block.settings.image | image_url: width: 600 }}"
+            alt="User photo"
+            class="wol-card-image"
+            loading="lazy"
+            width="{{ block.settings.image.width }}"
+            height="{{ block.settings.image.height }}"
+          >
+        {%- endif -%}
+
+        {%- if block.settings.text != blank -%}
+          <div class="wol-text">
+            "{{ block.settings.text | escape }}"
+          </div>
+        {%- endif -%}
+
+        <div class="wol-author">
+          {%- if block.settings.avatar != blank -%}
+             <img src="{{ block.settings.avatar | image_url: width: 100 }}" class="wol-author-avatar" alt="{{ block.settings.author_name }}" loading="lazy" width="40" height="40">
+          {%- else -%}
+            <div class="wol-author-avatar">
+              {{ block.settings.author_name | slice: 0 | upcase }}
+            </div>
+          {%- endif -%}
+          <div class="wol-author-info">
+            <span class="wol-author-name">{{ block.settings.author_name | escape }}</span>
+            <span class="wol-author-role">{{ block.settings.author_role | escape }}</span>
+            {%- if block.settings.is_verified -%}
+               <span class="wol-verified">
+                    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                    Achat vérifié
+               </span>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+
+  <div class="wol-cta-container">
+    {%- if section.settings.btn_text != blank and section.settings.btn_link != blank -%}
+      <a href="{{ section.settings.btn_link }}" class="btn-wol">
+        {{ section.settings.btn_text | escape }}
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    {%- endif -%}
+    
+    <div class="wol-trust-footer">
+        <span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Garantie 2 ans</span>
+        <span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Livraison offerte</span>
+        <span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 12a9 9 0 109-9 9.75 9.75 0 00-6.74 2.74L3 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 3v5h5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 30 jours pour changer d'avis</span>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "SF Wall of Love",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Texte du badge (Cœur)",
+      "default": "ILS NOUS AIMENT"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Titre principal",
+      "default": "L'avis de nos clients <em>illuminés</em>",
+      "info": "Utilisez <em>mot</em> pour appliquer l'effet brillant."
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Sous-titre / Description",
+      "default": "Découvrez pourquoi nos créations trouvent leur place dans les intérieurs les plus exigeants. Une transparence totale, garantie par nos artisans."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_global_rating",
+      "label": "Afficher la note globale",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "global_rating_text",
+      "label": "Texte Note Globale",
+      "default": "4.9/5 | Basé sur 1,240 avis"
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Texte Bouton CTA",
+      "default": "Rejoindre nos clients illuminés"
+    },
+    {
+      "type": "url",
+      "id": "btn_link",
+      "label": "Lien Bouton CTA"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Avis Client",
+      "settings": [
+        {
+          "type": "range",
+          "id": "stars",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "label": "Nombre d'étoiles",
+          "default": 5
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Texte de l'avis",
+          "default": "Une qualité de fabrication rare de nos jours..."
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Photo d'illustration (Optionnel)",
+          "info": "Pour ajouter une photo au dessus de l'avis"
+        },
+        {
+          "type": "text",
+          "id": "author_name",
+          "label": "Nom de l'auteur",
+          "default": "Sophie L."
+        },
+        {
+          "type": "text",
+          "id": "author_role",
+          "label": "Rôle / Description de l'auteur",
+          "default": "Architecte d'intérieur"
+        },
+        {
+          "type": "image_picker",
+          "id": "avatar",
+          "label": "Avatar de l'auteur (Optionnel)",
+          "info": "Si vide, affiche l'initiale"
+        },
+        {
+          "type": "checkbox",
+          "id": "is_verified",
+          "label": "Label 'Achat vérifié'",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "is_featured",
+          "label": "Avis mis en avant (Texte plus gros)",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "SF Wall of Love",
+      "category": "Testimonials",
+      "blocks": [
+        {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "text": "Depuis que j'ai cette lampe, mon bureau est transformé. La lumière est douce, parfaite pour le code tard le soir sans fatiguer les yeux.",
+            "author_name": "Julien",
+            "author_role": "Développeur Fullstack",
+            "is_verified": true
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "text": "Juste incroyable. La finition laiton est sublime.",
+            "author_name": "Clara L.",
+            "author_role": "Paris, France",
+            "is_verified": true,
+            "is_featured": true
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "text": "Une qualité de fabrication rare de nos jours. Le design minimaliste s'intègre partout. J'ai commandé le modèle 'Aurore' pour un client, et j'en ai pris un pour moi le lendemain.",
+            "author_name": "Sophie L.",
+            "author_role": "Architecte d'intérieur",
+            "is_verified": true
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "text": "J'avais un doute sur l'installation de l'applique murale. J'ai contacté le support un dimanche et j'ai eu une réponse en 15 minutes avec une vidéo explicative. C'est rare d'avoir un tel niveau de service. La lampe est installée et elle est magnifique.",
+            "author_name": "Thomas R.",
+            "author_role": "Chef de projet",
+            "is_verified": true
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "text": "Livraison rapide et emballage très soigné, aucune casse possible. Je recommande vivement pour une ambiance tamisée dans un studio photo ou un salon cosy.",
+            "author_name": "Marc D.",
+            "author_role": "Photographe",
+            "is_verified": true
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

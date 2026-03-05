@@ -1,0 +1,360 @@
+{{ 'sf-pdp-main.css' | asset_url | stylesheet_tag }}
+
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+
+{%- style -%}
+  /* Optional dynamic styles */
+{%- endstyle -%}
+
+<section id="MainProduct-{{ section.id }}" class="sf-pdp-section" data-section="{{ section.id }}">
+  <div class="sf-pdp-wrapper">
+    
+    <!-- Breadcrumbs -->
+    <nav class="sf-pdp-breadcrumb" aria-label="breadcrumbs">
+      <a href="{{ routes.root_url }}">Accueil</a>
+      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+      {% if collection %}
+        <a href="{{ collection.url }}">{{ collection.title }}</a>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+      {% endif %}
+      <span aria-current="page">{{ product.title }}</span>
+    </nav>
+
+    <div class="sf-pdp-grid">
+      <!-- Zone Gauche (Galerie) -->
+      <div class="sf-pdp-gallery-wrap">
+        <div class="sf-pdp-main-image-container">
+          {% if product.featured_media != null %}
+            <img 
+              src="{{ product.featured_media | image_url: width: 1000 }}"
+              alt="{{ product.featured_media.alt | escape }}"
+              class="product-gallery sf-pdp-main-image"
+              loading="eager"
+            >
+          {% else %}
+            {{ 'product-1' | placeholder_svg_tag: 'product-gallery sf-pdp-main-image' }}
+          {% endif %}
+        </div>
+        
+        <!-- Miniatures -->
+        {% if product.media.size > 1 %}
+          <div class="sf-pdp-thumbnails">
+            {% for media in product.media %}
+              <div class="sf-pdp-thumb {% if forloop.first %}is-active{% endif %}" data-media-id="{{ media.id }}" data-image-url="{{ media | image_url: width: 1000 }}">
+                <img src="{{ media | image_url: width: 150 }}" alt="{{ media.alt | escape }}" loading="lazy">
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+
+      <!-- Zone Droite (Achat & Info Sticky) -->
+      <div class="sf-pdp-sidebar-wrap">
+        <div class="pdp-sticky-container">
+          
+          {%- for block in section.blocks -%}
+            {%- case block.type -%}
+              {%- when '@app' -%}
+                {% render block %}
+                
+              {%- when 'badge' -%}
+                <div class="sf-pdp-badge" {{ block.shopify_attributes }}>
+                  {%- if block.settings.icon_svg != blank -%}
+                    {{ block.settings.icon_svg }}
+                  {%- else -%}
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                  {%- endif -%}
+                  {{ block.settings.text }}
+                </div>
+                
+              {%- when 'title' -%}
+                <h1 class="sf-pdp-title" {{ block.shopify_attributes }}>{{ product.title | escape }}</h1>
+
+              {%- when 'reviews' -%}
+                <a href="#sf-reviews-section" class="sf-pdp-reviews" {{ block.shopify_attributes }}>
+                  <div class="sf-pdp-stars sf-rating-{{ block.settings.rating }}">
+                    {%- for i in (1..5) -%}
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="{% if block.settings.rating > 0 and i <= block.settings.rating %}currentColor{% else %}none{% endif %}" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    {%- endfor -%}
+                  </div>
+                  {%- if block.settings.text != blank -%}
+                    <span class="sf-pdp-reviews-text">{{ block.settings.text }}</span>
+                  {%- endif -%}
+                </a>
+                
+              {%- when 'subtitle' -%}
+                {%- assign subtitle_text = product.metafields.custom.subtitle | default: block.settings.text -%}
+                {%- if subtitle_text != blank -%}
+                  <p class="sf-pdp-subtitle" {{ block.shopify_attributes }}>{{ subtitle_text | escape }}</p>
+                {%- endif -%}
+                
+              {%- when 'price' -%}
+                <div class="sf-pdp-price-wrap" {{ block.shopify_attributes }}>
+                  <span class="sf-pdp-price-current">{{ current_variant.price | money }}</span>
+                  {% if current_variant.compare_at_price > current_variant.price %}
+                    <span class="sf-pdp-price-compare">{{ current_variant.compare_at_price | money }}</span>
+                  {% endif %}
+                </div>
+                
+              {%- when 'buy_buttons' -%}
+                <div style="margin-bottom: 40px;" {{ block.shopify_attributes }}>
+                  <form method="post" action="/cart/add" id="product-form-{{ section.id }}" class="sf-pdp-form">
+                    <input type="hidden" name="id" value="{{ current_variant.id }}">
+                    
+                    <div class="sf-pdp-quantity-selector">
+                      <button type="button" class="sf-pdp-quantity-btn" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">−</button>
+                      <input class="sf-pdp-quantity-input" min="1" type="number" name="quantity" value="1">
+                      <button type="button" class="sf-pdp-quantity-btn" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">+</button>
+                    </div>
+
+                    <div class="sf-pdp-add-to-cart-wrapper">
+                      <button type="submit" name="add" class="btn-add-to-cart" {% unless current_variant.available %}disabled{% endunless %}>
+                        {% if current_variant.available %}
+                          {{ block.settings.btn_text }}
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                        {% else %}
+                          Rupture de stock
+                        {% endif %}
+                      </button>
+                    </div>
+                  </form>
+                </div>
+                
+              {%- when 'reassurance' -%}
+                <div class="sf-pdp-feature-item" style="margin-bottom: 16px;" {{ block.shopify_attributes }}>
+                  {%- if block.settings.icon_svg != blank -%}
+                    <span style="color: #E89D46; display: flex;">{{ block.settings.icon_svg }}</span>
+                  {%- else -%}
+                    <svg class="sf-pdp-feature-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                  {%- endif -%}
+                  {{ block.settings.text }}
+                </div>
+                
+              {%- when 'description' -%}
+                {% if product.description != blank %}
+                <div class="glass-accordion" style="margin-bottom: 16px;" {{ block.shopify_attributes }}>
+                  <div class="glass-accordion-header">
+                    <div class="glass-accordion-title-wrap">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                      {{ block.settings.heading }}
+                    </div>
+                  </div>
+                  <div class="glass-accordion-content">
+                    {{ product.description }}
+                  </div>
+                </div>
+                {% endif %}
+                
+              {%- when 'accordion' -%}
+                <details class="glass-accordion" style="margin-bottom: 16px;" {{ block.shopify_attributes }}>
+                  <summary>
+                    <div class="glass-accordion-title-wrap">
+                      {%- if block.settings.icon_svg != blank -%}
+                        <span style="color: #E89D46; display: flex;">{{ block.settings.icon_svg }}</span>
+                      {%- else -%}
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                      {%- endif -%}
+                      {{ block.settings.heading }}
+                    </div>
+                    <svg class="glass-accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                  </summary>
+                  <div class="glass-accordion-content">
+                    {{ block.settings.content }}
+                    {{ block.settings.page.content }}
+                  </div>
+                </details>
+                
+            {%- endcase -%}
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Thumbnail Switch JS -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const mainImage = document.querySelector('.sf-pdp-main-image');
+    const thumbnails = document.querySelectorAll('.sf-pdp-thumb');
+
+    thumbnails.forEach(thumb => {
+      thumb.addEventListener('click', function() {
+        // Change main image src
+        const newSrc = this.getAttribute('data-image-url');
+        if(newSrc && mainImage) {
+          mainImage.src = newSrc;
+        }
+        
+        // Remove active class from all
+        thumbnails.forEach(t => t.classList.remove('is-active'));
+        // Add active class to clicked
+        this.classList.add('is-active');
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "badge",
+      "name": "Badge Expert",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Texte",
+          "default": "Expert Verified"
+        },
+        {
+          "type": "html",
+          "id": "icon_svg",
+          "label": "Icône SVG (optionnel)"
+        }
+      ]
+    },
+    {
+      "type": "title",
+      "name": "Titre",
+      "limit": 1
+    },
+    {
+      "type": "reviews",
+      "name": "Étoiles d'Avis",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "range",
+          "id": "rating",
+          "min": 0,
+          "max": 5,
+          "step": 1,
+          "label": "Note ({stars}/5)",
+          "default": 5
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Texte à côté des étoiles",
+          "default": "4.9/5 (128 avis)"
+        }
+      ]
+    },
+    {
+      "type": "subtitle",
+      "name": "Sous-titre",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Texte de secours (si pas de méta-champ)",
+          "default": "Un chef-d'œuvre artisanal capturant l'essence même de l'énergie cinétique pure."
+        }
+      ]
+    },
+    {
+      "type": "price",
+      "name": "Prix",
+      "limit": 1
+    },
+    {
+      "type": "buy_buttons",
+      "name": "Boutons d'achat",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "btn_text",
+          "label": "Texte du bouton",
+          "default": "Ajouter au panier"
+        }
+      ]
+    },
+    {
+      "type": "reassurance",
+      "name": "Point Réassurance",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Texte",
+          "default": "Livraison sécurisée Premium offerte"
+        },
+        {
+          "type": "html",
+          "id": "icon_svg",
+          "label": "Icône SVG custom"
+        }
+      ]
+    },
+    {
+      "type": "description",
+      "name": "Description Produit",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Titre d'entête",
+          "default": "Description"
+        }
+      ]
+    },
+    {
+      "type": "accordion",
+      "name": "Accordéon Info",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Titre",
+          "default": "Spécifications"
+        },
+        {
+          "type": "html",
+          "id": "icon_svg",
+          "label": "Icône SVG custom"
+        },
+        {
+          "type": "html",
+          "id": "content",
+          "label": "Contenu (texte statique)"
+        },
+        {
+          "type": "page",
+          "id": "page",
+          "label": "Contenu (depuis une page)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "✨ Produit Main PDP",
+      "blocks": [
+        { "type": "badge" },
+        { "type": "title" },
+        { "type": "reviews" },
+        { "type": "subtitle" },
+        { "type": "price" },
+        { "type": "buy_buttons" },
+        { "type": "reassurance" },
+        { "type": "reassurance" },
+        { "type": "description" },
+        { "type": "accordion" },
+        { "type": "accordion" }
+      ]
+    }
+  ],
+  "enabled_on": {
+    "templates": ["product"]
+  }
+}
+{% endschema %}

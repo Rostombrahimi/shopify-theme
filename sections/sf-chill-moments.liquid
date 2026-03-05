@@ -1,0 +1,316 @@
+{% schema %}
+{
+  "name": "Chill Moments",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "QUAND L'UTILISER ?"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Heading",
+      "default": "La lumière qui suit<br>votre rythme intérieur."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Moment",
+      "limit": 5,
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "moon", "label": "Moon" },
+            { "value": "pen", "label": "Pen/Creative" },
+            { "value": "music", "label": "Music Note" },
+            { "value": "book", "label": "Book" },
+            { "value": "person", "label": "Person" }
+          ],
+          "default": "moon"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Fin de soirée"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "Pour apaiser l'esprit et préparer la transition."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Chill Moments",
+      "blocks": [
+        { "type": "card", "settings": { "icon": "moon", "title": "Fin de soirée", "text": "Pour apaiser l'esprit et préparer la transition." } },
+        { "type": "card", "settings": { "icon": "pen", "title": "Session créative", "text": "Pour s'isoler dans sa bulle et laisser couler les idées." } },
+        { "type": "card", "settings": { "icon": "music", "title": "Écoute musicale", "text": "Pour que le son et l'ombre ne fassent qu'un." } },
+        { "type": "card", "settings": { "icon": "book", "title": "Lire ou écrire", "text": "Un éclairage juste, qui accompagne le silence." } },
+        { "type": "card", "settings": { "icon": "person", "title": "Atmosphère personnelle", "text": "Pour habiter son espace, en toute intimité." } }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+.chill-moments-section {
+  background-color: #081A32;
+  position: relative;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Overlay de Grille : Un dégradé linéaire subtil en background */
+.chill-moments-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(8, 26, 50, 1) 0%, rgba(12, 38, 70, 0.4) 50%, rgba(8, 26, 50, 1) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.chill-moments-container {
+  position: relative;
+  z-index: 2;
+  padding: 80px 4rem 120px 4rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Header */
+.chill-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 4rem auto;
+}
+
+.chill-badge {
+  color: #E89D46;
+  font-size: 0.83rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.chill-title {
+  font-size: clamp(2.5rem, 4.5vw, 4rem);
+  color: #F9F9F9;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+/* Grid */
+.chill-moments-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Card Styling */
+.moment-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 32px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Spanning logic from mockup (Card 5 spans 2 columns) */
+.moment-card:nth-child(5) {
+  grid-column: span 2;
+  display: flex;
+  flex-direction: row; /* Layout horizontal if needed, or keep vertical based on mockup */
+  align-items: center;
+  gap: 24px;
+}
+.moment-card:nth-child(5) .moment-content {
+  flex: 1;
+  margin-top: 0; /* Reset top margin for horizontal layout */
+}
+.moment-card:nth-child(5) .moment-icon-box {
+  margin-bottom: 0; /* Align perfectly in flex row */
+}
+
+/* Mockup clearly shows 5th item as vertical text flow but maybe wider, 
+actually mockup shows vertical flow. Let's force it. */
+.moment-card:nth-child(5) {
+  flex-direction: row;
+}
+
+.moment-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(232, 157, 70, 0.3);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* Icon */
+.moment-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(8, 26, 50, 0.5); /* Dark behind icon */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.moment-icon-box svg {
+  width: 20px;
+  height: 20px;
+  stroke: #E89D46;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  /* Lueur de Fond */
+  filter: drop-shadow(0 0 8px rgba(232, 157, 70, 0.25));
+}
+
+/* For Music Note special fill */
+.moment-icon-box svg.icon-solid {
+  fill: #E89D46;
+  stroke: none;
+}
+
+/* Content */
+.moment-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.moment-card h3 {
+  color: #F9F9F9;
+  font-size: 1.38rem;
+  font-weight: 600;
+  margin: 0 0 0.75rem 0;
+}
+
+.moment-card p {
+  color: rgba(249, 249, 249, 0.65);
+  font-size: 1.05rem;
+  line-height: 1.5;
+  margin: 0;
+  max-width: 240px;
+}
+
+.moment-card:nth-child(5) p {
+  max-width: none;
+}
+
+/* Responsive */
+@media screen and (max-width: 900px) {
+  .chill-moments-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .moment-card:nth-child(5) {
+    grid-column: span 2;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .moment-card:nth-child(5) .moment-icon-box {
+    margin-bottom: 24px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .chill-moments-section .chill-moments-container {
+    padding: 80px 2rem;
+  }
+  .chill-title {
+    font-size: 2.5rem;
+  }
+  .chill-moments-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .moment-card:nth-child(5) {
+    grid-column: span 1;
+  }
+}
+</style>
+
+<section class="chill-moments-section">
+  <div class="chill-moments-container">
+    
+    <div class="chill-header">
+      {% if section.settings.badge_text != blank %}
+        <span class="chill-badge">{{ section.settings.badge_text }}</span>
+      {% endif %}
+      {% if section.settings.title != blank %}
+        <h2 class="chill-title">{{ section.settings.title }}</h2>
+      {% endif %}
+    </div>
+
+    <div class="chill-moments-grid">
+      {% for block in section.blocks %}
+        <div class="moment-card" {{ block.shopify_attributes }}>
+          <div class="moment-icon-box">
+            {% case block.settings.icon %}
+              {% when 'moon' %}
+                <svg viewBox="0 0 24 24">
+                  <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79Z"/>
+                </svg>
+              {% when 'pen' %}
+                <svg viewBox="0 0 24 24">
+                  <line x1="4" y1="7" x2="16" y2="7"></line>
+                  <line x1="4" y1="12" x2="10" y2="12"></line>
+                  <line x1="4" y1="17" x2="8" y2="17"></line>
+                  <path d="M14 18l7-7-3-3-7 7v3h3z"></path>
+                </svg>
+              {% when 'music' %}
+                <svg viewBox="0 0 24 24" class="icon-solid">
+                  <path d="M9 18V5l12-2v13" fill="none" stroke="#E89D46" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <circle cx="6" cy="18" r="3" fill="#E89D46" stroke="none"/>
+                  <circle cx="18" cy="16" r="3" fill="#E89D46" stroke="none"/>
+                </svg>
+              {% when 'book' %}
+                <svg viewBox="0 0 24 24">
+                  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                </svg>
+              {% when 'person' %}
+                <svg viewBox="0 0 24 24">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+            {% endcase %}
+          </div>
+          
+          <div class="moment-content">
+            <h3>{{ block.settings.title }}</h3>
+            <p>{{ block.settings.text }}</p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>

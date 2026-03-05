@@ -1,0 +1,241 @@
+{{ 'sf-collection-plp.css' | asset_url | stylesheet_tag }}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    background-color: var(--illu-bg-night, #081A32);
+  }
+</style>
+
+{%- assign is_collection_page = false -%}
+{%- if request.page_type == 'collection' -%}
+  {%- assign is_collection_page = true -%}
+{%- endif -%}
+
+{%- assign display_collection = collection -%}
+{%- if is_collection_page == false and section.settings.custom_collection != blank -%}
+  {%- assign display_collection = section.settings.custom_collection -%}
+{%- endif -%}
+
+{% paginate display_collection.products by 24 %}
+
+<div class="sf-plp-banner">
+  <h1 class="sf-plp-banner-title">
+    {% if section.settings.title != blank %}
+      {{ section.settings.title | escape }}
+    {% elsif display_collection.title != blank %}
+      {{ display_collection.title | escape }}
+    {% else %}
+      Toutes nos Créations
+    {% endif %}
+  </h1>
+  {% if section.settings.subtitle != blank %}
+    <p class="sf-plp-banner-subtitle">{{ section.settings.subtitle | escape }}</p>
+  {% endif %}
+</div>
+
+<div class="sf-plp-container">
+  <aside class="sf-plp-sidebar">
+    <div class="sf-plp-sidebar-inner">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'filter_group' -%}
+          <details class="sf-plp-filter-group" open {{ block.shopify_attributes }}>
+            <summary class="sf-plp-filter-title">
+              {{ block.settings.title | escape }}
+              <span class="sf-plp-filter-icon">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+              </span>
+            </summary>
+            <div class="sf-plp-filter-content">
+              <ul class="sf-plp-filter-list">
+                {%- assign tags = block.settings.tags | split: ',' -%}
+                {%- for tag in tags -%}
+                  {%- assign trimmed_tag = tag | strip -%}
+                  {%- assign tag_handle = trimmed_tag | downcase -%}
+                  {%- if trimmed_tag != blank -%}
+                    <li class="sf-plp-filter-item">
+                      <button data-tag="{{ tag_handle }}" class="sf-plp-filter-pill {% if current_tags contains tag_handle %}is-active{% endif %}">
+                        {{ trimmed_tag }}
+                      </button>
+                    </li>
+                  {%- endif -%}
+                {%- endfor -%}
+              </ul>
+            </div>
+          </details>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </aside>
+
+  <main class="sf-plp-main">
+    <div class="plp-grid">
+      {%- assign products_list = display_collection.products -%}
+      {%- if is_collection_page == false and products_list == blank -%}
+        <!-- Fallback if no collection selected on non-collection page -->
+        <p style="color: white; margin: 40px; text-align: center; width: 100%; grid-column: 1 / -1;">Veuillez sélectionner une collection dans les paramètres de la section.</p>
+      {%- endif -%}
+
+      {% for product in products_list limit: 24 %}
+        <a href="{{ product.url | within: display_collection }}" class="glass-product-card">
+          <div class="glass-product-card-image-wrap">
+            {% if product.featured_image != blank %}
+              <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.title | escape }}" class="product-thumb-glow" loading="lazy">
+            {% else %}
+              {{ 'product-1' | placeholder_svg_tag: 'product-thumb-glow' }}
+            {% endif %}
+          </div>
+          <div class="glass-product-card-info">
+            <h3 class="glass-product-card-title">{{ product.title | escape }}</h3>
+            <p class="glass-product-card-price">{{ product.price | money }}</p>
+          </div>
+        </a>
+      {% else %}
+        {%- if is_collection_page or display_collection != blank -%}
+          <p style="color: white; margin: 40px; text-align: center; width: 100%; grid-column: 1 / -1;">Aucun produit trouvé dans cette collection.</p>
+        {%- endif -%}
+      {% endfor %}
+    </div>
+    
+    {%- if is_collection_page and paginate.pages > 1 -%}
+      <div style="margin: 40px auto; display: flex; justify-content: center; width: 100%;">
+        {% render 'pagination', paginate: paginate %}
+      </div>
+    {%- endif -%}
+  </main>
+</div>
+
+{% endpaginate %}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const pills = document.querySelectorAll('.sf-plp-filter-pill');
+    const gridContainer = document.querySelector('.plp-grid');
+    const collectionUrl = '{{ display_collection.url }}' || '/collections/all';
+    
+    pills.forEach(pill => {
+      pill.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // Toggle active state visually
+        this.classList.toggle('is-active');
+        
+        // Gather all currently active tags
+        const activeTags = Array.from(document.querySelectorAll('.sf-plp-filter-pill.is-active'))
+                               .map(p => p.getAttribute('data-tag'));
+        
+        // Construct new URL (Shopify handles multiple tags joined by '+')
+        let fetchUrl = collectionUrl;
+        if (activeTags.length > 0) {
+          fetchUrl += '/' + activeTags.join('+');
+        }
+        
+        // Show loading state
+        gridContainer.style.opacity = '0.5';
+        gridContainer.style.pointerEvents = 'none';
+        
+        fetch(fetchUrl)
+          .then(response => response.text())
+          .then(html => {
+            // Parse the new HTML
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            const newGrid = doc.querySelector('.plp-grid');
+            
+            if (newGrid) {
+              gridContainer.innerHTML = newGrid.innerHTML;
+            } else {
+              gridContainer.innerHTML = '<p style="color: white; margin: 40px; text-align: center; width: 100%; grid-column: 1 / -1;">Aucun produit trouvé avec ces filtres.</p>';
+            }
+            
+            // Remove loading state
+            gridContainer.style.opacity = '1';
+            gridContainer.style.pointerEvents = 'all';
+            
+            // Push state to browser history so URL updates without reload
+            window.history.pushState({path: fetchUrl}, '', fetchUrl);
+          })
+          .catch(error => {
+            console.error('Error fetching filtered products:', error);
+            gridContainer.style.opacity = '1';
+            gridContainer.style.pointerEvents = 'all';
+          });
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "✨ Galerie Collection PLP",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titre",
+      "default": "Toutes nos Créations"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Sous-titre",
+      "default": "L'EXPERTISE DE LA LUMIÈRE AU SERVICE DE VOS ÉMOTIONS"
+    },
+    {
+      "type": "collection",
+      "id": "custom_collection",
+      "label": "Collection (si utilisé hors d'une page collection)",
+      "info": "Utile si vous ajoutez cette section sur l'accueil."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "filter_group",
+      "name": "Groupe de Filtres",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Titre du Groupe (ex: Univers)",
+          "default": "Univers"
+        },
+        {
+          "type": "text",
+          "id": "tags",
+          "label": "Tags à inclure",
+          "info": "Séparez les tags par des virgules sans espace obligatoire. Ex: Pro, Setup, Cocon"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "✨ Galerie Collection PLP",
+      "settings": {
+        "title": "Toutes nos Créations",
+        "subtitle": "L'EXPERTISE DE LA LUMIÈRE AU SERVICE DE VOS ÉMOTIONS"
+      },
+      "blocks": [
+        {
+          "type": "filter_group",
+          "settings": {
+            "title": "Univers",
+            "tags": "Pro, Setup, Cocon"
+          }
+        },
+        {
+          "type": "filter_group",
+          "settings": {
+            "title": "Ambiance",
+            "tags": "Sereine, Dynamique, Nocturne"
+          }
+        }
+      ]
+    }
+  ],
+  "enabled_on": {
+    "templates": ["*"]
+  }
+}
+{% endschema %}

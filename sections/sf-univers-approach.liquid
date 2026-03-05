@@ -1,0 +1,228 @@
+{% schema %}
+{
+  "name": "Univers - Notre Approche",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge",
+      "label": "Badge",
+      "default": "NOTRE VISION"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Titre",
+      "default": "L'Excellence au service de l'immersion",
+      "info": "Utilisez <em>mot</em> pour appliquer l'effet brillant ambre."
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Texte",
+      "default": "Nous ne concevons pas de simples lampes. Chaque création est pensée pour transformer votre pièce en un véritable portail vers vos univers préférés."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Statistique",
+      "settings": [
+        {
+          "type": "text",
+          "id": "value",
+          "label": "Valeur",
+          "default": "100%"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "IMMERSION"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Univers - Notre Approche",
+      "blocks": [
+        {
+          "type": "stat",
+          "settings": {
+            "value": "10k+",
+            "label": "CLIENTS"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "value": "100%",
+            "label": "IMMERSION"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "value": "24h",
+            "label": "LIVRAISON"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+/* Notre Approche - sf-approach-section.css */
+#shopify-section-{{ section.id }} .approach-section {
+  background-color: var(--illu-night, #081A32);
+  padding: 120px 5%;
+  display: flex;
+  justify-content: center;
+  -webkit-font-smoothing: antialiased;
+}
+
+#shopify-section-{{ section.id }} .approach-container {
+  max-width: 900px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: var(--illu-radius-chubby, 32px);
+  padding: 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+#shopify-section-{{ section.id }} .approach-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(232, 157, 70, 0.05) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+#shopify-section-{{ section.id }} .approach-content {
+  position: relative;
+  z-index: 1;
+}
+
+#shopify-section-{{ section.id }} .approach-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(232, 157, 70, 0.1);
+  color: var(--illu-amber, #E89D46);
+  padding: 8px 20px;
+  border-radius: 99px;
+  font-size: 0.83rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 32px;
+}
+
+#shopify-section-{{ section.id }} .approach-h2 {
+  font-size: clamp(2.2rem, 4.4vw, 3.3rem);
+  color: var(--illu-cream, #F9F9F9);
+  line-height: 1.1;
+  margin-bottom: 24px;
+  font-weight: 800;
+  text-shadow: 0 0 40px rgba(232, 157, 70, 0.2);
+}
+
+#shopify-section-{{ section.id }} .approach-h2 em {
+  font-style: normal;
+  color: var(--illu-accent-amber, #E89D46);
+  text-shadow: 0 0 15px rgba(232, 157, 70, 0.45);
+}
+
+#shopify-section-{{ section.id }} .approach-text {
+  font-size: clamp(1.1rem, 2.2vw, 1.38rem);
+  line-height: 1.8;
+  color: rgba(249, 249, 249, 0.8);
+  margin-bottom: 40px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#shopify-section-{{ section.id }} .approach-footer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 40px;
+}
+
+#shopify-section-{{ section.id }} .approach-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 120px;
+}
+
+#shopify-section-{{ section.id }} .stat-value {
+  color: var(--illu-amber, #E89D46);
+  font-size: 1.65rem;
+  font-weight: 800;
+}
+
+#shopify-section-{{ section.id }} .stat-label {
+  color: var(--illu-cream, #F9F9F9);
+  font-size: 0.83rem;
+  opacity: 0.5;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  #shopify-section-{{ section.id }} .approach-section {
+    padding: 80px 20px;
+  }
+  #shopify-section-{{ section.id }} .approach-container {
+    padding: 40px 20px;
+  }
+  #shopify-section-{{ section.id }} .approach-footer {
+    gap: 24px;
+  }
+  #shopify-section-{{ section.id }} .approach-stat {
+    min-width: 45%;
+  }
+}
+</style>
+
+<div class="sf-stitch approach-section">
+  <div class="approach-container">
+    <div class="approach-content">
+      {%- if section.settings.badge != blank -%}
+        <div class="approach-badge">{{ section.settings.badge | escape }}</div>
+      {%- endif -%}
+
+      {%- if section.settings.title != blank -%}
+        <h2 class="approach-h2">{{ section.settings.title | escape }}</h2>
+      {%- endif -%}
+
+      {%- if section.settings.text != blank -%}
+        <p class="approach-text">{{ section.settings.text | escape }}</p>
+      {%- endif -%}
+
+      {%- if section.blocks.size > 0 -%}
+        <div class="approach-footer">
+          {%- for block in section.blocks -%}
+            <div class="approach-stat" {{ block.shopify_attributes }}>
+              <span class="stat-value">{{ block.settings.value | escape }}</span>
+              <span class="stat-label">{{ block.settings.label | escape }}</span>
+            </div>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>

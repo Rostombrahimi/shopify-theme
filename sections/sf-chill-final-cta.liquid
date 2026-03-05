@@ -1,0 +1,253 @@
+{% schema %}
+{
+  "name": "Chill CTA Final",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Heading",
+      "default": "Prolongez l'expérience."
+    },
+    {
+      "type": "text",
+      "id": "btn_1_text",
+      "label": "Button 1 Text",
+      "default": "Explorer les ambiances<br>nocturnes"
+    },
+    {
+      "type": "url",
+      "id": "btn_1_link",
+      "label": "Button 1 Link"
+    },
+    {
+      "type": "text",
+      "id": "btn_2_text",
+      "label": "Button 2 Text",
+      "default": "Découvrir l'univers<br>Visuel"
+    },
+    {
+      "type": "url",
+      "id": "btn_2_link",
+      "label": "Button 2 Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Chill CTA Final"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+.chill-final-cta-section {
+  background-color: #081A32;
+  padding: 120px 4rem 160px 4rem; /* Un peu plus d'espace en bas commun aux CTAs finaux */
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Vignette Cinématique : Un léger assombrissement des bords */
+.chill-final-cta-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 30%, rgba(8, 26, 50, 0.8) 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.final-cta-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1000px;
+  height: 500px; /* Plus large pour englober la zone de texte et boutons */
+  background: radial-gradient(ellipse at center, rgba(232, 157, 70, 0.1) 0%, transparent 60%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.final-cta-container {
+  position: relative;
+  z-index: 3; /* Au dessus de la glow et de la vignette */
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.final-cta-h2 {
+  font-size: clamp(2.75rem, 5.5vw, 4.4rem);
+  color: #F9F9F9;
+  font-weight: 700;
+  margin-bottom: 4rem;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+/* Configuration Tailwind Like - spacing */
+.final-cta-flex {
+  display: flex;
+  justify-content: center;
+  gap: 2rem; /* 'cta-gap' */
+  align-items: center;
+}
+
+/* Base button styles */
+.btn-pill-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 16px 36px;
+  border-radius: 99px;
+  font-size: 1.26rem; /* Un peu plus grand que d'habitude pour CTA final */
+  font-weight: 600;
+  line-height: 1.3;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  position: relative;
+}
+
+.btn-pill-base:focus-visible {
+  outline: 2px solid #E89D46;
+  outline-offset: 4px;
+}
+
+.btn-pill-base svg {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+/* Micro-shadow / Lueur ambre pulsante derrière les boutons */
+.btn-pill-base::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 99px;
+  background: rgba(232, 157, 70, 0.4);
+  filter: blur(12px);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.btn-pill-base:hover::before {
+  opacity: 0.6; /* Pulse d'appel de phare */
+}
+
+/* Bouton 1 : Amber massif */
+.btn-pill-amber {
+  background: #E89D46;
+  color: #081A32;
+  border: 1.5px solid #E89D46;
+  box-shadow: 0 10px 25px rgba(232, 157, 70, 0.15);
+}
+
+.btn-pill-amber svg {
+  stroke: #081A32;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.btn-pill-amber:hover {
+  transform: translateY(-5px);
+  background: #F0A956;
+  border-color: #F0A956;
+  box-shadow: 0 15px 35px rgba(232, 157, 70, 0.3);
+}
+
+.btn-pill-amber:hover svg {
+  transform: translateX(4px);
+}
+
+/* Bouton 2 : Outline */
+.btn-pill-outline {
+  background: rgba(8, 26, 50, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1.5px solid #E89D46;
+  color: #F9F9F9;
+}
+
+.btn-pill-outline svg {
+  stroke: #F9F9F9;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.btn-pill-outline:hover {
+  transform: translateY(-5px);
+  background: rgba(232, 157, 70, 0.1);
+  box-shadow: 0 15px 35px rgba(232, 157, 70, 0.15);
+}
+
+/* Efface un peu le glow pour outline pour ne pas surcharger */
+.btn-pill-outline::before {
+  background: rgba(232, 157, 70, 0.2); 
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .chill-final-cta-section {
+    padding: 100px 2rem;
+  }
+  .final-cta-flex {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .btn-pill-base {
+    width: 100%;
+    max-width: 350px;
+    padding: 16px 24px;
+    font-size: 1.16rem;
+  }
+}
+</style>
+
+<section class="chill-final-cta-section">
+  <div class="final-cta-glow"></div>
+  
+  <div class="final-cta-container">
+    {% if section.settings.title != blank %}
+      <h2 class="final-cta-h2">{{ section.settings.title }}</h2>
+    {% endif %}
+    
+    <div class="final-cta-flex">
+      
+      {% if section.settings.btn_1_text != blank %}
+        <a href="{{ section.settings.btn_1_link | default: '#' }}" class="btn-pill-base btn-pill-amber">
+          <span>{{ section.settings.btn_1_text }}</span>
+          <!-- Flèche simple droite -->
+          <svg viewBox="0 0 24 24">
+            <path d="M5 12H19M19 12L12 5M19 12L12 19"></path>
+          </svg>
+        </a>
+      {% endif %}
+
+      {% if section.settings.btn_2_text != blank %}
+        <a href="{{ section.settings.btn_2_link | default: '#' }}" class="btn-pill-base btn-pill-outline">
+          <span>{{ section.settings.btn_2_text }}</span>
+          <!-- Petite icône Œil pour l'univers "Visuel" -->
+          <svg viewBox="0 0 24 24">
+            <path d="M2 12C2 12 5.5 5 12 5C18.5 5 22 12 22 12C22 12 18.5 19 12 19C5.5 19 2 12 2 12Z"></path>
+            <circle cx="12" cy="12" r="3"></circle>
+          </svg>
+        </a>
+      {% endif %}
+      
+    </div>
+  </div>
+</section>

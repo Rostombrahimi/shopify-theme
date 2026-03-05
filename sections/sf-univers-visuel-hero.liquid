@@ -1,0 +1,325 @@
+{% schema %}
+{
+  "name": "Univers Visuel Hero",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Image de fond"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Texte du badge",
+      "default": "🏮 SOUS-COLLECTION ANIMÉ"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Titre Principal",
+      "default": "Lampes Animé –\n<em>Ambiances inspirées des licences cultes</em>",
+      "info": "Utilisez <em>mot</em> pour appliquer l'effet brillant ambre."
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Une immersion lumineuse radicale. Plongez votre espace dans l'aura de vos héros avec notre curation exclusive de pièces d'exception."
+    },
+    {
+      "type": "html",
+      "id": "action_icon",
+      "label": "Icône d'action (SVG)",
+      "info": "Mettez le code SVG de l'icône centrale en bas."
+    },
+    {
+      "type": "text",
+      "id": "action_text",
+      "label": "Texte d'action",
+      "default": "DÉCOUVRIR"
+    },
+    {
+      "type": "url",
+      "id": "action_link",
+      "label": "Lien d'action"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Univers Visuel Hero",
+      "category": "Image"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+/* Section Hero Animé Vibrant */
+#shopify-section-{{ section.id }} .hero-anime-vibrant {
+  position: relative;
+  height: 80vh;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: var(--illu-night, #081A32);
+  padding: 0 4rem;
+  overflow: hidden;
+}
+
+#shopify-section-{{ section.id }} .hero-anime-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  opacity: 0.6; /* Assombri pour faire ressortir le texte */
+}
+
+/* Light Bloom : Effet d'émanation lumineuse */
+#shopify-section-{{ section.id }} .hero-anime-vibrant::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(232, 157, 70, 0.15) 0%, transparent 60%);
+  mix-blend-mode: plus-lighter;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Vignette pour assombrir les bords */
+#shopify-section-{{ section.id }} .hero-anime-vibrant::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 30%, var(--illu-night, #081A32) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+#shopify-section-{{ section.id }} .hero-anime-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Glassmorphism Badge */
+#shopify-section-{{ section.id }} .badge-anime-pill {
+  background: rgba(232, 157, 70, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid #E89D46;
+  padding: 8px 24px;
+  border-radius: 99px;
+  color: #E89D46;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.83rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 0 15px rgba(232, 157, 70, 0.4);
+}
+
+#shopify-section-{{ section.id }} .title-vibrant-anime {
+  font-family: 'Inter', sans-serif;
+  font-weight: 900; /* Font-Weight Optimization */
+  font-size: clamp(2.75rem, 6.6vw, 4.95rem);
+  line-height: 1.1;
+  color: #F9F9F9;
+  margin: 0 0 2rem 0;
+  text-shadow: 0 0 30px rgba(8, 26, 50, 0.8);
+  letter-spacing: -0.02em;
+}
+
+#shopify-section-{{ section.id }} .title-vibrant-anime em,
+#shopify-section-{{ section.id }} .title-vibrant-anime i {
+  font-style: normal;
+  color: #E89D46;
+  text-shadow: 0 0 35px rgba(232, 157, 70, 0.5); /* Glow intense (anime-amber) */
+  display: block; /* Force line break for the highlighted part if wanted, or inline block */
+}
+
+#shopify-section-{{ section.id }} .desc-anime-vibrant {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.24rem;
+  line-height: 1.6;
+  color: rgba(249, 249, 249, 0.85);
+  max-width: 700px;
+  margin-bottom: 4rem;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+/* Premium Separator */
+#shopify-section-{{ section.id }} .premium-separator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+  width: 100%;
+  max-width: 400px;
+}
+
+#shopify-section-{{ section.id }} .premium-separator-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(232, 157, 70, 0.4), transparent);
+}
+
+#shopify-section-{{ section.id }} .premium-separator-icon {
+  color: #E89D46;
+  width: 28px;
+  height: 28px;
+  opacity: 0.8;
+  filter: drop-shadow(0 0 8px rgba(232, 157, 70, 0.5));
+}
+
+/* Action Center (Icon + Text) */
+#shopify-section-{{ section.id }} .action-center-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+#shopify-section-{{ section.id }} .action-center-container:hover {
+  transform: translateY(-5px);
+}
+
+#shopify-section-{{ section.id }} .action-icon-circle {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #F9F9F9;
+  transition: all 0.3s ease;
+}
+
+#shopify-section-{{ section.id }} .action-center-container:hover .action-icon-circle {
+  background: rgba(232, 157, 70, 0.2);
+  border-color: #E89D46;
+  color: #E89D46;
+  box-shadow: 0 0 20px rgba(232, 157, 70, 0.4);
+}
+
+#shopify-section-{{ section.id }} .action-icon-circle svg {
+  width: 24px;
+  height: 24px;
+}
+
+#shopify-section-{{ section.id }} .action-text {
+  color: rgba(249, 249, 249, 0.6);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.83rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+#shopify-section-{{ section.id }} .action-center-container:hover .action-text {
+  color: #F9F9F9;
+}
+
+@media (max-width: 768px) {
+  #shopify-section-{{ section.id }} .hero-anime-vibrant {
+    padding: 0 2rem;
+    height: 70vh;
+    min-height: 500px;
+  }
+}
+</style>
+
+<div class="sf-stitch hero-anime-vibrant">
+  {%- if section.settings.background_image != blank -%}
+    {{ section.settings.background_image | image_url: width: 2000 | image_tag: class: 'hero-anime-bg', loading: 'eager' }}
+  {%- endif -%}
+
+  <div class="hero-anime-content">
+    {%- if section.settings.badge_text != blank -%}
+      <div class="badge-anime-pill">
+        {{ section.settings.badge_text }}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.title != blank -%}
+      <h1 class="title-vibrant-anime">
+        {{ section.settings.title | newline_to_br | replace: '<em>', '<em>' | replace: '</em>', '</em>' | replace: '<i>', '<i>' | replace: '</i>', '</i>' }}
+      </h1>
+    {%- endif -%}
+
+    {%- if section.settings.description != blank -%}
+      <p class="desc-anime-vibrant">
+        {{ section.settings.description }}
+      </p>
+    {%- endif -%}
+
+    <div class="premium-separator">
+      <div class="premium-separator-line"></div>
+      <svg class="premium-separator-icon" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M10 2L11.5 7.5L17 9L11.5 10.5L10 16L8.5 10.5L3 9L8.5 7.5L10 2Z" />
+        <path d="M19.5 4L20.3 6.2L22.5 7L20.3 7.8L19.5 10L18.7 7.8L16.5 7L18.7 6.2L19.5 4Z" />
+        <path d="M16 13L16.5 14.5L18 15L16.5 15.5L16 17L15.5 15.5L14 15L15.5 14.5L16 13Z" />
+      </svg>
+      <div class="premium-separator-line"></div>
+    </div>
+
+    <a href="{{ section.settings.action_link | default: '#' }}" class="action-center-container">
+      <div class="action-icon-circle">
+        {%- if section.settings.action_icon != blank -%}
+          {{ section.settings.action_icon }}
+        {%- else -%}
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+        {%- endif -%}
+      </div>
+      {%- if section.settings.action_text != blank -%}
+        <span class="action-text">{{ section.settings.action_text }}</span>
+      {%- endif -%}
+    </a>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const actionBtn = document.querySelector('#shopify-section-{{ section.id }} .action-center-container');
+    if (actionBtn) {
+      actionBtn.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        // Check if the link is an anchor on the same page
+        if (href && href.startsWith('#') && href.length > 1) {
+          const target = document.querySelector(href);
+          if (target) {
+            e.preventDefault();
+            const headerOffset = 80; // Assuming a sticky header height
+            const elementPosition = target.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: "smooth"
+            });
+          }
+        }
+      });
+    }
+  });
+</script>

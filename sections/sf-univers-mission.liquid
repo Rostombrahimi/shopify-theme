@@ -1,0 +1,242 @@
+{% schema %}
+{
+  "name": "Mission Cocon",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Étiquette (Sur-titre)",
+      "default": "NOTRE ENGAGEMENT"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Titre",
+      "default": "Parce que chaque nuit compte.",
+      "info": "Utilisez <em>mot</em> pour appliquer l'effet brillant, ou <i>mot</i> pour la couleur ambre sans surbrillance."
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Texte de description",
+      "default": "Les premières nuits sont souvent chargées d'émotions. Peur du noir, réveils nocturnes, besoin de repères... Chez Illuminées, nous avons imaginé des ambiances lumineuses pensées pour rassurer les enfants, sans jamais perturber leur sommeil."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tag",
+      "name": "Tag Valeur",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "html",
+          "id": "icon",
+          "label": "Code SVG de l'icône",
+          "info": "Copiez-collez le code SVG de l'icône. Laissez vide pour ne pas mettre d'icône."
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Texte du Tag",
+          "default": "Tranquillité"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Mission Cocon",
+      "blocks": [
+        {
+          "type": "tag",
+          "settings": {
+            "text": "Tranquillité",
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z\"/></svg>"
+          }
+        },
+        {
+          "type": "tag",
+          "settings": {
+            "text": "Confiance",
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10\"/><path d=\"m9 12 2 2 4-4\"/></svg>"
+          }
+        },
+        {
+          "type": "tag",
+          "settings": {
+            "text": "Intention bienveillante",
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z\"/></svg>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+/* Sélection de texte globale pour cette section */
+#shopify-section-{{ section.id }} ::selection { 
+  background: var(--illu-accent-amber, #E89D46); 
+  color: var(--illu-night, #081A32); 
+}
+
+#shopify-section-{{ section.id }} .mission-cocon-section {
+  background-color: var(--illu-night, #081A32);
+  padding: 100px 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  font-family: inherit;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Vignettage Soft */
+#shopify-section-{{ section.id }} .mission-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, transparent 30%, #081A32 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+#shopify-section-{{ section.id }} .mission-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 800px;
+}
+
+#shopify-section-{{ section.id }} .mission-label {
+  color: var(--illu-accent-amber, #E89D46);
+  font-size: 0.94rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+#shopify-section-{{ section.id }} .mission-cocon-h2 {
+  font-size: clamp(2.2rem, 4.4vw, 3.3rem);
+  color: var(--illu-cream, #F9F9F9);
+  margin-bottom: 2rem;
+  letter-spacing: -0.01em;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* Em pour l'effet brillant */
+#shopify-section-{{ section.id }} .mission-cocon-h2 em {
+  font-style: normal;
+  color: var(--illu-accent-amber, #E89D46);
+  text-shadow: 0 0 15px rgba(232, 157, 70, 0.45), 0 2px 10px rgba(232, 157, 70, 0.3);
+}
+
+/* I pour l'ambre simple */
+#shopify-section-{{ section.id }} .mission-cocon-h2 i {
+  font-style: normal;
+  color: var(--illu-accent-amber, #E89D46);
+}
+
+#shopify-section-{{ section.id }} .mission-cocon-p {
+  max-width: 750px;
+  font-size: clamp(1.1rem, 2.2vw, 1.38rem);
+  line-height: 1.8;
+  color: rgba(249, 249, 249, 0.8);
+  margin-bottom: 4rem;
+  font-weight: 300;
+}
+
+#shopify-section-{{ section.id }} .tags-cocon-flex {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+#shopify-section-{{ section.id }} .tag-cocon {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(232, 157, 70, 0.08);
+  border: 1px solid rgba(232, 157, 70, 0.25);
+  color: var(--illu-cream, #F9F9F9); /* Changé en blanc/crème comme sur la maquette */
+  padding: 12px 28px;
+  border-radius: 99px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  box-shadow: 0 0 15px rgba(232, 157, 70, 0.03);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+#shopify-section-{{ section.id }} .tag-cocon:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(232, 157, 70, 0.1);
+  border-color: rgba(232, 157, 70, 0.5);
+  background: rgba(232, 157, 70, 0.12);
+}
+
+#shopify-section-{{ section.id }} .tag-cocon svg {
+  width: 20px;
+  height: 20px;
+  color: var(--illu-accent-amber, #E89D46); /* Icônes en ambre comme sur la maquette */
+}
+
+@media (max-width: 768px) {
+  #shopify-section-{{ section.id }} .mission-cocon-section {
+    padding: 60px 20px;
+  }
+  #shopify-section-{{ section.id }} .tags-cocon-flex {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+    width: 100%;
+    max-width: 300px;
+  }
+  #shopify-section-{{ section.id }} .tag-cocon {
+    justify-content: center;
+  }
+}
+</style>
+
+<div class="sf-stitch mission-cocon-section">
+  <!-- Soft Vignette Effect -->
+  <div class="mission-vignette"></div>
+
+  <div class="mission-content">
+    {%- if section.settings.label != blank -%}
+      <div class="mission-label">{{ section.settings.label | escape }}</div>
+    {%- endif -%}
+
+    {%- if section.settings.title != blank -%}
+      <h2 class="mission-cocon-h2">
+        {{ section.settings.title | replace: '<em>', '<em>' | replace: '</em>', '</em>' | replace: '<i>', '<i>' | replace: '</i>', '</i>' }}
+      </h2>
+    {%- endif -%}
+
+    {%- if section.settings.text != blank -%}
+      <p class="mission-cocon-p">{{ section.settings.text | escape }}</p>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="tags-cocon-flex">
+        {%- for block in section.blocks -%}
+          <div class="tag-cocon" {{ block.shopify_attributes }}>
+            {%- if block.settings.icon != blank -%}
+              {{ block.settings.icon }}
+            {%- endif -%}
+            {%- if block.settings.text != blank -%}
+              <span>{{ block.settings.text | escape }}</span>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>

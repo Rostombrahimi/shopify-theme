@@ -1,0 +1,574 @@
+{% schema %}
+{
+  "name": "Processus Curateur",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "NOTRE MÉTHODE"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Heading",
+      "default": "Le Processus <span class=\"amber-text\">Illuminées</span>",
+      "info": "Use <span class=\"amber-text\">text</span> to highlight in amber."
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Une rigueur technique absolue. Découvrez comment chaque luminaire gagne sa place dans notre collection exclusive à travers un parcours exigeant."
+    },
+    {
+      "type": "header",
+      "content": "Call to Action Banner"
+    },
+    {
+      "type": "textarea",
+      "id": "cta_title",
+      "label": "CTA Title",
+      "default": "Prêt à illuminer<br>votre intérieur ?"
+    },
+    {
+      "type": "textarea",
+      "id": "cta_description",
+      "label": "CTA Description",
+      "default": "Explorez notre collection de luminaires validée par nos experts et transformez votre espace de vie."
+    },
+    {
+      "type": "text",
+      "id": "cta_btn_1_text",
+      "label": "Button 1 Text",
+      "default": "Voir la<br>collection"
+    },
+    {
+      "type": "url",
+      "id": "cta_btn_1_link",
+      "label": "Button 1 Link"
+    },
+    {
+      "type": "text",
+      "id": "cta_btn_2_text",
+      "label": "Button 2 Text",
+      "default": "En savoir<br>plus"
+    },
+    {
+      "type": "url",
+      "id": "cta_btn_2_link",
+      "label": "Button 2 Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "cta_image",
+      "label": "CTA Image (Right Side)"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Process Step",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "text",
+          "id": "number",
+          "label": "Step Number",
+          "default": "01"
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "compass", "label": "Compass" },
+            { "value": "flask", "label": "Flask" },
+            { "value": "shield", "label": "Shield Check" }
+          ],
+          "default": "compass"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Step Title",
+          "default": "Sourcing Sélectif"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Step Description",
+          "default": "Une sélection courte et exigeante guidée par la boussole de l'excellence. Nous ne retenons que 1% des pièces étudiées."
+        },
+        {
+          "type": "text",
+          "id": "pill_1",
+          "label": "Pill 1 Text"
+        },
+        {
+          "type": "text",
+          "id": "pill_2",
+          "label": "Pill 2 Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Processus Curateur",
+      "blocks": [
+        { "type": "step", "settings": { "number": "01", "icon": "compass", "title": "Sourcing Sélectif", "text": "Une sélection courte et exigeante guidée par la boussole de l'excellence. Nous ne retenons que 1% des pièces étudiées.", "pill_1": "Matériaux nobles", "pill_2": "Design intemporel" } },
+        { "type": "step", "settings": { "number": "02", "icon": "flask", "title": "Tests Intensifs", "text": "48h de tests intensifs pour chaque modèle en laboratoire. Résistance thermique, stabilité électrique et durabilité.", "pill_1": "Laboratoire interne", "pill_2": "Stress test" } },
+        { "type": "step", "settings": { "number": "03", "icon": "shield", "title": "Validation Expert", "text": "Validation finale du confort visuel et des normes de sécurité. L'assurance d'une lumière saine pour vos yeux.", "pill_1": "Normes CE", "pill_2": "Anti-scintillement" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+.process-section {
+  background-color: #081A32;
+  padding: 120px 4rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.process-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 5rem auto;
+}
+
+.process-badge {
+  display: inline-block;
+  color: #E89D46;
+  font-size: 0.83rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  padding: 8px 20px;
+  border-radius: 99px;
+  border: 1px solid rgba(232, 157, 70, 0.3);
+  background: rgba(232, 157, 70, 0.05);
+  backdrop-filter: blur(8px);
+}
+
+.process-h2 {
+  font-size: clamp(2.75rem, 5.5vw, 4.4rem);
+  color: #F9F9F9;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+.process-h2 span.amber-text {
+  color: #E89D46;
+  text-shadow: 0 0 20px rgba(232, 157, 70, 0.3);
+}
+
+.process-desc {
+  font-size: 1.26rem;
+  color: rgba(249, 249, 249, 0.65);
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Grid layout matching mockup exactly */
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* CARDS STYLING */
+.process-card {
+  background: #17212F; /* Rendu très sombre semblable à la maquette */
+  border-radius: 32px;
+  padding: 48px 40px; 
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  border: 1px solid rgba(255,255,255,0.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.process-card:hover {
+  transform: translateY(-8px);
+  background: #1A2636;
+}
+
+/* Big Number styling - Huge and half hidden in background */
+.process-number {
+  position: absolute;
+  top: 15px;
+  right: 10px;
+  font-size: 9.9rem;
+  font-weight: 800;
+  color: #E89D46;
+  opacity: 0.08; /* Super subtle overlay */
+  line-height: 1;
+  letter-spacing: -0.05em;
+  z-index: 0;
+  user-select: none;
+  font-family: inherit; /* Should match the body/heading sans-serif */
+}
+
+/* Card Content above number */
+.process-card-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.process-icon-box {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 1px solid rgba(232, 157, 70, 0.3); /* Thin amber border */
+  background: rgba(0, 0, 0, 0.2); /* Darken inner base */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.process-icon-box svg {
+  width: 24px;
+  height: 24px;
+  stroke: #E89D46;
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* For compass that needs fill */
+.process-icon-box svg.compass-fill {
+  fill: transparent; 
+}
+
+/* For Shield check */
+.process-icon-box svg.shield-fill {
+  fill: transparent;
+}
+
+.process-card h3 {
+  color: #F9F9F9;
+  font-size: 1.54rem;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+}
+
+.process-card p {
+  color: rgba(249, 249, 249, 0.65);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 0 0 3rem 0; /* Huge margin to push pills down */
+  flex-grow: 1; 
+  padding-right: 1rem; /* Prevent touching the right edge */
+}
+
+/* Pills - Flex Column */
+.process-pills {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.process-pill {
+  padding: 6px 16px;
+  background: rgba(255, 255, 255, 0.05); /* Grey pill bg */
+  border-radius: 99px;
+  color: rgba(249, 249, 249, 0.6);
+  font-size: 0.94rem;
+  font-weight: 500;
+  border: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+/* CTA BANNER - BOTTOM OF MODULE */
+.process-cta-banner {
+  margin-top: 6rem;
+  position: relative;
+  background-color: #121A26; /* Deep dark blue */
+  border-radius: 32px;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+  min-height: 480px; /* Force minimum height for large images */
+}
+
+.process-cta-content {
+  position: relative;
+  z-index: 2;
+  padding: 80px;
+  width: 50%;
+  max-width: 600px;
+}
+
+.process-cta-h2 {
+  font-size: clamp(2.2rem, 4.4vw, 3.3rem);
+  font-weight: 700;
+  color: #F9F9F9;
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+}
+
+.process-cta-desc {
+  font-size: 1.21rem;
+  color: rgba(249, 249, 249, 0.7);
+  line-height: 1.6;
+  margin-bottom: 3rem;
+  max-width: 450px;
+}
+
+.process-cta-buttons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* Base button styles for CTA */
+.btn-cta-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 36px;
+  border-radius: 99px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.4s ease;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.btn-cta-amber {
+  background: #E89D46;
+  color: #081A32;
+  border: 1px solid #E89D46;
+}
+
+.btn-cta-amber:hover {
+  transform: translateY(-4px);
+  background: #F0A956;
+  box-shadow: 0 10px 25px rgba(232, 157, 70, 0.25);
+}
+
+.btn-cta-outline-faded {
+  background: transparent;
+  color: #F9F9F9;
+  border: 1px solid rgba(255, 255, 255, 0.2); 
+  /* Left and right crescent style could be done with pseudo elements, 
+     but a thin full border is standard. From mockup: normal border pill */
+}
+
+.btn-cta-outline-faded:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.process-cta-image-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60%;
+  height: 100%;
+  z-index: 0;
+}
+
+.process-cta-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.7; /* Blend it slightly */
+}
+
+/* Gradient fade from left to right over the image */
+.process-cta-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, #121A26 0%, rgba(18, 26, 38, 0.9) 30%, transparent 100%);
+  z-index: 1;
+}
+
+/* Overlay color fade from bottom if needed */
+.process-cta-overlay-bottom {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(18, 26, 38, 0.5) 0%, transparent 50%);
+  z-index: 1;
+}
+
+@media screen and (max-width: 1024px) {
+  .process-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .process-cta-banner {
+    flex-direction: column;
+    min-height: auto;
+  }
+  .process-cta-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    order: 1;
+  }
+  .process-cta-overlay {
+    background: linear-gradient(to bottom, #121A26 0%, rgba(18, 26, 38, 0.8) 50%, transparent 100%);
+  }
+  .process-cta-content {
+    width: 100%;
+    max-width: 100%;
+    order: 2;
+    padding: 40px;
+    text-align: center;
+  }
+  .process-cta-desc {
+    margin: 0 auto 3rem auto;
+  }
+  .process-cta-buttons {
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .process-section {
+    padding: 80px 2rem;
+  }
+  .process-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .process-h2 {
+    font-size: 2.75rem;
+  }
+  .process-cta-banner {
+    margin-top: 4rem;
+  }
+  .process-cta-content {
+    padding: 40px 20px;
+  }
+}
+</style>
+
+<section class="process-section">
+  <div class="process-header">
+    {% if section.settings.badge_text != blank %}
+      <div class="process-badge">{{ section.settings.badge_text }}</div>
+    {% endif %}
+    
+    {% if section.settings.title != blank %}
+      <h2 class="process-h2">{{ section.settings.title }}</h2>
+    {% endif %}
+    
+    {% if section.settings.description != blank %}
+      <p class="process-desc">{{ section.settings.description }}</p>
+    {% endif %}
+  </div>
+
+  <div class="process-grid">
+    {% for block in section.blocks %}
+      <div class="process-card" {{ block.shopify_attributes }}>
+        <div class="process-number">{{ block.settings.number }}</div>
+        
+        <div class="process-card-content">
+          <div class="process-icon-box">
+            {% case block.settings.icon %}
+              {% when 'compass' %}
+                <!-- Compass matching mockup perfectly -->
+                <svg viewBox="0 0 24 24" class="compass-fill">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+                </svg>
+              {% when 'flask' %}
+                <!-- Flask -->
+                <svg viewBox="0 0 24 24">
+                  <path d="M9 3H15"></path>
+                  <path d="M10 3V8L4 19C3.606 19.664 3.998 21 4.772 21H19.228C20.002 21 20.394 19.664 20 19L14 8V3"></path>
+                  <path d="M7 16H17"></path>
+                </svg>
+              {% when 'shield' %}
+                <!-- Shield Check -->
+                <svg viewBox="0 0 24 24" class="shield-fill">
+                  <path d="M12 22S19 18 19 12V5L12 2L5 5V12C5 18 12 22 12 22Z"></path>
+                  <path d="M9 12L11 14L15 10"></path>
+                </svg>
+            {% endcase %}
+          </div>
+          
+          <h3>{{ block.settings.title }}</h3>
+          <p>{{ block.settings.text }}</p>
+          
+          <div class="process-pills">
+            {% if block.settings.pill_1 != blank %}
+              <span class="process-pill">{{ block.settings.pill_1 }}</span>
+            {% endif %}
+            {% if block.settings.pill_2 != blank %}
+              <span class="process-pill">{{ block.settings.pill_2 }}</span>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <!-- CTA Banner Bottom -->
+  <div class="process-cta-banner">
+    
+    <div class="process-cta-image-wrapper">
+      {% if section.settings.cta_image != blank %}
+        <img src="{{ section.settings.cta_image | image_url: width: 1500 }}" alt="" loading="lazy">
+      {% else %}
+        <!-- Placeholder lab background -->
+        <div style="position: absolute; inset: 0; background: radial-gradient(circle at right, #1e3a5f 0%, #121a26 100%); z-index: 0;"></div>
+      {% endif %}
+    </div>
+
+    <!-- Gradients overlay to blend image -->
+    <div class="process-cta-overlay"></div>
+    <div class="process-cta-overlay-bottom"></div>
+
+    <div class="process-cta-content">
+      {% if section.settings.cta_title != blank %}
+        <h2 class="process-cta-h2">{{ section.settings.cta_title }}</h2>
+      {% endif %}
+      
+      {% if section.settings.cta_description != blank %}
+        <p class="process-cta-desc">{{ section.settings.cta_description }}</p>
+      {% endif %}
+      
+      <div class="process-cta-buttons">
+        {% if section.settings.cta_btn_1_text != blank %}
+          <a href="{{ section.settings.cta_btn_1_link | default: '#' }}" class="btn-cta-base btn-cta-amber">
+            {{ section.settings.cta_btn_1_text }}
+          </a>
+        {% endif %}
+        
+        {% if section.settings.cta_btn_2_text != blank %}
+          <a href="{{ section.settings.cta_btn_2_link | default: '#' }}" class="btn-cta-base btn-cta-outline-faded">
+            {{ section.settings.cta_btn_2_text }}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+    
+  </div>
+
+</section>

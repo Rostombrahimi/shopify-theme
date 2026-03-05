@@ -1,0 +1,48 @@
+/* sf-tokens.css - Illuminées Design System */
+
+:root {
+  /* COLORS */
+  --illu-bg-night: #081A32;
+  --illu-bg-night-light: #0D233F;
+  --illu-accent-amber: #E89D46;
+  --illu-text-cream: #F9F9F9;
+  --illu-expert-blue: #3B82F6;
+  --illu-error-red: #EF4444;
+
+  /* FONTS */
+  --illu-font-display: 'Manrope', system-ui, -apple-system, sans-serif;
+  --illu-font-main: 'Inter', system-ui, -apple-system, sans-serif;
+
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --fw-extrabold: 800;
+
+  /* RADIUS */
+  --illu-radius-chubby: 32px;
+  --illu-radius-pill: 9999px;
+
+  /* SHADOWS & GLOW */
+  --illu-glow-amber: 0 0 40px -10px rgba(232, 157, 70, 0.35);
+  --illu-glow-amber-intense: 0 0 60px -5px rgba(232, 157, 70, 0.5);
+  --illu-shadow-card: 0 20px 40px rgba(0, 0, 0, 0.4);
+  --illu-shadow-expert: 0 0 12px rgba(59, 130, 246, 0.4);
+
+  /* BLUR */
+  --illu-blur-glass: blur(12px);
+  --illu-blur-glow: blur(60px);
+
+  /* SPACING SCALE */
+  --illu-space-2xs: 0.25rem;
+  --illu-space-xs: 0.5rem;
+  --illu-space-sm: 1rem;
+  --illu-space-sm2: 1.5rem;
+  --illu-space-md: 2rem;
+  --illu-space-md2: 3rem;
+  --illu-space-lg: 4rem;
+  --illu-space-xl: 8rem;
+
+  /* TRANSITIONS */
+  --illu-transition-soft: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}

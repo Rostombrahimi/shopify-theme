@@ -1,0 +1,147 @@
+{% schema %}
+{
+  "name": "Blog Article - Texte",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Contenu de l'article",
+      "default": "<h2>Comprendre le problème</h2><p>Expliquer la biologie de la lumière sans être ennuyeux. Privilégiez des phrases courtes et impactantes.</p>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Blog Article - Texte"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+.blog-article-wrapper {
+  background-color: #081A32; /* Fond Nuit */
+  padding: 40px 2rem;
+  font-family: 'Inter', sans-serif;
+  color: #F9F9F9;
+  -webkit-font-smoothing: antialiased;
+}
+
+.blog-article-inner {
+  max-width: 800px; /* Largeur de lecture optimale pour un blog ! */
+  margin: 0 auto;
+}
+
+/* Typographie spécifique au contenu de l'article */
+.blog-content-richtext {
+  font-size: 1.21rem;
+  line-height: 1.8;
+  color: rgba(249, 249, 249, 0.85);
+}
+
+.blog-content-richtext h2 {
+  font-size: 2.42rem;
+  font-weight: 800;
+  color: #F9F9F9;
+  margin-top: 60px;
+  margin-bottom: 24px;
+  letter-spacing: -0.01em;
+}
+
+.blog-content-richtext h3 {
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: #E89D46; /* L'Ambre pour les sous-titres */
+  margin-top: 40px;
+  margin-bottom: 16px;
+}
+
+.blog-content-richtext p {
+  margin-bottom: 24px;
+}
+
+.blog-content-richtext strong,
+.blog-content-richtext b {
+  color: #F9F9F9;
+  font-weight: 700;
+  /* Optionnel: tu peux ajouter de l'ambre ici: color: #E89D46; */
+}
+
+/* Style des Liens dans le texte */
+.blog-content-richtext a {
+  color: #E89D46;
+  text-decoration: underline;
+  text-decoration-color: rgba(232, 157, 70, 0.4);
+  text-underline-offset: 4px;
+  transition: all 0.3s ease;
+}
+
+.blog-content-richtext a:hover {
+  text-decoration-color: #E89D46;
+  filter: brightness(1.2);
+}
+
+/* Citations ou "Pépites Google" intégrées dans le texte */
+.blog-content-richtext blockquote {
+  margin: 40px 0;
+  padding: 24px 32px;
+  background: rgba(232, 157, 70, 0.05); /* Fond ambre très léger */
+  border-left: 4px solid #E89D46;
+  border-radius: 0 16px 16px 0;
+  font-size: 1.32rem;
+  font-weight: 500;
+  color: #F9F9F9;
+  font-style: italic;
+}
+
+/* Listes à puces esthétiques */
+.blog-content-richtext ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 24px;
+}
+
+.blog-content-richtext ul li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 12px;
+}
+
+.blog-content-richtext ul li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #E89D46;
+  font-size: 1.65rem;
+  line-height: 1.2rem;
+}
+
+/* RESPONSIVE */
+@media screen and (max-width: 768px) {
+  .blog-article-wrapper {
+    padding: 30px 1.5rem;
+  }
+  .blog-content-richtext {
+    font-size: 1.16rem;
+  }
+  .blog-content-richtext h2 {
+    font-size: 1.98rem;
+    margin-top: 40px;
+  }
+  .blog-content-richtext blockquote {
+    font-size: 1.21rem;
+    padding: 20px;
+  }
+}
+</style>
+
+<section class="blog-article-wrapper">
+  <div class="blog-article-inner">
+    {% if section.settings.content != blank %}
+      <div class="blog-content-richtext">
+        {{ section.settings.content }}
+      </div>
+    {% endif %}
+  </div>
+</section>

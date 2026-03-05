@@ -1,0 +1,298 @@
+{% schema %}
+{
+  "name": "Cocon Hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Étiquette (Badge)",
+      "default": "Petit Cocon"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Titre",
+      "default": "Petit Cocon – <em>Des ambiances lumineuses douces pour veiller sur les tout-petits</em>",
+      "info": "Utilisez <em>mot</em> pour appliquer l'effet brillant, ou <i>mot</i> pour la couleur ambre sans surbrillance."
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Texte de description",
+      "default": "Sommeil apaisé, matières sûres et lumière rassurante pour accompagner les nuits des enfants… et la sérénité des parents."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image de fond"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Cocon Hero"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+/* sf-univers-cocon.css */
+#shopify-section-{{ section.id }} .cocon-section {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: var(--illu-night, #081A32);
+  font-family: inherit;
+  color: var(--illu-cream, #F9F9F9);
+  text-align: center;
+}
+
+/* Fond d'image */
+#shopify-section-{{ section.id }} .cocon-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+#shopify-section-{{ section.id }} .cocon-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.4;
+  mix-blend-mode: luminosity; /* Rendu subtil en noir/blanc et nuit */
+}
+
+/* Calques de dégradés et de lueur (les "Effets Invisibles") */
+#shopify-section-{{ section.id }} .cocon-glow-layer {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(232, 157, 70, 0.15) 0%, rgba(8, 26, 50, 0.4) 40%, rgba(8, 26, 50, 0.8) 70%, #081A32 100%);
+  mix-blend-mode: screen;
+  pointer-events: none;
+  z-index: 1;
+}
+
+#shopify-section-{{ section.id }} .cocon-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 10%, #081A32 90%);
+  opacity: 0.9;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* L'Aura Incandescente ultra floue (du CSS fourni) */
+#shopify-section-{{ section.id }} .cocon-aura {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  height: 60%;
+  background: var(--illu-accent-amber, #E89D46);
+  filter: blur(150px);
+  opacity: 0.15;
+  mix-blend-mode: plus-lighter; /* Donne un effet de source lumineuse physique */
+  z-index: 3;
+  pointer-events: none;
+  border-radius: 50%;
+}
+
+/* Contenu Principal */
+#shopify-section-{{ section.id }} .cocon-content {
+  position: relative;
+  z-index: 10;
+  max-width: 1000px;
+  padding: 0 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Label (Badge) */
+#shopify-section-{{ section.id }} .cocon-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 32px;
+  border-radius: 99px;
+  background: rgba(232, 157, 70, 0.1);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(232, 157, 70, 0.2);
+  color: var(--illu-accent-amber, #E89D46);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  box-shadow: 0 0 15px rgba(232, 157, 70, 0.1);
+  margin-bottom: 24px;
+}
+
+/* Titre principal et tags personnalisés */
+#shopify-section-{{ section.id }} .cocon-title {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+  max-width: 900px;
+  text-wrap: balance;
+  drop-shadow: 0 10px 15px rgba(0,0,0,0.5);
+  color: var(--illu-cream, #F9F9F9);
+}
+
+/* Em pour l'effet brillant */
+#shopify-section-{{ section.id }} .cocon-title em {
+  font-style: italic; /* Gardé italic comme dans le design */
+  font-weight: 300;
+  color: var(--illu-accent-amber, #E89D46);
+  text-shadow: 0 0 15px rgba(232, 157, 70, 0.45), 0 2px 10px rgba(232, 157, 70, 0.3);
+  display: block; /* Force le retour à la ligne comme demandé implicitement dans l'exemple */
+  margin-top: 8px;
+  opacity: 0.9;
+}
+
+/* I pour l'ambre simple */
+#shopify-section-{{ section.id }} .cocon-title i {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--illu-accent-amber, #E89D46);
+  display: block;
+  margin-top: 8px;
+  opacity: 0.9;
+}
+
+/* Description */
+#shopify-section-{{ section.id }} .cocon-desc {
+  font-size: clamp(1.1rem, 2.2vw, 1.38rem);
+  color: rgba(249, 249, 249, 0.8);
+  font-weight: 300;
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto 4rem auto;
+  drop-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+#shopify-section-{{ section.id }} .cocon-scroll {
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  z-index: 10;
+  transition: opacity 0.3s ease;
+  animation: fadeInDown 1s ease-out;
+}
+
+#shopify-section-{{ section.id }} .cocon-scroll:hover {
+  opacity: 0.8;
+}
+
+#shopify-section-{{ section.id }} .cocon-scroll-text {
+  color: rgba(249, 249, 249, 0.6);
+  font-size: 0.83rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+#shopify-section-{{ section.id }} .cocon-scroll-icon {
+  color: rgba(249, 249, 249, 0.6);
+  animation: bounceCocon 2s infinite;
+}
+
+#shopify-section-{{ section.id }} .cocon-scroll-icon svg {
+  width: 32px;
+  height: 32px;
+  fill: currentColor;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounceCocon {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  #shopify-section-{{ section.id }} .cocon-section {
+    min-height: 80vh; /* Ajustement pour mobile */
+  }
+  #shopify-section-{{ section.id }} .cocon-aura {
+    width: 80%;
+    height: 80%;
+  }
+}
+</style>
+
+<div class="sf-stitch cocon-section">
+  <!-- Fond -->
+  <div class="cocon-bg">
+    {%- if section.settings.image != blank -%}
+      {{ section.settings.image | image_url: width: 2000 | image_tag: class: 'cocon-bg-img', loading: 'lazy' }}
+    {%- else -%}
+      <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjVNCVpywIyZL5aVwYbelhU8zDp8pvhSjDMrGs6pVpf7w2mj0G_PNgj2EF0FJD6YDkL-krhocAXRyHbwDFd-vh6BPzVzrv8TMXoNrKUVdRN4H7ttKoRMUTzXP1gfUhhJOM6wTiAo7Rd-VWob7M6VBhIXnmRqEJkxRM5WwooWhOg3bl7A4O_WQF_Dv8xnmT9YcKzhHqvZm0sS4tIpRTK28JPaKNEwrVtDSP1yk-oIZgiP6eCqggDMmDPfG8V6ARmQXZHT3Sz5j81E3F" alt="Image de fond pardéfaut" class="cocon-bg-img" loading="lazy">
+    {%- endif -%}
+  </div>
+
+  <!-- Effets de lumière -->
+  <div class="cocon-glow-layer"></div>
+  <div class="cocon-vignette"></div>
+  <div class="cocon-aura"></div>
+
+  <!-- Contenu -->
+  <div class="cocon-content">
+    {%- if section.settings.title != blank -%}
+      <h1 class="cocon-title">
+        {{ section.settings.title | replace: '<em>', '<em>' | replace: '</em>', '</em>' | replace: '<i>', '<i>' | replace: '</i>', '</i>' }}
+      </h1>
+    {%- endif -%}
+
+    {%- if section.settings.text != blank -%}
+      <p class="cocon-desc">{{ section.settings.text | escape }}</p>
+    {%- endif -%}
+  </div>
+
+  <!-- Flèche Scroll -->
+  <div class="cocon-scroll" onclick="window.scrollBy({top: window.innerHeight, behavior: 'smooth'})">
+    {%- if section.settings.label != blank -%}
+      <div class="cocon-label">{{ section.settings.label | escape }}</div>
+    {%- endif -%}
+    <span class="cocon-scroll-text">Découvrir</span>
+    <span class="cocon-scroll-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+    </span>
+  </div>
+</div>

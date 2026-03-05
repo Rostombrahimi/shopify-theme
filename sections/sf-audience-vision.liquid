@@ -1,0 +1,604 @@
+{% schema %}
+{
+  "name": "About - Audience Vision",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Top Header"
+    },
+    {
+      "type": "text",
+      "id": "badge",
+      "label": "Badge Text",
+      "default": "NOTRE ADN"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Main Title",
+      "default": "Notre Audience <br><span>& Vision</span>",
+      "info": "Use <span> to highlight text in amber color with an orange glow."
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Qui fait vibrer Illuminées aujourd'hui et demain ? Une exploration de notre communauté et de nos engagements."
+    },
+    {
+      "type": "header",
+      "content": "Audience Title"
+    },
+    {
+      "type": "text",
+      "id": "audience_title",
+      "label": "Audience Grid Title",
+      "default": "À qui s'adresse Illuminées ?"
+    },
+    {
+      "type": "textarea",
+      "id": "audience_text",
+      "label": "Audience Grid Pre-text",
+      "default": "Des lumières pensées pour ceux qui cherchent l'exceptionnel, sans compromis sur la fonction."
+    },
+    {
+      "type": "header",
+      "content": "Future Vision Block"
+    },
+    {
+      "type": "textarea",
+      "id": "future_icon_svg",
+      "label": "Future Section Icon (SVG)",
+      "info": "Leave blank to use the default eye icon."
+    },
+    {
+      "type": "text",
+      "id": "future_title",
+      "label": "Future Title",
+      "default": "Et la suite ?"
+    },
+    {
+      "type": "textarea",
+      "id": "future_highlight_text",
+      "label": "Future Highlight Line",
+      "default": "Notre vision est simple : <strong>éclairer vos vies sans compromis</strong>.",
+      "info": "Use <strong> for bolder white text"
+    },
+    {
+      "type": "textarea",
+      "id": "future_body_text",
+      "label": "Future Body Text",
+      "default": "Pas de fausses promesses, juste de la qualité durable, un design intemporel et une lumière qui réchauffe les cœurs. Nous construisons l'avenir de l'éclairage, une lampe à la fois, en refusant l'obsolescence programmée."
+    },
+    {
+      "type": "text",
+      "id": "future_footer_text",
+      "label": "Future Footer Text (Amber line)",
+      "default": "TRANSPARENCE • DURABILITÉ • EMOTION"
+    },
+    {
+      "type": "header",
+      "content": "Final CTA & Footer Signature"
+    },
+    {
+      "type": "text",
+      "id": "cta_btn_text",
+      "label": "CTA Button Text",
+      "default": "Explorer nos univers"
+    },
+    {
+      "type": "url",
+      "id": "cta_btn_link",
+      "label": "CTA Button Link"
+    },
+    {
+      "type": "text",
+      "id": "footer_signature_text",
+      "label": "Signature Text",
+      "default": "Illuminées • Depuis 2019"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "audience_card",
+      "name": "Audience Card",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "custom_svg",
+          "label": "Custom SVG Icon",
+          "info": "Leave blank for a default icon based on block order."
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Card Title",
+          "default": "Particuliers"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Card Text",
+          "default": "Amoureux du design cherchant la pièce unique qui transformera leur salon en galerie d'art personnelle."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "About - Audience Vision",
+      "blocks": [
+        {
+          "type": "audience_card",
+          "settings": {
+            "title": "Particuliers",
+            "text": "Amoureux du design cherchant la pièce unique qui transformera leur salon en galerie d'art personnelle."
+          }
+        },
+        {
+          "type": "audience_card",
+          "settings": {
+            "title": "Créatifs",
+            "text": "Architectes d'intérieur et décorateurs en quête d'inspiration brute et de matériaux authentiques."
+          }
+        },
+        {
+          "type": "audience_card",
+          "settings": {
+            "title": "Familles",
+            "text": "Ceux qui veulent une maison chaleureuse, où la lumière accompagne les devoirs comme les dîners."
+          }
+        },
+        {
+          "type": "audience_card",
+          "settings": {
+            "title": "Professionnels",
+            "text": "Boutiques, hôtels et restaurants désirant créer une ambiance inoubliable dès le premier regard."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+/* Audience & Vision - sf-audience-vision.css */
+.audience-section {
+  background-color: #081A32;
+  /* Radial Vignettage as requested */
+  background-image: radial-gradient(circle at center, transparent 0%, #081A32 100%);
+  padding: 100px 4rem 140px; /* Included footer space */
+  color: #F9F9F9;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.audience-section * {
+  box-sizing: border-box;
+}
+
+/* Force colors overriding Dawn */
+.audience-section h1, .audience-section h2, .audience-section h3, .audience-section p {
+  color: #F9F9F9;
+  margin: 0;
+}
+
+/* HEADER ALIGNMENT (Aligned to the 1300px grid) */
+.audience-header-wrapper {
+  max-width: 1300px;
+  margin: 0 auto 60px auto;
+}
+
+.badge-adn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(232, 157, 70, 0.1);
+  color: #E89D46 !important;
+  padding: 6px 16px;
+  border-radius: 99px;
+  font-size: 0.83rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(232, 157, 70, 0.2);
+}
+.badge-adn::before {
+  content: '';
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #E89D46;
+}
+
+.h1-expert {
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  font-weight: 800;
+  margin-bottom: 1.5rem !important;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+.h1-expert span.text-amber {
+  color: #E89D46 !important;
+  text-shadow: 0 0 25px rgba(232, 157, 70, 0.25);
+}
+
+.intro-text {
+  font-size: 1.26rem;
+  line-height: 1.6;
+  max-width: 600px;
+  color: rgba(249, 249, 249, 0.7) !important;
+}
+
+/* AUDIENCE TITLE */
+.audience-title-block {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+.audience-title-block h2 {
+  font-size: 1.93rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem !important;
+}
+.audience-title-block p {
+  font-size: 1.05rem;
+  color: rgba(249, 249, 249, 0.6) !important;
+  max-width: 600px;
+}
+
+/* Grille Audience "Chubby" */
+.audience-grid { 
+  display: grid; 
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 24px; 
+  max-width: 1300px; 
+  margin: 60px auto 100px; 
+}
+
+.audience-card { 
+  background: rgba(255, 255, 255, 0.02); 
+  border: 1px solid rgba(255, 255, 255, 0.05); 
+  border-radius: 32px; 
+  padding: 40px 32px; 
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+  text-align: left;
+}
+
+.audience-card:hover { 
+  transform: translateY(-10px); 
+  border-color: rgba(232, 157, 70, 0.3); 
+  background: rgba(255, 255, 255, 0.04); 
+}
+
+.card-icon {
+  width: 48px;
+  height: 48px;
+  background: rgba(232, 157, 70, 0.1);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  color: #E89D46;
+}
+.card-icon svg {
+  width: 24px;
+  height: 24px;
+  filter: drop-shadow(0 0 8px rgba(232, 157, 70, 0.3)); /* Simuler lampe allumée */
+}
+
+.audience-card h3 {
+  font-size: 1.38rem;
+  font-weight: 700;
+  margin-bottom: 12px !important;
+}
+.audience-card p {
+  font-size: 0.99rem;
+  line-height: 1.6;
+  color: rgba(249, 249, 249, 0.6) !important;
+}
+
+
+/* Bloc Vision Glassmorphism */
+.vision-manifesto { 
+  max-width: 1000px; 
+  margin: 0 auto; 
+  background: rgba(255, 255, 255, 0.01); 
+  backdrop-filter: blur(12px); 
+  -webkit-backdrop-filter: blur(12px); 
+  border-radius: 32px; 
+  border: 1px solid rgba(255, 255, 255, 0.05); 
+  padding: 80px 60px; 
+  text-align: center; 
+}
+
+.manifesto-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(232, 157, 70, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 32px auto;
+}
+.manifesto-icon svg {
+  width: 24px;
+  height: 24px;
+  stroke: #E89D46;
+  fill: none;
+  filter: drop-shadow(0 0 8px rgba(232, 157, 70, 0.3));
+}
+
+.manifesto-h2 {
+  font-size: 2.48rem;
+  font-weight: 800;
+  margin-bottom: 32px !important;
+}
+.manifesto-highlight {
+  font-size: 1.26rem;
+  color: rgba(249, 249, 249, 0.8) !important;
+  margin-bottom: 24px !important;
+}
+.manifesto-highlight strong {
+  color: #F9F9F9 !important;
+  font-weight: 700;
+}
+.manifesto-body {
+  font-size: 1.16rem;
+  line-height: 1.7;
+  color: rgba(249, 249, 249, 0.6) !important;
+  max-width: 800px;
+  margin: 0 auto 60px auto !important;
+}
+
+.manifesto-line {
+  width: 100px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #E89D46, transparent);
+  margin: 0 auto 40px auto;
+}
+
+.manifesto-footer {
+  font-size: 0.83rem;
+  font-weight: 700;
+  color: #E89D46 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin: 0 !important;
+}
+
+/* CTA Final Pulsant */
+.cta-final-wrapper {
+  margin-top: 80px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn-explorer-glow { 
+  background: #0D233F; 
+  color: #F9F9F9 !important; 
+  padding: 18px 48px; 
+  border-radius: 99px; 
+  font-weight: 700; 
+  text-transform: uppercase; 
+  letter-spacing: 0.1em; 
+  border: 1px solid rgba(232, 157, 70, 0.3); 
+  transition: all 0.4s ease; 
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); 
+  
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  font-size: 0.99rem;
+}
+
+.btn-explorer-glow:hover { 
+  background: #E89D46; 
+  color: #081A32 !important; 
+  box-shadow: 0 0 30px rgba(232, 157, 70, 0.4); 
+}
+
+.btn-explorer-glow svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.3s ease;
+}
+.btn-explorer-glow:hover svg {
+  transform: translateX(4px);
+}
+.btn-explorer-glow:hover svg path {
+  stroke: #081A32;
+}
+
+/* Animation Signature */
+.footer-signature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-top: 40px;
+}
+.signature-text {
+  font-size: 0.88rem;
+  color: rgba(249, 249, 249, 0.5) !important;
+}
+
+@keyframes heartbeat { 
+  0% { transform: scale(1); } 
+  50% { transform: scale(1.15); } 
+  100% { transform: scale(1); } 
+}
+.brand-heart { 
+  animation: heartbeat 2s infinite ease-in-out; 
+  color: #EF4444; 
+  filter: drop-shadow(0 0 5px rgba(239, 68, 68, 0.4)); 
+  display: inline-flex;
+}
+.brand-heart svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+
+/* Responsive */
+@media screen and (max-width: 1200px) {
+  .audience-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (max-width: 768px) {
+  .audience-section {
+    padding: 60px 2rem 80px 2rem;
+  }
+  .h1-expert {
+    font-size: 2.5rem;
+  }
+  .audience-grid {
+    grid-template-columns: 1fr;
+    margin: 40px auto 60px;
+  }
+  .vision-manifesto {
+    padding: 40px 24px;
+  }
+  .manifesto-h2 {
+    font-size: 1.93rem;
+  }
+  .manifesto-body {
+    margin-bottom: 40px !important;
+  }
+}
+</style>
+
+<section class="audience-section">
+  
+  <!-- HEADER ALIGNMENT EXACT 1300PX -->
+  <div class="audience-header-wrapper">
+    {% if section.settings.badge != blank %}
+      <div class="badge-adn">{{ section.settings.badge }}</div>
+    {% endif %}
+    {% if section.settings.title != blank %}
+      <h1 class="h1-expert">{{ section.settings.title | replace: '<span>', '<span class="text-amber">' }}</h1>
+    {% endif %}
+    {% if section.settings.subtitle != blank %}
+      <p class="intro-text">{{ section.settings.subtitle }}</p>
+    {% endif %}
+  </div>
+
+  <!-- AUDIENCE TITLE EXACT 1300PX -->
+  <div class="audience-title-block">
+    {% if section.settings.audience_title != blank %}
+      <h2>{{ section.settings.audience_title }}</h2>
+    {% endif %}
+    {% if section.settings.audience_text != blank %}
+      <p>{{ section.settings.audience_text }}</p>
+    {% endif %}
+  </div>
+
+  <!-- AUDIENCE GRID -->
+  <div class="audience-grid">
+    {% for block in section.blocks %}
+      <div class="audience-card" {{ block.shopify_attributes }}>
+        <div class="card-icon">
+          {% if block.settings.custom_svg != blank %}
+            {{ block.settings.custom_svg }}
+          {% else %}
+            <!-- Default SVGs based on iteration -->
+            {% if forloop.index == 1 %}
+              <!-- Particuliers icon -->
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="8" r="4" stroke="#E89D46" stroke-width="1.5"/>
+                <path d="M4 20C4 16.6863 6.68629 14 10 14H14C17.3137 14 20 16.6863 20 20" stroke="#E89D46" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            {% elsif forloop.index == 2 %}
+              <!-- Créatifs icon (Palette) -->
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21.5c5.247 0 9.5-4.253 9.5-9.5s-4.253-9.5-9.5-9.5S2.5 6.753 2.5 12s4.253 9.5 9.5 9.5z" stroke="#E89D46" stroke-width="1.5"/>
+                <circle cx="7.5" cy="10.5" r="1.5" fill="#E89D46"/>
+                <circle cx="12" cy="7.5" r="1.5" fill="#E89D46"/>
+                <circle cx="16.5" cy="10.5" r="1.5" fill="#E89D46"/>
+              </svg>
+            {% elsif forloop.index == 3 %}
+              <!-- Familles icon -->
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 7a4 4 0 100-8 4 4 0 000 8zm14 14v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="#E89D46" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            {% else %}
+              <!-- Professionnels icon (Mallette) -->
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="2" y="7" width="20" height="14" rx="2" stroke="#E89D46" stroke-width="1.5"/>
+                <path d="M16 21V5C16 3.89543 15.1046 3 14 3H10C8.89543 3 8 3.89543 8 5V21" stroke="#E89D46" stroke-width="1.5"/>
+              </svg>
+            {% endif %}
+          {% endif %}
+        </div>
+        <h3>{{ block.settings.title }}</h3>
+        <p>{{ block.settings.text }}</p>
+      </div>
+    {% endfor %}
+  </div>
+
+  <!-- FUTURE VISION CONTAINER -->
+  <div class="vision-manifesto">
+    <div class="manifesto-icon">
+      {% if section.settings.future_icon_svg != blank %}
+        {{ section.settings.future_icon_svg }}
+      {% else %}
+        <!-- Default Eye Icon -->
+        <svg viewBox="0 0 24 24">
+          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      {% endif %}
+    </div>
+    
+    {% if section.settings.future_title != blank %}
+      <h2 class="manifesto-h2">{{ section.settings.future_title }}</h2>
+    {% endif %}
+    
+    {% if section.settings.future_highlight_text != blank %}
+      <p class="manifesto-highlight">{{ section.settings.future_highlight_text }}</p>
+    {% endif %}
+    
+    {% if section.settings.future_body_text != blank %}
+      <p class="manifesto-body">{{ section.settings.future_body_text }}</p>
+    {% endif %}
+    
+    <div class="manifesto-line"></div>
+
+    {% if section.settings.future_footer_text != blank %}
+      <p class="manifesto-footer">{{ section.settings.future_footer_text }}</p>
+    {% endif %}
+  </div>
+
+  <!-- CALL TO ACTION -->
+  <div class="cta-final-wrapper">
+    <a href="{{ section.settings.cta_btn_link | default: '#' }}" class="btn-explorer-glow">
+      {{ section.settings.cta_btn_text }}
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 12H19" stroke="#F9F9F9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M12 5L19 12L12 19" stroke="#F9F9F9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+    
+    <div class="footer-signature">
+      <div class="signature-text">{{ section.settings.footer_signature_text }}</div>
+      <div class="brand-heart">
+        <svg viewBox="0 0 24 24">
+          <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78v0z"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+</section>

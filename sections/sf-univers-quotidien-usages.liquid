@@ -1,0 +1,343 @@
+{% schema %}
+{
+  "name": "Univers Quotidien Usages",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Titre",
+      "default": "Sous-Univers Quotidien"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Sous-titre",
+      "default": "Explorez nos solutions d'éclairage pensées pour chaque moment de votre journée."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "usage_card",
+      "name": "Carte d'usage",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image de la carte"
+        },
+        {
+          "type": "html",
+          "id": "icon",
+          "label": "Icône SVG (Haut droite)"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Titre"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Description"
+        },
+        {
+          "type": "text",
+          "id": "tags",
+          "label": "Tags (Séparés par des virgules)",
+          "info": "Ex: Lampes de bureau, Screenbar"
+        },
+        {
+          "type": "text",
+          "id": "btn_text",
+          "label": "Texte du bouton",
+          "default": "Explorer cet usage \u2192"
+        },
+        {
+          "type": "url",
+          "id": "btn_link",
+          "label": "Lien du bouton"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Univers Quotidien Usages",
+      "category": "Grid",
+      "blocks": [
+        {
+          "type": "usage_card",
+          "settings": {
+            "title": "Travail & Concentration",
+            "text": "Lumières pensées pour travailler plus longtemps sans fatigue.",
+            "tags": "Lampes de bureau, Screenbar, Éclairage fonctionnel",
+            "icon": "<svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"2\" y=\"3\" width=\"20\" height=\"14\" rx=\"2\" ry=\"2\"></rect><line x1=\"8\" y1=\"21\" x2=\"16\" y2=\"21\"></line><line x1=\"12\" y1=\"17\" x2=\"12\" y2=\"21\"></line></svg>"
+          }
+        },
+        {
+          "type": "usage_card",
+          "settings": {
+            "title": "Ambiance & Détente",
+            "text": "Créer une atmosphère douce en fin de journée.",
+            "tags": "Lampes d'ambiance, Lampes de coin, Lumière indirecte",
+            "icon": "<svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M2 12h4l3-9 5 18 3-9h5\"></path></svg>"
+          }
+        },
+        {
+          "type": "usage_card",
+          "settings": {
+            "title": "Lecture & Moments Calmes",
+            "text": "Un éclairage précis, sans éblouissement.",
+            "tags": "Liseuses, Lampes de chevet",
+            "icon": "<svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 19.5A2.5 2.5 0 0 1 6.5 17H20\"></path><path d=\"M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z\"></path></svg>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+/* Section 3 - Sous-Univers Quotidien (Exploration par Usages) */
+#shopify-section-{{ section.id }} .daily-sub-univers {
+  background-color: var(--illu-night, #081A32);
+  padding: 100px 5%;
+  -webkit-font-smoothing: antialiased;
+}
+
+#shopify-section-{{ section.id }} .daily-sub-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 60px auto;
+}
+
+#shopify-section-{{ section.id }} .daily-sub-h2 {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(2.75rem, 5.5vw, 4.4rem); /* Règle typographique absolue Atelier */
+  font-weight: 800;
+  color: #F9F9F9;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+}
+
+#shopify-section-{{ section.id }} .daily-sub-h2 i,
+#shopify-section-{{ section.id }} .daily-sub-h2 em {
+  font-style: normal;
+  color: #E89D46;
+  text-shadow: 0 0 15px rgba(232, 157, 70, 0.45);
+}
+
+#shopify-section-{{ section.id }} .daily-sub-desc {
+  font-size: 1.24rem;
+  color: rgba(249, 249, 249, 0.7);
+  line-height: 1.6;
+}
+
+#shopify-section-{{ section.id }} .sub-grid-daily {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px; /* card-gap */
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+#shopify-section-{{ section.id }} .daily-card {
+  background: var(--illu-night-light, #122138); /* Lighter than night */
+  border-radius: 32px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+#shopify-section-{{ section.id }} .daily-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 100%, rgba(232, 157, 70, 0.15) 0%, transparent 70%);
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 3;
+}
+
+#shopify-section-{{ section.id }} .daily-card:hover {
+  transform: translateY(-10px);
+  border-color: rgba(232, 157, 70, 0.3);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+#shopify-section-{{ section.id }} .daily-card:hover::after {
+  opacity: 1;
+}
+
+#shopify-section-{{ section.id }} .card-img-container {
+  width: 100%;
+  aspect-ratio: 16/11; /* landscape-card */
+  overflow: hidden;
+  position: relative;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+#shopify-section-{{ section.id }} .card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.8;
+  transition: transform 0.8s ease, opacity 0.5s ease;
+}
+
+#shopify-section-{{ section.id }} .daily-card:hover .card-img {
+  transform: scale(1.05);
+  opacity: 1;
+}
+
+#shopify-section-{{ section.id }} .card-icon-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  background: rgba(232, 157, 70, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #E89D46;
+  z-index: 2;
+  border: 1px solid rgba(232, 157, 70, 0.2);
+}
+
+#shopify-section-{{ section.id }} .card-body {
+  padding: 32px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 4;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+#shopify-section-{{ section.id }} .card-h3 {
+  color: #E89D46;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.65rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  margin-top: 0;
+}
+
+#shopify-section-{{ section.id }} .card-desc {
+  color: #F9F9F9;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+#shopify-section-{{ section.id }} .card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 32px;
+}
+
+#shopify-section-{{ section.id }} .card-tag {
+  background: rgba(255, 255, 255, 0.08); /* Blue grey pill */
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.94rem;
+  color: rgba(249, 249, 249, 0.85);
+  font-weight: 500;
+}
+
+#shopify-section-{{ section.id }} .btn-card {
+  margin-top: auto; /* Push to bottom */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 24px;
+  background: #E89D46;
+  color: #081A32;
+  border-radius: 32px;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(232, 157, 70, 0.2);
+  width: 100%;
+}
+
+#shopify-section-{{ section.id }} .btn-card:hover {
+  background: #f2af61;
+  box-shadow: 0 8px 25px rgba(232, 157, 70, 0.4);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 990px) {
+  #shopify-section-{{ section.id }} .sub-grid-daily {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
+<div class="sf-stitch daily-sub-univers">
+  <div class="daily-sub-header">
+    {%- if section.settings.title != blank -%}
+      <h2 class="daily-sub-h2">{{ section.settings.title | newline_to_br | replace: '<em>', '<i>' | replace: '</em>', '</i>' }}</h2>
+    {%- endif -%}
+    {%- if section.settings.subtitle != blank -%}
+      <p class="daily-sub-desc">{{ section.settings.subtitle }}</p>
+    {%- endif -%}
+  </div>
+
+  <div class="sub-grid-daily">
+    {%- for block in section.blocks -%}
+      <div class="daily-card" {{ block.shopify_attributes }}>
+        <div class="card-img-container">
+          {%- if block.settings.icon != blank -%}
+            <div class="card-icon-badge">
+                {{ block.settings.icon }}
+            </div>
+          {%- endif -%}
+          
+          {%- if block.settings.image != blank -%}
+            {{ block.settings.image | image_url: width: 800 | image_tag: loading: 'lazy', class: 'card-img' }}
+          {%- else -%}
+            <div style="width:100%; height:100%; background:#1c2d42; display:flex; align-items:center; justify-content:center; color:#fff; opacity:0.5;">Image - {{ block.settings.title }}</div>
+          {%- endif -%}
+        </div>
+        
+        <div class="card-body">
+          <h3 class="card-h3">{{ block.settings.title | escape }}</h3>
+          <p class="card-desc">{{ block.settings.text | escape }}</p>
+          
+          {%- if block.settings.tags != blank -%}
+            {%- assign tags_array = block.settings.tags | split: ',' -%}
+            <div class="card-tags">
+              {%- for tag in tags_array -%}
+                <span class="card-tag">{{ tag | strip | escape }}</span>
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
+          
+          <a href="{{ block.settings.btn_link | default: '#' }}" class="btn-card">
+            {{ block.settings.btn_text | escape }}
+          </a>
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+</div>

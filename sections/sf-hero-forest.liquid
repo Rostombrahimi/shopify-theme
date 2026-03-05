@@ -1,0 +1,230 @@
+{% schema %}
+{
+  "name": "Hero Forêt",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "AMIS DE LA FORÊT"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Heading",
+      "default": "Amis de la Forêt –<br><span>Une lumière rassurante pour accompagner les nuits</span>"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subheading",
+      "default": "Des formes familières et une lumière douce pour transformer la veilleuse en compagnon de nuit."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Trouver son compagnon →"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+       "type": "image_picker",
+       "id": "background_image",
+       "label": "Background Image (Optional)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Forêt"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+/* Hero Amis de la Forêt - sf-hero-forest.css */
+.hero-forest {
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: #081A32;
+  padding: 4rem 2rem;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.hero-forest-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(232, 157, 70, 0.1) 0%, #081A32 80%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+{% if section.settings.background_image %}
+.hero-forest-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.3;
+  z-index: 0;
+}
+{% endif %}
+
+.hero-forest-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  opacity: 0;
+  animation: soft-reveal 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes soft-reveal {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.forest-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 8px 20px;
+  border-radius: 99px;
+  color: #E89D46;
+  font-size: 0.83rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  margin-bottom: 2.5rem;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  text-transform: uppercase;
+}
+
+.forest-badge svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+
+.forest-title {
+  font-size: clamp(2.25rem, 5.5vw, 4.5rem);
+  line-height: 1.1;
+  color: #F9F9F9;
+  max-width: 1000px;
+  margin-bottom: 2rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.forest-title span {
+  color: #E89D46;
+  text-shadow: 0 0 30px rgba(232, 157, 70, 0.35); /* Glow protecteur */
+  display: block;
+}
+
+.forest-subtitle {
+  font-size: 1.38rem;
+  line-height: 1.6;
+  color: rgba(249, 249, 249, 0.7);
+  max-width: 700px;
+  margin-bottom: 3.5rem;
+}
+
+/* Bouton Veilleuse Active */
+.btn-veilleuse {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2.5rem;
+  border-radius: 99px;
+  background-color: #E89D46;
+  color: #081A32; /* Texte sombre pour contraster avec la lumière */
+  font-weight: 600;
+  font-size: 1.24rem;
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  /* Un glow multi-couches pour un effet lumière diffuse et premium */
+  box-shadow: 
+    0 0 15px rgba(232, 157, 70, 0.4),
+    0 0 40px rgba(232, 157, 70, 0.2),
+    inset 0 2px 4px rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-veilleuse:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 0 25px rgba(232, 157, 70, 0.6),
+    0 0 60px rgba(232, 157, 70, 0.3),
+    inset 0 2px 4px rgba(255, 255, 255, 0.5);
+  background-color: #F0A956;
+  color: #081A32;
+}
+
+@media screen and (max-width: 768px) {
+  .hero-forest {
+    padding: 4rem 1.5rem;
+    min-height: 80vh;
+  }
+  .forest-title {
+    font-size: 2.5rem;
+  }
+  .forest-subtitle {
+    font-size: 1.24rem;
+  }
+}
+</style>
+
+<div class="hero-forest">
+  {% if section.settings.background_image != blank %}
+    <img src="{{ section.settings.background_image | image_url: width: 2000 }}"
+         alt="{{ section.settings.background_image.alt | default: 'Amis de la forêt' }}"
+         class="hero-forest-image"
+         loading="eager"
+         width="2000"
+         height="{{ 2000 | divided_by: section.settings.background_image.aspect_ratio | round }}">
+  {% endif %}
+  <div class="hero-forest-bg"></div>
+  
+  <div class="hero-forest-content">
+    {% if section.settings.badge_text != blank %}
+      <div class="forest-badge">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
+        {{ section.settings.badge_text | escape }}
+      </div>
+    {% endif %}
+
+    {% if section.settings.title != blank %}
+      <h1 class="forest-title">{{ section.settings.title }}</h1>
+    {% endif %}
+
+    {% if section.settings.subtitle != blank %}
+      <div class="forest-subtitle">{{ section.settings.subtitle }}</div>
+    {% endif %}
+
+    {% if section.settings.button_text != blank %}
+      <a href="{{ section.settings.button_link | default: '#' }}" class="btn-veilleuse">
+        {{ section.settings.button_text | escape }}
+      </a>
+    {% endif %}
+  </div>
+</div>

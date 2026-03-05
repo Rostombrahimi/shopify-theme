@@ -1,0 +1,138 @@
+{% schema %}
+{
+  "name": "Univers Quotidien Hero",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Title",
+      "default": "Espaces de vie,"
+    },
+    {
+      "type": "text",
+      "id": "title_highlight",
+      "label": "Title Highlight (Amber)",
+      "default": "Lumière & Harmonie"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Des solutions d'éclairage conçues pour s'intégrer parfaitement à votre quotidien, tout en respectant l'ambiance de chaque pièce."
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Univers Quotidien Hero"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+#shopify-section-{{ section.id }} {
+  background-color: #081A32;
+  position: relative;
+}
+
+#shopify-section-{{ section.id }} .daily-wrapper {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  color: #F9F9F9;
+}
+
+/* L'image de fond qui couvre toute la section */
+#shopify-section-{{ section.id }} .daily-bg-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(1.2) brightness(0.8);
+  z-index: 0;
+}
+
+/* L'overlay radial qui part du centre */
+#shopify-section-{{ section.id }} .daily-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 40%, rgba(8, 26, 50, 0.4) 0%, #081A32 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Hero Content au dessus de l'overlay, hauteur 100vh pour centrer le texte */
+#shopify-section-{{ section.id }} .daily-hero-content {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 2;
+  padding: 0 5%;
+}
+
+#shopify-section-{{ section.id }} .daily-h1 {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  color: #F9F9F9;
+  margin: 0 0 2rem 0;
+  letter-spacing: -0.03em;
+}
+
+#shopify-section-{{ section.id }} .daily-h1 span {
+  color: #E89D46;
+  text-shadow: 0 0 35px rgba(232, 157, 70, 0.45);
+  mix-blend-mode: screen;
+}
+
+#shopify-section-{{ section.id }} .daily-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.38rem;
+  line-height: 1.6;
+  color: rgba(249, 249, 249, 0.7);
+  max-width: 800px;
+  margin: 0 auto;
+}
+</style>
+
+<div class="daily-wrapper">
+  
+  {%- if section.settings.background_image != blank -%}
+    {{ section.settings.background_image | image_url: width: 2500 | image_tag: 
+      class: 'daily-bg-img', 
+      loading: 'eager', 
+      widths: '500, 750, 1000, 1500, 2000, 2500' 
+    }}
+  {%- endif -%}
+
+  <div class="daily-overlay"></div>
+
+  <div class="daily-hero-content">
+    <h1 class="daily-h1">
+      {{ section.settings.title | newline_to_br }}
+      {%- if section.settings.title_highlight != blank -%}
+        <br><span>{{ section.settings.title_highlight }}</span>
+      {%- endif -%}
+    </h1>
+    
+    {%- if section.settings.subtitle != blank -%}
+      <p class="daily-subtitle">{{ section.settings.subtitle }}</p>
+    {%- endif -%}
+  </div>
+
+</div>

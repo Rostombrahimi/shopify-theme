@@ -1,0 +1,26 @@
+/* sf-scope.css - Reset & Scoping rules for Illuminées Custom Sections */
+
+.sf-stitch,
+.sf-stitch * {
+    box-sizing: border-box;
+}
+
+.sf-stitch {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Reset margin on core text elements inside sf-stitch */
+.sf-stitch h1,
+.sf-stitch p {
+    margin: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.sf-stitch ::selection {
+    background: var(--illu-accent-amber);
+    color: var(--illu-bg-night);
+}
