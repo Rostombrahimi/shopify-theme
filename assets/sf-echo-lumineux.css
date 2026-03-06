@@ -2,7 +2,7 @@
 
 .sf-echo-lumineux {
     padding: 60px 20px;
-    background-color: #081A32 !important;
+    background-color: var(--illu-bg-night, #081A32);
     position: relative;
     overflow: hidden;
 }
