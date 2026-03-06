@@ -1,0 +1,210 @@
+/* Page Recherche - sf-search-immersion.css */
+
+/* 3️⃣ Globals & Resets (Niveau Racine) */
+/* Selection Color pour une immersion totale */
+.template-search ::selection {
+    background: var(--illu-accent-amber, #E89D46);
+    color: var(--illu-bg-night, #081A32);
+}
+
+/* Antialiasing et Root Background */
+.template-search body,
+.template-search html {
+    background-color: var(--illu-bg-night, #081A32);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.search-page-container {
+    min-height: 100vh;
+    background-color: var(--illu-bg-night, #081A32);
+    padding: 80px 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+/* Vignette Cinématique : overlay sombre fixe sur les bords */
+.search-page-container::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(circle at center, transparent 30%, rgba(8, 26, 50, 0.8) 100%);
+    z-index: 2;
+}
+
+.search-header-h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    color: var(--illu-text-cream, #F9F9F9);
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.search-header-subtitle {
+    color: rgba(249, 249, 249, 0.7);
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+    text-align: center;
+    max-width: 600px;
+}
+
+.search-bar-wrapper {
+    width: 100%;
+    max-width: 800px;
+    position: relative;
+    margin-bottom: 2rem;
+    z-index: 3;
+    /* above vignette */
+}
+
+/* Reset standard Shopify search wrapper border/shadows */
+.template-search__search .search {
+    margin-top: 0;
+}
+
+.template-search__search .field::after,
+.template-search__search .field::before {
+    display: none !important;
+}
+
+.search-input-pill {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.03) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 99px !important;
+    padding: 20px 60px 20px 32px !important;
+    color: var(--illu-text-cream, #F9F9F9) !important;
+    font-size: 1.1rem !important;
+    transition: all 0.3s ease !important;
+    box-shadow: none !important;
+}
+
+/* Styling the placeholder properly */
+.search-input-pill::placeholder {
+    color: rgba(249, 249, 249, 0.4) !important;
+    opacity: 1;
+    /* Firefox */
+}
+
+.search-input-pill:-ms-input-placeholder {
+    color: rgba(249, 249, 249, 0.4) !important;
+}
+
+.search-input-pill::-ms-input-placeholder {
+    color: rgba(249, 249, 249, 0.4) !important;
+}
+
+.search-input-pill:focus {
+    outline: none !important;
+    border-color: var(--illu-accent-amber, #E89D46) !important;
+    box-shadow: 0 0 20px rgba(232, 157, 70, 0.2) !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Lueur de Recherche : Loupe ambre */
+.search-bar-wrapper .search__button {
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--illu-accent-amber, #E89D46);
+    filter: drop-shadow(0 0 8px rgba(232, 157, 70, 0.3));
+    background: transparent !important;
+}
+
+.search-bar-wrapper .reset__button {
+    right: 55px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(249, 249, 249, 0.5);
+    background: transparent !important;
+}
+
+.search-bar-wrapper .reset__button::after {
+    display: none !important;
+    /* Hide separator */
+}
+
+/* Hide default label */
+.template-search__search .field__label {
+    display: none;
+}
+
+/* Suggestions Pills */
+.suggestion-flex {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    z-index: 3;
+}
+
+.suggest-pill {
+    padding: 8px 20px;
+    background: rgba(232, 157, 70, 0.05);
+    border: 1px solid rgba(232, 157, 70, 0.2);
+    border-radius: 32px;
+    color: var(--illu-accent-amber, #E89D46);
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+}
+
+.suggest-pill:hover {
+    background: rgba(232, 157, 70, 0.15);
+    transform: translateY(-2px);
+    border-color: rgba(232, 157, 70, 0.4);
+}
+
+/* Override product grid text colors for dark theme */
+.template-search__results {
+    z-index: 3;
+    position: relative;
+    /* Contrast Boost : Un léger contrast(1.05) sur la grille */
+    filter: contrast(1.05);
+    margin-top: 4rem;
+}
+
+.template-search__results .card__heading,
+.template-search__results .price,
+.template-search__results .card-information>* {
+    color: var(--illu-text-cream, #F9F9F9) !important;
+}
+
+.template-search__results .card__heading a:hover {
+    color: var(--illu-accent-amber, #E89D46) !important;
+}
+
+.template-search__results .facets__summary {
+    color: var(--illu-text-cream, #F9F9F9);
+}
+
+.template-search__results .facets__display {
+    background-color: var(--illu-bg-night-light, #11253E);
+    color: var(--illu-text-cream, #F9F9F9);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.template-search__results .facets__list label {
+    color: var(--illu-text-cream, #F9F9F9);
+}
+
+@media screen and (max-width: 768px) {
+    .search-page-container {
+        padding: 60px 1.5rem;
+    }
+
+    .search-input-pill {
+        padding: 16px 50px 16px 24px !important;
+    }
+}
