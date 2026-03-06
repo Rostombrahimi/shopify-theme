@@ -327,20 +327,8 @@
       overflow: hidden;
     }
     .sf-shipping-progress {
-      position: absolute;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      height: 6px !important;
-      min-height: 6px !important;
-      background-color: #E89D46 !important;
-      border-radius: 99px;
-      transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 0 15px rgba(232, 157, 70, 0.6) !important;
-      z-index: 2;
-    }
-    .sf-shipping-success {
-      color: #4ade80 !important;
+      display: block;
+      height: 100%;
     }
     .sf-shipping-progress.success {
       background-color: #4ade80 !important;
@@ -697,19 +685,24 @@
           shippingBar.style.display = 'block';
           const thresholdCents = parseFloat(thresholdElement.dataset.threshold || 0) * 100;
           const totalCart = cart.total_price;
-          const progressEl = document.getElementById('sf-shipping-progress');
-          const textEl = document.getElementById('sf-shipping-text');
+          const progressEl = shippingBar.querySelector('#sf-shipping-progress');
+          const textEl = shippingBar.querySelector('#sf-shipping-text');
           
-          if (totalCart >= thresholdCents) {
-            progressEl.classList.add('success');
-            textEl.innerHTML = 'Félicitations, la livraison vous est <span class="sf-shipping-success">offerte !</span>';
-            setTimeout(() => { progressEl.style.width = '100%'; }, 50);
-          } else {
-            const diffCents = thresholdCents - totalCart;
-            const percent = Math.min((totalCart / thresholdCents) * 100, 100);
-            progressEl.classList.remove('success');
-            textEl.innerHTML = `Plus que <span style="color:var(--drawer-accent)">${formatMoney(diffCents)}</span> pour la livraison gratuite`;
-            setTimeout(() => { progressEl.style.width = percent + '%'; }, 50);
+          if (progressEl && textEl) {
+            const baseStyles = 'height: 100% !important; border-radius: 99px; transition: width 0.6s ease;';
+            if (totalCart >= thresholdCents) {
+              textEl.innerHTML = 'Félicitations, la livraison vous est <span class="sf-shipping-success" style="color:#4ade80;">offerte !</span>';
+              setTimeout(() => { 
+                progressEl.setAttribute('style', `width: 100%; background-color: #4ade80 !important; box-shadow: 0 0 15px rgba(74, 222, 128, 0.6); ${baseStyles}`);
+              }, 100);
+            } else {
+              const diffCents = thresholdCents - totalCart;
+              const percent = Math.round(Math.min((totalCart / thresholdCents) * 100, 100)); // Round to avoid float CSS issues
+              textEl.innerHTML = `Plus que <span style="color:#E89D46">${formatMoney(diffCents)}</span> pour la livraison gratuite`;
+              setTimeout(() => { 
+                progressEl.setAttribute('style', `width: ${percent}%; background-color: #E89D46 !important; box-shadow: 0 0 15px rgba(232, 157, 70, 0.6); ${baseStyles}`);
+              }, 100);
+            }
           }
         }
 
