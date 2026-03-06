@@ -1,0 +1,301 @@
+<div class="sf-stitch sf-atelier atelier-section">
+  <style>
+    /* L'Atelier Illuminées (Blog Listing) - sf-main-blog.css */
+    .atelier-section {
+      background-color: var(--illu-bg-night);
+      padding: 100px 40px;
+    }
+
+    .atelier-header {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 60px auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .atelier-title {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      color: var(--illu-text-cream);
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      font-weight: var(--fw-bold);
+    }
+
+    .atelier-title em {
+      font-style: normal;
+      color: var(--illu-accent-amber);
+      text-shadow: 0 0 15px rgba(232, 157, 70, 0.45);
+    }
+
+    .atelier-desc {
+      font-size: 1.24rem;
+      color: var(--illu-text-cream);
+      opacity: 0.75;
+      line-height: 1.6;
+      max-width: 600px;
+    }
+
+    .atelier-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .atelier-card {
+      display: flex;
+      flex-direction: column;
+      background: var(--illu-bg-night-light);
+      border-radius: var(--illu-radius-chubby);
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: var(--illu-transition-soft);
+      text-decoration: none;
+      position: relative;
+    }
+
+    .atelier-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(232, 157, 70, 0.3);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .atelier-media {
+      width: 100%;
+      aspect-ratio: 16/10;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .atelier-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+      filter: sepia(10%); 
+    }
+
+    .atelier-card:hover .atelier-img {
+      transform: scale(1.08);
+      filter: sepia(0%);
+    }
+    
+    .atelier-tag-overlay {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 12px;
+      font-size: 0.83rem;
+      font-weight: var(--fw-bold);
+      color: var(--illu-text-cream);
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 99px;
+      z-index: 2;
+    }
+
+    .atelier-content {
+      padding: 32px 24px 24px 24px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .atelier-card-title {
+      color: var(--illu-text-cream);
+      font-size: 1.5rem;
+      font-weight: var(--fw-bold);
+      line-height: 1.4;
+      margin-bottom: 16px;
+    }
+
+    .atelier-excerpt {
+      color: var(--illu-text-cream);
+      opacity: 0.7;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      margin-bottom: 24px;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    
+    .atelier-card-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: auto;
+        padding-top: 16px;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .atelier-read-time {
+        font-size: 0.88rem;
+        color: var(--illu-text-cream);
+        opacity: 0.5;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+    
+    .atelier-read-more {
+        color: var(--illu-accent-amber);
+        font-size: 0.99rem;
+        font-weight: var(--fw-bold);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: color 0.3s ease;
+    }
+    
+    .atelier-read-more svg {
+        transition: transform 0.3s ease;
+    }
+    
+    .atelier-card:hover .atelier-read-more svg {
+        transform: translateX(4px);
+    }
+
+    /* Pagination */
+    .atelier-pagination {
+      margin-top: 60px;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .atelier-pagination a, .atelier-pagination span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      color: var(--illu-text-cream);
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 50%;
+      background: rgba(255,255,255,0.02);
+      transition: var(--illu-transition-soft);
+    }
+    .atelier-pagination .current {
+      background: var(--illu-accent-amber);
+      color: var(--illu-bg-night);
+      border-color: var(--illu-accent-amber);
+      font-weight: bold;
+    }
+    .atelier-pagination a:hover {
+      border-color: var(--illu-accent-amber);
+      color: var(--illu-accent-amber);
+    }
+
+    /* Mobile Responsive */
+    @media screen and (max-width: 990px) {
+      .atelier-section {
+        padding: 60px 20px;
+      }
+      .atelier-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .atelier-title {
+        font-size: 2.5rem;
+      }
+    }
+    
+    @media screen and (min-width: 768px) and (max-width: 1024px) {
+        .atelier-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+  </style>
+
+  <div class="atelier-header">
+    <h1 class="atelier-title">{{ blog.title }}</h1>
+  </div>
+
+  {% paginate blog.articles by section.settings.articles_per_page %}
+    <div class="atelier-grid">
+      {%- for article in blog.articles -%}
+        <a href="{{ article.url }}" class="atelier-card">
+          <div class="atelier-media">
+            {%- if article.tags.size > 0 -%}
+              <span class="atelier-tag-overlay">{{ article.tags.first }}</span>
+            {%- endif -%}
+            
+            {%- if article.image -%}
+              <img
+                src="{{ article.image | image_url: width: 800 }}"
+                alt="{{ article.image.alt | escape }}"
+                class="atelier-img"
+                loading="lazy"
+                width="{{ article.image.width }}"
+                height="{{ article.image.height }}"
+              >
+            {%- else -%}
+              <!-- Placeholder if no image -->
+              <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #1a2a40; color: #fff; font-size: 0.8rem; opacity: 0.5;">Image d'article</div>
+            {%- endif -%}
+          </div>
+
+          <div class="atelier-content">
+            <h3 class="atelier-card-title">{{ article.title | escape }}</h3>
+            
+            <p class="atelier-excerpt">
+              {%- if article.excerpt.size > 0 -%}
+                {{ article.excerpt | strip_html | truncatewords: 30 }}
+              {%- else -%}
+                {{ article.content | strip_html | truncatewords: 30 }}
+              {%- endif -%}
+            </p>
+            
+            <div class="atelier-card-footer">
+                <span class="atelier-read-time">
+                    <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: "%d %b, %Y" }}</time>
+                </span>
+                <span class="atelier-read-more">
+                    Lire l'article
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+            </div>
+          </div>
+        </a>
+      {%- endfor -%}
+    </div>
+
+    {%- if paginate.pages > 1 -%}
+      <div class="atelier-pagination">
+        {{ paginate | default_pagination }}
+      </div>
+    {%- endif -%}
+  {% endpaginate %}
+</div>
+
+{% schema %}
+{
+  "name": "SF Main Blog",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "range",
+      "id": "articles_per_page",
+      "min": 3,
+      "max": 24,
+      "step": 3,
+      "default": 9,
+      "label": "Articles par page"
+    }
+  ]
+}
+{% endschema %}

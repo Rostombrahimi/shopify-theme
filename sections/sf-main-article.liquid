@@ -1,0 +1,363 @@
+{% schema %}
+{
+  "name": "SF Article Dynamic",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "snapshot_title",
+      "label": "Titre du snapshot (Pépite)",
+      "default": "L'ESSENTIEL EN 30 SECONDES",
+      "info": "La pépite s'affichera uniquement si le champ 'Extrait' de l'article est rempli dans Shopify."
+    }
+  ],
+  "presets": [
+    {
+      "name": "SF Article Dynamic"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+/* CSS - sf-main-article.liquid (Fusion Hero + Body) */
+
+.blog-hero-wrapper {
+  position: relative;
+  background-color: var(--illu-bg-night, #081A32);
+  font-family: 'Inter', sans-serif;
+  color: #F9F9F9;
+  -webkit-font-smoothing: antialiased;
+  padding-top: 100px;
+  padding-bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Background Image with Dark Overlay */
+.blog-hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.blog-hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.blog-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(8, 26, 50, 0.7), rgba(8, 26, 50, 0.95) 80%, #081A32 100%);
+  z-index: 2;
+}
+
+.blog-hero-content {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 900px;
+  padding: 0 2rem;
+  margin-top: 40px;
+}
+
+/* Tag Pill */
+.blog-hero-tag {
+  display: inline-flex;
+  border: 1px solid rgba(232, 157, 70, 0.3);
+  background: rgba(232, 157, 70, 0.1);
+  color: var(--illu-accent-amber, #E89D46);
+  font-size: 0.83rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 6px 16px;
+  border-radius: 99px;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+}
+
+/* H1 Title */
+.blog-hero-h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  color: #F9F9F9;
+  line-height: 1.1;
+  margin: 0 0 32px 0;
+  letter-spacing: -0.02em;
+}
+
+.blog-hero-meta {
+  font-size: 1rem;
+  color: rgba(249, 249, 249, 0.6);
+  margin-bottom: 32px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Expert Snapshot (Le bloc de verre vaporeux) */
+.expert-snapshot {
+  max-width: 600px;
+  margin: 60px auto 10px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 32px;
+  border: 1px solid rgba(232, 157, 70, 0.2);
+  padding: 40px 32px;
+  text-align: center;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3),
+              inset 0 0 20px rgba(255, 255, 255, 0.02);
+  position: relative;
+}
+
+/* Lightning effect at bottom of card */
+.expert-snapshot::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 2px;
+  background: radial-gradient(circle, rgba(232,157,70,0.8) 0%, rgba(232,157,70,0) 100%);
+  box-shadow: 0 -5px 15px rgba(232, 157, 70, 0.4);
+}
+
+.snapshot-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--illu-accent-amber, #E89D46);
+  margin-bottom: 24px;
+}
+
+.snapshot-header svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2.5;
+}
+
+.snapshot-content {
+  font-size: 1.26rem;
+  line-height: 1.6;
+  color: #F9F9F9;
+  font-weight: 400;
+  margin: 0;
+}
+
+.snapshot-content strong,
+.snapshot-content b {
+  color: var(--illu-accent-amber, #E89D46);
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(232, 157, 70, 0.2);
+}
+
+/* BODY SECTION */
+.blog-article-wrapper {
+  background-color: var(--illu-bg-night, #081A32);
+  padding: 20px 2rem 80px;
+  font-family: 'Inter', sans-serif;
+  color: #F9F9F9;
+  -webkit-font-smoothing: antialiased;
+}
+
+.blog-article-inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Typographie spécifique au contenu de l'article */
+.blog-content-richtext {
+  font-size: 1.21rem;
+  line-height: 1.8;
+  color: rgba(249, 249, 249, 0.85);
+}
+
+.blog-content-richtext h2 {
+  font-size: 2.42rem;
+  font-weight: 800;
+  color: #F9F9F9;
+  margin-top: 60px;
+  margin-bottom: 24px;
+  letter-spacing: -0.01em;
+}
+
+.blog-content-richtext h3 {
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: var(--illu-accent-amber, #E89D46);
+  margin-top: 40px;
+  margin-bottom: 16px;
+}
+
+.blog-content-richtext p {
+  margin-bottom: 24px;
+}
+
+.blog-content-richtext img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 16px;
+  margin: 32px 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.blog-content-richtext strong,
+.blog-content-richtext b {
+  color: #F9F9F9;
+  font-weight: 700;
+}
+
+/* Style des Liens dans le texte */
+.blog-content-richtext a {
+  color: var(--illu-accent-amber, #E89D46);
+  text-decoration: underline;
+  text-decoration-color: rgba(232, 157, 70, 0.4);
+  text-underline-offset: 4px;
+  transition: all 0.3s ease;
+}
+
+.blog-content-richtext a:hover {
+  text-decoration-color: var(--illu-accent-amber, #E89D46);
+  filter: brightness(1.2);
+}
+
+/* Citations intégrées dans le texte */
+.blog-content-richtext blockquote {
+  margin: 40px 0;
+  padding: 24px 32px;
+  background: rgba(232, 157, 70, 0.05);
+  border-left: 4px solid var(--illu-accent-amber, #E89D46);
+  border-radius: 0 16px 16px 0;
+  font-size: 1.32rem;
+  font-weight: 500;
+  color: #F9F9F9;
+  font-style: italic;
+}
+
+/* Listes à puces esthétiques */
+.blog-content-richtext ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 24px;
+}
+
+.blog-content-richtext ul li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 12px;
+}
+
+.blog-content-richtext ul li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--illu-accent-amber, #E89D46);
+  font-size: 1.65rem;
+  line-height: 1.2rem;
+}
+
+/* RESPONSIVE */
+@media screen and (max-width: 768px) {
+  .blog-hero-wrapper {
+    padding-top: 80px;
+    padding-bottom: 40px;
+  }
+  .expert-snapshot {
+    padding: 32px 24px;
+    margin-top: 40px;
+  }
+  .blog-hero-h1 {
+    font-size: 2.2rem;
+  }
+  .snapshot-content {
+    font-size: 1.16rem;
+  }
+  .blog-article-wrapper {
+    padding: 0 1.5rem 60px;
+  }
+  .blog-content-richtext {
+    font-size: 1.16rem;
+  }
+  .blog-content-richtext h2 {
+    font-size: 1.98rem;
+    margin-top: 40px;
+  }
+  .blog-content-richtext blockquote {
+    font-size: 1.21rem;
+    padding: 20px;
+  }
+}
+</style>
+
+<!-- HERO SECTION -->
+<section class="blog-hero-wrapper">
+  
+  <div class="blog-hero-bg">
+    {%- if article.image -%}
+      <img src="{{ article.image | image_url: width: 2000 }}" alt="{{ article.image.alt | escape }}" loading="eager">
+    {%- else -%}
+      <div style="background-color: #05101E; width: 100%; height: 100%;"></div>
+    {%- endif -%}
+    <div class="blog-hero-overlay"></div>
+  </div>
+
+  <div class="blog-hero-content">
+    {%- if article.tags.size > 0 -%}
+      <div class="blog-hero-tag">{{ article.tags.first }}</div>
+    {%- else -%}
+      <div class="blog-hero-tag">{{ blog.title }}</div>
+    {%- endif -%}
+
+    <h1 class="blog-hero-h1">
+      {{ article.title }}
+    </h1>
+
+    <div class="blog-hero-meta">
+      <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: "%d %B %Y" }}</time>
+    </div>
+
+    <!-- LA PÉPITE EN 30 SECONDES (LIÉE À L'EXTRAIT/EXCERPT NATIVE) -->
+    {%- if article.excerpt != blank -%}
+      <div class="expert-snapshot">
+        <div class="snapshot-header">
+          <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          {{ section.settings.snapshot_title }}
+        </div>
+        <div class="snapshot-content">
+          {{ article.excerpt }}
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+
+</section>
+
+<!-- BODY SECTION -->
+<section class="blog-article-wrapper">
+  <div class="blog-article-inner">
+      <div class="blog-content-richtext">
+        {{ article.content }}
+      </div>
+  </div>
+</section>
