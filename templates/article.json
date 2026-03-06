@@ -1,29 +1,81 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
-    "sections": {
-        "main": {
-            "type": "sf-main-article",
-            "settings": {
-                "snapshot_title": "L'ESSENTIEL EN 30 SECONDES"
-            }
-        },
-        "cta": {
-            "type": "sf-blog-cta-card",
-            "settings": {
-                "card_layout": "collection",
-                "col_title": "Ambiances sculptées",
-                "col_desc": "Pour aller plus loin, découvrez notre sélection dédiée à cet univers."
-            }
-        },
-        "faq": {
-            "type": "sf-blog-faq",
-            "settings": {
-                "title": "La FAQ Associée"
-            }
-        }
+  "sections": {
+    "main": {
+      "type": "sf-main-article",
+      "settings": {
+        "snapshot_title": "L'ESSENTIEL EN 30 SECONDES"
+      }
     },
-    "order": [
-        "main",
-        "cta",
-        "faq"
-    ]
+    "cta": {
+      "type": "sf-blog-cta-card",
+      "settings": {
+        "card_layout": "collection",
+        "col_icon": "",
+        "col_title": "Ambiances sculptées",
+        "col_desc": "Pour aller plus loin, découvrez notre sélection dédiée à cet univers.",
+        "prod_subtitle": "L'EXPERTISE ILLUMINÉES",
+        "prod_title": "Screenbar Pro",
+        "prod_desc": "Pour un éclairage stable directement fixé...",
+        "cta_text": "Explorer les ambiances",
+        "cta_link": ""
+      }
+    },
+    "faq": {
+      "type": "sf-blog-faq",
+      "blocks": {
+        "faq_item_rPAPHw": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Quelle puissance pour une chambre d'enfant ?",
+            "answer": "<p>Pour une chambre d'enfant, une puissance de <strong>1 à 3 watts (LED)</strong> est recommandée pour une veilleuse, offrant une lueur douce sans perturber le sommeil. Pour l'éclairage général, optez pour 300 à 500 lumens avec une température de couleur chaude (2700K) pour favoriser l'apaisement avant le coucher.</p>"
+          }
+        },
+        "faq_item_Ft9J4W": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Quelle puissance pour une chambre d'enfant ?",
+            "answer": "<p>Pour une chambre d'enfant, une puissance de <strong>1 à 3 watts (LED)</strong> est recommandée pour une veilleuse, offrant une lueur douce sans perturber le sommeil. Pour l'éclairage général, optez pour 300 à 500 lumens avec une température de couleur chaude (2700K) pour favoriser l'apaisement avant le coucher.</p>"
+          }
+        },
+        "faq_item_mDQteT": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Quelle puissance pour une chambre d'enfant ?",
+            "answer": "<p>Pour une chambre d'enfant, une puissance de <strong>1 à 3 watts (LED)</strong> est recommandée pour une veilleuse, offrant une lueur douce sans perturber le sommeil. Pour l'éclairage général, optez pour 300 à 500 lumens avec une température de couleur chaude (2700K) pour favoriser l'apaisement avant le coucher.</p>"
+          }
+        },
+        "faq_item_cN6AQj": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Quelle puissance pour une chambre d'enfant ?",
+            "answer": "<p>Pour une chambre d'enfant, une puissance de <strong>1 à 3 watts (LED)</strong> est recommandée pour une veilleuse, offrant une lueur douce sans perturber le sommeil. Pour l'éclairage général, optez pour 300 à 500 lumens avec une température de couleur chaude (2700K) pour favoriser l'apaisement avant le coucher.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_rPAPHw",
+        "faq_item_Ft9J4W",
+        "faq_item_mDQteT",
+        "faq_item_cN6AQj"
+      ],
+      "settings": {
+        "title": "La FAQ Associée",
+        "subtitle": "Réponses d'experts pour optimiser votre confort visuel et comprendre les nuances de l'éclairage domestique."
+      }
+    }
+  },
+  "order": [
+    "main",
+    "cta",
+    "faq"
+  ]
 }
