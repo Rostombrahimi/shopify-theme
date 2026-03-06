@@ -11,6 +11,7 @@
   "sections": {
     "banner": {
       "type": "main-collection-banner",
+      "disabled": true,
       "settings": {
         "show_collection_description": true,
         "show_collection_image": false,
@@ -19,9 +20,11 @@
     },
     "product-grid": {
       "type": "main-collection-product-grid",
+      "disabled": true,
       "settings": {
         "products_per_page": 16,
         "columns_desktop": 4,
+        "columns_mobile": "2",
         "color_scheme": "scheme-1",
         "image_ratio": "adapt",
         "image_shape": "default",
@@ -32,14 +35,195 @@
         "enable_filtering": true,
         "filter_type": "horizontal",
         "enable_sorting": true,
-        "columns_mobile": "2",
         "padding_top": 36,
         "padding_bottom": 36
+      }
+    },
+    "sf_univers_cocon_bHhww4": {
+      "type": "sf-univers-cocon",
+      "name": "Cocon Hero",
+      "settings": {
+        "label": "Petit Cocon",
+        "title": "Petit Cocon – <em>Des ambiances lumineuses douces pour veiller sur les tout-petits</em>",
+        "text": "Sommeil apaisé, matières sûres et lumière rassurante pour accompagner les nuits des enfants… et la sérénité des parents."
+      }
+    },
+    "sf_univers_mission_7XTij9": {
+      "type": "sf-univers-mission",
+      "blocks": {
+        "tag_XKxDkM": {
+          "type": "tag",
+          "settings": {
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z\"></path></svg>",
+            "text": "Tranquillité"
+          }
+        },
+        "tag_6jGGMn": {
+          "type": "tag",
+          "settings": {
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10\"></path><path d=\"m9 12 2 2 4-4\"></path></svg>",
+            "text": "Confiance"
+          }
+        },
+        "tag_JbrLUx": {
+          "type": "tag",
+          "settings": {
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z\"></path></svg>",
+            "text": "Intention bienveillante"
+          }
+        }
+      },
+      "block_order": [
+        "tag_XKxDkM",
+        "tag_6jGGMn",
+        "tag_JbrLUx"
+      ],
+      "name": "Mission Cocon",
+      "settings": {
+        "label": "NOTRE ENGAGEMENT",
+        "title": "Parce que chaque nuit compte.",
+        "text": "Les premières nuits sont souvent chargées d'émotions. Peur du noir, réveils nocturnes, besoin de repères... Chez Illuminées, nous avons imaginé des ambiances lumineuses pensées pour rassurer les enfants, sans jamais perturber leur sommeil."
+      }
+    },
+    "sf_univers_needs_WxnUEi": {
+      "type": "sf-univers-needs",
+      "blocks": {
+        "need_card_Cb7K8i": {
+          "type": "need_card",
+          "settings": {
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z\"></path></svg>",
+            "title": "Les Premières Nuits",
+            "text": "Une douceur absolue pour les soins nocturnes, sans jamais briser le calme.",
+            "link": ""
+          }
+        },
+        "need_card_7mFPgD": {
+          "type": "need_card",
+          "settings": {
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20\"></path></svg>",
+            "title": "L'Heure des Histoires",
+            "text": "Des ambiances chaleureuses pour ritualiser le coucher et apaiser les esprits.",
+            "link": ""
+          }
+        },
+        "need_card_xMUNXN": {
+          "type": "need_card",
+          "settings": {
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><polygon points=\"16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76\"></polygon></svg>",
+            "title": "Vers l'Autonomie",
+            "text": "Des points de repère rassurants pour explorer la nuit en toute confiance.",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "need_card_Cb7K8i",
+        "need_card_7mFPgD",
+        "need_card_xMUNXN"
+      ],
+      "name": "Besoins Cocon (Cards)",
+      "settings": {
+        "label": "",
+        "title": "Des univers adaptés à vos <em>Besoins</em>"
+      }
+    },
+    "sf_univers_safety_rxYctp": {
+      "type": "sf-univers-safety",
+      "blocks": {
+        "safety_item_qmyDBF": {
+          "type": "safety_item",
+          "settings": {
+            "icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"#E89D46\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z\"></path></svg>",
+            "title": "Matériaux testés et adaptés",
+            "text": "Des matériaux doux, durables et sans danger pour les petites mains curieuses."
+          }
+        },
+        "safety_item_HXjjJF": {
+          "type": "safety_item",
+          "settings": {
+            "icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"#E89D46\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z\"></path><circle cx=\"12\" cy=\"12\" r=\"3\"></circle></svg>",
+            "title": "Lumière non agressive",
+            "text": "Une intensité lumineuse étudiée scientifiquement pour protéger les yeux sensibles."
+          }
+        },
+        "safety_item_tBa79t": {
+          "type": "safety_item",
+          "settings": {
+            "icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"#E89D46\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z\"></path><path d=\"m9 12 2 2 4-4\"></path></svg>",
+            "title": "Normes européennes",
+            "text": "Certifié selon les standards de sécurité les plus rigoureux (CE, RoHS)."
+          }
+        },
+        "safety_item_JLeE8q": {
+          "type": "safety_item",
+          "settings": {
+            "icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"#E89D46\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"20\" height=\"12\" x=\"2\" y=\"6\" rx=\"6\"></rect><circle cx=\"16\" cy=\"12\" r=\"2\"></circle></svg>",
+            "title": "Usage simple et sécurisé",
+            "text": "Des interrupteurs sécurisés et une conception intuitive pour les parents."
+          }
+        }
+      },
+      "block_order": [
+        "safety_item_qmyDBF",
+        "safety_item_HXjjJF",
+        "safety_item_tBa79t",
+        "safety_item_JLeE8q"
+      ],
+      "name": "Sécurité Cocon (Grille)",
+      "settings": {
+        "label": "SÉCURITÉ & ASSURANCE",
+        "title": "Une lumière pensée pour les<em> tout-petits</em>",
+        "text": "Parce que la sécurité de votre enfant est notre priorité absolue, nous concevons chaque lampe avec le plus grand soin, sans compromis."
+      }
+    },
+    "sf_univers_approach_cocon_JmH7WN": {
+      "type": "sf-univers-approach-cocon",
+      "blocks": {
+        "pillar_tPaFTb": {
+          "type": "pillar",
+          "settings": {
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect width=\"18\" height=\"18\" x=\"3\" y=\"3\" rx=\"2\"></rect><path d=\"M8 7h8\"></path><path d=\"M8 11h8\"></path><path d=\"M8 15h4\"></path></svg>",
+            "title": "Catalogue maîtrisé",
+            "text": "Un choix assumé pour la qualité plutôt que la quantité."
+          }
+        },
+        "pillar_3b9jij": {
+          "type": "pillar",
+          "settings": {
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10\"></path><path d=\"m9 12 2 2 4-4\"></path></svg>",
+            "title": "Exigence technique",
+            "text": "Normes de sécurité strictes sans compromis."
+          }
+        },
+        "pillar_AMPiE9": {
+          "type": "pillar",
+          "settings": {
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><path d=\"M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20\"></path><path d=\"M2 12h20\"></path></svg>",
+            "title": "Expérience cohérente",
+            "text": "Une ambiance rassurante pour chaque enfant."
+          }
+        }
+      },
+      "block_order": [
+        "pillar_tPaFTb",
+        "pillar_3b9jij",
+        "pillar_AMPiE9"
+      ],
+      "name": "Approche Cocon Editorial",
+      "settings": {
+        "badge_text": "CURATION MAÎTRISÉE",
+        "title": "Une sélection courte pour une <em>sérénité totale.</em>",
+        "text": "Dans l'univers Petit Cocon, nous avons fait le choix de ne pas multiplier les modèles. Chaque lampe est choisie comme une base lumineuse sûre et douce, déclinée ensuite par formes, ambiances et usages, afin de garantir une expérience cohérente et sécurisée pour chaque enfant."
       }
     }
   },
   "order": [
     "banner",
-    "product-grid"
+    "product-grid",
+    "sf_univers_cocon_bHhww4",
+    "sf_univers_mission_7XTij9",
+    "sf_univers_needs_WxnUEi",
+    "sf_univers_safety_rxYctp",
+    "sf_univers_approach_cocon_JmH7WN"
   ]
 }
