@@ -263,10 +263,30 @@
     /* Mobile Responsive */
     @media screen and (max-width: 990px) {
       .wol-section {
-        padding: 60px 20px;
+        padding: 60px 0; /* Removing side padding to allow full-bleed scroll */
+        overflow-x: hidden;
+      }
+      .wol-header {
+        padding: 0 20px;
       }
       .wol-grid {
-        columns: 1; /* Fallback to 1 column on mobile */
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 16px;
+        padding: 0 20px 20px 20px;
+        margin: 0;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; /* Firefox */
+      }
+      .wol-grid::-webkit-scrollbar {
+        display: none; /* Chrome/Safari/Edge */
+      }
+      .wol-card {
+        flex: 0 0 85%;
+        scroll-snap-align: center;
+        margin-bottom: 0;
       }
       .wol-title {
         font-size: 2.5rem;
