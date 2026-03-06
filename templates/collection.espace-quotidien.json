@@ -11,6 +11,7 @@
   "sections": {
     "banner": {
       "type": "main-collection-banner",
+      "disabled": true,
       "settings": {
         "show_collection_description": true,
         "show_collection_image": false,
@@ -19,9 +20,11 @@
     },
     "product-grid": {
       "type": "main-collection-product-grid",
+      "disabled": true,
       "settings": {
         "products_per_page": 16,
         "columns_desktop": 4,
+        "columns_mobile": "2",
         "color_scheme": "scheme-1",
         "image_ratio": "adapt",
         "image_shape": "default",
@@ -32,14 +35,291 @@
         "enable_filtering": true,
         "filter_type": "horizontal",
         "enable_sorting": true,
-        "columns_mobile": "2",
         "padding_top": 36,
         "padding_bottom": 36
+      }
+    },
+    "sf_univers_quotidien_hero_dVqgxL": {
+      "type": "sf-univers-quotidien-hero",
+      "name": "Univers Quotidien Hero",
+      "settings": {
+        "title": "Espaces de vie,",
+        "title_highlight": "Lumière & Harmonie",
+        "subtitle": "Des solutions d'éclairage conçues pour s'intégrer parfaitement à votre quotidien, tout en respectant l'ambiance de chaque pièce."
+      }
+    },
+    "sf_univers_quotidien_cards_UkJ4M7": {
+      "type": "sf-univers-quotidien-cards",
+      "blocks": {
+        "card_4GLe4y": {
+          "type": "card",
+          "settings": {
+            "svg_icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 19v-4M4 15V9a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v6M20 19v-4M8 15v4M16 15v4M4 15h16\"></path></svg>",
+            "title": "Bureau",
+            "text": "Une clarté sans éblouissement pour vos heures de concentration."
+          }
+        },
+        "card_gK9Eac": {
+          "type": "card",
+          "settings": {
+            "svg_icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M20 9V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v2M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2M4 12v4M20 12v4M4 12h16\"></path></svg>",
+            "title": "Salon",
+            "text": "Ambiance chaleureuse pour vos moments de détente et de partage."
+          }
+        },
+        "card_iQEEYa": {
+          "type": "card",
+          "settings": {
+            "svg_icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 19.5A2.5 2.5 0 0 1 6.5 17H20\"></path><path d=\"M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z\"></path><polyline points=\"14 2 14 8 20 8\"></polyline></svg>",
+            "title": "Coin Lecture",
+            "text": "Une lumière dirigée qui respecte le calme de votre environnement."
+          }
+        }
+      },
+      "block_order": [
+        "card_4GLe4y",
+        "card_gK9Eac",
+        "card_iQEEYa"
+      ],
+      "name": "Univers Quotidien Cards",
+      "settings": {}
+    },
+    "sf_univers_quotidien_why_HpzxQM": {
+      "type": "sf-univers-quotidien-why",
+      "blocks": {
+        "feature_DGBk69": {
+          "type": "feature",
+          "settings": {
+            "svg_icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M20 9V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v2M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2M4 12v4M20 12v4M4 12h16\"></path></svg>",
+            "title": "CONFORT"
+          }
+        },
+        "feature_qqpQD9": {
+          "type": "feature",
+          "settings": {
+            "svg_icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1zM4 22v-7\"></path></svg>",
+            "title": "FLUIDITÉ"
+          }
+        },
+        "feature_gknPHi": {
+          "type": "feature",
+          "settings": {
+            "svg_icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>",
+            "title": "BIEN-ÊTRE"
+          }
+        },
+        "feature_wxR7bj": {
+          "type": "feature",
+          "settings": {
+            "svg_icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 2v10l4.5-4.5\"></path><path d=\"M12 22V12l-4.5 4.5\"></path><path d=\"M2 12h10l-4.5-4.5\"></path><path d=\"M22 12H12l4.5 4.5\"></path></svg>",
+            "title": "SIMPLICITÉ"
+          }
+        }
+      },
+      "block_order": [
+        "feature_DGBk69",
+        "feature_qqpQD9",
+        "feature_gknPHi",
+        "feature_wxR7bj"
+      ],
+      "name": "Univers Quotidien Why",
+      "settings": {
+        "badge_text": "L'EXPERTISE DU QUOTIDIEN",
+        "title": "Une lumière qui s'adapte à\nvotre vie, pas l'inverse.",
+        "text": "Une bonne lumière change tout. Elle fatigue moins les yeux, apaise l'esprit, met en valeur un espace. Chez Illuminées, nous concevons des luminaires qui s'intègrent naturellement dans le quotidien, sans compromis entre esthétique et confort.",
+        "image_label": "Ambiance — Salon Solaire"
+      }
+    },
+    "sf_univers_quotidien_usages_aQw4U7": {
+      "type": "sf-univers-quotidien-usages",
+      "blocks": {
+        "usage_card_iaQhmJ": {
+          "type": "usage_card",
+          "settings": {
+            "icon": "<svg width=\"16\" height=\"16\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"2\" y=\"3\" width=\"20\" height=\"14\" rx=\"2\" ry=\"2\"></rect><line x1=\"8\" y1=\"21\" x2=\"16\" y2=\"21\"></line><line x1=\"12\" y1=\"17\" x2=\"12\" y2=\"21\"></line></svg>",
+            "title": "Travail & Concentration",
+            "text": "Lumières pensées pour travailler plus longtemps sans fatigue.",
+            "tags": "Lampes de bureau, Screenbar, Éclairage fonctionnel",
+            "btn_text": "Explorer cet usage →",
+            "btn_link": ""
+          }
+        },
+        "usage_card_deCXUe": {
+          "type": "usage_card",
+          "settings": {
+            "icon": "<svg width=\"16\" height=\"16\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M2 12h4l3-9 5 18 3-9h5\"></path></svg>",
+            "title": "Ambiance & Détente",
+            "text": "Créer une atmosphère douce en fin de journée.",
+            "tags": "Lampes d'ambiance, Lampes de coin, Lumière indirecte",
+            "btn_text": "Explorer cet usage →",
+            "btn_link": ""
+          }
+        },
+        "usage_card_TkNjCQ": {
+          "type": "usage_card",
+          "settings": {
+            "icon": "<svg width=\"16\" height=\"16\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 19.5A2.5 2.5 0 0 1 6.5 17H20\"></path><path d=\"M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z\"></path></svg>",
+            "title": "Lecture & Moments Calmes",
+            "text": "Un éclairage précis, sans éblouissement.",
+            "tags": "Liseuses, Lampes de chevet",
+            "btn_text": "Explorer cet usage →",
+            "btn_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "usage_card_iaQhmJ",
+        "usage_card_deCXUe",
+        "usage_card_TkNjCQ"
+      ],
+      "name": "Univers Quotidien Usages",
+      "settings": {
+        "title": "Sous-Univers Quotidien",
+        "subtitle": "Explorez nos solutions d'éclairage pensées pour chaque moment de votre journée."
+      }
+    },
+    "sf_daily_impact_softlight_LMq6Ry": {
+      "type": "sf-daily-impact-softlight",
+      "blocks": {
+        "card_6cq4dc": {
+          "type": "card",
+          "settings": {
+            "icon": "bulb",
+            "title": "Intensité<br>Maîtrisée",
+            "text": "Intensité maîtrisée et non éblouissante pour une vision immédiate sans inconfort."
+          }
+        },
+        "card_6mRfwd": {
+          "type": "card",
+          "settings": {
+            "icon": "eye",
+            "title": "Visibilité sans<br>Stimulation",
+            "text": "Visibilité suffisante pour les soins, sans stimuler ni réveiller complètement votre enfant."
+          }
+        },
+        "card_qVjkwg": {
+          "type": "card",
+          "settings": {
+            "icon": "sunset",
+            "title": "Transition Douce",
+            "text": "Une transition lumineuse infiniment douce qui préserve la mélatonine et le cycle du sommeil."
+          }
+        }
+      },
+      "block_order": [
+        "card_6cq4dc",
+        "card_6mRfwd",
+        "card_qVjkwg"
+      ],
+      "name": "Impact Quotidien",
+      "settings": {
+        "badge_text": "BÉNÉFICES QUOTIDIENS",
+        "title": "Impact au Quotidien",
+        "description": "Découvrez comment une lumière douce transforme vos nuits. Chaque détail est pensé pour créer une atmosphère de sérénité fonctionnelle."
+      }
+    },
+    "sf_univers_quotidien_manifesto_Ti4jV9": {
+      "type": "sf-univers-quotidien-manifesto",
+      "blocks": {
+        "pillar_jEb7yz": {
+          "type": "pillar",
+          "settings": {
+            "icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M22 11.08V12a10 10 0 1 1-5.93-9.14\"></path><polyline points=\"22 4 12 14.01 9 11.01\"></polyline></svg>",
+            "title": "Curation Maîtrisée",
+            "text": "Sélection rigoureuse de l'essentiel."
+          }
+        },
+        "pillar_nfGLrQ": {
+          "type": "pillar",
+          "settings": {
+            "icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\"></path></svg>",
+            "title": "Durabilité Réelle",
+            "text": "Matériaux nobles faits pour durer."
+          }
+        },
+        "pillar_GkwTCq": {
+          "type": "pillar",
+          "settings": {
+            "icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M18.36 6.64a9 9 0 1 1-12.73 0\"></path><line x1=\"12\" y1=\"2\" x2=\"12\" y2=\"12\"></line></svg>",
+            "title": "Design Intemporel",
+            "text": "L'élégance qui traverse les époques."
+          }
+        }
+      },
+      "block_order": [
+        "pillar_jEb7yz",
+        "pillar_nfGLrQ",
+        "pillar_GkwTCq"
+      ],
+      "name": "Quotidien Manifesto",
+      "settings": {
+        "badge_text": "NOTRE APPROCHE",
+        "title": "Le choix de la justesse,\npas de l'abondance.",
+        "text": "Dans l'univers Espace Quotidien, nous ne cherchons pas à proposer toutes les lampes possibles. Chaque modèle est sélectionné pour répondre à un usage précis, avec une attention particulière portée au confort visuel, à la durabilité et au design."
+      }
+    },
+    "sf_inspirations_reassurance_akXcRy": {
+      "type": "sf-inspirations-reassurance",
+      "blocks": {
+        "reassurance_item_Wy6aHB": {
+          "type": "reassurance_item",
+          "settings": {
+            "icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\"></path><polyline points=\"9 12 11 14 15 10\"></polyline></svg>",
+            "title": "Matériaux testés",
+            "text": "Des composants nobles, durables et résistants à l'usure pour une longévité maximale dans votre intérieur."
+          }
+        },
+        "reassurance_item_jY39yn": {
+          "type": "reassurance_item",
+          "settings": {
+            "icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z\"></path><circle cx=\"12\" cy=\"12\" r=\"3\"></circle></svg>",
+            "title": "Lumière non agressive",
+            "text": "Une luminosité calibrée et diffuse, conçue pour ne pas fatiguer les yeux, même lors de longues sessions."
+          }
+        },
+        "reassurance_item_kYqUjg": {
+          "type": "reassurance_item",
+          "settings": {
+            "icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><path d=\"M8 12h8\"></path><path d=\"M9 9h6\"></path><path d=\"M9 15h6\"></path></svg>",
+            "title": "Conformité Européenne",
+            "text": "Respect strict et rigoureux de toutes les normes CE en vigueur pour garantir votre sécurité électrique."
+          }
+        },
+        "reassurance_item_ixBBAq": {
+          "type": "reassurance_item",
+          "settings": {
+            "icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3\" y=\"11\" width=\"18\" height=\"11\" rx=\"2\" ry=\"2\"></rect><path d=\"M7 11V7a5 5 0 0 1 10 0v4\"></path></svg>",
+            "title": "Usage sécurisé",
+            "text": "Technologies LED basse température restant froides au toucher. Sécuritaire pour les enfants et les animaux."
+          }
+        }
+      },
+      "block_order": [
+        "reassurance_item_Wy6aHB",
+        "reassurance_item_jY39yn",
+        "reassurance_item_kYqUjg",
+        "reassurance_item_ixBBAq"
+      ],
+      "name": "Inspirations & Rassur.",
+      "settings": {
+        "title": "",
+        "subtitle": "",
+        "btn_text": "",
+        "btn_link": "",
+        "reassure_title": "L'engagement Qualité & Sécurité",
+        "reassure_text": "Parce que la lumière habille votre quotidien, nous concevons nos produits pour qu'ils soient aussi sûrs qu'élégants. Une tranquillité d'esprit pour toute la famille."
       }
     }
   },
   "order": [
     "banner",
-    "product-grid"
+    "product-grid",
+    "sf_univers_quotidien_hero_dVqgxL",
+    "sf_univers_quotidien_cards_UkJ4M7",
+    "sf_univers_quotidien_why_HpzxQM",
+    "sf_univers_quotidien_usages_aQw4U7",
+    "sf_daily_impact_softlight_LMq6Ry",
+    "sf_univers_quotidien_manifesto_Ti4jV9",
+    "sf_inspirations_reassurance_akXcRy"
   ]
 }
