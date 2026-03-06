@@ -51,16 +51,24 @@
 -%}
 
 {%- style -%}
+  /* Fix: Set padding to 0 so the container meets the header & footer perfectly */
   .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
   }
 
-  @media screen and (min-width: 750px) {
-    .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
-    }
+  /* Fix: Force dark background everywhere to avoid Shopify's default grey gradient showing through gaps */
+  body, html, #MainContent {
+    background: #081A32 !important;
+    background-color: #081A32 !important;
+  }
+  
+  /* Fix: Remove header and footer borders for total immersion */
+  .header-wrapper, 
+  .header, 
+  .footer {
+    border: none !important;
+    box-shadow: none !important;
   }
 {%- endstyle -%}
 
