@@ -13,21 +13,28 @@
   .visual-impact-subtitle {
     color: var(--illu-text-cream, #F9F9F9);
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: 32px;
+    font-family: var(--font-heading-family);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
   }
 
   .visual-impact-title {
     color: var(--illu-text-cream, #F9F9F9);
-    font-size: 2.5rem;
-    font-weight: 700;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
     margin: 0 0 16px 0;
+    font-family: var(--font-heading-family);
+    letter-spacing: -0.02em;
   }
 
   .visual-impact-description {
     color: rgba(249, 249, 249, 0.7);
-    font-size: 1.1rem;
+    font-size: 1.24rem;
     margin: 0;
+    font-family: var(--font-body-family);
+    line-height: 1.6;
   }
 
   .impact-grid-container {
@@ -70,9 +77,10 @@
   .impact-card-title {
     color: var(--illu-text-cream, #F9F9F9);
     font-size: 1.25rem;
-    font-weight: 600;
+    font-weight: 700;
     margin: 0 0 16px 0;
     line-height: 1.3;
+    font-family: var(--font-heading-family);
   }
 
   .impact-card-text {
@@ -80,6 +88,7 @@
     font-size: 0.95rem;
     line-height: 1.6;
     margin: 0;
+    font-family: var(--font-body-family);
   }
 
   @media screen and (max-width: 990px) {
@@ -96,7 +105,7 @@
   }
 </style>
 
-<div class="visual-impact-section" style="background-color: {{ section.settings.bg_color }};">
+<div class="sf-stitch visual-impact-section" style="background-color: {{ section.settings.bg_color }};">
   <div class="visual-impact-header">
     {%- if section.settings.subtitle != blank -%}
       <p class="visual-impact-subtitle">{{ section.settings.subtitle }}</p>
