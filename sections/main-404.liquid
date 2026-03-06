@@ -1,23 +1,81 @@
-<style type="text/css">
-  .template-404 .title + * {
-    margin-top: 1rem;
-  }
+{{ 'sf-404-darkness.css' | asset_url | stylesheet_tag }}
 
-  @media screen and (min-width: 750px) {
-    .template-404 .title + * {
-      margin-top: 2rem;
-    }
-  }
-</style>
+<div class="error-404-container">
+  <div class="error-code">404</div>
+  <h1 class="error-message">Oups... cette pièce est encore dans le noir.</h1>
+  <p class="error-subtext">Même dans l'obscurité, on vous guide pour retrouver votre chemin.</p>
 
-<div class="template-404 page-width page-margin center">
-  <p>
-    {{ 'templates.404.subtext' | t }}
-  </p>
-  <h1 class="title">
-    {{ 'templates.404.title' | t }}
-  </h1>
-  <a href="{{ routes.all_products_collection_url }}" class="button">
-    {{ 'general.continue_shopping' | t }}
+  <a href="{{ routes.root_url }}" class="error-cta">
+    Retourner à l'accueil
+    <!-- Interrupteur Icon -->
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2V4M12 20V22M4.22 4.22L5.64 5.64M18.36 18.36L19.78 19.78M2 12H4M20 12H22M4.22 19.78L5.64 18.36M18.36 5.64L19.78 4.22" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+    </svg>
   </a>
+
+  <!-- Grille de redirection -->
+  <div class="error-nav-grid">
+    <a href="/collections/espace-quotidien" class="error-nav-card">
+      <div class="error-card-icon">
+        <!-- Briefcase Icon -->
+        <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+          <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+          <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+        </svg>
+      </div>
+      <div class="error-card-title">Espace Quotidien</div>
+      <div class="error-card-desc">Pour votre bureau ou salon</div>
+    </a>
+
+    <a href="/collections/univers-visuel" class="error-nav-card">
+      <div class="error-card-icon">
+        <!-- Gamepad Icon -->
+        <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+          <line x1="6" y1="12" x2="10" y2="12"></line>
+          <line x1="8" y1="10" x2="8" y2="14"></line>
+          <line x1="15" y1="13" x2="15.01" y2="13"></line>
+          <line x1="18" y1="11" x2="18.01" y2="11"></line>
+          <rect x="2" y="6" width="20" height="12" rx="2"></rect>
+        </svg>
+      </div>
+      <div class="error-card-title">Univers Visuel</div>
+      <div class="error-card-desc">Éclairage gaming & créatif</div>
+    </a>
+
+    <a href="/collections/petit-cocon" class="error-nav-card">
+      <div class="error-card-icon">
+        <!-- Smiley Icon -->
+        <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+          <line x1="9" y1="9" x2="9.01" y2="9"></line>
+          <line x1="15" y1="9" x2="15.01" y2="9"></line>
+        </svg>
+      </div>
+      <div class="error-card-title">Petit Cocon</div>
+      <div class="error-card-desc">Douceur pour la chambre</div>
+    </a>
+  </div>
+
+  <div class="error-footer-links">
+    <div class="error-legal-links">
+      <a href="/pages/mentions-legales">Mentions Légales</a>
+      <a href="/pages/politique-de-confidentialite">Politique de Confidentialité</a>
+    </div>
+    <div class="error-copyright">
+      © {{ 'now' | date: "%Y" }} Illuminées. Tous droits réservés.
+    </div>
+  </div>
 </div>
+
+{% schema %}
+{
+  "name": "SF 404 Darkness",
+  "settings": [],
+  "presets": [
+    {
+      "name": "404 Darkness"
+    }
+  ]
+}
+{% endschema %}
