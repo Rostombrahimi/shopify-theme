@@ -1,5 +1,21 @@
 /* Page Recherche - sf-search-immersion.css */
 
+/* 1️⃣ Fixes des bordures (Traits en haut et en bas) */
+.template-search .header-wrapper,
+.template-search .header,
+.template-search sticky-header,
+.template-search footer,
+.template-search .footer,
+.template-search .section-header {
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.template-search #MainContent .template-search.section-template--padding {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
 /* 3️⃣ Globals & Resets (Niveau Racine) */
 /* Selection Color pour une immersion totale */
 .template-search ::selection {
