@@ -27,7 +27,7 @@
         </div>
       {%- endif -%}
 
-      <label class="field__label" for="ContactForm-subject">{{ 'templates.contact.form.subject' | t | default: 'Sujet de votre message' }}</label>
+      <label class="contact-field-label" for="ContactForm-subject">Sujet de votre message</label>
       <select id="ContactForm-subject" name="contact[sujet]" class="contact-select">
         <option value="Suivi de commande">Suivi de commande</option>
         <option value="Question technique">Question technique</option>
@@ -37,20 +37,20 @@
 
       <div class="contact-input-row">
         <div>
-          <label class="field__label" for="ContactForm-name">{{ 'templates.contact.form.name' | t | default: 'Nom complet' }}</label>
-          <input class="contact-input" autocomplete="name" type="text" id="ContactForm-name" name="contact[{{ 'templates.contact.form.name' | t | default: 'name' }}]" value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}" placeholder="Votre petit nom...">
+          <label class="contact-field-label" for="ContactForm-name">Nom complet</label>
+          <input class="contact-input" autocomplete="name" type="text" id="ContactForm-name" name="contact[name]" value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}" placeholder="Votre petit nom...">
         </div>
         <div>
-          <label class="field__label" for="ContactForm-email">{{ 'templates.contact.form.email' | t | default: 'Adresse Email' }}</label>
+          <label class="contact-field-label" for="ContactForm-email">Adresse Email</label>
           <input autocomplete="email" type="email" id="ContactForm-email" class="contact-input" name="contact[email]" spellcheck="false" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}" aria-required="true" placeholder="Votre mail pour vous répondre...">
         </div>
       </div>
 
-      <label class="field__label" for="ContactForm-body">{{ 'templates.contact.form.comment' | t | default: 'Votre message' }}</label>
-      <textarea rows="6" id="ContactForm-body" class="contact-input" name="contact[{{ 'templates.contact.form.comment' | t | default: 'body' }}]" placeholder="Dites-nous tout...">{{- form.body -}}</textarea>
+      <label class="contact-field-label" for="ContactForm-body">Votre message</label>
+      <textarea rows="6" id="ContactForm-body" class="contact-input" name="contact[body]" placeholder="Dites-nous tout...">{{- form.body -}}</textarea>
 
       <button type="submit" class="btn-contact-submit">
-        {{ 'templates.contact.form.send' | t | default: 'Envoyer le message' }}
+        ENVOYER
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="#081A32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
