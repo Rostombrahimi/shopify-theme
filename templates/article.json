@@ -5,9 +5,25 @@
             "settings": {
                 "snapshot_title": "L'ESSENTIEL EN 30 SECONDES"
             }
+        },
+        "cta": {
+            "type": "sf-blog-cta-card",
+            "settings": {
+                "card_layout": "collection",
+                "col_title": "Ambiances sculptées",
+                "col_desc": "Pour aller plus loin, découvrez notre sélection dédiée à cet univers."
+            }
+        },
+        "faq": {
+            "type": "sf-blog-faq",
+            "settings": {
+                "title": "La FAQ Associée"
+            }
         }
     },
     "order": [
-        "main"
+        "main",
+        "cta",
+        "faq"
     ]
 }
