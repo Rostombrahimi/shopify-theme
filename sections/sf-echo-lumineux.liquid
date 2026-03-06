@@ -47,7 +47,7 @@
 
 {%- if use_recommendations -%}
   {%- comment -%} FALLBACK : Shopify Product Recommendations API {%- endcomment -%}
-  <div class="sf-echo-lumineux" style="--illu-bg-night: {{ section.settings.bg_color }};"
+  <div class="sf-echo-lumineux"
        id="echo-lumineux-{{ section.id }}"
        data-product-id="{{ product.id }}"
        data-limit="{{ section.settings.product_limit }}"
@@ -110,7 +110,7 @@
 
 {%- elsif best_collection.products_count > 0 -%}
   {%- comment -%} MODE PRINCIPAL : Collection auto-detectee {%- endcomment -%}
-  <div class="sf-echo-lumineux" style="--illu-bg-night: {{ section.settings.bg_color }};">
+  <div class="sf-echo-lumineux">
     <div class="page-width">
       <h2 class="sf-echo-title">{{ echo_title }}</h2>
       
