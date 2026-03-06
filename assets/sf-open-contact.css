@@ -27,21 +27,7 @@
     padding: 80px 2rem 40px;
 }
 
-.contact-hero-simple .sf-badge-expert {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 6px 16px;
-    background: rgba(232, 157, 70, 0.1);
-    border-radius: 99px;
-    color: var(--illu-accent-amber, #E89D46);
-    font-weight: 700;
-    font-size: 1rem;
-    /* + ~15% */
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 24px;
-}
+
 
 .contact-hero-simple h1 {
     font-size: clamp(3rem, 6vw, 4.8rem);
