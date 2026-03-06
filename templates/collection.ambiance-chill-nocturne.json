@@ -11,6 +11,7 @@
   "sections": {
     "banner": {
       "type": "main-collection-banner",
+      "disabled": true,
       "settings": {
         "show_collection_description": true,
         "show_collection_image": false,
@@ -19,9 +20,11 @@
     },
     "product-grid": {
       "type": "main-collection-product-grid",
+      "disabled": true,
       "settings": {
         "products_per_page": 16,
         "columns_desktop": 4,
+        "columns_mobile": "2",
         "color_scheme": "scheme-1",
         "image_ratio": "adapt",
         "image_shape": "default",
@@ -32,14 +35,183 @@
         "enable_filtering": true,
         "filter_type": "horizontal",
         "enable_sorting": true,
-        "columns_mobile": "2",
         "padding_top": 36,
         "padding_bottom": 36
+      }
+    },
+    "sf_univers_visuel_hero_iarYrG": {
+      "type": "sf-univers-visuel-hero",
+      "name": "Univers Visuel Hero",
+      "settings": {
+        "badge_text": "",
+        "title": "Ambiance Chill & Nocturne –\n<em>Une lumière pour se poser, créer et ressentir</em>",
+        "description": "Quand la nuit tombe, la lumière change de rôle : elle accompagne les moments calmes, stimule la créativité et crée une atmosphère qui vous ressemble.",
+        "action_icon": "",
+        "action_text": "DÉCOUVRIR",
+        "action_link": ""
+      }
+    },
+    "sf_chill_moments_AGCewh": {
+      "type": "sf-chill-moments",
+      "blocks": {
+        "card_LPad3Q": {
+          "type": "card",
+          "settings": {
+            "icon": "moon",
+            "title": "Fin de soirée",
+            "text": "Pour apaiser l'esprit et préparer la transition."
+          }
+        },
+        "card_jxWcHe": {
+          "type": "card",
+          "settings": {
+            "icon": "pen",
+            "title": "Session créative",
+            "text": "Pour s'isoler dans sa bulle et laisser couler les idées."
+          }
+        },
+        "card_8d6F8r": {
+          "type": "card",
+          "settings": {
+            "icon": "music",
+            "title": "Écoute musicale",
+            "text": "Pour que le son et l'ombre ne fassent qu'un."
+          }
+        },
+        "card_tPRCXC": {
+          "type": "card",
+          "settings": {
+            "icon": "book",
+            "title": "Lire ou écrire",
+            "text": "Un éclairage juste, qui accompagne le silence."
+          }
+        },
+        "card_qJWQz7": {
+          "type": "card",
+          "settings": {
+            "icon": "person",
+            "title": "Atmosphère personnelle",
+            "text": "Pour habiter son espace, en toute intimité."
+          }
+        }
+      },
+      "block_order": [
+        "card_LPad3Q",
+        "card_jxWcHe",
+        "card_8d6F8r",
+        "card_tPRCXC",
+        "card_qJWQz7"
+      ],
+      "name": "Chill Moments",
+      "settings": {
+        "badge_text": "QUAND L'UTILISER ?",
+        "title": "La lumière qui suit<br>votre rythme intérieur."
+      }
+    },
+    "sf_chill_nav_nDXbBL": {
+      "type": "sf-chill-nav",
+      "blocks": {
+        "card_gg8bda": {
+          "type": "card",
+          "settings": {
+            "icon": "headphones",
+            "title": "Se poser & écouter",
+            "text": "Pour les moments de détente absolue, bercés par vos vinyles préférés. Une lumière tamisée qui accompagne la musique.",
+            "button_text": "Voir les ambiances ad...",
+            "button_link": ""
+          }
+        },
+        "card_YwVKDr": {
+          "type": "card",
+          "settings": {
+            "icon": "pen",
+            "title": "Créer la nuit",
+            "text": "Lumière focalisée et inspirante pour vos sessions créatives nocturnes. Idéale pour écrire, dessiner ou concevoir.",
+            "button_text": "Voir les ambiances ad...",
+            "button_link": ""
+          }
+        },
+        "card_AxhzAA": {
+          "type": "card",
+          "settings": {
+            "icon": "home",
+            "title": "Installer une atmosphère",
+            "text": "Sculptez l'espace avec des ombres et des reliefs dramatiques. Transformez votre pièce en un tableau vivant.",
+            "button_text": "Voir les ambiances ad...",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "card_gg8bda",
+        "card_YwVKDr",
+        "card_AxhzAA"
+      ],
+      "name": "Chill Navigation",
+      "settings": {
+        "title": "Comment vivez-vous votre nuit ?",
+        "description": "Plongez dans une collection pensée pour vos rituels nocturnes. Choisissez l'ambiance qui guidera votre soirée."
+      }
+    },
+    "sf_manifesto_chill_bTChAF": {
+      "type": "sf-manifesto-chill",
+      "blocks": {
+        "card_wAWF86": {
+          "type": "card",
+          "settings": {
+            "icon": "bulb",
+            "title": "Présence Affirmée",
+            "text": "Une luminosité qui sculpte l'espace et définit le ton de la pièce."
+          }
+        },
+        "card_qCNQUF": {
+          "type": "card",
+          "settings": {
+            "icon": "eye-crossed",
+            "title": "Confort Absolu",
+            "text": "Douceur pour le regard, sans éblouissement ni fatigue."
+          }
+        },
+        "card_pF3kHc": {
+          "type": "card",
+          "settings": {
+            "icon": "sparkle",
+            "title": "Signature Visuelle",
+            "text": "L'esthétique de la lumière devient aussi importante que l'objet."
+          }
+        }
+      },
+      "block_order": [
+        "card_wAWF86",
+        "card_qCNQUF",
+        "card_pF3kHc"
+      ],
+      "name": "Philosophie Manifesto",
+      "settings": {
+        "badge_text": "PHILOSOPHIE",
+        "title": "Une lumière qui <span class=\"amber-text\">s'assume.</span>",
+        "description": "Nous ne cherchons pas à proposer des lumières neutres ou invisibles. Dans l'univers Visuel, la lumière fait partie intégrante de l'ambiance : elle est visible, ressentie, assumée, tout en restant confortable pour les yeux."
+      }
+    },
+    "sf_chill_final_cta_pwXb64": {
+      "type": "sf-chill-final-cta",
+      "name": "Chill CTA Final",
+      "settings": {
+        "title": "Prolongez l'expérience.",
+        "btn_1_text": "Explorer les ambiances<br>nocturnes",
+        "btn_1_link": "",
+        "btn_2_text": "Découvrir l'univers<br>Visuel",
+        "btn_2_link": ""
       }
     }
   },
   "order": [
     "banner",
-    "product-grid"
+    "product-grid",
+    "sf_univers_visuel_hero_iarYrG",
+    "sf_chill_moments_AGCewh",
+    "sf_chill_nav_nDXbBL",
+    "sf_manifesto_chill_bTChAF",
+    "sf_chill_final_cta_pwXb64"
   ]
 }
