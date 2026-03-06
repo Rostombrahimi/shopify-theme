@@ -1,9 +1,29 @@
+/* Main Page Overrides for Dark Theme - section-main-page.css */
+.section-main-page-wrapper {
+  background-color: var(--illu-bg-night, #081A32);
+  color: var(--illu-text-cream, #F9F9F9);
+  min-height: 60vh;
+}
+
 .page-title {
   margin-top: 0;
+  color: var(--illu-text-cream, #F9F9F9);
 }
 
 .main-page-title {
   margin-bottom: 3rem;
+  font-weight: 800;
+}
+
+.section-main-page-wrapper .rte {
+  color: rgba(249, 249, 249, 0.8);
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.section-main-page-wrapper .rte a {
+  color: var(--illu-accent-amber, #E89D46);
+  text-decoration: underline;
 }
 
 @media screen and (min-width: 750px) {
