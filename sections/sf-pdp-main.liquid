@@ -3,9 +3,81 @@
 {%- assign current_variant = product.selected_or_first_available_variant -%}
 
 {%- style -%}
-  /* Optional dynamic styles */
-{%- endstyle -%}
+  /* Sticky ATC */
+  .sf-sticky-atc {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(8, 26, 50, 0.95);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 12px 20px;
+    z-index: 999;
+    transform: translateY(100%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: none; /* Hidden on desktop by default */
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.4);
+  }
 
+  @media screen and (max-width: 768px) {
+    .sf-sticky-atc {
+      display: block;
+    }
+  }
+
+  .sf-sticky-atc.is-visible {
+    transform: translateY(0);
+  }
+
+  .sf-sticky-atc-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .sf-sticky-atc-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .sf-sticky-atc-info img {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+
+  .sf-sticky-atc-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sf-sticky-atc-title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #F9F9F9;
+    line-height: 1.2;
+  }
+
+  .sf-sticky-atc-price {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--illu-accent-amber, #E89D46);
+    margin-top: 2px;
+  }
+
+  .sf-sticky-btn {
+    padding: 10px 20px !important;
+    font-size: 1rem !important;
+    margin: 0 !important;
+    width: auto !important;
+  }
+{%- endstyle -%}
 <section id="MainProduct-{{ section.id }}" class="sf-pdp-section" data-section="{{ section.id }}">
   <div class="sf-pdp-wrapper">
     
@@ -260,6 +332,28 @@
   </div>
 </section>
 
+<!-- Sticky Add-to-Cart (Mobile) -->
+<div class="sf-sticky-atc" id="sf-sticky-atc">
+  <div class="sf-sticky-atc-inner">
+    <div class="sf-sticky-atc-info">
+      {% if product.featured_media != null %}
+        <img src="{{ product.featured_media | image_url: width: 100 }}" alt="{{ product.title | escape }}" loading="lazy">
+      {% endif %}
+      <div class="sf-sticky-atc-text">
+        <span class="sf-sticky-atc-title">{{ product.title | truncate: 25 }}</span>
+        <span class="sf-sticky-atc-price">{{ current_variant.price | money }}</span>
+      </div>
+    </div>
+    <button type="button" class="btn-add-to-cart sf-sticky-btn" onclick="document.querySelector('.sf-pdp-add-to-cart-wrapper .btn-add-to-cart').click();" {% unless current_variant.available %}disabled{% endunless %}>
+      {% if current_variant.available %}
+        Ajouter
+      {% else %}
+        Épuisé
+      {% endif %}
+    </button>
+  </div>
+</div>
+
 <!-- Thumbnail Switch JS -->
 <script>
   document.addEventListener('DOMContentLoaded', function() {
@@ -280,6 +374,26 @@
         this.classList.add('is-active');
       });
     });
+
+    // Sticky ATC Observer
+    const stickyAtc = document.getElementById('sf-sticky-atc');
+    const mainAtcForm = document.querySelector('.sf-pdp-form');
+    
+    if (stickyAtc && mainAtcForm) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
+            // Main form is above viewport, show sticky
+            stickyAtc.classList.add('is-visible');
+          } else {
+            // Main form is in or below viewport, hide sticky
+            stickyAtc.classList.remove('is-visible');
+          }
+        });
+      }, { threshold: 0 });
+
+      observer.observe(mainAtcForm);
+    }
   });
 </script>
 
