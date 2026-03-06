@@ -46,3 +46,55 @@
   /* TRANSITIONS */
   --illu-transition-soft: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+/* FIX: Geler la taille des grands titres (H1, H0, sf-hero) pour annuler le zoom global de 15% */
+h1,
+.h1,
+.banner__heading,
+.hero__heading,
+h1.header__heading {
+  font-size: calc(var(--font-heading-scale) * 3rem / 1.15) !important;
+}
+
+@media only screen and (min-width: 750px) {
+
+  h1,
+  .h1,
+  .banner__heading,
+  .hero__heading,
+  h1.header__heading {
+    font-size: calc(var(--font-heading-scale) * 4rem / 1.15) !important;
+  }
+}
+
+.h0,
+.hxxl,
+.hxl {
+  font-size: calc(var(--font-heading-scale) * 4rem / 1.15) !important;
+}
+
+@media only screen and (min-width: 750px) {
+
+  .h0,
+  .hxxl,
+  .hxl {
+    font-size: calc(var(--font-heading-scale) * 5.2rem / 1.15) !important;
+  }
+}
+
+/* Gel spécifique pour le sf-hero__title (4.4rem, 6.05rem, 7.15rem -> divisé par 1.15) */
+.sf-hero__title {
+  font-size: 3.826rem !important;
+}
+
+@media (min-width: 768px) {
+  .sf-hero__title {
+    font-size: 5.26rem !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .sf-hero__title {
+    font-size: 6.217rem !important;
+  }
+}
