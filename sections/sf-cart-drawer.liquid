@@ -323,22 +323,28 @@
       height: 6px;
       background: rgba(255,255,255,0.1);
       border-radius: 99px;
+      position: relative;
       overflow: hidden;
     }
     .sf-shipping-progress {
-      display: block;
-      height: 100% !important;
-      background-color: #E89D46 !important;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      height: 6px !important;
+      min-height: 6px !important;
+      background-color: var(--drawer-accent) !important;
       border-radius: 99px;
-      transition: width 0.4s ease, background-color 0.4s ease;
-      box-shadow: 0 0 15px rgba(232, 157, 70, 0.5);
+      transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 0 15px rgba(232, 157, 70, 0.6) !important;
+      z-index: 2;
     }
     .sf-shipping-success {
       color: #4ade80 !important;
     }
     .sf-shipping-progress.success {
       background-color: #4ade80 !important;
-      box-shadow: 0 0 15px rgba(74, 222, 128, 0.5) !important;
+      box-shadow: 0 0 15px rgba(74, 222, 128, 0.6) !important;
     }
 
     /* Upsell Section */
@@ -695,15 +701,15 @@
           const textEl = document.getElementById('sf-shipping-text');
           
           if (totalCart >= thresholdCents) {
-            progressEl.style.width = '100%';
             progressEl.classList.add('success');
             textEl.innerHTML = 'Félicitations, la livraison vous est <span class="sf-shipping-success">offerte !</span>';
+            setTimeout(() => { progressEl.style.width = '100%'; }, 50);
           } else {
             const diffCents = thresholdCents - totalCart;
             const percent = Math.min((totalCart / thresholdCents) * 100, 100);
-            progressEl.style.width = percent + '%';
             progressEl.classList.remove('success');
             textEl.innerHTML = `Plus que <span style="color:var(--drawer-accent)">${formatMoney(diffCents)}</span> pour la livraison gratuite`;
+            setTimeout(() => { progressEl.style.width = percent + '%'; }, 50);
           }
         }
 
