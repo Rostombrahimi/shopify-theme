@@ -44,10 +44,33 @@
         "menu_color_scheme": "",
         "enable_sticky_header": true
       }
+    },
+    "sf_announcement_bar_pBUHWX": {
+      "type": "sf-announcement-bar",
+      "blocks": {
+        "announcement_pY83gE": {
+          "type": "announcement",
+          "settings": {
+            "show_icon": true,
+            "text_first_part": "Nouvelle ambiance Nuit Étoilée disponible :",
+            "text_highlight": "Transformez sa chambre dès ce soir.",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "announcement_pY83gE"
+      ],
+      "name": "✨ Barre d'Annonce (Illuminées)",
+      "settings": {
+        "show_announcement": true,
+        "rotation_speed": 4
+      }
     }
   },
   "order": [
     "announcement-bar",
+    "sf_announcement_bar_pBUHWX",
     "sf-header"
   ]
 }
