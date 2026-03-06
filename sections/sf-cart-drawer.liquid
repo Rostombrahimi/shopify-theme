@@ -326,18 +326,19 @@
       overflow: hidden;
     }
     .sf-shipping-progress {
-      height: 100%;
-      background: var(--drawer-accent);
+      display: block;
+      height: 100% !important;
+      background-color: #E89D46 !important;
       border-radius: 99px;
-      transition: width 0.4s ease, background 0.4s ease;
+      transition: width 0.4s ease, background-color 0.4s ease;
       box-shadow: 0 0 15px rgba(232, 157, 70, 0.5);
     }
     .sf-shipping-success {
       color: #4ade80 !important;
     }
     .sf-shipping-progress.success {
-      background: #4ade80 !important;
-      box-shadow: 0 0 15px rgba(74, 222, 128, 0.5);
+      background-color: #4ade80 !important;
+      box-shadow: 0 0 15px rgba(74, 222, 128, 0.5) !important;
     }
 
     /* Upsell Section */
