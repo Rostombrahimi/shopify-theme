@@ -11,6 +11,7 @@
   "sections": {
     "banner": {
       "type": "main-collection-banner",
+      "disabled": true,
       "settings": {
         "show_collection_description": true,
         "show_collection_image": false,
@@ -19,9 +20,11 @@
     },
     "product-grid": {
       "type": "main-collection-product-grid",
+      "disabled": true,
       "settings": {
         "products_per_page": 16,
         "columns_desktop": 4,
+        "columns_mobile": "2",
         "color_scheme": "scheme-1",
         "image_ratio": "adapt",
         "image_shape": "default",
@@ -32,14 +35,149 @@
         "enable_filtering": true,
         "filter_type": "horizontal",
         "enable_sorting": true,
-        "columns_mobile": "2",
         "padding_top": 36,
         "padding_bottom": 36
+      }
+    },
+    "sf_univers_visuel_hero_KYpapR": {
+      "type": "sf-univers-visuel-hero",
+      "name": "Univers Visuel Hero",
+      "settings": {
+        "badge_text": "🏮 SOUS-COLLECTION ANIMÉ",
+        "title": "Lampes Animé –\n<em>Ambiances inspirées des licences cultes</em>",
+        "description": "Une immersion lumineuse radicale. Plongez votre espace dans l'aura de vos héros avec notre curation exclusive de pièces d'exception.",
+        "action_icon": "",
+        "action_text": "DÉCOUVRIR",
+        "action_link": ""
+      }
+    },
+    "sf_univers_visuel_guide_MqBWtt": {
+      "type": "sf-univers-visuel-guide",
+      "name": "Univers Visuel Guide",
+      "settings": {
+        "title": "Comment choisir ?",
+        "text": "Choisissez d'abord l'univers qui vous parle, puis personnalisez votre lampe avec le personnage ou l'ambiance qui vous correspond.",
+        "expert_text": "GUIDE EXPERT"
+      }
+    },
+    "sf_univers_visuel_portals_iYjXFf": {
+      "type": "sf-univers-visuel-portals",
+      "blocks": {
+        "portal_JFGXgi": {
+          "type": "portal",
+          "settings": {
+            "title": "NARUTO",
+            "text_outline": false,
+            "description": "Ressentez la volonté du feu. Une lueur ambrée chaleureuse.",
+            "atmosphere_label": "ATMOSPHÈRE",
+            "atmosphere_value": "Chaleur & Chakra",
+            "button_text": "Entrer dans la légende",
+            "button_link": ""
+          }
+        },
+        "portal_yFanh8": {
+          "type": "portal",
+          "settings": {
+            "title": "NARUTO",
+            "text_outline": false,
+            "description": "Ressentez la volonté du feu. Une lueur ambrée chaleureuse.",
+            "atmosphere_label": "ATMOSPHÈRE",
+            "atmosphere_value": "Chaleur & Chakra",
+            "button_text": "Entrer dans la légende",
+            "button_link": ""
+          }
+        },
+        "portal_7PhRCh": {
+          "type": "portal",
+          "settings": {
+            "title": "NARUTO",
+            "text_outline": false,
+            "description": "Ressentez la volonté du feu. Une lueur ambrée chaleureuse.",
+            "atmosphere_label": "ATMOSPHÈRE",
+            "atmosphere_value": "Chaleur & Chakra",
+            "button_text": "Entrer dans la légende",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "portal_JFGXgi",
+        "portal_yFanh8",
+        "portal_7PhRCh"
+      ],
+      "name": "Portails d'Univers",
+      "settings": {
+        "title": "Portails d'Univers",
+        "subtitle": "Plongez au cœur de l'atmosphère. Une immersion lumineuse dans vos sagas préférées."
+      }
+    },
+    "sf_univers_visuel_seo_f7xnGJ": {
+      "type": "sf-univers-visuel-seo",
+      "name": "SEO Texte Discret (Animé)",
+      "settings": {
+        "seo_text": "Nos lampes animé sont pensées pour mettre en valeur les univers manga et pop culture sans sacrifier le confort visuel. Chaque licence est travaillée comme une ambiance à part entière, afin de créer une immersion cohérente dans une chambre, un setup visuel ou un espace de collection."
+      }
+    },
+    "sf_inspirations_reassurance_rDPNhF": {
+      "type": "sf-inspirations-reassurance",
+      "blocks": {
+        "reassurance_item_WGcBL8": {
+          "type": "reassurance_item",
+          "settings": {
+            "icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\"></path><polyline points=\"9 12 11 14 15 10\"></polyline></svg>",
+            "title": "Matériaux testés",
+            "text": "Des composants nobles, durables et résistants à l'usure pour une longévité maximale dans votre intérieur."
+          }
+        },
+        "reassurance_item_pDWnR3": {
+          "type": "reassurance_item",
+          "settings": {
+            "icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z\"></path><circle cx=\"12\" cy=\"12\" r=\"3\"></circle></svg>",
+            "title": "Lumière non agressive",
+            "text": "Une luminosité calibrée et diffuse, conçue pour ne pas fatiguer les yeux, même lors de longues sessions."
+          }
+        },
+        "reassurance_item_zFPWrR": {
+          "type": "reassurance_item",
+          "settings": {
+            "icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><path d=\"M8 12h8\"></path><path d=\"M9 9h6\"></path><path d=\"M9 15h6\"></path></svg>",
+            "title": "Conformité Européenne",
+            "text": "Respect strict et rigoureux de toutes les normes CE en vigueur pour garantir votre sécurité électrique."
+          }
+        },
+        "reassurance_item_zarcYc": {
+          "type": "reassurance_item",
+          "settings": {
+            "icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3\" y=\"11\" width=\"18\" height=\"11\" rx=\"2\" ry=\"2\"></rect><path d=\"M7 11V7a5 5 0 0 1 10 0v4\"></path></svg>",
+            "title": "Usage sécurisé",
+            "text": "Technologies LED basse température restant froides au toucher. Sécuritaire pour les enfants et les animaux."
+          }
+        }
+      },
+      "block_order": [
+        "reassurance_item_WGcBL8",
+        "reassurance_item_pDWnR3",
+        "reassurance_item_zFPWrR",
+        "reassurance_item_zarcYc"
+      ],
+      "name": "Inspirations & Rassur.",
+      "settings": {
+        "title": "",
+        "subtitle": "",
+        "btn_text": "",
+        "btn_link": "",
+        "reassure_title": "L'engagement Qualité & Sécurité",
+        "reassure_text": "Parce que la lumière habille votre quotidien, nous concevons nos produits pour qu'ils soient aussi sûrs qu'élégants. Une tranquillité d'esprit pour toute la famille."
       }
     }
   },
   "order": [
     "banner",
-    "product-grid"
+    "product-grid",
+    "sf_univers_visuel_hero_KYpapR",
+    "sf_univers_visuel_guide_MqBWtt",
+    "sf_univers_visuel_portals_iYjXFf",
+    "sf_univers_visuel_seo_f7xnGJ",
+    "sf_inspirations_reassurance_rDPNhF"
   ]
 }
