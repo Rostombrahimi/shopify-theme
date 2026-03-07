@@ -1,0 +1,320 @@
+{% schema %}
+{
+  "name": "Anti-Catalogue",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Surtitre (Eyebrow)",
+      "default": "L'ANTI-CATALOGUE"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Titre Monumental",
+      "default": "Pourquoi vous ne<br>trouverez pas <span>'tout'</span> chez<br>Illuminées.",
+      "info": "Utilisez <span> pour la typographie italique ambrée."
+    },
+    {
+      "type": "textarea",
+      "id": "intro_text",
+      "label": "Texte d'Introduction",
+      "default": "L'honnêteté avant la vente. Depuis 2019, nous avons appris qu'une lampe ne vaut rien si elle n'est pas pensée pour un usage précis. Voici comment nous filtrons le bruit pour ne garder que l'essentiel."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Texte Bouton",
+      "default": "Découvrir l'essentiel"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Lien Bouton"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "expertise_card",
+      "name": "Carte d'Expertise",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "icon_svg",
+          "label": "Icône SVG"
+        },
+        {
+          "type": "text",
+          "id": "card_title",
+          "label": "Titre de la Carte"
+        },
+        {
+          "type": "textarea",
+          "id": "card_text",
+          "label": "Texte de la Carte"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "L'Anti-Catalogue",
+      "category": "Illuminées Manifeste",
+      "blocks": [
+        {
+          "type": "expertise_card",
+          "settings": {
+            "card_title": "Filtration Radicale",
+            "card_text": "Nous rejetons 95% des produits sur le marché. S'il n'y a pas d'innovation technique ou de pureté esthétique, il n'y a pas de place chez nous.",
+            "icon_svg": "<svg width=\"40\" height=\"40\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n  <path d=\"M22 3H2L10 12.46V19L14 21V12.46L22 3Z\" stroke=\"#E89D46\" stroke-width=\"1.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>"
+          }
+        },
+        {
+          "type": "expertise_card",
+          "settings": {
+            "card_title": "Précision Lumineuse",
+            "card_text": "Chaque flux lumineux est mesuré pour son impact émotionnel. Nous ne vendons pas des ampoules, mais l'atmosphère exacte de vos soirées.",
+            "icon_svg": "<svg width=\"40\" height=\"40\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n  <circle cx=\"12\" cy=\"12\" r=\"10\" stroke=\"#E89D46\" stroke-width=\"1.2\" opacity=\"0.3\"/>\n  <circle cx=\"12\" cy=\"12\" r=\"2\" fill=\"#E89D46\"/>\n  <path d=\"M12 2v3M12 19v3M2 12h3M19 12h3\" stroke=\"#E89D46\" stroke-width=\"1.5\" stroke-linecap=\"round\"/>\n</svg>"
+          }
+        },
+        {
+          "type": "expertise_card",
+          "settings": {
+            "card_title": "Sélection d'Experts",
+            "card_text": "Une curation artisanale. Nos experts testent chaque modèle pendant 30 jours pour garantir une durabilité qui défie les cycles de consommation.",
+            "icon_svg": "<svg width=\"40\" height=\"40\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n  <path d=\"M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z\" stroke=\"#E89D46\" stroke-width=\"1.2\" stroke-linejoin=\"round\"/>\n</svg>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  html { scroll-behavior: smooth; }
+  
+  .anti-catalogue-section {
+    padding: 120px 4rem;
+    background-color: var(--illu-bg-night, #081A32);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    font-family: var(--illu-font-main, 'Inter', sans-serif);
+    -webkit-font-smoothing: antialiased; /* Typo Refinement vital */
+  }
+
+  /* Vignette de Focus : Dégradé radial pour attirer l'œil */
+  .anti-catalogue-section::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 150%;
+    height: 150%;
+    background: radial-gradient(circle, rgba(232, 157, 70, 0.03) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .anti-catalogue-content {
+    position: relative;
+    z-index: 1;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  /* Surtitre */
+  .anti-eyebrow {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--illu-accent-amber, #E89D46);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 24px;
+    display: inline-block;
+  }
+
+  /* Titre Monumental */
+  .anti-h1-monumental {
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-family: var(--illu-font-display, serif);
+    font-weight: 500;
+    color: var(--illu-text-cream, #F9F9F9);
+    line-height: 1;
+    margin: 0 0 40px 0;
+    letter-spacing: -0.02em;
+  }
+
+  .anti-h1-monumental span {
+    color: var(--illu-accent-amber, #E89D46);
+    font-style: italic;
+    font-family: serif; /* Contraste typographique demandée */
+    font-weight: 400;
+    text-shadow: 0 0 40px rgba(232, 157, 70, 0.3); /* Lueur de 'Tout' */
+  }
+
+  /* Texte d'Intro */
+  .anti-intro-text {
+    max-width: 700px;
+    margin: 0 auto 80px auto;
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: rgba(249, 249, 249, 0.7);
+  }
+
+  /* Grid d'Experts */
+  .anti-expert-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* Carte */
+  .anti-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 32px; /* Chubby radius */
+    padding: 60px 40px;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .anti-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(232, 157, 70, 0.3);
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  /* Icônes */
+  .anti-card-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  .anti-card-icon svg {
+    /* Saturation Expert : Filtre demandé */
+    filter: brightness(1.1) saturate(1.2);
+    width: 28px;
+    height: 28px;
+  }
+
+  .anti-card-title {
+    font-family: var(--illu-font-display, serif);
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #F9F9F9;
+    margin: 0 0 16px 0;
+  }
+
+  .anti-card-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: rgba(249, 249, 249, 0.6);
+    margin: 0;
+  }
+
+  /* CTA Bas de page (Optionnel) */
+  .anti-bottom-cta {
+    margin-top: 80px;
+  }
+
+  .anti-cta-btn {
+    display: inline-block;
+    padding: 14px 40px;
+    background: transparent;
+    color: var(--illu-accent-amber, #E89D46);
+    border: 1px solid rgba(232, 157, 70, 0.4);
+    border-radius: 99px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .anti-cta-btn:hover {
+    background: rgba(232, 157, 70, 0.1);
+    border-color: #E89D46;
+  }
+
+  /* Responsive */
+  @media screen and (max-width: 1024px) {
+    .anti-expert-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .anti-catalogue-section {
+      padding: 80px 1.5rem;
+    }
+    .anti-h1-monumental {
+      font-size: clamp(2.5rem, 8vw, 3rem);
+    }
+    .anti-intro-text {
+      font-size: 1.05rem;
+      margin-bottom: 40px;
+    }
+    .anti-expert-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    .anti-card {
+      padding: 40px 24px;
+      border-radius: 24px;
+    }
+  }
+</style>
+
+<div class="anti-catalogue-section">
+  <div class="anti-catalogue-content">
+    
+    {% if section.settings.eyebrow != blank %}
+      <div class="anti-eyebrow">{{ section.settings.eyebrow }}</div>
+    {% endif %}
+
+    {% if section.settings.title != blank %}
+      <h2 class="anti-h1-monumental">{{ section.settings.title | replace: '<span>', '<span>' }}</h2>
+    {% endif %}
+
+    {% if section.settings.intro_text != blank %}
+      <p class="anti-intro-text">{{ section.settings.intro_text }}</p>
+    {% endif %}
+
+    <div class="anti-expert-grid">
+      {% for block in section.blocks %}
+        <div class="anti-card" {{ block.shopify_attributes }}>
+          <div class="anti-card-icon">
+            {{ block.settings.icon_svg }}
+          </div>
+          <h3 class="anti-card-title">{{ block.settings.card_title }}</h3>
+          <p class="anti-card-text">{{ block.settings.card_text }}</p>
+        </div>
+      {% endfor %}
+    </div>
+
+    {% if section.settings.button_text != blank %}
+      <div class="anti-bottom-cta">
+        <a href="{{ section.settings.button_url | default: '#' }}" class="anti-cta-btn">
+          {{ section.settings.button_text }}
+        </a>
+      </div>
+    {% endif %}
+
+  </div>
+</div>
