@@ -11,13 +11,283 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "sf_approach_hero_Dc8YPL": {
+      "type": "sf-approach-hero",
+      "blocks": {
+        "feature_anDh89": {
+          "type": "feature",
+          "settings": {
+            "icon": "compass",
+            "title": "Sélection Rigoureuse",
+            "text": "Chaque pièce est analysée pour sa qualité de fabrication et son rendu lumineux réel."
+          }
+        },
+        "feature_eP3VQ3": {
+          "type": "feature",
+          "settings": {
+            "icon": "device",
+            "title": "Test en Situation",
+            "text": "Nous testons les luminaires dans nos laboratoires pour garantir un confort visuel optimal."
+          }
+        },
+        "feature_gGVqdD": {
+          "type": "feature",
+          "settings": {
+            "icon": "award",
+            "title": "Garantie Expert",
+            "text": "Une validation technique complète pour une durabilité et une esthétique sans compromis."
+          }
+        }
+      },
+      "block_order": [
+        "feature_anDh89",
+        "feature_eP3VQ3",
+        "feature_gGVqdD"
+      ],
+      "name": "Approach Hero",
+      "settings": {
+        "badge_text": "NOTRE MÉTHODE",
+        "title": "Notre Approche –<br><span>La lumière utile, sculptée<br>par l’expertise</span>",
+        "description": "Nous ne sommes pas de simples revendeurs. Nous sommes des curateurs. Découvrez comment nous sélectionnons, testons et validons chaque luminaire pour votre confort."
+      }
+    },
+    "sf_approach_process_JXD8ze": {
+      "type": "sf-approach-process",
+      "blocks": {
+        "step_a8ijwQ": {
+          "type": "step",
+          "settings": {
+            "number": "01",
+            "icon": "compass",
+            "title": "Sourcing Sélectif",
+            "text": "Une sélection courte et exigeante guidée par la boussole de l'excellence. Nous ne retenons que 1% des pièces étudiées.",
+            "pill_1": "Matériaux nobles",
+            "pill_2": "Design intemporel"
+          }
+        },
+        "step_8AFahm": {
+          "type": "step",
+          "settings": {
+            "number": "02",
+            "icon": "flask",
+            "title": "Tests Intensifs",
+            "text": "48h de tests intensifs pour chaque modèle en laboratoire. Résistance thermique, stabilité électrique et durabilité.",
+            "pill_1": "Laboratoire interne",
+            "pill_2": "Stress test"
+          }
+        },
+        "step_j6zkKY": {
+          "type": "step",
+          "settings": {
+            "number": "03",
+            "icon": "shield",
+            "title": "Validation Expert",
+            "text": "Validation finale du confort visuel et des normes de sécurité. L'assurance d'une lumière saine pour vos yeux.",
+            "pill_1": "Normes CE",
+            "pill_2": "Anti-scintillement"
+          }
+        }
+      },
+      "block_order": [
+        "step_a8ijwQ",
+        "step_8AFahm",
+        "step_j6zkKY"
+      ],
+      "name": "Processus Curateur",
+      "settings": {
+        "badge_text": "NOTRE MÉTHODE",
+        "title": "Le Processus <span class=\"amber-text\">Illuminées</span>",
+        "description": "Une rigueur technique absolue. Découvrez comment chaque luminaire gagne sa place dans notre collection exclusive à travers un parcours exigeant.",
+        "cta_title": "Prêt à illuminer<br>votre intérieur ?",
+        "cta_description": "Explorez notre collection de luminaires validée par nos experts et transformez votre espace de vie.",
+        "cta_btn_1_text": "Voir lacollection",
+        "cta_btn_1_link": "",
+        "cta_btn_2_text": "En savoirplus",
+        "cta_btn_2_link": ""
+      }
+    },
+    "sf_quality_charter_DcCwBK": {
+      "type": "sf-quality-charter",
+      "blocks": {
+        "control_point_6TTqDj": {
+          "type": "control_point",
+          "settings": {
+            "icon": "plug",
+            "title": "Sécurité Électrique",
+            "text": "Conformité stricte aux normes européennes. Chaque pièce est testée individuellement pour assurer une installation sans risque et une protection optimale contre les surtensions."
+          }
+        },
+        "control_point_zbtH6Y": {
+          "type": "control_point",
+          "settings": {
+            "icon": "waves",
+            "title": "Stabilité du Flux",
+            "text": "Une lumière constante sans scintillement (\"flicker-free\"). Nos drivers haute performance garantissent un confort visuel absolu, réduisant la fatigue oculaire."
+          }
+        },
+        "control_point_rCjYmc": {
+          "type": "control_point",
+          "settings": {
+            "icon": "palette",
+            "title": "Fidélité des Couleurs",
+            "text": "Un indice de rendu des couleurs (IRC) supérieur à 90. Nous veillons à ce que votre intérieur soit sublimé par une restitution naturelle et vibrante des teintes."
+          }
+        },
+        "control_point_7Pr3LB": {
+          "type": "control_point",
+          "settings": {
+            "icon": "diamond",
+            "title": "Durabilité des Matériaux",
+            "text": "Des finitions premium en laiton massif, verre soufflé et aluminium anodisé. Conçus pour résister au temps et à l'usure sans perdre leur éclat."
+          }
+        },
+        "control_point_VgDEjC": {
+          "type": "control_point",
+          "settings": {
+            "icon": "touch",
+            "title": "Simplicité d'Usage",
+            "text": "Assemblage intuitif et systèmes de contrôle ergonomiques. L'expérience utilisateur est au cœur de notre conception, de l'installation à l'utilisation quotidienne."
+          }
+        }
+      },
+      "block_order": [
+        "control_point_6TTqDj",
+        "control_point_zbtH6Y",
+        "control_point_rCjYmc",
+        "control_point_7Pr3LB",
+        "control_point_VgDEjC"
+      ],
+      "name": "Charte Qualité",
+      "settings": {
+        "badge_text": "NOTRE CHARTE QUALITÉ",
+        "title": "Les 5 Points de <span class=\"amber-text\">Contrôle</span>",
+        "description": "Chaque luminaire traverse un processus rigoureux pour garantir une expérience lumineuse parfaite, alliant sécurité, esthétique et durabilité.",
+        "cta_text": "Voir le catalogue certifié →",
+        "cta_link": ""
+      }
+    },
+    "sf_universe_specifics_cT3jQP": {
+      "type": "sf-universe-specifics",
+      "blocks": {
+        "universe_j7DnYK": {
+          "type": "universe",
+          "settings": {
+            "icon": "lamp",
+            "custom_svg": "",
+            "title": "Espace Quotidien",
+            "tags": "CLARTÉ • FONCTIONNALITÉ • SOBRIÉTÉ",
+            "description": "Une approche pragmatique pour vos espaces de travail et de vie, alliant efficacité lumineuse et design épuré pour un quotidien simplifié.",
+            "link_text": "Découvrir l'approche Quotidien →",
+            "link_url": "shopify://collections/espace-quotidien"
+          }
+        },
+        "universe_jEtMzH": {
+          "type": "universe",
+          "settings": {
+            "icon": "gamepad",
+            "custom_svg": "",
+            "title": "Univers Visuel",
+            "tags": "AMBIANCE • EXPRESSION • IDENTITÉ",
+            "description": "Pour les passionnés de pop-culture et de gaming, nous créons des atmosphères immersives et uniques qui affirment votre style personnel.",
+            "link_text": "Découvrir l'approche Visuelle →",
+            "link_url": "shopify://collections/univers-visuel"
+          }
+        },
+        "universe_YjQGz9": {
+          "type": "universe",
+          "settings": {
+            "icon": "moon",
+            "custom_svg": "",
+            "title": "Petit Cocon",
+            "tags": "DOUCEUR • SÉCURITÉ • SÉRÉNITÉ",
+            "description": "Une conception pensée pour la tranquillité des parents et le bien-être des enfants, utilisant des matériaux sûrs et une lumière apaisante.",
+            "link_text": "Découvrir l'approche Cocon →",
+            "link_url": "shopify://collections/petit-cocon"
+          }
+        }
+      },
+      "block_order": [
+        "universe_j7DnYK",
+        "universe_jEtMzH",
+        "universe_YjQGz9"
+      ],
+      "name": "Expertise Univers",
+      "settings": {
+        "badge_text": "NOTRE APPROCHE",
+        "title": "Une expertise qui s'adapte à<br>vos besoins.",
+        "description": "Découvrez comment Illuminées transforme chaque espace grâce à une lumière pensée pour votre mode de vie.",
+        "cta_text": "Explorer tous nos univers",
+        "cta_link": ""
+      }
+    },
+    "sf_approach_conclusion_Rr9TbL": {
+      "type": "sf-approach-conclusion",
+      "blocks": {
+        "difference_L9c7R6": {
+          "type": "difference",
+          "settings": {
+            "icon": "focus",
+            "custom_svg": "",
+            "title": "Moins de choix",
+            "description": "Parce que la clarté commence par l'épure."
+          }
+        },
+        "difference_cjaUrR": {
+          "type": "difference",
+          "settings": {
+            "icon": "infinity",
+            "custom_svg": "",
+            "title": "Meilleure expérience",
+            "description": "Un accompagnement expert à chaque étape."
+          }
+        },
+        "difference_kqJj6T": {
+          "type": "difference",
+          "settings": {
+            "icon": "check",
+            "custom_svg": "",
+            "title": "Décisions plus simples",
+            "description": "Fini le paradoxe du choix, place au ressenti."
+          }
+        },
+        "difference_bbMiJh": {
+          "type": "difference",
+          "settings": {
+            "icon": "diamond",
+            "custom_svg": "",
+            "title": "Produits plus durables",
+            "description": "Une sélection pensée pour durer, pas pour être remplacée."
+          }
+        }
+      },
+      "block_order": [
+        "difference_L9c7R6",
+        "difference_cjaUrR",
+        "difference_kqJj6T",
+        "difference_bbMiJh"
+      ],
+      "name": "Conclusion Approche",
+      "settings": {
+        "badge_text": "NOTRE PHILOSOPHIE",
+        "title": "Pourquoi la curation est une élévation",
+        "cta_text_above": "Prêt à illuminer votre intérieur avec discernement ?",
+        "cta_button_text": "Découvrir nos univers lumineux →",
+        "cta_button_link": ""
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "sf_approach_hero_Dc8YPL",
+    "sf_approach_process_JXD8ze",
+    "sf_quality_charter_DcCwBK",
+    "sf_universe_specifics_cT3jQP",
+    "sf_approach_conclusion_Rr9TbL"
   ]
 }
