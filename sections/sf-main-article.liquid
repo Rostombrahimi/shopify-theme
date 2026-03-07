@@ -361,18 +361,6 @@
       <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: "%d %B %Y" }}</time>
     </div>
 
-    <!-- LA PÉPITE EN 30 SECONDES (LIÉE À L'EXTRAIT/EXCERPT NATIVE) -->
-    {%- if article.excerpt != blank -%}
-      <div class="expert-snapshot">
-        <div class="snapshot-header">
-          <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-          {{ section.settings.snapshot_title }}
-        </div>
-        <div class="snapshot-content">
-          {{ article.excerpt }}
-        </div>
-      </div>
-    {%- endif -%}
   </div>
 
 </section>
@@ -380,6 +368,20 @@
 <!-- BODY SECTION -->
 <section class="blog-article-wrapper">
   <div class="blog-article-inner">
+      
+      <!-- LA PÉPITE EN 30 SECONDES (DÉPLACÉE SOUS LE HERO) -->
+      {%- if article.excerpt != blank -%}
+        <div class="expert-snapshot" style="margin-top: -100px; margin-bottom: 60px; z-index: 10;">
+          <div class="snapshot-header">
+            <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            {{ section.settings.snapshot_title }}
+          </div>
+          <div class="snapshot-content">
+            {{ article.excerpt }}
+          </div>
+        </div>
+      {%- endif -%}
+
       <div class="blog-content-richtext">
         {{ article.content }}
       </div>
