@@ -147,12 +147,54 @@
         "banner_eyebrow": "L'EXCELLENCE ILLUMINÉE",
         "banner_title": "L'art de sculpter l'ombre et la lumière."
       }
+    },
+    "sf_selection_luxe_Kw8htY": {
+      "type": "sf-selection-luxe",
+      "blocks": {
+        "curation_card_gUmrzC": {
+          "type": "curation_card",
+          "settings": {
+            "icon_svg": "<svg width=\"32\" height=\"32\" viewbox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n  <path d=\"M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z\" stroke=\"#E89D46\" stroke-width=\"1.5\" stroke-linejoin=\"round\"></path>\n</svg>",
+            "card_title": "Décision simplifiée",
+            "card_text": "Trop de choix tue le choix ; nous ne proposons que la Master pièce de chaque catégorie."
+          }
+        },
+        "curation_card_CWzRQy": {
+          "type": "curation_card",
+          "settings": {
+            "icon_svg": "<svg width=\"32\" height=\"32\" viewbox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n  <path d=\"M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.77 3.77z\" stroke=\"#E89D46\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n</svg>",
+            "card_title": "Maîtrise totale",
+            "card_text": "Nous connaissons chaque vis et chaque réglage de nos produits. Une expertise technique sans compromis."
+          }
+        },
+        "curation_card_fndpBy": {
+          "type": "curation_card",
+          "settings": {
+            "icon_svg": "<svg width=\"48\" height=\"48\" viewbox=\"0 0 48 48\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n  <rect width=\"48\" height=\"48\" rx=\"12\" fill=\"#E89D46\" fill-opacity=\"0.1\"></rect>\n  <path d=\"M16 32C16 23.1634 23.1634 16 32 16\" stroke=\"#E89D46\" stroke-width=\"2.5\" stroke-linecap=\"round\"></path>\n  <path d=\"M16 32L24 24L32 32\" stroke=\"#E89D46\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n</svg>",
+            "card_title": "Impact Durable",
+            "card_text": "Choisir juste du premier coup, c'est éviter les retours inutiles et réduire considérablement le gaspillage."
+          }
+        }
+      },
+      "block_order": [
+        "curation_card_gUmrzC",
+        "curation_card_CWzRQy",
+        "curation_card_fndpBy"
+      ],
+      "name": "Sélection Luxe",
+      "settings": {
+        "eyebrow": "CURATION EXPERT",
+        "title": "Le luxe de la <span>sélection courte</span>",
+        "subtitle": "Expert, rassurant, haut de gamme. L'excellence par la sobriété. Nous filtrons le superflu pour ne garder que l'essentiel.",
+        "footer_text": "ILLUMINÉES • L'EXCELLENCE PAR LA CURATION"
+      }
     }
   },
   "order": [
     "main",
     "sf_anti_catalogue_36Xhab",
     "sf_no_go_list_eDkEBE",
-    "sf_atelier_filters_cNrxQ3"
+    "sf_atelier_filters_cNrxQ3",
+    "sf_selection_luxe_Kw8htY"
   ]
 }
