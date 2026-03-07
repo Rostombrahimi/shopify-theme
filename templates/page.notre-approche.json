@@ -222,7 +222,7 @@
         "badge_text": "NOTRE APPROCHE",
         "title": "Une expertise qui s'adapte à<br>vos besoins.",
         "description": "Découvrez comment Illuminées transforme chaque espace grâce à une lumière pensée pour votre mode de vie.",
-        "cta_text": "Explorer tous nos univers",
+        "cta_text": "",
         "cta_link": ""
       }
     },
@@ -278,7 +278,7 @@
         "title": "Pourquoi la curation est une élévation",
         "cta_text_above": "Prêt à illuminer votre intérieur avec discernement ?",
         "cta_button_text": "Découvrir nos univers lumineux →",
-        "cta_button_link": ""
+        "cta_button_link": "shopify://collections"
       }
     }
   },
