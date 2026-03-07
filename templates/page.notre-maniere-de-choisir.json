@@ -65,7 +65,7 @@
         "refusal_card_Uq9mNH": {
           "type": "refusal_card",
           "settings": {
-            "icon_svg": "<svg width=\"32\" height=\"32\" viewbox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n  <path d=\"M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 011.66-2.04M12 9a3 3 0 113 3M1 1l22 22\" stroke=\"#EF4444\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n</svg>",
+            "icon_svg": "<svg width=\"48\" height=\"48\" viewbox=\"0 0 48 48\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n  <circle cx=\"24\" cy=\"24\" r=\"24\" fill=\"#E55B5B\" fill-opacity=\"0.1\"></circle>\n  <g stroke=\"#E55B5B\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n    <path d=\"M14.5 24C14.5 24 18.5 16 24 16C29.5 16 33.5 24 33.5 24C33.5 24 29.5 32 24 32C18.5 32 14.5 24 14.5 24Z\"></path>\n    <circle cx=\"24\" cy=\"24\" r=\"3.5\"></circle>\n    <path d=\"M12 12L36 36\"></path>\n  </g>\n</svg>",
             "card_title": "Design Instagrammable mais agressif",
             "card_text": "Nous disons non au scintillement (flickering) et à la fatigue visuelle. Un bel objet ne doit jamais sacrifier votre confort neurologique pour quelques likes."
           }
@@ -73,7 +73,7 @@
         "refusal_card_g4AbrN": {
           "type": "refusal_card",
           "settings": {
-            "icon_svg": "<svg width=\"32\" height=\"32\" viewbox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n  <path d=\"M5 2h14M5 22h14M12 12l-7-7h14l-7 7-7 7h14l-7-7\" stroke=\"#EF4444\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n  <line x1=\"1\" y1=\"1\" x2=\"23\" y2=\"23\" stroke=\"#EF4444\" stroke-width=\"2\" stroke-linecap=\"round\" opacity=\"0.8\"></line>\n</svg>",
+            "icon_svg": "<svg width=\"48\" height=\"48\" viewbox=\"0 0 48 48\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n  <circle cx=\"24\" cy=\"24\" r=\"24\" fill=\"#E55B5B\" fill-opacity=\"0.1\"></circle>\n  <g stroke=\"#E55B5B\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n    <path d=\"M17 15H31M17 33H31M18 15V19C18 21 19 23 21 24C19 25 18 27 18 29V33M30 15V19C30 21 29 23 27 24C29 25 30 27 30 29V33\"></path>\n    <path d=\"M12 12L36 36\"></path>\n  </g>\n</svg>",
             "card_title": "Gadgets à obsolescence programmée",
             "card_text": "Refus catégorique des tendances éphémères et des composants scellés impossibles à réparer. Nous concevons pour la décennie, pas pour la saison."
           }
@@ -81,7 +81,7 @@
         "refusal_card_rLm8Xf": {
           "type": "refusal_card",
           "settings": {
-            "icon_svg": "<svg width=\"32\" height=\"32\" viewbox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n  <rect x=\"3\" y=\"6\" width=\"18\" height=\"15\" rx=\"2\" stroke=\"#EF4444\" stroke-width=\"1.5\"></rect>\n  <path d=\"M9 6V3h6v3M12 11v5M9.5 13.5h5\" stroke=\"#EF4444\" stroke-width=\"1.5\" stroke-linecap=\"round\"></path>\n  <line x1=\"2\" y1=\"22\" x2=\"22\" y2=\"2\" stroke=\"#EF4444\" stroke-width=\"2\" stroke-linecap=\"round\" opacity=\"0.8\"></line>\n</svg>",
+            "icon_svg": "<svg width=\"48\" height=\"48\" viewbox=\"0 0 48 48\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n  <circle cx=\"24\" cy=\"24\" r=\"24\" fill=\"#E55B5B\" fill-opacity=\"0.15\"></circle>\n  <g stroke=\"#E55B5B\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n    <rect x=\"16\" y=\"20\" width=\"16\" height=\"12\" rx=\"2\"></rect>\n    <path d=\"M20 20V17C20 16.4477 20.4477 16 21 16H27C27.5523 16 28 16.4477 28 17V20\"></path>\n    <line x1=\"12\" y1=\"12\" x2=\"36\" y2=\"36\"></line>\n  </g>\n</svg>",
             "card_title": "La lumière Blanche Hôpital",
             "card_text": "Bannissement des éclairages froids (>5000K) dans les espaces de vie. La lumière doit réchauffer l'âme, pas stériliser l'atmosphère."
           }
@@ -102,11 +102,57 @@
         "cta_btn_text": "Voir notre manifeste",
         "cta_btn_url": ""
       }
+    },
+    "sf_atelier_filters_cNrxQ3": {
+      "type": "sf-atelier-filters",
+      "blocks": {
+        "filter_card_GqfweA": {
+          "type": "filter_card",
+          "settings": {
+            "icon_svg": "<svg viewbox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M12 5C7.5 5 3.73 7.92 2 12C3.73 16.08 7.5 19 12 19C16.5 19 20.27 16.08 22 12C20.27 7.92 16.5 5 12 5ZM12 17C9.24 17 7 14.76 7 12C7 9.24 9.24 7 12 7C14.76 7 17 9.24 17 12C17 14.76 14.76 17 12 17ZM12 9C10.34 9 9 10.34 9 12C9 13.66 10.34 15 12 15C13.66 15 15 13.66 15 12C15 10.34 13.66 9 12 9Z\" fill=\"#E89D46\"></path></svg>",
+            "title": "Ergonomie Visuelle",
+            "description": "Stabilité du flux et indice de rendu des couleurs (IRC).",
+            "objective_text": "Zéro fatigue même après une journée de travail."
+          }
+        },
+        "filter_card_9XnPNd": {
+          "type": "filter_card",
+          "settings": {
+            "icon_svg": "<svg viewbox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"12\" cy=\"12\" r=\"10\" stroke=\"#E89D46\" stroke-width=\"2\"></circle><circle cx=\"12\" cy=\"12\" r=\"1\" fill=\"#E89D46\"></circle><circle cx=\"16\" cy=\"12\" r=\"1\" fill=\"#E89D46\"></circle><circle cx=\"8\" cy=\"12\" r=\"1\" fill=\"#E89D46\"></circle><circle cx=\"12\" cy=\"8\" r=\"1\" fill=\"#E89D46\"></circle><circle cx=\"12\" cy=\"16\" r=\"1\" fill=\"#E89D46\"></circle></svg>",
+            "title": "Justesse Narrative",
+            "description": "Capacité à créer une \"bulle\" sans inonder la pièce.",
+            "objective_text": "Une immersion totale dans votre univers."
+          }
+        },
+        "filter_card_RbtA8x": {
+          "type": "filter_card",
+          "settings": {
+            "icon_svg": "<svg viewbox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M12 1L3 5V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V5L12 1ZM12 10.99H19C18.42 14.93 15.68 18.39 12 19.86V10.99H5V6.3L12 3.19V10.99Z\" fill=\"#E89D46\"></path></svg>",
+            "title": "Sécurité Passive",
+            "description": "Chaleur des matériaux et absence de composants volatils nocifs.",
+            "objective_text": "Une sérénité totale pour le Petit Cocon."
+          }
+        }
+      },
+      "block_order": [
+        "filter_card_GqfweA",
+        "filter_card_9XnPNd",
+        "filter_card_RbtA8x"
+      ],
+      "name": "Filtres de l'Atelier",
+      "settings": {
+        "title": "Les 3 Filtres de l'Atelier",
+        "subtitle": "Chaque luminaire passe par un protocole de test en conditions réelles (bureau, chambre d'enfant, session gaming nocturne).",
+        "banner_image": "shopify://shop_images/image.png",
+        "banner_eyebrow": "L'EXCELLENCE ILLUMINÉE",
+        "banner_title": "L'art de sculpter l'ombre et la lumière."
+      }
     }
   },
   "order": [
     "main",
     "sf_anti_catalogue_36Xhab",
-    "sf_no_go_list_eDkEBE"
+    "sf_no_go_list_eDkEBE",
+    "sf_atelier_filters_cNrxQ3"
   ]
 }
