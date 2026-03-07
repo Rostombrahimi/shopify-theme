@@ -58,10 +58,55 @@
         "button_text": "Découvrir l'essentiel",
         "button_url": ""
       }
+    },
+    "sf_no_go_list_eDkEBE": {
+      "type": "sf-no-go-list",
+      "blocks": {
+        "refusal_card_Uq9mNH": {
+          "type": "refusal_card",
+          "settings": {
+            "icon_svg": "<svg width=\"32\" height=\"32\" viewbox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n  <path d=\"M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 011.66-2.04M12 9a3 3 0 113 3M1 1l22 22\" stroke=\"#EF4444\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n</svg>",
+            "card_title": "Design Instagrammable mais agressif",
+            "card_text": "Nous disons non au scintillement (flickering) et à la fatigue visuelle. Un bel objet ne doit jamais sacrifier votre confort neurologique pour quelques likes."
+          }
+        },
+        "refusal_card_g4AbrN": {
+          "type": "refusal_card",
+          "settings": {
+            "icon_svg": "<svg width=\"32\" height=\"32\" viewbox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n  <path d=\"M5 2h14M5 22h14M12 12l-7-7h14l-7 7-7 7h14l-7-7\" stroke=\"#EF4444\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n  <line x1=\"1\" y1=\"1\" x2=\"23\" y2=\"23\" stroke=\"#EF4444\" stroke-width=\"2\" stroke-linecap=\"round\" opacity=\"0.8\"></line>\n</svg>",
+            "card_title": "Gadgets à obsolescence programmée",
+            "card_text": "Refus catégorique des tendances éphémères et des composants scellés impossibles à réparer. Nous concevons pour la décennie, pas pour la saison."
+          }
+        },
+        "refusal_card_rLm8Xf": {
+          "type": "refusal_card",
+          "settings": {
+            "icon_svg": "<svg width=\"32\" height=\"32\" viewbox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n  <rect x=\"3\" y=\"6\" width=\"18\" height=\"15\" rx=\"2\" stroke=\"#EF4444\" stroke-width=\"1.5\"></rect>\n  <path d=\"M9 6V3h6v3M12 11v5M9.5 13.5h5\" stroke=\"#EF4444\" stroke-width=\"1.5\" stroke-linecap=\"round\"></path>\n  <line x1=\"2\" y1=\"22\" x2=\"22\" y2=\"2\" stroke=\"#EF4444\" stroke-width=\"2\" stroke-linecap=\"round\" opacity=\"0.8\"></line>\n</svg>",
+            "card_title": "La lumière Blanche Hôpital",
+            "card_text": "Bannissement des éclairages froids (>5000K) dans les espaces de vie. La lumière doit réchauffer l'âme, pas stériliser l'atmosphère."
+          }
+        }
+      },
+      "block_order": [
+        "refusal_card_Uq9mNH",
+        "refusal_card_g4AbrN",
+        "refusal_card_rLm8Xf"
+      ],
+      "name": "No Go List (Engagements)",
+      "settings": {
+        "eyebrow": "MANIFESTE ÉTHIQUE",
+        "title": "Ce que nous refusons",
+        "intro_text": "Chez Illuminées, nous croyons que la lumière doit servir le vivant, pas seulement le paraître. Voici notre engagement ferme.",
+        "cta_title": "Besoin d'un conseil d'expert ?",
+        "cta_text": "Découvrez comment nous appliquons ces principes dans notre charte technique complète.",
+        "cta_btn_text": "Voir notre manifeste",
+        "cta_btn_url": ""
+      }
     }
   },
   "order": [
     "main",
-    "sf_anti_catalogue_36Xhab"
+    "sf_anti_catalogue_36Xhab",
+    "sf_no_go_list_eDkEBE"
   ]
 }
