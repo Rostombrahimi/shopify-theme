@@ -1,0 +1,582 @@
+{% schema %}
+{
+  "name": "FAQ 3 - Hero & AccordIONS",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Hero Section"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Titre Principal",
+      "default": "Une question ? <br><span>Nous avons la solution<br>lumineuse.</span>",
+      "info": "Utilisez <span> pour la couleur ambre lumineuse."
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Sous-titre",
+      "default": "Parce que choisir son ambiance ne devrait jamais être un casse-tête."
+    },
+    {
+      "type": "text",
+      "id": "search_placeholder",
+      "label": "Placeholder Recherche",
+      "default": "Rechercher une question..."
+    },
+    {
+      "type": "text",
+      "id": "search_button_text",
+      "label": "Texte Bouton Recherche",
+      "default": "Chercher"
+    },
+    {
+      "type": "header",
+      "content": "Sous-titre FAQ"
+    },
+    {
+      "type": "text",
+      "id": "faq_category_title",
+      "label": "Titre Catégorie",
+      "default": "Choisir son <span>Usage</span>",
+      "info": "Utilisez <span> pour l'ambre."
+    },
+    {
+      "type": "text",
+      "id": "faq_count_label",
+      "label": "Label Compteur",
+      "default": "questions fréquentes"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "Question FAQ",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "icon_svg",
+          "label": "Icône SVG",
+          "info": "Icône gauche (ex: carré avec symbole)"
+        },
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Je ne sais pas quelle ambiance choisir pour mon enfant ?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Réponse",
+          "default": "<p>Pour la chambre d'un enfant, privilégiez une lumière <strong>douce et tamisée</strong>...</p>"
+        },
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "Texte du lien (optionnel)",
+          "default": "Voir la collection enfant"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Lien URL (optionnel)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ 3 - Hero & AccordIONS",
+      "blocks": [
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Je ne sais pas quelle ambiance choisir pour mon enfant ?",
+            "answer": "<p>Pour la chambre d'un enfant, privilégiez une lumière <strong>douce et tamisée</strong> qui favorise l'endormissement sans agresser les yeux sensibles. Nos lampes de la collection 'Nuit Paisible' offrent une teinte <strong>ambrée réconfortante</strong> (2700K), idéale pour chasser les monstres du placard tout en douceur et créer un rituel du coucher apaisant.</p>",
+            "link_text": "Voir la collection enfant"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Quelle lumière pour un dîner romantique ?"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Comment éclairer un espace de travail sans fatigue ?"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Lumière chaude ou froide pour le salon ?"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+/* FAQ Illuminées - Production CSS */
+html { 
+  scroll-behavior: smooth; 
+}
+
+.faq-section-wrapper {
+  background-color: #081A32; /* Fond nuit principal */
+  font-family: 'Inter', sans-serif;
+  color: #F9F9F9;
+  -webkit-font-smoothing: antialiased;
+  min-height: 80vh;
+  padding-bottom: 120px;
+}
+
+.faq-section-wrapper * {
+  box-sizing: border-box;
+}
+
+/* --- HERO SECTION --- */
+.faq-hero-centered {
+  text-align: center;
+  padding: 100px 2rem 40px;
+  background-color: #081A32;
+  position: relative;
+}
+
+.faq-h1 {
+  font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+  font-weight: 500;
+  color: #F9F9F9 !important;
+  line-height: 1.15;
+  margin-bottom: 1rem !important;
+  margin-top: 0;
+  letter-spacing: -0.02em;
+}
+
+.faq-h1 span {
+  color: #E89D46 !important;
+  font-weight: 700;
+  text-shadow: 0 0 25px rgba(232, 157, 70, 0.2);
+}
+
+.faq-subtitle {
+  font-size: 1.16rem;
+  color: rgba(249, 249, 249, 0.7) !important;
+  max-width: 650px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* --- SEARCH PILL --- */
+.faq-search-pill {
+  max-width: 540px;
+  margin: 2.5rem auto 4rem auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 99px;
+  padding: 8px 8px 8px 24px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: border-color 0.3s ease;
+}
+
+.faq-search-pill:focus-within {
+  border-color: rgba(232, 157, 70, 0.4);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.faq-search-pill > svg {
+  width: 18px;
+  height: 18px;
+  stroke: rgba(249, 249, 249, 0.5);
+  flex-shrink: 0;
+}
+
+.faq-search-input {
+  flex-grow: 1;
+  background: transparent;
+  border: none;
+  padding: 12px 16px;
+  color: #F9F9F9;
+  font-size: 1.05rem;
+  font-family: inherit;
+  outline: none;
+}
+
+.faq-search-input::placeholder {
+  color: rgba(249, 249, 249, 0.4);
+}
+
+.faq-search-btn {
+  background: #E89D46;
+  color: #081A32;
+  border: none;
+  border-radius: 99px;
+  padding: 10px 24px;
+  font-weight: 700;
+  font-size: 0.99rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  flex-shrink: 0;
+}
+
+.faq-search-btn:hover {
+  background: #f0a755;
+  transform: scale(1.02);
+}
+
+/* --- ACCORDIONS CONTAINER --- */
+.faq-accordions-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Sous-titre Catégorie */
+.faq-category-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 24px;
+  padding: 0 8px; /* Align slightly with accordion content */
+}
+
+.faq-category-title {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #F9F9F9;
+  margin: 0;
+}
+
+.faq-category-title span {
+  color: #E89D46;
+  font-weight: 700;
+}
+
+.faq-category-count {
+  font-size: 0.94rem;
+  color: rgba(249, 249, 249, 0.5);
+  margin: 0;
+  padding-bottom: 4px;
+}  
+
+
+/* Accordéon "Chubby" ajusté pour coller au design Pixel Perfect */
+.faq-item-card {
+  background: rgba(255, 255, 255, 0.025);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  margin-bottom: 1rem;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden; 
+}
+
+.faq-item-card:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08); /* Effet plus subtil sur screenshot */
+}
+
+/* Accordion Reset & Styling */
+.faq-item-card details {
+  width: 100%;
+}
+
+.faq-item-card summary::-webkit-details-marker {
+  display: none;
+}
+.faq-item-card summary {
+  list-style: none; /* Cache marker standard IE/Firefox */
+}
+
+.faq-summary-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 32px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.faq-summary-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.faq-icon-wrapper {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  border: 1.5px solid rgba(232, 157, 70, 0.3);
+  background: rgba(232, 157, 70, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.faq-icon-wrapper svg {
+  width: 14px;
+  height: 14px;
+  fill: #E89D46;
+  stroke: none; /* Selon le SVG on adaptera, ici fill base pour Mallette/Fourchette etc. */
+}
+/* Exception pour les icônes en stroke pur */
+.faq-icon-wrapper svg[stroke] {
+  fill: none;
+  stroke: #E89D46;
+  stroke-width: 1.5;
+}
+
+.faq-question-text {
+  font-size: 1.16rem;
+  font-weight: 600;
+  color: #F9F9F9;
+  margin: 0;
+}
+
+/* Chevron Icon */
+.faq-toggle-chevron {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq-toggle-chevron svg {
+  width: 14px;
+  height: 14px;
+  stroke: rgba(249, 249, 249, 0.6);
+  stroke-width: 2;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Déploiement : Rotation du chevron (v -> ^) */
+.faq-item-card details[open] .faq-toggle-chevron {
+  transform: rotate(180deg);
+}
+
+.faq-item-card details[open] .faq-toggle-chevron svg {
+  stroke: #E89D46; /* Le chevron devient ambre cliqué */
+}
+
+/* Contenu de la réponse */
+.faq-answer-content {
+  padding: 0 32px 32px 72px; /* 72px pour s'aligner avec le texte (32px pad + 24px icon + 16px gap) */
+  color: rgba(249, 249, 249, 0.65);
+  font-size: 0.99rem;
+  line-height: 1.6;
+}
+
+.faq-answer-content p {
+  margin: 0 0 1.25rem 0;
+  color: rgba(249, 249, 249, 0.65) !important;
+}
+
+.faq-answer-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* Highlight Réponse */
+.faq-answer-content strong,
+.faq-answer-content b {
+  color: #E89D46 !important;
+  font-weight: 600; /* Moins agressif que 700 */
+}
+
+.faq-answer-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #E89D46;
+  font-size: 0.94rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  margin-top: 8px;
+}
+
+.faq-answer-link svg {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.3s ease;
+}
+
+.faq-answer-link:hover {
+  filter: brightness(1.2);
+}
+
+.faq-answer-link:hover svg {
+  transform: translateX(4px);
+}
+
+/* Hide element class for search filter */
+.faq-card-hidden {
+  display: none !important;
+}
+
+/* --- RESPONSIVE --- */
+@media screen and (max-width: 768px) {
+  .faq-hero-centered {
+    padding: 80px 1.5rem 40px;
+  }
+  .faq-h1 {
+    font-size: 2rem;
+  }
+  .faq-search-pill {
+    padding: 6px 6px 6px 16px;
+  }
+  .faq-search-input {
+    padding: 10px;
+    font-size: 0.99rem;
+  }
+  .faq-search-btn {
+    padding: 10px 16px;
+    font-size: 0.94rem;
+  }
+  .faq-summary-content {
+    padding: 20px;
+  }
+  .faq-question-text {
+    font-size: 1.05rem;
+  }
+  .faq-answer-content {
+    padding: 0 20px 24px 60px;
+  }
+  .faq-category-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+</style>
+
+<section class="faq-section-wrapper" id="faq-section-{{ section.id }}">
+  
+  <div class="faq-hero-centered">
+    {% if section.settings.title != blank %}
+      <h1 class="faq-h1">{{ section.settings.title | replace: '<span>', '<span>' }}</h1>
+    {% endif %}
+    
+    {% if section.settings.subtitle != blank %}
+      <p class="faq-subtitle">{{ section.settings.subtitle }}</p>
+    {% endif %}
+
+    <!-- SEARCH PILL -->
+    <div class="faq-search-pill">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <input type="text" 
+             id="FaqSearchInput-{{ section.id }}" 
+             class="faq-search-input" 
+             placeholder="{{ section.settings.search_placeholder }}"
+             aria-label="Rechercher dans la FAQ" />
+      <button class="faq-search-btn" id="FaqSearchBtn-{{ section.id }}">{{ section.settings.search_button_text }}</button>
+    </div>
+  </div>
+
+  <div class="faq-accordions-container" id="FaqContainer-{{ section.id }}">
+    
+    <!-- CATEGORY HEADER -->
+    <div class="faq-category-header">
+      {% if section.settings.faq_category_title != blank %}
+         <h2 class="faq-category-title">{{ section.settings.faq_category_title }}</h2>
+      {% endif %}
+      {% if section.settings.faq_count_label != blank %}
+         <p class="faq-category-count">{{ section.blocks.size }} {{ section.settings.faq_count_label }}</p>
+      {% endif %}
+    </div>
+
+    <!-- ACCORDIONS -->
+    {% for block in section.blocks %}
+      {% if block.settings.question != blank %}
+        <div class="faq-item-card" {{ block.shopify_attributes }} data-search-target>
+          <details {% if forloop.first %}open{% endif %}>
+            <summary class="faq-summary-content">
+              <div class="faq-summary-left">
+                <div class="faq-icon-wrapper">
+                  {% if block.settings.icon_svg != blank %}
+                    {{ block.settings.icon_svg }}
+                  {% else %}
+                    <!-- Default fallback icon -->
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                    </svg>
+                  {% endif %}
+                </div>
+                <h3 class="faq-question-text">{{ block.settings.question }}</h3>
+              </div>
+              <div class="faq-toggle-chevron">
+                <svg viewBox="0 0 24 24">
+                  <path d="M6 9L12 15L18 9"/>
+                </svg>
+              </div>
+            </summary>
+            
+            <div class="faq-answer-content">
+              {{ block.settings.answer }}
+              
+              {% if block.settings.link_text != blank %}
+                <a href="{{ block.settings.link_url | default: '#' }}" class="faq-answer-link">
+                  {{ block.settings.link_text }}
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 5L19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </a>
+              {% endif %}
+            </div>
+          </details>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('FaqSearchInput-{{ section.id }}');
+    const searchBtn = document.getElementById('FaqSearchBtn-{{ section.id }}');
+    const faqContainer = document.getElementById('FaqContainer-{{ section.id }}');
+    
+    if (searchInput && faqContainer) {
+      const faqCards = faqContainer.querySelectorAll('.faq-item-card');
+      
+      function filterFaq() {
+        const searchTerm = searchInput.value.toLowerCase().trim();
+        faqCards.forEach(card => {
+          const questionText = card.querySelector('.faq-question-text').textContent.toLowerCase();
+          const answerText = card.querySelector('.faq-answer-content')?.textContent.toLowerCase() || '';
+          
+          if (questionText.includes(searchTerm) || answerText.includes(searchTerm)) {
+            card.classList.remove('faq-card-hidden');
+          } else {
+            card.classList.add('faq-card-hidden');
+          }
+        });
+      }
+
+      searchInput.addEventListener('input', filterFaq);
+      if(searchBtn) searchBtn.addEventListener('click', filterFaq);
+    }
+  });
+</script>
