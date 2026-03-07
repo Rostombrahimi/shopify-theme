@@ -1,0 +1,416 @@
+{% schema %}
+{
+  "name": "No Go List (Engagements)",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Surtitre (Eyebrow)",
+      "default": "MANIFESTE ÉTHIQUE"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titre Principal",
+      "default": "Ce que nous refusons"
+    },
+    {
+      "type": "textarea",
+      "id": "intro_text",
+      "label": "Texte d'Introduction",
+      "default": "Chez Illuminées, nous croyons que la lumière doit servir le vivant, pas seulement le paraître. Voici notre engagement ferme."
+    },
+    {
+      "type": "header",
+      "content": "Bannière Call to Action (Bas de section)"
+    },
+    {
+      "type": "text",
+      "id": "cta_title",
+      "label": "Titre du CTA",
+      "default": "Besoin d'un conseil d'expert ?"
+    },
+    {
+      "type": "textarea",
+      "id": "cta_text",
+      "label": "Texte du CTA",
+      "default": "Découvrez comment nous appliquons ces principes dans notre charte technique complète."
+    },
+    {
+      "type": "text",
+      "id": "cta_btn_text",
+      "label": "Texte Bouton CTA",
+      "default": "Voir notre manifeste"
+    },
+    {
+      "type": "url",
+      "id": "cta_btn_url",
+      "label": "Lien Bouton CTA"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "refusal_card",
+      "name": "Engagement (Carte)",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "icon_svg",
+          "label": "Icône SVG (Rouge)"
+        },
+        {
+          "type": "text",
+          "id": "card_title",
+          "label": "Titre du refus"
+        },
+        {
+          "type": "textarea",
+          "id": "card_text",
+          "label": "Explication du refus"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "No Go List (Engagements)",
+      "category": "Illuminées Manifeste",
+      "blocks": [
+        {
+          "type": "refusal_card",
+          "settings": {
+            "card_title": "Design Instagrammable mais agressif",
+            "card_text": "Nous disons non au scintillement (flickering) et à la fatigue visuelle. Un bel objet ne doit jamais sacrifier votre confort neurologique pour quelques likes.",
+            "icon_svg": "<svg width=\"32\" height=\"32\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n  <path d=\"M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 011.66-2.04M12 9a3 3 0 113 3M1 1l22 22\" stroke=\"#EF4444\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>"
+          }
+        },
+        {
+          "type": "refusal_card",
+          "settings": {
+            "card_title": "Gadgets à obsolescence programmée",
+            "card_text": "Refus catégorique des tendances éphémères et des composants scellés impossibles à réparer. Nous concevons pour la décennie, pas pour la saison.",
+            "icon_svg": "<svg width=\"32\" height=\"32\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n  <path d=\"M5 2h14M5 22h14M12 12l-7-7h14l-7 7-7 7h14l-7-7\" stroke=\"#EF4444\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <line x1=\"1\" y1=\"1\" x2=\"23\" y2=\"23\" stroke=\"#EF4444\" stroke-width=\"2\" stroke-linecap=\"round\" opacity=\"0.8\"/>\n</svg>"
+          }
+        },
+        {
+          "type": "refusal_card",
+          "settings": {
+            "card_title": "La lumière Blanche Hôpital",
+            "card_text": "Bannissement des éclairages froids (>5000K) dans les espaces de vie. La lumière doit réchauffer l'âme, pas stériliser l'atmosphère.",
+            "icon_svg": "<svg width=\"32\" height=\"32\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n  <rect x=\"3\" y=\"6\" width=\"18\" height=\"15\" rx=\"2\" stroke=\"#EF4444\" stroke-width=\"1.5\"/>\n  <path d=\"M9 6V3h6v3M12 11v5M9.5 13.5h5\" stroke=\"#EF4444\" stroke-width=\"1.5\" stroke-linecap=\"round\"/>\n  <line x1=\"2\" y1=\"22\" x2=\"22\" y2=\"2\" stroke=\"#EF4444\" stroke-width=\"2\" stroke-linecap=\"round\" opacity=\"0.8\"/>\n</svg>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  html { scroll-behavior: smooth; }
+
+  /* Typo Refinement & Root Continuity */
+  .no-go-section {
+    background-color: var(--illu-bg-night, #081A32);
+    padding: 100px 4rem 140px 4rem;
+    font-family: var(--illu-font-main, 'Inter', sans-serif);
+    -webkit-font-smoothing: antialiased;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Vignette de Focus : Overlay radial-gradient */
+  .no-go-section::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 150%;
+    height: 150%;
+    background: radial-gradient(circle at center, transparent 0%, var(--illu-bg-night, #081A32) 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .no-go-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  /* Heading Area */
+  .no-go-header-area {
+    max-width: 800px;
+    margin-bottom: 64px;
+  }
+
+  .no-go-eyebrow {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--illu-accent-amber, #E89D46);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .no-go-h2-container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  /* Icône Stop Rouge pour le Header */
+  .no-go-stop-icon {
+    width: 48px;
+    height: 48px;
+    background: #EF4444; /* illu-red-ethic */
+    clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+    border: 3px solid rgba(255, 255, 255, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .no-go-h2 {
+    font-family: var(--illu-font-display, serif);
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 500;
+    color: var(--illu-text-cream, #F9F9F9);
+    margin: 0;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  .no-go-intro {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: rgba(249, 249, 249, 0.7);
+    margin: 0;
+  }
+
+  /* Grid d'Engagements */
+  .no-go-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px; /* 2.5rem gap as requested */
+    max-width: 1300px;
+    margin: 0 auto 80px auto;
+  }
+
+  .no-go-card {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 32px; /* Chubby */
+    padding: 48px 32px;
+    border: 1px solid rgba(239, 68, 68, 0.1); /* Bordure rouge subtile */
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .no-go-card:hover {
+    border-color: rgba(239, 68, 68, 0.4);
+    background: rgba(239, 68, 68, 0.03);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    filter: saturate(1.2); /* Saturation Soft *//* Alerte Soft */
+  }
+
+  /* Cercle de l'icône rouge */
+  .no-go-icon-wrapper {
+    width: 64px;
+    height: 64px;
+    background: rgba(239, 68, 68, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    color: #EF4444; /* illu-red-ethic */
+  }
+
+  .no-go-icon-wrapper svg {
+    /* Lueur de Refus */
+    filter: drop-shadow(0 0 12px rgba(239, 68, 68, 0.4));
+  }
+
+  .no-go-card-title {
+    font-family: var(--illu-font-display, serif);
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #F9F9F9;
+    margin: 0 0 16px 0;
+    line-height: 1.3;
+  }
+
+  .no-go-card-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: rgba(249, 249, 249, 0.6);
+    margin: 0;
+  }
+
+  /* Bannière CTA Inférieure */
+  .no-go-cta-banner {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 32px;
+    padding: 60px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Subtil mesh gradient pour le CTA */
+  .no-go-cta-banner::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: 
+      radial-gradient(at 0% 100%, rgba(232, 157, 70, 0.05) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(255, 255, 255, 0.02) 0px, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .cta-banner-content {
+    position: relative;
+    z-index: 1;
+    max-width: 60%;
+  }
+
+  .no-go-cta-title {
+    font-family: var(--illu-font-display, serif);
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #F9F9F9;
+    margin: 0 0 12px 0;
+  }
+
+  .no-go-cta-text {
+    font-size: 1rem;
+    color: rgba(249, 249, 249, 0.7);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .no-go-cta-button {
+    background-color: var(--illu-accent-amber, #E89D46);
+    color: #081A32;
+    padding: 16px 32px;
+    border-radius: 99px;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    position: relative;
+    z-index: 1;
+  }
+
+  .no-go-cta-button:hover {
+    background-color: #f0a755;
+    transform: scale(1.02);
+    box-shadow: 0 10px 20px rgba(232, 157, 70, 0.2);
+  }
+
+  /* Responsive */
+  @media screen and (max-width: 1024px) {
+    .no-go-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .no-go-section {
+      padding: 80px 1.5rem;
+    }
+    .no-go-h2-container {
+      flex-direction: column;
+      align-items: flex-start;
+      margin-bottom: 24px;
+    }
+    .no-go-h2 {
+      font-size: 2.2rem;
+    }
+    .no-go-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    .no-go-card {
+      padding: 32px 24px;
+      border-radius: 24px;
+    }
+    .no-go-cta-banner {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 40px 24px;
+    }
+    .cta-banner-content {
+      max-width: 100%;
+    }
+    .no-go-cta-button {
+      width: 100%;
+      text-align: center;
+    }
+  }
+</style>
+
+<div class="no-go-section">
+  <div class="no-go-content">
+    
+    <!-- HEADER -->
+    <div class="no-go-header-area">
+      {% if section.settings.eyebrow != blank %}
+        <span class="no-go-eyebrow">{{ section.settings.eyebrow }}</span>
+      {% endif %}
+      
+      <div class="no-go-h2-container">
+        <div class="no-go-stop-icon"></div>
+        <h2 class="no-go-h2">{{ section.settings.title }}</h2>
+      </div>
+
+      {% if section.settings.intro_text != blank %}
+        <p class="no-go-intro">{{ section.settings.intro_text }}</p>
+      {% endif %}
+    </div>
+
+    <!-- GRID CARDS -->
+    <div class="no-go-grid">
+      {% for block in section.blocks %}
+        <div class="no-go-card" {{ block.shopify_attributes }}>
+          <div class="no-go-icon-wrapper">
+            {{ block.settings.icon_svg }}
+          </div>
+          <h3 class="no-go-card-title">{{ block.settings.card_title }}</h3>
+          <p class="no-go-card-text">{{ block.settings.card_text }}</p>
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- CTA BANNER -->
+    <div class="no-go-cta-banner">
+      <div class="cta-banner-content">
+        <h3 class="no-go-cta-title">{{ section.settings.cta_title }}</h3>
+        <p class="no-go-cta-text">{{ section.settings.cta_text }}</p>
+      </div>
+      <div>
+        <a href="{{ section.settings.cta_btn_url | default: '#' }}" class="no-go-cta-button">
+          {{ section.settings.cta_btn_text }}
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
