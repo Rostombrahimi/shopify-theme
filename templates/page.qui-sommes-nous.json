@@ -11,13 +11,216 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "sf_qui_sommes_nous_genesis_9jL9Ga": {
+      "type": "sf-qui-sommes-nous-genesis",
+      "blocks": {
+        "reason_card_aGpKz9": {
+          "type": "reason_card",
+          "settings": {
+            "custom_svg": "",
+            "icon": "forbidden",
+            "title": "Ras-le-bol des gadgets",
+            "description": "Fini les objets inutiles qui encombrent sans servir. Nous prônons l'utile et le durable avant tout."
+          }
+        },
+        "reason_card_xaVRma": {
+          "type": "reason_card",
+          "settings": {
+            "custom_svg": "",
+            "icon": "shield",
+            "title": "Lumière trop agressive",
+            "description": "Protéger vos yeux et votre ambiance des éclats violents avec une diffusion douce et maîtrisée."
+          }
+        },
+        "reason_card_EUxp9e": {
+          "type": "reason_card",
+          "settings": {
+            "custom_svg": "",
+            "icon": "circle",
+            "title": "Besoin de simplicité",
+            "description": "Le retour à l'essentiel, sans fioritures complexes. Un design pur qui s'efface devant la fonction."
+          }
+        },
+        "reason_card_UFn9eT": {
+          "type": "reason_card",
+          "settings": {
+            "custom_svg": "",
+            "icon": "star",
+            "title": "Envie de mieux faire",
+            "description": "L'exigence de la qualité pour un usage réel, testé et approuvé dans de vrais intérieurs."
+          }
+        }
+      },
+      "block_order": [
+        "reason_card_aGpKz9",
+        "reason_card_xaVRma",
+        "reason_card_EUxp9e",
+        "reason_card_UFn9eT"
+      ],
+      "name": "About - Genesis & Why",
+      "settings": {
+        "hero_badge": "GENÈSE",
+        "hero_title": "<span>Illuminées</span> - Une marque de luminaires née d’un usage réel",
+        "hero_text": "Tout a commencé en 2019, non pas par envie de créer de belles images, mais par une quête personnelle : celle de vivre mieux la lumière au quotidien.",
+        "hero_btn_text": "Découvrir notre genèse",
+        "hero_btn_link": "",
+        "why_title": "Pourquoi <span>Illuminées</span> existe",
+        "why_text": "Nous sommes nés d'un constat simple et d'une volonté de changer les choses. Le marché était saturé d'objets, mais vide de sens. Nous avons voulu ramener l'humain au centre de la conception lumineuse.",
+        "why_quote": "\"La lumière ne devrait pas seulement éclairer une pièce, elle devrait accompagner nos vies, nos moments de calme comme nos instants de partage.\"",
+        "why_author": "— L'équipe fondatrice",
+        "why_link_text": "En savoir plus sur nos valeurs →",
+        "why_link_url": ""
+      }
+    },
+    "sf_qui_sommes_nous_ethics_gpYc3k": {
+      "type": "sf-qui-sommes-nous-ethics",
+      "blocks": {
+        "do_item_4ckNYP": {
+          "type": "do_item",
+          "settings": {
+            "custom_svg": "",
+            "title": "Sélectionner",
+            "text": "Nous choisissons méticuleusement chaque pièce pour son design unique et sa qualité de fabrication irréprochable."
+          }
+        },
+        "dont_item_GQPe3B": {
+          "type": "dont_item",
+          "settings": {
+            "custom_svg": "",
+            "title": "Vendre n'importe quoi",
+            "text": "Nous refusons la quantité au détriment de la qualité. Pas de produits jetables ou bas de gamme."
+          }
+        },
+        "do_item_xc3j6P": {
+          "type": "do_item",
+          "settings": {
+            "custom_svg": "",
+            "title": "Tester",
+            "text": "Chaque luminaire est inspecté et testé par nos experts techniques avant d'être référencé au catalogue."
+          }
+        },
+        "dont_item_GrPmie": {
+          "type": "dont_item",
+          "settings": {
+            "custom_svg": "",
+            "title": "Pousser à l'achat",
+            "text": "Nous privilégions le conseil juste et honnête plutôt que la vente forcée ou le suréquipement."
+          }
+        },
+        "do_item_xHxjkq": {
+          "type": "do_item",
+          "settings": {
+            "custom_svg": "",
+            "title": "Guider",
+            "text": "Nous vous accompagnons de A à Z avec des conseils personnalisés pour trouver l'éclairage parfait pour votre espace."
+          }
+        },
+        "dont_item_FH7PLH": {
+          "type": "dont_item",
+          "settings": {
+            "custom_svg": "",
+            "title": "Multiplier les références",
+            "text": "Nous gardons une collection cohérente et maîtrisée pour éviter de vous noyer sous des milliers d'options."
+          }
+        }
+      },
+      "block_order": [
+        "do_item_4ckNYP",
+        "dont_item_GQPe3B",
+        "do_item_xc3j6P",
+        "dont_item_GrPmie",
+        "do_item_xHxjkq",
+        "dont_item_FH7PLH"
+      ],
+      "name": "About - Ethics",
+      "settings": {
+        "badge": "NOS VALEURS",
+        "title": "Proximité & <span>Éthique</span>",
+        "intro_text": "Plus qu'une boutique en ligne, nous sommes des passionnés d'éclairage engagés dans une relation transparente et durable avec chacun de nos clients.",
+        "left_card_title": "Une marque proche de ses clients",
+        "left_card_text": "Chez Illuminées, nous croyons en une relation de confiance. Basés localement, nous privilégions le contact humain et des retours authentiques pour vous offrir le meilleur de l'éclairage haut de gamme.",
+        "left_card_badge_1_title": "Basé à Lyon",
+        "left_card_badge_1_text": "Service client français & disponible",
+        "left_card_badge_2_title": "Avis Vérifiés",
+        "left_card_badge_2_text": "100% authentiques",
+        "right_card_title": "Notre engagement qualité",
+        "right_card_subtitle": "Ce que nous faisons vs Ce que nous ne faisons pas",
+        "cta_title": "Prêt à illuminer votre intérieur ?",
+        "cta_text": "Découvrez notre sélection exclusive testée et approuvée.",
+        "cta_btn_text": "Voir les collections",
+        "cta_btn_link": ""
+      }
+    },
+    "sf_audience_vision_7UVRfC": {
+      "type": "sf-audience-vision",
+      "blocks": {
+        "audience_card_TnPTW8": {
+          "type": "audience_card",
+          "settings": {
+            "custom_svg": "",
+            "title": "Particuliers",
+            "text": "Amoureux du design cherchant la pièce unique qui transformera leur salon en galerie d'art personnelle."
+          }
+        },
+        "audience_card_piG7kY": {
+          "type": "audience_card",
+          "settings": {
+            "custom_svg": "",
+            "title": "Créatifs",
+            "text": "Architectes d'intérieur et décorateurs en quête d'inspiration brute et de matériaux authentiques."
+          }
+        },
+        "audience_card_DJVHQi": {
+          "type": "audience_card",
+          "settings": {
+            "custom_svg": "",
+            "title": "Familles",
+            "text": "Ceux qui veulent une maison chaleureuse, où la lumière accompagne les devoirs comme les dîners."
+          }
+        },
+        "audience_card_GJ8Whm": {
+          "type": "audience_card",
+          "settings": {
+            "custom_svg": "",
+            "title": "Professionnels",
+            "text": "Boutiques, hôtels et restaurants désirant créer une ambiance inoubliable dès le premier regard."
+          }
+        }
+      },
+      "block_order": [
+        "audience_card_TnPTW8",
+        "audience_card_piG7kY",
+        "audience_card_DJVHQi",
+        "audience_card_GJ8Whm"
+      ],
+      "name": "About - Audience Vision",
+      "settings": {
+        "badge": "NOTRE ADN",
+        "title": "Notre Audience <br><span>& Vision</span>",
+        "subtitle": "Qui fait vibrer Illuminées aujourd'hui et demain ? Une exploration de notre communauté et de nos engagements.",
+        "audience_title": "À qui s'adresse Illuminées ?",
+        "audience_text": "Des lumières pensées pour ceux qui cherchent l'exceptionnel, sans compromis sur la fonction.",
+        "future_icon_svg": "",
+        "future_title": "Et la suite ?",
+        "future_highlight_text": "Notre vision est simple : <strong>éclairer vos vies sans compromis</strong>.",
+        "future_body_text": "Pas de fausses promesses, juste de la qualité durable, un design intemporel et une lumière qui réchauffe les cœurs. Nous construisons l'avenir de l'éclairage, une lampe à la fois, en refusant l'obsolescence programmée.",
+        "future_footer_text": "TRANSPARENCE • DURABILITÉ • EMOTION",
+        "cta_btn_text": "Explorer nos univers",
+        "cta_btn_link": "",
+        "footer_signature_text": "Illuminées • Depuis 2019"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "sf_qui_sommes_nous_genesis_9jL9Ga",
+    "sf_qui_sommes_nous_ethics_gpYc3k",
+    "sf_audience_vision_7UVRfC"
   ]
 }
