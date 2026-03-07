@@ -11,13 +11,57 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "sf_anti_catalogue_36Xhab": {
+      "type": "sf-anti-catalogue",
+      "blocks": {
+        "expertise_card_i9pbwn": {
+          "type": "expertise_card",
+          "settings": {
+            "icon_svg": "<svg width=\"40\" height=\"40\" viewbox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n  <path d=\"M22 3H2L10 12.46V19L14 21V12.46L22 3Z\" stroke=\"#E89D46\" stroke-width=\"1.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n</svg>",
+            "card_title": "Filtration Radicale",
+            "card_text": "Nous rejetons 95% des produits sur le marché. S'il n'y a pas d'innovation technique ou de pureté esthétique, il n'y a pas de place chez nous."
+          }
+        },
+        "expertise_card_6irp6z": {
+          "type": "expertise_card",
+          "settings": {
+            "icon_svg": "<svg width=\"40\" height=\"40\" viewbox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n  <circle cx=\"12\" cy=\"12\" r=\"10\" stroke=\"#E89D46\" stroke-width=\"1.2\" opacity=\"0.3\"></circle>\n  <circle cx=\"12\" cy=\"12\" r=\"2\" fill=\"#E89D46\"></circle>\n  <path d=\"M12 2v3M12 19v3M2 12h3M19 12h3\" stroke=\"#E89D46\" stroke-width=\"1.5\" stroke-linecap=\"round\"></path>\n</svg>",
+            "card_title": "Précision Lumineuse",
+            "card_text": "Chaque flux lumineux est mesuré pour son impact émotionnel. Nous ne vendons pas des ampoules, mais l'atmosphère exacte de vos soirées."
+          }
+        },
+        "expertise_card_M3dhtA": {
+          "type": "expertise_card",
+          "settings": {
+            "icon_svg": "<svg width=\"40\" height=\"40\" viewbox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n  <path d=\"M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z\" stroke=\"#E89D46\" stroke-width=\"1.2\" stroke-linejoin=\"round\"></path>\n</svg>",
+            "card_title": "Sélection d'Experts",
+            "card_text": "Une curation artisanale. Nos experts testent chaque modèle pendant 30 jours pour garantir une durabilité qui défie les cycles de consommation."
+          }
+        }
+      },
+      "block_order": [
+        "expertise_card_i9pbwn",
+        "expertise_card_6irp6z",
+        "expertise_card_M3dhtA"
+      ],
+      "name": "L'Anti-Catalogue",
+      "settings": {
+        "eyebrow": "L'ANTI-CATALOGUE",
+        "title": "Pourquoi vous ne<br>trouverez pas <span>'tout'</span> chez<br>Illuminées.",
+        "intro_text": "L'honnêteté avant la vente. Depuis 2019, nous avons appris qu'une lampe ne vaut rien si elle n'est pas pensée pour un usage précis. Voici comment nous filtrons le bruit pour ne garder que l'essentiel.",
+        "button_text": "Découvrir l'essentiel",
+        "button_url": ""
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "sf_anti_catalogue_36Xhab"
   ]
 }
