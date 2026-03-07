@@ -133,6 +133,62 @@
         "faq_count_label": "questions fréquentes"
       }
     },
+    "sf_faq_2_awjVAq": {
+      "type": "sf-faq-2",
+      "blocks": {
+        "faq_item_WBnRCU": {
+          "type": "faq_item",
+          "settings": {
+            "icon_svg": "",
+            "question": "Les produits respectent-ils les normes européennes ?",
+            "answer": "<p>Oui. Tous les luminaires proposés par Illuminées respectent les <strong>normes européennes de sécurité</strong> afin de garantir une utilisation fiable et conforme.</p><p>Chaque produit est sélectionné pour offrir une <strong>lumière de qualité</strong>, un <strong>usage sûr au quotidien</strong> et une <strong>durabilité adaptée aux environnements domestiques</strong> comme les bureaux, les chambres ou les espaces de vie.</p>",
+            "link_text": "Explorer les univers Illuminées",
+            "link_url": "shopify://collections/nos-univers"
+          }
+        },
+        "faq_item_KaCRgf": {
+          "type": "faq_item",
+          "settings": {
+            "icon_svg": "",
+            "question": "Comment sont expédiées les commandes ?",
+            "answer": "<p>Les commandes sont préparées avec <strong>soin et attention</strong> afin de protéger correctement chaque luminaire pendant le transport.</p><p>Chaque produit est <strong>emballé de manière sécurisée</strong> afin d’éviter les chocs et garantir une réception dans les meilleures conditions.</p>",
+            "link_text": "",
+            "link_url": ""
+          }
+        },
+        "faq_item_xfgdxg": {
+          "type": "faq_item",
+          "settings": {
+            "icon_svg": "",
+            "question": "Puis-je suivre ma commande ?",
+            "answer": "<p>Oui. Une fois votre commande expédiée, vous recevez un <strong>numéro de suivi</strong> qui permet de suivre facilement l’acheminement de votre colis.</p><p>Vous pouvez ainsi connaître à tout moment <strong>l’état de votre livraison</strong> et la progression de votre commande jusqu’à sa réception.</p>",
+            "link_text": "Accéder au suivi de commande",
+            "link_url": ""
+          }
+        },
+        "faq_item_EzyeXf": {
+          "type": "faq_item",
+          "settings": {
+            "icon_svg": "",
+            "question": "Comment contacter le service client ?",
+            "answer": "<p>Si vous avez une question concernant un produit, une commande ou le choix d’un luminaire, vous pouvez contacter l’équipe Illuminées via la <strong>page contact du site</strong>.</p><p>Nous répondons avec plaisir afin de vous aider à trouver la <strong>solution d’éclairage la plus adaptée à votre usage</strong>.</p>",
+            "link_text": "Contacter l’équipe Illuminées",
+            "link_url": "shopify://pages/nous-contacter"
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_WBnRCU",
+        "faq_item_KaCRgf",
+        "faq_item_xfgdxg",
+        "faq_item_EzyeXf"
+      ],
+      "name": "FAQ 2 - Hero & AccordIONS",
+      "settings": {
+        "faq_category_title": "Choisir son Usage",
+        "faq_count_label": "questions fréquentes"
+      }
+    },
     "sf_faq_quality_UjKiQT": {
       "type": "sf-faq-quality",
       "blocks": {
@@ -188,6 +244,7 @@
     "main",
     "sf_faq_GVXqT6",
     "sf_faq_2_REpGp8",
+    "sf_faq_2_awjVAq",
     "sf_faq_quality_UjKiQT"
   ]
 }
