@@ -11,13 +11,25 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "sf_order_tracking_cxGTjp": {
+      "type": "sf-order-tracking",
+      "name": "Suivi de Commande",
+      "settings": {
+        "heading": "Suivre votre atmosphère",
+        "subheading": "Le trajet de vos photons de notre atelier à votre maison.",
+        "placeholder_text": "Numéro de commande (ex: ILL-1234)",
+        "button_text": "Suivre"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "sf_order_tracking_cxGTjp"
   ]
 }
