@@ -52,7 +52,6 @@
       "block_order": [
         "announcement_pY83gE"
       ],
-      "disabled": true,
       "name": "✨ Barre d'Annonce (Illuminées)",
       "settings": {
         "show_announcement": true,
@@ -61,7 +60,6 @@
     },
     "sf-header": {
       "type": "sf-header",
-      "disabled": true,
       "settings": {
         "logo_text": "Illuminées",
         "menu": "main-menu",

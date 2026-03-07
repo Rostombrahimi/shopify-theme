@@ -11,6 +11,7 @@
   "sections": {
     "banner": {
       "type": "main-collection-banner",
+      "disabled": true,
       "settings": {
         "show_collection_description": true,
         "show_collection_image": false,
@@ -19,9 +20,11 @@
     },
     "product-grid": {
       "type": "main-collection-product-grid",
+      "disabled": true,
       "settings": {
         "products_per_page": 16,
         "columns_desktop": 4,
+        "columns_mobile": "2",
         "color_scheme": "scheme-1",
         "image_ratio": "adapt",
         "image_shape": "default",
@@ -32,14 +35,178 @@
         "enable_filtering": true,
         "filter_type": "horizontal",
         "enable_sorting": true,
-        "columns_mobile": "2",
         "padding_top": 36,
         "padding_bottom": 36
+      }
+    },
+    "sf_hero_softlight_VLUhkR": {
+      "type": "sf-hero-softlight",
+      "blocks": {
+        "feature_nRmez9": {
+          "type": "feature",
+          "settings": {
+            "icon": "moon",
+            "title": "Respect du cycle",
+            "text": "Lumière ambrée sans lumière bleue"
+          }
+        },
+        "feature_iq7yzG": {
+          "type": "feature",
+          "settings": {
+            "icon": "eye",
+            "title": "Visibilité douce",
+            "text": "Suffisant pour voir, trop faible pour réveiller"
+          }
+        },
+        "feature_AyiqDi": {
+          "type": "feature",
+          "settings": {
+            "icon": "leaf",
+            "title": "Sérénité absolue",
+            "text": "Crée une bulle de calme instantanée"
+          }
+        }
+      },
+      "block_order": [
+        "feature_nRmez9",
+        "feature_iq7yzG",
+        "feature_AyiqDi"
+      ],
+      "name": "Hero Lumière Douce",
+      "settings": {
+        "badge_text": "LUMIÈRE DOUCE & APAISANTE",
+        "title": "Lumière Douce &<br>Apaisante –<br><span>Voir sans réveiller,<br>accompagner sans<br>perturber</span>",
+        "subtitle": "Une lumière tamisée pensée pour les réveils nocturnes, les soins et les<br>moments calmes.",
+        "button_text_1": "Découvrir la Collection →",
+        "button_link_1": "",
+        "button_text_2": "En savoir plus",
+        "button_link_2": ""
+      }
+    },
+    "sf_daily_identification_softlight_HaBLkc": {
+      "type": "sf-daily-identification-softlight",
+      "blocks": {
+        "feature_wQPRLy": {
+          "type": "feature",
+          "settings": {
+            "icon": "drop",
+            "title": "Soins et repas nocturnes",
+            "text": "Pour les gestes qui demandent clarté et précision, sans perturber l'ambiance feutrée nécessaire au rendormissement."
+          }
+        },
+        "feature_74D9qJ": {
+          "type": "feature",
+          "settings": {
+            "icon": "eye-crossed",
+            "title": "Éviter le choc visuel",
+            "text": "Préservez vos yeux d'une lumière crue qui briserait brutalement le calme de la nuit et la production de mélatonine."
+          }
+        },
+        "feature_EBbyKB": {
+          "type": "feature",
+          "settings": {
+            "icon": "plane",
+            "title": "Transition douce",
+            "text": "Pour les enfants sensibles qui ont besoin d'une présence lumineuse rassurante, infiniment douce et modulable."
+          }
+        },
+        "pill_yeyxLL": {
+          "type": "pill",
+          "settings": {
+            "icon": "bottle",
+            "text": "Soins nocturnes"
+          }
+        },
+        "pill_AVPXDA": {
+          "type": "pill",
+          "settings": {
+            "icon": "ban",
+            "text": "Zéro éblouissement"
+          }
+        },
+        "pill_9cjkHX": {
+          "type": "pill",
+          "settings": {
+            "icon": "moon",
+            "text": "Respect du cycle"
+          }
+        }
+      },
+      "block_order": [
+        "feature_wQPRLy",
+        "feature_74D9qJ",
+        "feature_EBbyKB",
+        "pill_yeyxLL",
+        "pill_AVPXDA",
+        "pill_9cjkHX"
+      ],
+      "name": "Identification Quotidien",
+      "settings": {
+        "badge_text": "POUR QUI, QUAND, POURQUOI",
+        "title": "Parce que la nuit<br>demande de la justesse.",
+        "description": "Découvrez une approche de la lumière conçue pour respecter la physiologie du sommeil et la sensibilité de ceux que vous aimez.",
+        "image_overlay_badge": "MOMENT DOUCEUR",
+        "image_overlay_text": "La lumière qui accompagne, sans jamais réveiller."
+      }
+    },
+    "sf_daily_impact_softlight_qDtaWf": {
+      "type": "sf-daily-impact-softlight",
+      "blocks": {
+        "card_U4djcy": {
+          "type": "card",
+          "settings": {
+            "icon": "bulb",
+            "title": "Intensité<br>Maîtrisée",
+            "text": "Intensité maîtrisée et non éblouissante pour une vision immédiate sans inconfort."
+          }
+        },
+        "card_aEGnVT": {
+          "type": "card",
+          "settings": {
+            "icon": "eye",
+            "title": "Visibilité sans<br>Stimulation",
+            "text": "Visibilité suffisante pour les soins, sans stimuler ni réveiller complètement votre enfant."
+          }
+        },
+        "card_NHRTGU": {
+          "type": "card",
+          "settings": {
+            "icon": "sunset",
+            "title": "Transition Douce",
+            "text": "Une transition lumineuse infiniment douce qui préserve la mélatonine et le cycle du sommeil."
+          }
+        }
+      },
+      "block_order": [
+        "card_U4djcy",
+        "card_aEGnVT",
+        "card_NHRTGU"
+      ],
+      "name": "Impact Quotidien",
+      "settings": {
+        "badge_text": "BÉNÉFICES QUOTIDIENS",
+        "title": "Impact au Quotidien",
+        "description": "Découvrez comment une lumière douce transforme vos nuits. Chaque détail est pensé pour créer une atmosphère de sérénité fonctionnelle."
+      }
+    },
+    "sf_orientation_softlight_aztMH9": {
+      "type": "sf-orientation-softlight",
+      "name": "Orientation Expert LD",
+      "settings": {
+        "badge_text": "L'ORIENTATION EXPERT",
+        "title": "Choisir la justesse<br>pour vos nuits.",
+        "description": "Pourquoi choisir Lumière Douce & Apaisante ? Contrairement à Nuit Étoilée, orientée vers l'endormissement, et à Amis de la Forêt, pensée comme repère rassurant, cette ambiance est conçue pour les moments pratiques de la nuit, sans perturber l'enfant.",
+        "button_text": "Voir la collection Lumière Douce",
+        "button_link": ""
       }
     }
   },
   "order": [
     "banner",
-    "product-grid"
+    "product-grid",
+    "sf_hero_softlight_VLUhkR",
+    "sf_daily_identification_softlight_HaBLkc",
+    "sf_daily_impact_softlight_qDtaWf",
+    "sf_orientation_softlight_aztMH9"
   ]
 }
