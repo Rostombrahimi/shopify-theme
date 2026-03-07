@@ -187,6 +187,14 @@
     100% { left: calc(100% - 120px); opacity: 0; }
   }
 
+  /* Pour l'étape 2 : de Transit à Livré */
+  @keyframes travel-half {
+    0% { left: 50%; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { left: calc(100% - 120px); opacity: 0; }
+  }
+
   .photon-tracker {
     position: absolute;
     top: 39px; /* Centered on the 1px line */
@@ -309,6 +317,14 @@
       90% { opacity: 1; }
       100% { top: calc(100% - 100px); opacity: 0; }
     }
+
+    /* Pour l'étape 2 sur mobile */
+    @keyframes travel-mobile-half {
+      0% { top: 50%; opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { top: calc(100% - 100px); opacity: 0; }
+    }
     .photon-tracker {
       width: 3px;
       height: 60px;
@@ -359,17 +375,20 @@
       </div>
 
       <div class="sf-tracking-search-box">
-        <input type="text" class="sf-tracking-input" placeholder="{{ section.settings.placeholder_text }}" autocomplete="off">
-        <button class="sf-tracking-btn">{{ section.settings.button_text }}</button>
+        <input type="text" id="tracking-input-{{ section.id }}" class="sf-tracking-input" placeholder="{{ section.settings.placeholder_text }}" autocomplete="off">
+        <button id="tracking-button-{{ section.id }}" class="sf-tracking-btn">{{ section.settings.button_text }}</button>
       </div>
+      
+      <!-- Error Message Container (Hidden by default) -->
+      <p id="tracking-error-{{ section.id }}" style="color: #ff6b6b; text-align: center; display: none; font-size: 0.9rem; margin-top: -60px; margin-bottom: 60px;">Numéro de commande introuvable.</p>
 
       <!-- Tracking Path Interactive UI -->
-      <div class="tracking-path-container">
+      <div class="tracking-path-container" id="tracking-path-{{ section.id }}">
         <div class="tracking-line"></div>
-        <div class="photon-tracker"></div>
+        <div class="photon-tracker" id="photon-tracker-{{ section.id }}"></div>
 
-        <!-- Node 1 : Atelier (Actif par défaut pour la démo visuelle) -->
-        <div class="tracking-node node-active">
+        <!-- Node 1 : Atelier -->
+        <div class="tracking-node tracking-node-1 node-active" data-step="1">
           <div class="tracking-node-icon">
             <svg viewBox="0 0 24 24"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242M12 12v9"/><path d="m8 17 4 4 4-4"/></svg>
           </div>
@@ -377,7 +396,7 @@
         </div>
 
         <!-- Node 2 : En Transit -->
-        <div class="tracking-node">
+        <div class="tracking-node tracking-node-2" data-step="2">
           <div class="tracking-node-icon">
             <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
           </div>
@@ -385,7 +404,7 @@
         </div>
 
         <!-- Node 3 : Votre Univers -->
-        <div class="tracking-node">
+        <div class="tracking-node tracking-node-3" data-step="3">
           <div class="tracking-node-icon">
             <svg viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
           </div>
@@ -395,11 +414,122 @@
       </div>
 
       <!-- Estimated Arrival time -->
-      <div class="sf-tracking-arrival">
-        <div class="sf-arrival-label">ARRIVÉE PRÉVUE</div>
-        <div class="sf-arrival-date">Mercredi 24 Avril, entre 10h00 et 14h00</div>
+      <div class="sf-tracking-arrival" id="tracking-arrival-{{ section.id }}" style="opacity: 0.5; transition: opacity 0.4s;">
+        <div class="sf-arrival-label" id="arrival-label-{{ section.id }}">STATUT DE LA COMMANDE</div>
+        <div class="sf-arrival-date" id="arrival-date-{{ section.id }}">En attente du numéro...</div>
       </div>
 
     </div>
   </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const input = document.getElementById('tracking-input-{{ section.id }}');
+  const button = document.getElementById('tracking-button-{{ section.id }}');
+  const errorMsg = document.getElementById('tracking-error-{{ section.id }}');
+  const arrivalContainer = document.getElementById('tracking-arrival-{{ section.id }}');
+  const arrivalLabel = document.getElementById('arrival-label-{{ section.id }}');
+  const arrivalDate = document.getElementById('arrival-date-{{ section.id }}');
+  const nodes = document.querySelectorAll('#tracking-path-{{ section.id }} .tracking-node');
+  const photon = document.getElementById('photon-tracker-{{ section.id }}');
+
+  function updateUI(statusData) {
+    // Hide error
+    errorMsg.style.display = 'none';
+    arrivalContainer.style.opacity = '1';
+    
+    // Update texts
+    if (statusData.estimated_delivery) {
+      arrivalLabel.textContent = 'ARRIVÉE PRÉVUE';
+      arrivalDate.textContent = statusData.estimated_delivery;
+    } else {
+      arrivalLabel.textContent = 'DERNIÈRE MISE À JOUR';
+      arrivalDate.textContent = statusData.last_update || 'En cours de traitement';
+    }
+
+    // Reset nodes
+    nodes.forEach(n => n.classList.remove('node-active'));
+
+    // Update nodes based on step (1 = Atelier, 2 = Transit, 3 = Livré)
+    const step = statusData.step || 1;
+    
+    for (let i = 0; i < step; i++) {
+      if (nodes[i]) nodes[i].classList.add('node-active');
+    }
+
+    // Adjust photon animation based on state
+    photon.style.animation = 'none'; // reset
+    photon.offsetHeight; // force reflow
+    
+    if (step === 1) {
+      // Loop between node 1 and 2
+      photon.style.animation = window.innerWidth <= 768 ? 'travel-mobile 3s infinite ease-in-out' : 'travel 3s infinite ease-in-out';
+      photon.style.transform = window.innerWidth <= 768 ? 'translateX(-50%)' : 'none';
+      if (window.innerWidth > 768) photon.style.left = '40px';
+    } else if (step === 2) {
+      // Loop between node 2 and 3
+      if (window.innerWidth <= 768) {
+         photon.style.top = '50%';
+         photon.style.animation = 'travel-mobile-half 2s infinite ease-in-out';
+      } else {
+         photon.style.left = '50%';
+         photon.style.animation = 'travel-half 2s infinite ease-in-out';
+      }
+    } else if (step >= 3) {
+      // Delivered, hide photon or keep it glowing on the last node
+      photon.style.animation = 'none';
+      if (window.innerWidth <= 768) {
+         photon.style.top = 'calc(100% - 100px)';
+      } else {
+         photon.style.left = 'calc(100% - 100px)';
+      }
+      photon.style.opacity = '0.5';
+    }
+  }
+
+  function handleTrack() {
+    const orderNumber = input.value.trim();
+    if (!orderNumber) return;
+
+    // Loading state
+    button.textContent = 'Recherche...';
+    button.style.opacity = '0.7';
+    errorMsg.style.display = 'none';
+
+    // ----------------------------------------------------------------------
+    // 💡 INTÉGRATION API ICI : Remplace ce bloc par le vrai fetch vers ton App
+    // (ex: ParcelPanel API, EasyShip, Track123, etc.)
+    // ----------------------------------------------------------------------
+    
+    // Simuler un appel réseau de 1.5s
+    setTimeout(() => {
+      button.textContent = '{{ section.settings.button_text }}';
+      button.style.opacity = '1';
+
+      // **MOCK DATA POUR LA DEMO**
+      // Essaie de taper "ILL-1" pour voir l'étape Transport, et "ILL-2" pour Livré.
+      if (orderNumber.includes('1')) {
+        updateUI({ step: 1, estimated_delivery: 'Mise en préparation...' });
+      } else if (orderNumber.includes('2')) {
+        updateUI({ step: 2, estimated_delivery: 'Dans 2 à 3 jours ouvrés' });
+      } else if (orderNumber.includes('3')) {
+        updateUI({ step: 3, last_update: 'Livré avec succès ! 🎉' });
+      } else {
+        // Erreur (numéro non reconnu par l'API)
+        errorMsg.style.display = 'block';
+        arrivalContainer.style.opacity = '0.5';
+        arrivalLabel.textContent = 'STATUT DE LA COMMANDE';
+        arrivalDate.textContent = 'En attente du numéro...';
+        nodes.forEach((n, idx) => { if(idx > 0) n.classList.remove('node-active'); });
+        photon.style.animation = window.innerWidth <= 768 ? 'travel-mobile 3s infinite ease-in-out' : 'travel 3s infinite ease-in-out';
+      }
+    }, 1500);
+  }
+
+  button.addEventListener('click', handleTrack);
+  input.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') handleTrack();
+  });
+});
+</script>
