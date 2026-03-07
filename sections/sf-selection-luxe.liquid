@@ -1,0 +1,402 @@
+{% schema %}
+{
+  "name": "Sélection Luxe",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Badge Surtitre",
+      "default": "CURATION EXPERT"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Titre Principal",
+      "default": "Le luxe de la <span>sélection courte</span>",
+      "info": "Utilisez <span> pour la couleur ambre."
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Sous-titre",
+      "default": "Expert, rassurant, haut de gamme. L'excellence par la sobriété. Nous filtrons le superflu pour ne garder que l'essentiel."
+    },
+    {
+      "type": "text",
+      "id": "footer_text",
+      "label": "Texte de pied de page",
+      "default": "ILLUMINÉES • L'EXCELLENCE PAR LA CURATION"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "curation_card",
+      "name": "Carte de Curation",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "icon_svg",
+          "label": "Icône SVG"
+        },
+        {
+          "type": "text",
+          "id": "card_title",
+          "label": "Titre de la carte"
+        },
+        {
+          "type": "textarea",
+          "id": "card_text",
+          "label": "Texte de la carte"
+        },
+        {
+          "type": "image_picker",
+          "id": "card_image",
+          "label": "Image d'illustration"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sélection Luxe",
+      "category": "Illuminées Manifeste",
+      "blocks": [
+        {
+          "type": "curation_card",
+          "settings": {
+            "card_title": "Décision simplifiée",
+            "card_text": "Trop de choix tue le choix ; nous ne proposons que la Master pièce de chaque catégorie.",
+            "icon_svg": "<svg width=\"32\" height=\"32\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n  <path d=\"M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z\" stroke=\"#E89D46\" stroke-width=\"1.5\" stroke-linejoin=\"round\"/>\n</svg>"
+          }
+        },
+        {
+          "type": "curation_card",
+          "settings": {
+            "card_title": "Maîtrise totale",
+            "card_text": "Nous connaissons chaque vis et chaque réglage de nos produits. Une expertise technique sans compromis.",
+            "icon_svg": "<svg width=\"32\" height=\"32\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n  <path d=\"M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.77 3.77z\" stroke=\"#E89D46\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>"
+          }
+        },
+        {
+          "type": "curation_card",
+          "settings": {
+            "card_title": "Impact Durable",
+            "card_text": "Choisir juste du premier coup, c'est éviter les retours inutiles et réduire considérablement le gaspillage.",
+            "icon_svg": "<svg width=\"32\" height=\"32\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n  <path d=\"M2 21c0-3 1.8-5.7 4.5-6.8C10.5 12.5 16 13 16 13s.5-5.5-1.2-9.5C13.7 1 11 2 11 2s.5 4.5-2.5 7.5S2 12 2 12v9z\" stroke=\"#E89D46\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  <path d=\"M16 13l6 6\" stroke=\"#E89D46\" stroke-width=\"1.5\" stroke-linecap=\"round\"/>\n</svg>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  html { scroll-behavior: smooth; }
+
+  .selection-luxe-section {
+    padding: 100px 4rem 120px 4rem;
+    background-color: var(--illu-bg-night, #081A32);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    font-family: var(--illu-font-main, 'Inter', sans-serif);
+    -webkit-font-smoothing: antialiased; /* Typo Clarity */
+  }
+
+  /* Vignette Cinématique Focalisée */
+  .selection-luxe-section::before {
+    content: '';
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 150%;
+    height: 150%;
+    background: radial-gradient(circle at center, rgba(232, 157, 70, 0.04) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .selection-luxe-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  /* Header Section */
+  .selection-header-container {
+    max-width: 800px;
+    margin: 0 auto 64px auto;
+  }
+
+  .selection-eyebrow-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    background: rgba(4, 30, 73, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 99px;
+    margin-bottom: 24px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #F9F9F9;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .selection-eyebrow-badge svg {
+    width: 14px;
+    height: 14px;
+    fill: none;
+    stroke: #E89D46;
+    stroke-width: 2;
+  }
+
+  /* Typography Main Title */
+  .selection-h1 {
+    font-family: var(--illu-font-display, serif);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    color: #F9F9F9;
+    margin: 0 0 24px 0;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  .selection-h1 span {
+    color: var(--illu-accent-amber, #E89D46);
+  }
+
+  .selection-subtitle {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: rgba(249, 249, 249, 0.7);
+    margin: 0 auto;
+    max-width: 600px;
+  }
+
+  /* Grid Layout */
+  .selection-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    max-width: 1400px;
+    margin: 0 auto 80px auto;
+  }
+
+  /* Card Layout */
+  .selection-card {
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(15px); /* Tailwind backdropBlur.selection */
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 32px; /* Tailwind borderRadius.chubby */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 60px 40px 40px 40px;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Lueur de Carte : pseudo-element simulation */
+  .selection-card::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    height: 80%;
+    background: radial-gradient(circle, rgba(232, 157, 70, 0.05) 0%, transparent 60%);
+    transform: translate(-50%, -50%);
+    mix-blend-mode: plus-lighter;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .selection-card:hover {
+    transform: translateY(-12px);
+    border-color: rgba(232, 157, 70, 0.3);
+    background: rgba(255, 255, 255, 0.04);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+  }
+
+  .selection-card:hover::before {
+    opacity: 1; /* Allume le halo ambre */
+  }
+
+  /* Icon Style */
+  .selection-icon-aura {
+    width: 64px;
+    height: 64px;
+    background: rgba(232, 157, 70, 0.1);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 32px;
+    position: relative;
+    z-index: 1;
+    color: var(--illu-accent-amber, #E89D46);
+    filter: drop-shadow(0 0 10px rgba(232, 157, 70, 0.3));
+  }
+
+  .selection-icon-aura svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  .selection-h2 {
+    font-family: var(--illu-font-display, serif);
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #F9F9F9;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    position: relative;
+    z-index: 1;
+  }
+
+  .selection-p {
+    color: rgba(249, 249, 249, 0.7);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+    flex-grow: 1;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Image de mise en situation interne */
+  .selection-card-media {
+    margin-top: 40px;
+    border-radius: 20px;
+    overflow: hidden;
+    aspect-ratio: 16/9;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .selection-card-media img, .selection-card-media svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    /* Saturation Media Initiale */
+    filter: brightness(0.8) contrast(1.1);
+    transition: filter 0.5s ease;
+  }
+
+  .selection-card:hover .selection-card-media img,
+  .selection-card:hover .selection-card-media svg {
+    /* Saturation Media Hover */
+    filter: brightness(1.0) contrast(1.1);
+  }
+
+  /* Footer Section Note */
+  .selection-footer-text {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: rgba(249, 249, 249, 0.4);
+    text-transform: uppercase;
+  }
+
+  /* Responsive Adjustments */
+  @media screen and (max-width: 1024px) {
+    .selection-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .selection-luxe-section {
+      padding: 80px 1.5rem;
+    }
+    .selection-h1 {
+      font-size: 2.5rem;
+    }
+    .selection-subtitle {
+      font-size: 1.05rem;
+    }
+    .selection-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    .selection-card {
+      padding: 40px 30px 30px 30px;
+      border-radius: 24px;
+    }
+    .selection-icon-aura {
+      width: 56px;
+      height: 56px;
+      margin-bottom: 24px;
+    }
+    .selection-h2 {
+      font-size: 1.5rem;
+    }
+  }
+</style>
+
+<div class="selection-luxe-section">
+  <div class="selection-luxe-content">
+
+    <div class="selection-header-container">
+      {% if section.settings.eyebrow != blank %}
+        <div class="selection-eyebrow-badge">
+          <svg viewBox="0 0 24 24">
+            <polyline points="9 11 12 14 22 4"></polyline>
+            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+          </svg>
+          {{ section.settings.eyebrow }}
+        </div>
+      {% endif %}
+
+      {% if section.settings.title != blank %}
+        <h2 class="selection-h1">{{ section.settings.title | replace: '<span>', '<span>' }}</h2>
+      {% endif %}
+
+      {% if section.settings.subtitle != blank %}
+        <p class="selection-subtitle">{{ section.settings.subtitle }}</p>
+      {% endif %}
+    </div>
+
+    <div class="selection-grid">
+      {% for block in section.blocks %}
+        <div class="selection-card" {{ block.shopify_attributes }}>
+          <div class="selection-icon-aura">
+            {{ block.settings.icon_svg }}
+          </div>
+          <h3 class="selection-h2">{{ block.settings.card_title }}</h3>
+          <p class="selection-p">{{ block.settings.card_text }}</p>
+          
+          <div class="selection-card-media">
+             {% if block.settings.card_image != blank %}
+                {{ block.settings.card_image | image_url: width: 600 | image_tag: loading: 'lazy' }}
+             {% else %}
+               {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+             {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    {% if section.settings.footer_text != blank %}
+      <div class="selection-footer-text">
+        {{ section.settings.footer_text }}
+      </div>
+    {% endif %}
+
+  </div>
+</div>
