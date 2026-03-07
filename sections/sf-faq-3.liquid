@@ -6,35 +6,6 @@
   "settings": [
     {
       "type": "header",
-      "content": "Hero Section"
-    },
-    {
-      "type": "textarea",
-      "id": "title",
-      "label": "Titre Principal",
-      "default": "Une question ? <br><span>Nous avons la solution<br>lumineuse.</span>",
-      "info": "Utilisez <span> pour la couleur ambre lumineuse."
-    },
-    {
-      "type": "textarea",
-      "id": "subtitle",
-      "label": "Sous-titre",
-      "default": "Parce que choisir son ambiance ne devrait jamais être un casse-tête."
-    },
-    {
-      "type": "text",
-      "id": "search_placeholder",
-      "label": "Placeholder Recherche",
-      "default": "Rechercher une question..."
-    },
-    {
-      "type": "text",
-      "id": "search_button_text",
-      "label": "Texte Bouton Recherche",
-      "default": "Chercher"
-    },
-    {
-      "type": "header",
       "content": "Sous-titre FAQ"
     },
     {
@@ -469,29 +440,6 @@ html {
 </style>
 
 <section class="faq-section-wrapper" id="faq-section-{{ section.id }}">
-  
-  <div class="faq-hero-centered">
-    {% if section.settings.title != blank %}
-      <h1 class="faq-h1">{{ section.settings.title | replace: '<span>', '<span>' }}</h1>
-    {% endif %}
-    
-    {% if section.settings.subtitle != blank %}
-      <p class="faq-subtitle">{{ section.settings.subtitle }}</p>
-    {% endif %}
-
-    <!-- SEARCH PILL -->
-    <div class="faq-search-pill">
-      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <input type="text" 
-             id="FaqSearchInput-{{ section.id }}" 
-             class="faq-search-input" 
-             placeholder="{{ section.settings.search_placeholder }}"
-             aria-label="Rechercher dans la FAQ" />
-      <button class="faq-search-btn" id="FaqSearchBtn-{{ section.id }}">{{ section.settings.search_button_text }}</button>
-    </div>
-  </div>
 
   <div class="faq-accordions-container" id="FaqContainer-{{ section.id }}">
     
