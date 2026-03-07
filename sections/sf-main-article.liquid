@@ -171,9 +171,15 @@
   margin: 0;
 }
 
+/* Force l'effacement des fonds gris/couleurs collés par erreur depuis l'éditeur riche Shopify */
+.snapshot-content * {
+  background-color: transparent !important;
+  color: #F9F9F9 !important;
+}
+
 .snapshot-content strong,
 .snapshot-content b {
-  color: var(--illu-accent-amber, #E89D46);
+  color: var(--illu-accent-amber, #E89D46) !important;
   font-weight: 700;
   text-shadow: 0 0 10px rgba(232, 157, 70, 0.2);
 }
