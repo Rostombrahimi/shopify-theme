@@ -11,6 +11,7 @@
   "sections": {
     "banner": {
       "type": "main-collection-banner",
+      "disabled": true,
       "settings": {
         "show_collection_description": true,
         "show_collection_image": false,
@@ -19,9 +20,11 @@
     },
     "product-grid": {
       "type": "main-collection-product-grid",
+      "disabled": true,
       "settings": {
         "products_per_page": 16,
         "columns_desktop": 4,
+        "columns_mobile": "2",
         "color_scheme": "scheme-1",
         "image_ratio": "adapt",
         "image_shape": "default",
@@ -32,14 +35,63 @@
         "enable_filtering": true,
         "filter_type": "horizontal",
         "enable_sorting": true,
-        "columns_mobile": "2",
         "padding_top": 36,
         "padding_bottom": 36
+      }
+    },
+    "sf_bento_grid_wYB4bz": {
+      "type": "sf-bento-grid",
+      "blocks": {
+        "universe_card_ptFXLJ": {
+          "type": "universe_card",
+          "settings": {
+            "badge_icon": "<svg width=\"20\" height=\"20\" viewbox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M7 21H17M12 21V18M12 18L8 8H16L12 18ZM12 8V3M12 3C10.3431 3 9 4.34315 9 6C9 7.65685 10.3431 9 12 9C13.6569 9 15 7.65685 15 6C15 4.34315 13.6569 3 12 3Z\" stroke=\"currentColor\" stroke-width=\"1.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg>",
+            "badge_text": "PRODUCTIVITÉ & CLARTÉ",
+            "title": "Espace Quotidien",
+            "text": "Des luminaires conçus pour l'efficacité. Une lumière pure qui accompagne votre concentration sans fatigue visuelle.",
+            "btn_text": "Explorer l'Espace Quotidien",
+            "link": ""
+          }
+        },
+        "universe_card_eyrqtm": {
+          "type": "universe_card",
+          "settings": {
+            "badge_icon": "<svg width=\"20\" height=\"20\" viewbox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M6 12H8M7 11V13M15 11V11.01M18 13V13.01M15 16C15 16 14 14.5 12 14.5C10 14.5 9 16 9 16M18 9C18 7.34315 16.6569 6 15 6H9C7.34315 6 6 7.34315 6 9V15C6 16.6569 7.34315 18 9 18H15C16.6569 18 18 16.6569 18 15V9Z\" stroke=\"currentColor\" stroke-width=\"1.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg>",
+            "badge_text": "IMMERSION & GAMING",
+            "title": "Univers Visuel",
+            "text": "Plongez au cœur de l'action avec nos solutions RGB dynamiques pour une ambiance sur-mesure.",
+            "btn_text": "Découvrir le setup",
+            "link": ""
+          }
+        },
+        "universe_card_gyTT8D": {
+          "type": "universe_card",
+          "settings": {
+            "badge_icon": "<svg width=\"20\" height=\"20\" viewbox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79Z\" stroke=\"currentColor\" stroke-width=\"1.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path><path d=\"M11 7L11.5 8L12.5 8.5L11.5 9L11 10L10.5 9L9.5 8.5L10.5 8L11 7Z\" fill=\"currentColor\"></path></svg>",
+            "badge_text": "DOUCEUR & REPOS",
+            "title": "Petit Cocon",
+            "text": "Créez un havre de paix pour les petits et les grands avec des lueurs douces et apaisantes.",
+            "btn_text": "Entrer dans le cocon",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "universe_card_ptFXLJ",
+        "universe_card_eyrqtm",
+        "universe_card_gyTT8D"
+      ],
+      "name": "SF Bento Univers",
+      "settings": {
+        "subtitle": "NOS COLLECTIONS",
+        "title": "Choisissez votre <em>Univers</em>",
+        "description": "<p>Explorez nos trois univers distincts, conçus pour sublimer chaque moment de votre vie, du travail à la détente.</p>"
       }
     }
   },
   "order": [
     "banner",
-    "product-grid"
+    "product-grid",
+    "sf_bento_grid_wYB4bz"
   ]
 }
