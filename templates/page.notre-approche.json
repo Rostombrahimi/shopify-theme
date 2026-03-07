@@ -106,9 +106,9 @@
         "description": "Une rigueur technique absolue. Découvrez comment chaque luminaire gagne sa place dans notre collection exclusive à travers un parcours exigeant.",
         "cta_title": "Prêt à illuminer<br>votre intérieur ?",
         "cta_description": "Explorez notre collection de luminaires validée par nos experts et transformez votre espace de vie.",
-        "cta_btn_1_text": "Voir lacollection",
-        "cta_btn_1_link": "",
-        "cta_btn_2_text": "En savoirplus",
+        "cta_btn_1_text": "Voir les collections",
+        "cta_btn_1_link": "shopify://collections",
+        "cta_btn_2_text": "",
         "cta_btn_2_link": ""
       }
     },
