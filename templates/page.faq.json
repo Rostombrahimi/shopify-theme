@@ -11,13 +11,126 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "sf_faq_GVXqT6": {
+      "type": "sf-faq",
+      "blocks": {
+        "faq_item_gFPdwD": {
+          "type": "faq_item",
+          "settings": {
+            "icon_svg": "",
+            "question": "Quelle lampe choisir pour travailler longtemps sans fatigue visuelle ?",
+            "answer": "<p>Pour travailler plusieurs heures sans inconfort, privilégiez une <strong>lumière stable et bien orientée</strong> qui éclaire votre espace sans éblouir vos yeux. Une <strong>lampe de bureau ergonomique</strong> ou une <strong>screenbar placée au-dessus de l’écran</strong> permet d’éclairer votre zone de travail de manière uniforme tout en réduisant la <strong>fatigue visuelle liée aux écrans</strong>.</p><p>Ces luminaires sont pensés pour offrir une <strong>lumière précise, confortable et adaptée aux longues sessions de concentration</strong>.</p>",
+            "link_text": "Découvrir les lampes de la collection Travail & Concentration",
+            "link_url": ""
+          }
+        },
+        "faq_item_PwYVga": {
+          "type": "faq_item",
+          "settings": {
+            "icon_svg": "",
+            "question": "Quelle lumière choisir pour lire le soir sans fatiguer les yeux ?",
+            "answer": "<p>Pour lire confortablement le soir, l’idéal est d’utiliser une <strong>lumière douce mais suffisamment précise</strong> pour éclairer les pages sans créer d’éblouissement. Les <strong>lampes de chevet orientables</strong> ou les <strong>liseuses</strong> permettent de diriger la lumière exactement là où vous en avez besoin.</p><p>Une <strong>lumière chaude et stable</strong> aide également à préserver le <strong>confort visuel</strong> tout en maintenant une atmosphère calme dans la pièce.</p>",
+            "link_text": "Voir les luminaires adaptés à la lecture",
+            "link_url": "shopify://collections/lecture-moments-calmes"
+          }
+        },
+        "faq_item_CxGQdG": {
+          "type": "faq_item",
+          "settings": {
+            "icon_svg": "",
+            "question": "Quelle lumière est idéale pour créer une ambiance relaxante dans une pièce ?",
+            "answer": "<p>Pour créer une atmosphère apaisante, privilégiez une <strong>lumière indirecte et tamisée</strong> qui diffuse doucement dans l’espace. Les <strong>lampes d’ambiance</strong> ou les <strong>lampes de coin</strong> permettent d’adoucir la luminosité générale et de créer une <strong>atmosphère chaleureuse et relaxante</strong>.</p><p>Ce type d’éclairage est parfait pour <strong>se détendre en fin de journée</strong>, regarder un film ou simplement profiter d’un moment calme chez soi.</p>",
+            "link_text": "Explorer la collection Ambiance & Détente",
+            "link_url": "shopify://collections/ambiance-detente"
+          }
+        },
+        "faq_item_7fy94q": {
+          "type": "faq_item",
+          "settings": {
+            "icon_svg": "",
+            "question": "Quelle lampe choisir pour une chambre d’enfant ?",
+            "answer": "<p>Dans une chambre d’enfant, il est préférable d’opter pour une <strong>lumière douce et rassurante</strong> qui accompagne le coucher sans perturber le sommeil. Les <strong>veilleuses diffusent une lumière tamisée</strong> qui permet à l’enfant de se sentir en sécurité tout en gardant une ambiance apaisante.</p><p>Certaines lumières utilisent une <strong>teinte chaude et réconfortante</strong>, idéale pour instaurer un <strong>rituel du coucher calme et rassurant</strong>.</p>",
+            "link_text": "Découvrir les veilleuses de la collection Petit Cocon",
+            "link_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_gFPdwD",
+        "faq_item_PwYVga",
+        "faq_item_CxGQdG",
+        "faq_item_7fy94q"
+      ],
+      "name": "FAQ - Hero & Accordions",
+      "settings": {
+        "title": "Une question ? <br><span>Nous avons la solution<br>lumineuse.</span>",
+        "subtitle": "Parce que choisir son ambiance ne devrait jamais être un casse-tête.",
+        "search_placeholder": "Rechercher une question...",
+        "search_button_text": "Chercher",
+        "faq_category_title": "CHOISIR LA BONNE   LUMIÈRE",
+        "faq_count_label": "questions fréquentes"
+      }
+    },
+    "sf_faq_quality_UjKiQT": {
+      "type": "sf-faq-quality",
+      "blocks": {
+        "quality_qbAEA6": {
+          "type": "quality",
+          "settings": {
+            "icon": "",
+            "titre": "Utilisation Continue",
+            "texte": "Nos luminaires sont conçus pour une utilisation nocturne prolongée sans surchauffe. Grâce à nos dissipateurs thermiques brevetés, vous garantissez sécurité et ambiance sereine, même après 12 heures d'allumage continu."
+          }
+        },
+        "quality_KdqiUJ": {
+          "type": "quality",
+          "settings": {
+            "icon": "",
+            "titre": "Fidélité Visuelle",
+            "texte": "Chaque pièce est calibrée individuellement pour offrir une température de couleur précise de 2700K (blanc chaud) avec un IRC > 95, assurant une lumière chaleureuse qui respecte la vérité des couleurs de votre intérieur."
+          }
+        },
+        "experience_NJJYEc": {
+          "type": "experience",
+          "settings": {
+            "icon": "",
+            "titre": "Suivi de Commande",
+            "texte": "Dès l'expédition depuis notre atelier parisien, recevez un lien de suivi premium en temps réel. Vous serez notifié par SMS à chaque étape clé du voyage de votre lumière jusqu'à votre porte."
+          }
+        },
+        "experience_EDYQdk": {
+          "type": "experience",
+          "settings": {
+            "icon": "",
+            "titre": "Retours Simplifiés",
+            "texte": "Si l'éclat ne correspond pas parfaitement à vos attentes, profitez de notre politique de retour sans frais sous 30 jours. L'étiquette de retour prépayée est incluse dans chaque colis pour une tranquillité d'esprit totale."
+          }
+        }
+      },
+      "block_order": [
+        "quality_qbAEA6",
+        "quality_KdqiUJ",
+        "experience_NJJYEc",
+        "experience_EDYQdk"
+      ],
+      "name": "FAQ Qualite",
+      "settings": {
+        "title_1": "La Qualité Illuminées",
+        "desc_1": "Nous ne faisons aucun compromis sur l'excellence. Chaque luminaire est une promesse de durabilité et de précision technique.",
+        "title_2": "Votre Expérience Client",
+        "desc_2": "De la commande à l'installation, nous veillons à ce que chaque étape soit fluide, transparente et rassurante."
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "sf_faq_GVXqT6",
+    "sf_faq_quality_UjKiQT"
   ]
 }
