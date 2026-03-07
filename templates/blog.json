@@ -12,7 +12,7 @@
     "main": {
       "type": "sf-main-blog",
       "settings": {
-        "articles_per_page": 9
+        "articles_per_page": 12
       }
     }
   },
