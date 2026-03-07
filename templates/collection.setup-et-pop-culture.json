@@ -86,9 +86,9 @@
       ],
       "name": "⚡ Impact Visuel (Bento)",
       "settings": {
-        "bg_color": "#081A32",
+        "bg_color": "#081a32",
         "subtitle": "Ce que cette ambiance permet",
-        "title": "Impact Visuel",
+        "title": "",
         "description": "Découvrez les bénéfices de l'Univers Visuel pour sublimer vos espaces."
       }
     }
