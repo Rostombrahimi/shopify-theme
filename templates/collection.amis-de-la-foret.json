@@ -11,6 +11,7 @@
   "sections": {
     "banner": {
       "type": "main-collection-banner",
+      "disabled": true,
       "settings": {
         "show_collection_description": true,
         "show_collection_image": false,
@@ -19,9 +20,11 @@
     },
     "product-grid": {
       "type": "main-collection-product-grid",
+      "disabled": true,
       "settings": {
         "products_per_page": 16,
         "columns_desktop": 4,
+        "columns_mobile": "2",
         "color_scheme": "scheme-1",
         "image_ratio": "adapt",
         "image_shape": "default",
@@ -32,14 +35,157 @@
         "enable_filtering": true,
         "filter_type": "horizontal",
         "enable_sorting": true,
-        "columns_mobile": "2",
         "padding_top": 36,
         "padding_bottom": 36
+      }
+    },
+    "sf_hero_forest_9YHPMb": {
+      "type": "sf-hero-forest",
+      "name": "Hero Forêt",
+      "settings": {
+        "badge_text": "AMIS DE LA FORÊT",
+        "title": "Amis de la Forêt –<br><span>Une lumière rassurante pour accompagner les nuits</span>",
+        "subtitle": "Des formes familières et une lumière douce pour transformer la veilleuse en compagnon de nuit.",
+        "button_text": "Trouver son compagnon →",
+        "button_link": ""
+      }
+    },
+    "sf_empathy_forest_yqnFq7": {
+      "type": "sf-empathy-forest",
+      "blocks": {
+        "pill_jC6gPb": {
+          "type": "pill",
+          "settings": {
+            "text": "Réveils nocturnes",
+            "icon_name": "moon"
+          }
+        },
+        "pill_DXAgTW": {
+          "type": "pill",
+          "settings": {
+            "text": "Apprivoiser le noir",
+            "icon_name": "eye-off"
+          }
+        },
+        "pill_VEqwDB": {
+          "type": "pill",
+          "settings": {
+            "text": "Sommeil préservé",
+            "icon_name": "star"
+          }
+        },
+        "feature_4gJebU": {
+          "type": "feature",
+          "settings": {
+            "icon_name": "heart",
+            "title": "Réconfort",
+            "text": "Pour les réveils nocturnes qui appellent un repère rassurant."
+          }
+        },
+        "feature_PWpx6R": {
+          "type": "feature",
+          "settings": {
+            "icon_name": "shield",
+            "title": "Sérénité",
+            "text": "Pour apprivoiser la peur du noir et s'endormir en toute sérénité."
+          }
+        },
+        "feature_gq8TA4": {
+          "type": "feature",
+          "settings": {
+            "icon_name": "sun",
+            "title": "Douceur",
+            "text": "Pour une lumière douce qui veille, sans jamais perturber le cycle du sommeil."
+          }
+        }
+      },
+      "block_order": [
+        "pill_jC6gPb",
+        "pill_DXAgTW",
+        "pill_VEqwDB",
+        "feature_4gJebU",
+        "feature_PWpx6R",
+        "feature_gq8TA4"
+      ],
+      "name": "Empathie Forêt",
+      "settings": {
+        "badge_text": "EMPATHIE",
+        "title": "Une présence bienveillante, au<br>moment où ils en ont le plus besoin.",
+        "description": "Les nuits sont parfois longues pour les petits comme pour les grands. Nos créations sont pensées pour adoucir ces instants fragiles."
+      }
+    },
+    "sf_benefits_forest_kdpQzJ": {
+      "type": "sf-benefits-forest",
+      "blocks": {
+        "benefit_nd3Uae": {
+          "type": "benefit",
+          "settings": {
+            "icon": "sun",
+            "title": "Lumière Constante",
+            "text": "Une lumière constante et non agressive pour un repos sans interruption."
+          }
+        },
+        "benefit_YfYDFR": {
+          "type": "benefit",
+          "settings": {
+            "icon": "fox",
+            "title": "Formes Repères",
+            "text": "Des formes reconnaissables qui deviennent des repères rassurants dans la nuit."
+          }
+        },
+        "benefit_FRR8Qx": {
+          "type": "benefit",
+          "settings": {
+            "icon": "aura",
+            "title": "Présence Apaisante",
+            "text": "Une présence visuelle apaisante, même dans l'obscurité la plus totale."
+          }
+        }
+      },
+      "block_order": [
+        "benefit_nd3Uae",
+        "benefit_YfYDFR",
+        "benefit_FRR8Qx"
+      ],
+      "name": "Bénéfices Forêt",
+      "settings": {
+        "badge_text": "BÉNÉFICES CONCRETS",
+        "title": "Une Lumière Qui Rassure",
+        "description": "Découvrez comment nos veilleuses transforment la nuit de votre enfant en un moment de calme et de sérénité grâce à une conception pensée pour le bien-être."
+      }
+    },
+    "sf_orientation_forest_hxxXPi": {
+      "type": "sf-orientation-forest",
+      "name": "Orientation Forêt",
+      "settings": {
+        "title": "Choisir la bonne présence pour leur nuit.",
+        "description": "Pourquoi choisir <span>Amis de la Forêt</span> ? Cette ambiance est pensée pour rassurer et sécuriser. Contrairement à Nuit Étoilée, orientée vers l'endormissement, Amis de la Forêt est idéale pour les enfants qui ont besoin d'un repère visible pendant la nuit.",
+        "link_text": "Consultez notre guide des lumières",
+        "link_url": "",
+        "link_prefix": "Vous hésitez encore ?",
+        "link_suffix": "pour trouver l'ami parfait."
+      }
+    },
+    "sf_forest_cta_8Dwt7z": {
+      "type": "sf-forest-cta",
+      "name": "Transition Forêt CTA",
+      "settings": {
+        "badge_text": "LA COLLECTION AMIS DE LA FORÊT",
+        "title": "Une présence rassurante,<br>inspirée par la nature",
+        "description": "Pour cette ambiance, nous avons sélectionné une base lumineuse douce, déclinée en plusieurs formes inspirées du monde naturel, afin de créer une présence rassurante adaptée à chaque enfant.",
+        "button_text": "Découvrir la veilleuse Amis de la Forêt",
+        "button_link": "",
+        "footer_text": "RECOMMANDÉ PAR NOS EXPERTS"
       }
     }
   },
   "order": [
     "banner",
-    "product-grid"
+    "product-grid",
+    "sf_hero_forest_9YHPMb",
+    "sf_empathy_forest_yqnFq7",
+    "sf_benefits_forest_kdpQzJ",
+    "sf_orientation_forest_hxxXPi",
+    "sf_forest_cta_8Dwt7z"
   ]
 }

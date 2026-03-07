@@ -36,15 +36,6 @@
         "enable_language_selector": false
       }
     },
-    "sf-header": {
-      "type": "sf-header",
-      "settings": {
-        "logo_text": "Illuminées",
-        "menu": "main-menu",
-        "menu_color_scheme": "",
-        "enable_sticky_header": true
-      }
-    },
     "sf_announcement_bar_pBUHWX": {
       "type": "sf-announcement-bar",
       "blocks": {
@@ -61,10 +52,21 @@
       "block_order": [
         "announcement_pY83gE"
       ],
+      "disabled": true,
       "name": "✨ Barre d'Annonce (Illuminées)",
       "settings": {
         "show_announcement": true,
         "rotation_speed": 4
+      }
+    },
+    "sf-header": {
+      "type": "sf-header",
+      "disabled": true,
+      "settings": {
+        "logo_text": "Illuminées",
+        "menu": "main-menu",
+        "menu_color_scheme": "",
+        "enable_sticky_header": true
       }
     }
   },
