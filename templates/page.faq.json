@@ -73,7 +73,63 @@
         "subtitle": "Parce que choisir son ambiance ne devrait jamais être un casse-tête.",
         "search_placeholder": "Rechercher une question...",
         "search_button_text": "Chercher",
-        "faq_category_title": "CHOISIR LA BONNE   <span>LUMIÈRE</span>",
+        "faq_category_title": "CHOISIR LA BONNE   LUMIÈRE",
+        "faq_count_label": "questions fréquentes"
+      }
+    },
+    "sf_faq_2_REpGp8": {
+      "type": "sf-faq-2",
+      "blocks": {
+        "faq_item_LwHNkU": {
+          "type": "faq_item",
+          "settings": {
+            "icon_svg": "",
+            "question": "Les luminaires Illuminées sont-ils testés avant la mise en vente ?",
+            "answer": "<p>Oui. Chaque luminaire proposé par Illuminées est <strong>sélectionné et testé</strong> avant d’être ajouté à la boutique. Nous vérifions notamment la <strong>qualité de la lumière</strong>, le <strong>confort visuel</strong> et la <strong>durabilité dans un usage quotidien</strong>.</p><p>L’objectif n’est pas simplement de proposer une lampe esthétique, mais un <strong>éclairage réellement agréable à vivre</strong>, capable d’améliorer le confort au bureau, l’ambiance d’une pièce ou les moments de détente.</p>",
+            "link_text": "Explorer les univers Illuminées",
+            "link_url": "shopify://collections/nos-univers"
+          }
+        },
+        "faq_item_A9ARxi": {
+          "type": "faq_item",
+          "settings": {
+            "icon_svg": "",
+            "question": "Les lampes sont-elles adaptées pour les setups gaming ou pop culture ?",
+            "answer": "<p>Certaines lampes sont spécialement pensées pour créer une <strong>ambiance visuelle forte</strong> et mettre en valeur un <strong>setup gaming</strong>, une <strong>collection de figurines</strong> ou un espace personnel.</p><p>Grâce à leur <strong>lumière expressive et décorative</strong>, elles permettent de transformer un bureau ou une chambre en véritable <strong>univers visuel inspiré de la pop culture et des licences cultes</strong>.</p>",
+            "link_text": "Découvrir l’Univers Visuel",
+            "link_url": "shopify://collections/univers-visuel"
+          }
+        },
+        "faq_item_Rewt64": {
+          "type": "faq_item",
+          "settings": {
+            "icon_svg": "",
+            "question": "Les veilleuses peuvent-elles rester allumées toute la nuit ?",
+            "answer": "<p>Oui. Les veilleuses diffusent une <strong>lumière douce et apaisante</strong> conçue pour accompagner les nuits des enfants sans perturber leur sommeil.</p><p>Grâce à leur <strong>luminosité faible et rassurante</strong>, elles permettent à l’enfant de se sentir en sécurité tout en conservant une <strong>ambiance calme dans la chambre</strong> pendant la nuit.</p>",
+            "link_text": "Découvrir les veilleuses Petit Cocon",
+            "link_url": "shopify://collections/petit-cocon"
+          }
+        },
+        "faq_item_PqXM46": {
+          "type": "faq_item",
+          "settings": {
+            "icon_svg": "",
+            "question": "Les lampes sont-elles faciles à installer ?",
+            "answer": "<p>Oui. La majorité des luminaires sont <strong>prêts à l’emploi</strong> et ne nécessitent <strong>aucune installation complexe</strong>. Il suffit généralement de les <strong>brancher ou de les positionner</strong> selon l’usage souhaité.</p><p>Que ce soit pour un <strong>bureau</strong>, un <strong>coin lecture</strong> ou une <strong>ambiance lumineuse dans une pièce</strong>, l’installation est simple et rapide afin que vous puissiez profiter immédiatement de votre éclairage.</p>",
+            "link_text": "Explorer les luminaires par usage",
+            "link_url": "shopify://collections/nos-univers"
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_LwHNkU",
+        "faq_item_A9ARxi",
+        "faq_item_Rewt64",
+        "faq_item_PqXM46"
+      ],
+      "name": "FAQ 2 - Hero & AccordIONS",
+      "settings": {
+        "faq_category_title": "Choisir son Usage",
         "faq_count_label": "questions fréquentes"
       }
     },
@@ -131,6 +187,7 @@
   "order": [
     "main",
     "sf_faq_GVXqT6",
+    "sf_faq_2_REpGp8",
     "sf_faq_quality_UjKiQT"
   ]
 }
