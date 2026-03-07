@@ -163,7 +163,7 @@
             "question": "Puis-je suivre ma commande ?",
             "answer": "<p>Oui. Une fois votre commande expédiée, vous recevez un <strong>numéro de suivi</strong> qui permet de suivre facilement l’acheminement de votre colis.</p><p>Vous pouvez ainsi connaître à tout moment <strong>l’état de votre livraison</strong> et la progression de votre commande jusqu’à sa réception.</p>",
             "link_text": "Accéder au suivi de commande",
-            "link_url": ""
+            "link_url": "shopify://pages/suivre-ma-commande"
           }
         },
         "faq_item_EzyeXf": {
