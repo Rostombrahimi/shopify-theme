@@ -1,0 +1,452 @@
+{% schema %}
+{
+  "name": "Atelier Hero",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Image de fond globale"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Titre Principal",
+      "default": "L'Atelier —<br><span>Comprendre la lumière<br>pour mieux la vivre.</span>",
+      "info": "Utilisez <span> pour l'ambre et la lueur."
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Sous-titre",
+      "default": "On ne vous demande pas de nous croire sur parole. Ici, on décortique la science du spectre, l'ergonomie visuelle et les rituels de sommeil. Pas de blabla, juste de l'expertise."
+    },
+    {
+      "type": "header",
+      "content": "Boutons"
+    },
+    {
+      "type": "text",
+      "id": "primary_btn_text",
+      "label": "Bouton Principal",
+      "default": "Explorer l'expertise"
+    },
+    {
+      "type": "url",
+      "id": "primary_btn_url",
+      "label": "Lien Principal"
+    },
+    {
+      "type": "text",
+      "id": "secondary_btn_text",
+      "label": "Bouton Secondaire",
+      "default": "Nos publications"
+    },
+    {
+      "type": "url",
+      "id": "secondary_btn_url",
+      "label": "Lien Secondaire"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature_card",
+      "name": "Carte d'Expertise",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "icon_svg",
+          "label": "Icône SVG"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Titre"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Atelier Hero",
+      "category": "Illuminées Manifeste",
+      "blocks": [
+        {
+          "type": "feature_card",
+          "settings": {
+            "title": "Spectre Lumineux",
+            "description": "Une analyse technique profonde sur l'influence des longueurs d'onde sur votre rétine.",
+            "icon_svg": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M9 21H15M12 11V15M10 15H14M7.6 13C6.6 11.5 6 9.8 6 8C6 4.7 8.7 2 12 2C15.3 2 18 4.7 18 8C18 9.8 17.4 11.5 16.4 13L14 17H10L7.6 13Z\" stroke=\"#E89D46\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>"
+          }
+        },
+        {
+          "type": "feature_card",
+          "settings": {
+            "title": "Ergonomie Visuelle",
+            "description": "Comment optimiser votre environnement pour réduire la fatigue oculaire chronique.",
+            "icon_svg": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z\" stroke=\"#E89D46\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<circle cx=\"12\" cy=\"12\" r=\"3\" stroke=\"#E89D46\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>"
+          }
+        },
+        {
+          "type": "feature_card",
+          "settings": {
+            "title": "Cycles Circadiens",
+            "description": "L'harmonie entre lumière et biologie pour restaurer la qualité de votre sommeil profond.",
+            "icon_svg": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z\" stroke=\"#E89D46\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M8 12H10M7 8H8\" stroke=\"#E89D46\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  html { scroll-behavior: smooth; }
+
+  /* Conteneur global de la section */
+  .atelier-section-wrapper {
+    background-color: var(--illu-bg-night, #081A32);
+    font-family: var(--illu-font-main, 'Inter', sans-serif);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* --- HERO AREA --- */
+  .atelier-hero {
+    position: relative;
+    min-height: 85vh; /* Légèrement moins que 100vh pour voir les cartes dépasser */
+    background-color: var(--illu-bg-night, #081A32);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    padding: 120px 5% 180px 5%; /* Padding bas important pour le dégradé */
+  }
+
+  .atelier-hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    /* Vibration Chromatique */
+    filter: brightness(0.5) contrast(1.1) saturate(1.2);
+    z-index: 0;
+    /* Parallax effect placeholder */
+  }
+
+  .atelier-hero-overlay {
+    position: absolute;
+    inset: 0;
+    /* Vignette Cinématique */
+    background: radial-gradient(circle at center, rgba(8, 26, 50, 0.4) 0%, rgba(8, 26, 50, 0.8) 60%, #081A32 100%);
+    z-index: 1;
+  }
+
+  /* Lueur de Profondeur avec mix-blend-mode :after */
+  .atelier-hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.15;
+    mix-blend-mode: soft-light;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  /* Gradient bas pour transition en douceur vers les cartes */
+  .atelier-hero-fade-bottom {
+    position: absolute;
+    bottom: -2px; left: 0; right: 0;
+    height: 250px;
+    background: linear-gradient(to top, #081A32 0%, transparent 100%);
+    z-index: 3;
+    pointer-events: none;
+  }
+
+  .atelier-content {
+    position: relative;
+    z-index: 4;
+    max-width: 1000px;
+  }
+
+  .atelier-h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-family: var(--illu-font-display, serif);
+    font-weight: 800;
+    color: var(--illu-text-cream, #F9F9F9);
+    line-height: 1.1;
+    margin: 0 0 2rem 0;
+    letter-spacing: -0.02em;
+  }
+
+  .atelier-h1 span {
+    color: var(--illu-accent-amber, #E89D46);
+    /* Expert glow */
+    text-shadow: 0 0 40px rgba(232, 157, 70, 0.4);
+  }
+
+  .atelier-subtitle {
+    font-size: 1.25rem;
+    line-height: 1.7;
+    color: rgba(249, 249, 249, 0.8);
+    max-width: 800px;
+    margin: 0 auto 3rem auto;
+  }
+
+  /* Buttons */
+  .atelier-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+  }
+
+  .atelier-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 36px;
+    background: var(--illu-accent-amber, #E89D46);
+    color: #081A32;
+    font-size: 1.05rem;
+    font-weight: 700;
+    border-radius: 99px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .atelier-btn-primary:hover {
+    background: #f0a755;
+    transform: scale(1.02);
+    box-shadow: 0 10px 25px rgba(232, 157, 70, 0.3);
+  }
+
+  .atelier-btn-primary svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .atelier-btn-secondary {
+    display: inline-block;
+    padding: 16px 36px;
+    background: rgba(255, 255, 255, 0.05); /* Transparent Glass */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: #F9F9F9;
+    font-size: 1.05rem;
+    font-weight: 600;
+    border-radius: 99px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .atelier-btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+
+  /* Scroll Indicator */
+  .atelier-scroll-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    color: var(--illu-accent-amber, #E89D46);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    opacity: 0.8;
+  }
+  
+  .atelier-scroll-indicator svg {
+    width: 24px;
+    height: 24px;
+    animation: bounceDown 2s infinite ease-in-out;
+  }
+
+  @keyframes bounceDown {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+  }
+
+
+  /* --- CARDS GRID AREA --- */
+  .atelier-grid-area {
+    position: relative;
+    z-index: 5;
+    max-width: 1400px;
+    margin: -100px auto 0 auto; /* Overlap with hero */
+    padding: 0 4rem 100px 4rem;
+  }
+
+  .atelier-features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+
+  .atelier-feature-card {
+    background: rgba(15, 30, 55, 0.95); /* Deep slate to match image */
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 40px;
+    text-align: left;
+    transition: all 0.4s ease;
+  }
+
+  .atelier-feature-card:hover {
+    border-color: rgba(232, 157, 70, 0.3);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  }
+
+  .atelier-feature-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+  }
+
+  .atelier-feature-icon svg {
+    width: 24px;
+    height: 24px;
+    /* Assure la couleur pour les SVGs natifs */
+  }
+
+  .atelier-feature-title {
+    font-family: var(--illu-font-display, serif);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #F9F9F9;
+    margin: 0 0 16px 0;
+  }
+
+  .atelier-feature-desc {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: rgba(249, 249, 249, 0.6);
+    margin: 0;
+  }
+
+  /* Responsive Adjustments */
+  @media screen and (max-width: 1024px) {
+    .atelier-features-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .atelier-actions {
+      flex-direction: column;
+    }
+    .atelier-btn-primary, .atelier-btn-secondary {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .atelier-hero {
+      min-height: auto;
+      padding: 140px 1.5rem 180px 1.5rem;
+    }
+    .atelier-h1 {
+      font-size: 2.5rem;
+    }
+    .atelier-subtitle {
+      font-size: 1.05rem;
+    }
+    .atelier-grid-area {
+      padding: 0 1.5rem 80px 1.5rem;
+      margin-top: -60px;
+    }
+    .atelier-features-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    .atelier-feature-card {
+      padding: 32px 24px;
+    }
+  }
+</style>
+
+<div class="atelier-section-wrapper">
+
+  <!-- HERO SECTION -->
+  <section class="atelier-hero" id="atelier-hero">
+    {% if section.settings.bg_image != blank %}
+      {{ section.settings.bg_image | image_url: width: 2400 | image_tag: class: 'atelier-hero-bg', loading: 'eager' }}
+    {% else %}
+      <div class="atelier-hero-bg" style="background-color: #0A1C30;"></div>
+    {% endif %}
+    
+    <div class="atelier-hero-overlay"></div>
+    <div class="atelier-hero-fade-bottom"></div>
+
+    <div class="atelier-content">
+      {% if section.settings.title != blank %}
+        <h1 class="atelier-h1">{{ section.settings.title | replace: '<span>', '<span>' }}</h1>
+      {% endif %}
+
+      {% if section.settings.subtitle != blank %}
+        <p class="atelier-subtitle">{{ section.settings.subtitle }}</p>
+      {% endif %}
+
+      <div class="atelier-actions">
+        {% if section.settings.primary_btn_text != blank %}
+          <a href="{{ section.settings.primary_btn_url | default: '#' }}" class="atelier-btn-primary">
+            {{ section.settings.primary_btn_text }}
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        {% endif %}
+        
+        {% if section.settings.secondary_btn_text != blank %}
+          <a href="{{ section.settings.secondary_btn_url | default: '#' }}" class="atelier-btn-secondary">
+            {{ section.settings.secondary_btn_text }}
+          </a>
+        {% endif %}
+      </div>
+
+      <div class="atelier-scroll-indicator">
+        Découvrir
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 9L12 15L18 9" stroke="#E89D46" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES GRID SECTION -->
+  <section class="atelier-grid-area">
+    <div class="atelier-features-grid">
+      {% for block in section.blocks %}
+        <div class="atelier-feature-card" {{ block.shopify_attributes }}>
+          <div class="atelier-feature-icon">
+            {{ block.settings.icon_svg }}
+          </div>
+          <h3 class="atelier-feature-title">{{ block.settings.title }}</h3>
+          <p class="atelier-feature-desc">{{ block.settings.description }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+
+</div>
