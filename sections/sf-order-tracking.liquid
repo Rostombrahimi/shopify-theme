@@ -1,0 +1,405 @@
+{% schema %}
+{
+  "name": "Suivi de Commande",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Titre Principal",
+      "default": "Suivre votre atmosphère"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Sous-titre",
+      "default": "Le trajet de vos photons de notre atelier à votre univers."
+    },
+    {
+      "type": "text",
+      "id": "placeholder_text",
+      "label": "Placeholder Input",
+      "default": "Numéro de commande (ex: ILL-1234)"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Texte Bouton",
+      "default": "Suivre"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Suivi de Commande",
+      "category": "Illuminées Pages"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  html { scroll-behavior: smooth; }
+  
+  .sf-tracking-wrapper {
+    background-color: var(--illu-bg-night, #081A32);
+    min-height: 100vh;
+    padding: 100px 20px;
+    font-family: var(--illu-font-main, sans-serif);
+    color: var(--illu-text-cream, #F9F9F9);
+    -webkit-font-smoothing: antialiased; /* Netteté demandée */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .sf-tracking-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 32px; /* Tailwind config: borderRadius.chubby */
+    backdrop-filter: blur(15px); /* Tailwind config: backdropBlur.tracking */
+    -webkit-backdrop-filter: blur(15px);
+    width: 100%;
+    max-width: 900px;
+    padding: 60px 40px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Vignette / Glow Effect radial */
+  .sf-tracking-card::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 150%;
+    height: 150%;
+    background: radial-gradient(circle, rgba(232, 157, 70, 0.03) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .sf-tracking-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .sf-tracking-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .sf-tracking-h1 {
+    font-family: var(--illu-font-display, serif);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 500;
+    color: var(--illu-text-cream, #F9F9F9);
+    margin: 0 0 16px 0;
+    letter-spacing: -0.01em;
+  }
+
+  .sf-tracking-subtitle {
+    color: rgba(249, 249, 249, 0.6);
+    font-size: 1.15rem;
+    margin: 0;
+  }
+
+  /* --- SEARCH BAR --- */
+  .sf-tracking-search-box {
+    display: flex;
+    align-items: center;
+    max-width: 500px;
+    margin: 0 auto 80px auto;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 99px;
+    padding: 6px 6px 6px 24px;
+    transition: border-color 0.3s ease;
+  }
+
+  .sf-tracking-search-box:focus-within {
+    border-color: rgba(232, 157, 70, 0.4);
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .sf-tracking-input {
+    flex-grow: 1;
+    background: transparent;
+    border: none;
+    color: #F9F9F9;
+    font-size: 1.05rem;
+    font-family: inherit;
+    outline: none;
+    width: 100%;
+  }
+
+  .sf-tracking-input::placeholder {
+    color: rgba(249, 249, 249, 0.3);
+  }
+
+  .sf-tracking-btn {
+    background: var(--illu-accent-amber, #E89D46);
+    color: #081A32;
+    border: none;
+    border-radius: 99px;
+    padding: 12px 32px;
+    font-weight: 700;
+    font-size: 0.99rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    flex-shrink: 0;
+  }
+
+  .sf-tracking-btn:hover {
+    background: #f0a755;
+    transform: scale(1.02);
+  }
+
+  /* --- TRACKING PATH --- */
+  .tracking-path-container {
+    position: relative;
+    padding: 20px 0 60px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .tracking-line {
+    position: absolute;
+    top: 40px; /* Align with center of node circles */
+    left: 40px;
+    right: 40px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.08);
+    z-index: 1;
+  }
+
+  /* Animation du photon lumineux */
+  @keyframes travel {
+    0% { left: 40px; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { left: calc(100% - 120px); opacity: 0; }
+  }
+
+  .photon-tracker {
+    position: absolute;
+    top: 39px; /* Centered on the 1px line */
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #E89D46, transparent);
+    box-shadow: 0 0 15px #E89D46;
+    z-index: 2;
+    animation: travel 3s infinite ease-in-out;
+  }
+
+  /* Nodes (Étapes) */
+  .tracking-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    z-index: 3;
+    position: relative;
+    width: 120px;
+  }
+
+  .tracking-node-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #081A32;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(249, 249, 249, 0.4);
+    transition: all 0.4s ease;
+  }
+
+  .tracking-node-icon svg {
+    width: 24px;
+    height: 24px;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    fill: none;
+  }
+
+  .tracking-node-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: rgba(249, 249, 249, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.4s ease;
+  }
+
+  /* Active Node State */
+  .node-active .tracking-node-icon {
+    color: #E89D46;
+    border-color: rgba(232, 157, 70, 0.5);
+    background: rgba(232, 157, 70, 0.1);
+    box-shadow: 0 0 20px rgba(232, 157, 70, 0.2) inset;
+    /* Light Bloom / Intensité */
+    mix-blend-mode: plus-lighter;
+    filter: drop-shadow(0 0 10px rgba(232, 157, 70, 0.4));
+  }
+
+  .node-active .tracking-node-label {
+    color: #F9F9F9;
+  }
+
+  /* --- ESTIMATED ARRIVAL --- */
+  .sf-tracking-arrival {
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 40px;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .sf-arrival-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: rgba(249, 249, 249, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 12px;
+  }
+
+  .sf-arrival-date {
+    font-family: var(--illu-font-display, serif);
+    font-size: 1.5rem;
+    color: #F9F9F9;
+    font-style: italic;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  @media screen and (max-width: 768px) {
+    .sf-tracking-card {
+      padding: 40px 20px;
+      border-radius: 24px;
+    }
+    .sf-tracking-h1 {
+      font-size: 2rem;
+    }
+    .tracking-path-container {
+      flex-direction: column;
+      gap: 40px;
+      padding-bottom: 40px;
+    }
+    .tracking-line {
+      top: 40px;
+      bottom: 40px;
+      left: 50%;
+      right: auto;
+      width: 1px;
+      height: auto;
+      transform: translateX(-50%);
+    }
+    /* Photon animation needs vertical change for mobile */
+    @keyframes travel-mobile {
+      0% { top: 40px; opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { top: calc(100% - 100px); opacity: 0; }
+    }
+    .photon-tracker {
+      width: 3px;
+      height: 60px;
+      top: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(180deg, transparent, #E89D46, transparent);
+      animation: travel-mobile 3s infinite ease-in-out;
+    }
+    .tracking-node {
+      flex-direction: row;
+      width: 100%;
+      justify-content: flex-start;
+      gap: 24px;
+      padding-left: 20%;
+    }
+    .sf-tracking-search-box {
+      flex-direction: column;
+      background: transparent;
+      border: none;
+      padding: 0;
+      gap: 16px;
+    }
+    .sf-tracking-search-box:focus-within {
+      background: transparent;
+      border: none;
+    }
+    .sf-tracking-input {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 99px;
+      padding: 14px 24px;
+      width: 100%;
+    }
+    .sf-tracking-btn {
+      width: 100%;
+    }
+  }
+</style>
+
+<div class="sf-tracking-wrapper">
+  <div class="sf-tracking-card">
+    <div class="sf-tracking-content">
+      
+      <div class="sf-tracking-header">
+        <h1 class="sf-tracking-h1">{{ section.settings.heading }}</h1>
+        <p class="sf-tracking-subtitle">{{ section.settings.subheading }}</p>
+      </div>
+
+      <div class="sf-tracking-search-box">
+        <input type="text" class="sf-tracking-input" placeholder="{{ section.settings.placeholder_text }}" autocomplete="off">
+        <button class="sf-tracking-btn">{{ section.settings.button_text }}</button>
+      </div>
+
+      <!-- Tracking Path Interactive UI -->
+      <div class="tracking-path-container">
+        <div class="tracking-line"></div>
+        <div class="photon-tracker"></div>
+
+        <!-- Node 1 : Atelier (Actif par défaut pour la démo visuelle) -->
+        <div class="tracking-node node-active">
+          <div class="tracking-node-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242M12 12v9"/><path d="m8 17 4 4 4-4"/></svg>
+          </div>
+          <span class="tracking-node-label">L'Atelier</span>
+        </div>
+
+        <!-- Node 2 : En Transit -->
+        <div class="tracking-node">
+          <div class="tracking-node-icon">
+            <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          </div>
+          <span class="tracking-node-label">En Transit</span>
+        </div>
+
+        <!-- Node 3 : Votre Univers -->
+        <div class="tracking-node">
+          <div class="tracking-node-icon">
+            <svg viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <span class="tracking-node-label">Votre Univers</span>
+        </div>
+        
+      </div>
+
+      <!-- Estimated Arrival time -->
+      <div class="sf-tracking-arrival">
+        <div class="sf-arrival-label">ARRIVÉE PRÉVUE</div>
+        <div class="sf-arrival-date">Mercredi 24 Avril, entre 10h00 et 14h00</div>
+      </div>
+
+    </div>
+  </div>
+</div>
