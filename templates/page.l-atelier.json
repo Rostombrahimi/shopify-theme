@@ -60,86 +60,10 @@
         "secondary_btn_url": ""
       }
     },
-    "sf_atelier_bento_n4gANw": {
-      "type": "sf-atelier-bento",
-      "blocks": {
-        "bento_card_fxGzqg": {
-          "type": "bento_card",
-          "settings": {
-            "card_width": "grid-pos-0",
-            "is_text_only": false,
-            "title": "L'École des Parents",
-            "subtitle": "Sommeil, Veilleuses, Sécurité",
-            "icon_svg": "<svg width=\"32\" height=\"32\" viewbox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n  <path d=\"M4 19V5C4 3.89543 4.89543 3 6 3H18C19.1046 3 20 3.89543 20 5V19\" stroke=\"#E89D46\" stroke-width=\"1.5\" stroke-linecap=\"round\"></path>\n  <path d=\"M2 19H22\" stroke=\"#E89D46\" stroke-width=\"1.5\" stroke-linecap=\"round\"></path>\n  <circle cx=\"12\" cy=\"11\" r=\"3\" stroke=\"#E89D46\" stroke-width=\"1.5\" opacity=\"0.6\"></circle>\n</svg>",
-            "link": "",
-            "cta_text": "Découvrir l'univers ➔",
-            "badge_text": "",
-            "secondary_cta_1": "",
-            "secondary_cta_2": ""
-          }
-        },
-        "bento_card_gkjLUt": {
-          "type": "bento_card",
-          "settings": {
-            "card_width": "grid-pos-1",
-            "is_text_only": false,
-            "title": "Le Labo Technique",
-            "subtitle": "Lumière bleue, IRC, Scintillement",
-            "icon_svg": "<svg width=\"32\" height=\"32\" viewbox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n  <path d=\"M12 2L2 20H22L12 2Z\" stroke=\"#E89D46\" stroke-width=\"1.5\" stroke-linejoin=\"round\"></path>\n  <path d=\"M2 20L12 12\" stroke=\"#E89D46\" stroke-width=\"1.5\" stroke-linecap=\"round\" opacity=\"0.4\"></path>\n  <path d=\"M12 12L22 20\" stroke=\"#E89D46\" stroke-width=\"1.5\" stroke-linecap=\"round\" opacity=\"0.4\"></path>\n</svg>",
-            "link": "",
-            "cta_text": "Explorer la science",
-            "badge_text": "",
-            "secondary_cta_1": "",
-            "secondary_cta_2": ""
-          }
-        },
-        "bento_card_eiCUmr": {
-          "type": "bento_card",
-          "settings": {
-            "card_width": "grid-pos-2",
-            "is_text_only": false,
-            "title": "Le QG du Flow",
-            "subtitle": "Productivité, Setup, Immersion",
-            "icon_svg": "<svg width=\"32\" height=\"32\" viewbox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n  <circle cx=\"12\" cy=\"12\" r=\"9\" stroke=\"#E89D46\" stroke-width=\"1.5\" opacity=\"0.3\"></circle>\n  <path d=\"M12 8V12L14 14\" stroke=\"#E89D46\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n  <path d=\"M12 2v2M12 20v2M2 12h2M20 12h2\" stroke=\"#E89D46\" stroke-width=\"1.5\" stroke-linecap=\"round\"></path>\n</svg>",
-            "link": "",
-            "cta_text": "",
-            "badge_text": "PREMIUM",
-            "secondary_cta_1": "",
-            "secondary_cta_2": ""
-          }
-        },
-        "bento_card_HHJxkC": {
-          "type": "bento_card",
-          "settings": {
-            "card_width": "grid-pos-3",
-            "is_text_only": true,
-            "title": "La lumière influence votre vie",
-            "subtitle": "Saviez-vous que la température de couleur affecte directement votre cycle circadien ? Apprenez à maîtriser votre environnement lumineux avec L'Atelier.",
-            "icon_svg": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<circle cx=\"12\" cy=\"10\" r=\"6\" stroke=\"#E89D46\" stroke-width=\"2\"></circle>\n<path d=\"M10 19L14 19M11 22L13 22\" stroke=\"#E89D46\" stroke-width=\"2\" stroke-linecap=\"round\"></path>\n<path d=\"M12 16V19\" stroke=\"#E89D46\" stroke-width=\"2\" stroke-linecap=\"round\"></path>\n</svg>",
-            "link": "",
-            "cta_text": "",
-            "badge_text": "",
-            "secondary_cta_1": "Lire le manifeste",
-            "secondary_cta_2": "Nos guides ➔"
-          }
-        }
-      },
-      "block_order": [
-        "bento_card_fxGzqg",
-        "bento_card_gkjLUt",
-        "bento_card_eiCUmr",
-        "bento_card_HHJxkC"
-      ],
-      "name": "Exploration Lumineuse (Bento)",
-      "settings": {
-        "title": "Exploration Lumineuse",
-        "subtitle": "Découvrez nos univers dédiés à la science de la lumière, de l'éveil des plus petits à l'optimisation de votre espace de travail."
-      }
-    },
-    "sf_atelier_WEYKcz": {
+    "sf_atelier_MPNJaT": {
       "type": "sf-atelier",
       "blocks": {
-        "article_gzbirn": {
+        "article_JinwLa": {
           "type": "article",
           "settings": {
             "tag": "Workspace",
@@ -149,7 +73,7 @@
             "article_link": ""
           }
         },
-        "article_7CfQYn": {
+        "article_xzjLKr": {
           "type": "article",
           "settings": {
             "tag": "Interior Design",
@@ -159,7 +83,7 @@
             "article_link": ""
           }
         },
-        "article_6RRN66": {
+        "article_e8FMwt": {
           "type": "article",
           "settings": {
             "tag": "Technical",
@@ -171,14 +95,14 @@
         }
       },
       "block_order": [
-        "article_gzbirn",
-        "article_7CfQYn",
-        "article_6RRN66"
+        "article_JinwLa",
+        "article_xzjLKr",
+        "article_e8FMwt"
       ],
       "name": "SF L'Atelier",
       "settings": {
         "badge_text": "LE BLOG DES EXPERTS",
-        "title": "L'Atelier <em>Atmosphère</em>",
+        "title": "L'Atelier Atmosphère",
         "description": "Lighting is an art, not just a utility. Discover our expert guides on sculpting your space with the perfect luminescence, from warm bedroom ambiances to focused office clarity.",
         "btn_text": "View All Guides",
         "btn_link": ""
@@ -188,7 +112,6 @@
   "order": [
     "main",
     "sf_atelier_hero_ekg3ea",
-    "sf_atelier_bento_n4gANw",
-    "sf_atelier_WEYKcz"
+    "sf_atelier_MPNJaT"
   ]
 }
