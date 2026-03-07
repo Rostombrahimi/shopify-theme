@@ -1,0 +1,396 @@
+{% schema %}
+{
+  "name": "Filtres de l'Atelier",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titre Principal",
+      "default": "Les 3 Filtres de l'Atelier"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Sous-titre",
+      "default": "Chaque luminaire passe par un protocole de test en conditions réelles (bureau, chambre d'enfant, session gaming nocturne)."
+    },
+    {
+      "type": "header",
+      "content": "Bannière Image (Bas)"
+    },
+    {
+      "type": "image_picker",
+      "id": "banner_image",
+      "label": "Image de fond de la bannière"
+    },
+    {
+      "type": "text",
+      "id": "banner_eyebrow",
+      "label": "Surtitre Bannière",
+      "default": "L'EXCELLENCE ILLUMINÉE"
+    },
+    {
+      "type": "text",
+      "id": "banner_title",
+      "label": "Titre Bannière",
+      "default": "L'art de sculpter l'ombre et la lumière."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "filter_card",
+      "name": "Filtre (Carte)",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "icon_svg",
+          "label": "Icône SVG"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Titre de l'étape",
+          "default": "Ergonomie Visuelle"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Stabilité du flux et indice de rendu des couleurs (IRC)."
+        },
+        {
+          "type": "text",
+          "id": "objective_text",
+          "label": "Texte de l'Objectif",
+          "default": "Zéro fatigue même après une journée de travail."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Filtres de l'Atelier",
+      "category": "Illuminées Manifeste",
+      "blocks": [
+        {
+          "type": "filter_card",
+          "settings": {
+            "title": "Ergonomie Visuelle",
+            "description": "Stabilité du flux et indice de rendu des couleurs (IRC).",
+            "objective_text": "Zéro fatigue même après une journée de travail.",
+            "icon_svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M12 5C7.5 5 3.73 7.92 2 12C3.73 16.08 7.5 19 12 19C16.5 19 20.27 16.08 22 12C20.27 7.92 16.5 5 12 5ZM12 17C9.24 17 7 14.76 7 12C7 9.24 9.24 7 12 7C14.76 7 17 9.24 17 12C17 14.76 14.76 17 12 17ZM12 9C10.34 9 9 10.34 9 12C9 13.66 10.34 15 12 15C13.66 15 15 13.66 15 12C15 10.34 13.66 9 12 9Z\" fill=\"#E89D46\"/></svg>"
+          }
+        },
+        {
+          "type": "filter_card",
+          "settings": {
+            "title": "Justesse Narrative",
+            "description": "Capacité à créer une \"bulle\" sans inonder la pièce.",
+            "objective_text": "Une immersion totale dans votre univers.",
+            "icon_svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"12\" cy=\"12\" r=\"10\" stroke=\"#E89D46\" stroke-width=\"2\"/><circle cx=\"12\" cy=\"12\" r=\"1\" fill=\"#E89D46\"/><circle cx=\"16\" cy=\"12\" r=\"1\" fill=\"#E89D46\"/><circle cx=\"8\" cy=\"12\" r=\"1\" fill=\"#E89D46\"/><circle cx=\"12\" cy=\"8\" r=\"1\" fill=\"#E89D46\"/><circle cx=\"12\" cy=\"16\" r=\"1\" fill=\"#E89D46\"/></svg>"
+          }
+        },
+        {
+          "type": "filter_card",
+          "settings": {
+            "title": "Sécurité Passive",
+            "description": "Chaleur des matériaux et absence de composants volatils nocifs.",
+            "objective_text": "Une sérénité totale pour le Petit Cocon.",
+            "icon_svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M12 1L3 5V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V5L12 1ZM12 10.99H19C18.42 14.93 15.68 18.39 12 19.86V10.99H5V6.3L12 3.19V10.99Z\" fill=\"#E89D46\"/></svg>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .sf-atelier-filters {
+    background-color: var(--illu-bg-night, #081A32);
+    padding: 80px 20px 100px;
+    font-family: var(--illu-font-main, 'Inter', sans-serif);
+    color: var(--illu-text-cream, #F9F9F9);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Focus Vignette */
+  .sf-atelier-filters::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 150%;
+    height: 150%;
+    background: radial-gradient(circle at center, rgba(232, 157, 70, 0.02) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .sf-atelier-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Header */
+  .sf-atelier-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 64px auto;
+  }
+
+  .sf-atelier-title {
+    font-family: var(--illu-font-display, serif);
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 600;
+    color: #F9F9F9;
+    margin: 0 0 20px 0;
+    line-height: 1.1;
+  }
+
+  .sf-atelier-subtitle {
+    font-size: 1.15rem;
+    color: rgba(249, 249, 249, 0.8);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Grid */
+  .sf-atelier-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-bottom: 80px;
+  }
+
+  /* Cards */
+  .sf-atelier-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 40px 32px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    transition: all 0.4s ease;
+  }
+
+  .sf-atelier-card:hover {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(232, 157, 70, 0.2);
+    transform: translateY(-5px);
+  }
+
+  /* Icon */
+  .sf-atelier-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(232, 157, 70, 0.05); /* Lueur soft amber */
+    border: 1px solid rgba(232, 157, 70, 0.1);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+  }
+
+  .sf-atelier-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  /* Content */
+  .sf-atelier-card-title {
+    font-family: var(--illu-font-display, serif);
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #F9F9F9;
+    margin: 0 0 12px 0;
+  }
+
+  .sf-atelier-card-desc {
+    font-size: 0.95rem;
+    color: rgba(249, 249, 249, 0.6);
+    line-height: 1.5;
+    margin: 0 0 32px 0;
+    flex-grow: 1; /* Pousse l'objectif vers le bas */
+  }
+
+  .sf-atelier-divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.08);
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  /* Objective Footer */
+  .sf-atelier-objective-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #E89D46;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+
+  .sf-atelier-objective-text {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #F9F9F9;
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  /* Image Banner */
+  .sf-atelier-banner {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    border-radius: 32px;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    padding: 50px;
+  }
+
+  .sf-atelier-banner::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(to top, #081A32 0%, rgba(8, 26, 50, 0.3) 50%, rgba(8, 26, 50, 0.1) 100%);
+    z-index: 1;
+  }
+
+  .sf-banner-img {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    filter: brightness(0.8);
+  }
+
+  /* Fallback color if no image */
+  .sf-atelier-banner-fallback {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(135deg, #0A2140 0%, #050F1D 100%);
+    z-index: 0;
+  }
+
+  .sf-banner-content {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+  }
+
+  .sf-banner-eyebrow {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #E89D46;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .sf-banner-title {
+    font-family: var(--illu-font-display, serif);
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: #F9F9F9;
+    margin: 0;
+    line-height: 1.3;
+  }
+
+  /* Responsive */
+  @media screen and (max-width: 1024px) {
+    .sf-atelier-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .sf-atelier-filters {
+      padding: 60px 1.5rem;
+    }
+    .sf-atelier-header {
+      margin-bottom: 40px;
+    }
+    .sf-atelier-title {
+      font-size: 2.2rem;
+    }
+    .sf-atelier-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    .sf-atelier-card {
+      padding: 30px;
+    }
+    .sf-atelier-banner {
+      height: 300px;
+      padding: 30px 24px;
+      border-radius: 20px;
+    }
+    .sf-banner-title {
+      font-size: 1.4rem;
+    }
+  }
+</style>
+
+<div class="sf-atelier-filters">
+  <div class="sf-atelier-container">
+    
+    <div class="sf-atelier-header">
+      {% if section.settings.title != blank %}
+        <h2 class="sf-atelier-title">{{ section.settings.title }}</h2>
+      {% endif %}
+      {% if section.settings.subtitle != blank %}
+        <p class="sf-atelier-subtitle">{{ section.settings.subtitle }}</p>
+      {% endif %}
+    </div>
+
+    <div class="sf-atelier-grid">
+      {% for block in section.blocks %}
+        <div class="sf-atelier-card" {{ block.shopify_attributes }}>
+          <div class="sf-atelier-icon">
+            {{ block.settings.icon_svg }}
+          </div>
+          <h3 class="sf-atelier-card-title">{{ block.settings.title }}</h3>
+          <p class="sf-atelier-card-desc">{{ block.settings.description }}</p>
+          
+          <div class="sf-atelier-divider"></div>
+          
+          <div class="sf-atelier-objective-label">OBJECTIF</div>
+          <p class="sf-atelier-objective-text">{{ block.settings.objective_text }}</p>
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- CTA Banner -->
+    <div class="sf-atelier-banner">
+      {% if section.settings.banner_image != blank %}
+        {{ section.settings.banner_image | image_url: width: 1400 | image_tag: class: 'sf-banner-img', loading: 'lazy' }}
+      {% else %}
+        <div class="sf-atelier-banner-fallback"></div>
+      {% endif %}
+      
+      <div class="sf-banner-content">
+        {% if section.settings.banner_eyebrow != blank %}
+          <span class="sf-banner-eyebrow">{{ section.settings.banner_eyebrow }}</span>
+        {% endif %}
+        {% if section.settings.banner_title != blank %}
+          <h3 class="sf-banner-title">{{ section.settings.banner_title }}</h3>
+        {% endif %}
+      </div>
+    </div>
+
+  </div>
+</div>
