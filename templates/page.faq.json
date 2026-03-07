@@ -73,7 +73,7 @@
         "subtitle": "Parce que choisir son ambiance ne devrait jamais être un casse-tête.",
         "search_placeholder": "Rechercher une question...",
         "search_button_text": "Chercher",
-        "faq_category_title": "CHOISIR LA BONNE   LUMIÈRE",
+        "faq_category_title": "CHOISIR LA BONNE   <span>LUMIÈRE</span>",
         "faq_count_label": "questions fréquentes"
       }
     },
