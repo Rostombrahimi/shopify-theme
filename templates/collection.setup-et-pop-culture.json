@@ -91,12 +91,29 @@
         "title": "",
         "description": "Découvrez les bénéfices de l'Univers Visuel pour sublimer vos espaces."
       }
+    },
+    "sf_licence_grid_QVNGKn": {
+      "type": "sf-licence-grid",
+      "name": "Grille Premium Licence",
+      "settings": {
+        "collection": "",
+        "products_to_show": 4
+      }
+    },
+    "sf_univers_visuel_seo_NK8ibn": {
+      "type": "sf-univers-visuel-seo",
+      "name": "SEO Texte Discret (Animé)",
+      "settings": {
+        "seo_text": "Un bon setup ne s’explique pas.\n Il se voit."
+      }
     }
   },
   "order": [
     "banner",
     "product-grid",
     "sf_univers_visuel_hero_PzKpLf",
-    "sf_visual_impact_gH6UjP"
+    "sf_visual_impact_gH6UjP",
+    "sf_licence_grid_QVNGKn",
+    "sf_univers_visuel_seo_NK8ibn"
   ]
 }
