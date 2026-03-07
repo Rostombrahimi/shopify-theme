@@ -156,7 +156,8 @@
           "settings": {
             "icon_svg": "<svg width=\"32\" height=\"32\" viewbox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n  <path d=\"M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z\" stroke=\"#E89D46\" stroke-width=\"1.5\" stroke-linejoin=\"round\"></path>\n</svg>",
             "card_title": "Décision simplifiée",
-            "card_text": "Trop de choix tue le choix ; nous ne proposons que la Master pièce de chaque catégorie."
+            "card_text": "Trop de choix tue le choix ; nous ne proposons que la Master pièce de chaque catégorie.",
+            "card_image": "shopify://shop_images/image_2565d8a6-0369-4e52-88b1-def9b47ec4ca.png"
           }
         },
         "curation_card_CWzRQy": {
@@ -164,7 +165,8 @@
           "settings": {
             "icon_svg": "<svg width=\"32\" height=\"32\" viewbox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n  <path d=\"M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.77 3.77z\" stroke=\"#E89D46\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n</svg>",
             "card_title": "Maîtrise totale",
-            "card_text": "Nous connaissons chaque vis et chaque réglage de nos produits. Une expertise technique sans compromis."
+            "card_text": "Nous connaissons chaque vis et chaque réglage de nos produits. Une expertise technique sans compromis.",
+            "card_image": "shopify://shop_images/unnamed_0fdd1201-07a2-4fe2-a066-8f07462a7948.png"
           }
         },
         "curation_card_fndpBy": {
@@ -172,7 +174,8 @@
           "settings": {
             "icon_svg": "<svg width=\"32\" height=\"32\" viewbox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n  <path d=\"M12 2C12 2 5 9 5 15C5 18.866 8.134 22 12 22C15.866 22 19 18.866 19 15C19 9 12 2 12 2Z\" stroke=\"#E89D46\" stroke-width=\"1.5\" stroke-linejoin=\"round\"></path>\n  <path d=\"M12 22V12\" stroke=\"#E89D46\" stroke-width=\"1.5\" stroke-linecap=\"round\"></path>\n  <path d=\"M12 16C9.5 16 8 14 8 11.5\" stroke=\"#E89D46\" stroke-width=\"1.5\" stroke-linecap=\"round\"></path>\n</svg>",
             "card_title": "Impact Durable",
-            "card_text": "Choisir juste du premier coup, c'est éviter les retours inutiles et réduire considérablement le gaspillage."
+            "card_text": "Choisir juste du premier coup, c'est éviter les retours inutiles et réduire considérablement le gaspillage.",
+            "card_image": "shopify://shop_images/unnamed_c56c825d-3ea8-40b8-9263-8828acd4d86f.png"
           }
         }
       },
