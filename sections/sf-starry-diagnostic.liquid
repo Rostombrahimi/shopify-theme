@@ -156,12 +156,17 @@
   line-height: 1.6;
 }
 
+#shopify-section-{{ section.id }} .diagnostic-grid-wrapper {
+  width: 100%;
+}
+
 #shopify-section-{{ section.id }} .diagnostic-grid {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
   max-width: 850px;
   width: 100%;
+  margin: 0 auto;
 }
 
 ::selection {
@@ -262,27 +267,61 @@
 
 @media screen and (max-width: 768px) {
   #shopify-section-{{ section.id }} .diagnostic-section {
-    padding: 80px 5%;
+    padding: 80px 0; /* Removing side padding to allow full bleed scroll */
+  }
+
+  #shopify-section-{{ section.id }} .diagnostic-header {
+    text-align: center;
+    padding: 0 5%;
+  }
+
+  #shopify-section-{{ section.id }} .diagnostic-h2 {
+    font-size: 2.2rem;
+  }
+
+  /* Mobile Swipe Slider Logic */
+  #shopify-section-{{ section.id }} .diagnostic-grid-wrapper {
+    width: 100vw;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+    padding-bottom: 24px; /* Space for shadow/hover */
+  }
+
+  #shopify-section-{{ section.id }} .diagnostic-grid-wrapper::-webkit-scrollbar {
+    display: none;
+  }
+
+  #shopify-section-{{ section.id }} .diagnostic-grid {
+    flex-direction: row;
+    width: max-content;
+    padding: 0 5%;
+    margin: 0;
+    gap: 1.25rem;
   }
   
   #shopify-section-{{ section.id }} .diagnostic-card {
-    padding: 24px;
+    scroll-snap-align: center;
+    width: 85vw; /* Almost full width but peeking next card */
+    max-width: 320px;
+    padding: 32px 24px;
     flex-direction: column;
     align-items: flex-start;
     gap: 1.5rem;
     border-radius: 24px;
+    /* Prevent hover translation jumping issues on mobile touch */
+    transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
   }
   
-  #shopify-section-{{ section.id }} .diagnostic-card:hover {
-    transform: translateY(-5px) translateX(0);
+  #shopify-section-{{ section.id }} .diagnostic-card:hover,
+  #shopify-section-{{ section.id }} .diagnostic-card:active {
+    transform: translateY(-4px) translateX(0); /* Subtle lift instead of slide */
   }
-  
-  #shopify-section-{{ section.id }} .diagnostic-header {
-    text-align: center;
-  }
-  
-  #shopify-section-{{ section.id }} .diagnostic-h2 {
-    font-size: 2.2rem;
+
+  #shopify-section-{{ section.id }} .diagnostic-footer {
+    padding: 0 5%;
+    margin-top: 2rem;
   }
 }
 </style>
@@ -305,24 +344,26 @@
     </div>
 
     {% if section.blocks.size > 0 %}
-      <div class="diagnostic-grid">
-        {% for block in section.blocks %}
-          <div class="diagnostic-card" {{ block.shopify_attributes }}>
-            <div class="diagnostic-icon-wrapper">
-              {% if block.settings.icon != blank %}
-                {{ block.settings.icon }}
-              {% endif %}
+      <div class="diagnostic-grid-wrapper">
+        <div class="diagnostic-grid">
+          {% for block in section.blocks %}
+            <div class="diagnostic-card" {{ block.shopify_attributes }}>
+              <div class="diagnostic-icon-wrapper">
+                {% if block.settings.icon != blank %}
+                  {{ block.settings.icon }}
+                {% endif %}
+              </div>
+              <div class="diagnostic-text-content">
+                {% if block.settings.title != blank %}
+                  <h3 class="diagnostic-card-title">{{ block.settings.title }}</h3>
+                {% endif %}
+                {% if block.settings.text != blank %}
+                  <p class="diagnostic-text">{{ block.settings.text }}</p>
+                {% endif %}
+              </div>
             </div>
-            <div class="diagnostic-text-content">
-              {% if block.settings.title != blank %}
-                <h3 class="diagnostic-card-title">{{ block.settings.title }}</h3>
-              {% endif %}
-              {% if block.settings.text != blank %}
-                <p class="diagnostic-text">{{ block.settings.text }}</p>
-              {% endif %}
-            </div>
-          </div>
-        {% endfor %}
+          {% endfor %}
+        </div>
       </div>
     {% endif %}
 
