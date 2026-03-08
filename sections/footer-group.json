@@ -21,13 +21,6 @@
             "menu": "menu-petit-cocon"
           }
         },
-        "link_list_9L8XHp": {
-          "type": "link_list",
-          "settings": {
-            "title": "Conseils Parents",
-            "menu": "footer"
-          }
-        },
         "link_list_with_icons_wmGxgx": {
           "type": "link_list_with_icons",
           "settings": {
@@ -47,7 +40,7 @@
           "type": "link_list",
           "settings": {
             "title": "Aide & Contact",
-            "menu": ""
+            "menu": "a-propos"
           }
         },
         "bottom_links_z7jqyp": {
@@ -59,7 +52,6 @@
       },
       "block_order": [
         "link_list_QCakLd",
-        "link_list_9L8XHp",
         "link_list_with_icons_wmGxgx",
         "link_list_TqYHwB",
         "bottom_links_z7jqyp"
