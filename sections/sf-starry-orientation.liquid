@@ -1,0 +1,423 @@
+{% schema %}
+{
+  "name": "Orientation Nuit Étoilée",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "surtitle",
+      "label": "Sur-titre (Badge)",
+      "default": "L'AVIS DE L'EXPERT"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Titre principal",
+      "default": "Pourquoi choisir <span>Nuit Étoilée</span> ?"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Chaque ambiance a sa raison d'être. Nuit Étoilée est spécifiquement conçue pour accompagner la transition délicate entre l'éveil et le sommeil."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "orientation_card",
+      "name": "Carte Comparaison",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "is_active",
+          "label": "Carte Active (Nuit Étoilée)",
+          "default": false
+        },
+        {
+          "type": "html",
+          "id": "icon",
+          "label": "Icône SVG"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Univers",
+          "default": "Nuit Étoilée"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Rôle principal",
+          "default": "Endormissement & Rituel"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Description du rôle",
+          "default": "Le passage parfait vers les songes. Une lumière qui s'estompe pour signaler au cerveau qu'il est temps de se reposer."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Orientation Nuit Étoilée",
+      "blocks": [
+        {
+          "type": "orientation_card",
+          "settings": {
+            "is_active": true,
+            "icon": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 2l3 5 5 2-4 4 1 6-5-3-5 3 1-6-4-4 5-2 3-5Z\"/></svg>",
+            "title": "Nuit Étoilée",
+            "subtitle": "Endormissement & Rituel",
+            "text": "Le passage parfait vers les songes. Une lumière qui s'estompe pour signaler au cerveau qu'il est temps de se reposer."
+          }
+        },
+        {
+          "type": "orientation_card",
+          "settings": {
+            "is_active": false,
+            "icon": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\"/></svg>",
+            "title": "Amis de la Forêt",
+            "subtitle": "Repère rassurant",
+            "text": "Une présence douce et constante tout au long de la nuit pour éviter les réveils anxieux dans l'obscurité totale."
+          }
+        },
+        {
+          "type": "orientation_card",
+          "settings": {
+            "is_active": false,
+            "icon": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"4\"/><path d=\"M12 2v2\"/><path d=\"M12 20v2\"/><path d=\"m4.93 4.93 1.41 1.41\"/><path d=\"m17.66 17.66 1.41 1.41\"/><path d=\"M2 12h2\"/><path d=\"M20 12h2\"/><path d=\"m6.34 17.66-1.41 1.41\"/><path d=\"m19.07 4.93-1.41 1.41\"/></svg>",
+            "title": "Lumière Douce",
+            "subtitle": "Soins nocturnes",
+            "text": "Une intensité pratique pour les interventions rapides (change, eau, câlin) sans briser le cycle de mélatonine."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+/* Orientation Expert Nuit Étoilée - sf-starry-orientation.css */
+#shopify-section-{{ section.id }} .orientation-expert-section {
+  background-color: #081A32;
+  padding: 100px 5%;
+  position: relative;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#shopify-section-{{ section.id }} .starry-orientation-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 4rem auto;
+}
+
+/* Badge Bleu transparent pour différencier du Badge Ambre */
+#shopify-section-{{ section.id }} .starry-orientation-surtitle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(43, 89, 204, 0.15); /* Bleu tech/expert */
+  border: 1px solid rgba(43, 89, 204, 0.3);
+  padding: 6px 18px;
+  border-radius: 99px;
+  color: #6C9AFF; 
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+#shopify-section-{{ section.id }} .starry-orientation-surtitle svg {
+  width: 14px;
+  height: 14px;
+}
+
+#shopify-section-{{ section.id }} .starry-orientation-title {
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  color: #F9F9F9;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+
+#shopify-section-{{ section.id }} .starry-orientation-title span {
+  color: #E89D46;
+}
+
+#shopify-section-{{ section.id }} .starry-orientation-desc {
+  color: rgba(249, 249, 249, 0.7);
+  font-size: 1.15rem;
+  line-height: 1.6;
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+/* Grille Wrapper pour Desktop/Mobile Scroll */
+#shopify-section-{{ section.id }} .orientation-grid-wrapper {
+  width: 100%;
+}
+
+#shopify-section-{{ section.id }} .comparison-grid {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Carte de comparaison individuelle */
+#shopify-section-{{ section.id }} .comp-item {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 32px;
+  padding: 48px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  /* Grillage inactif : par défaut on assombrit */
+  opacity: 0.5;
+  filter: saturate(0.5);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Carte Active (Nuit Étoilée) */
+#shopify-section-{{ section.id }} .comp-item.is-active {
+  opacity: 1;
+  filter: saturate(1);
+  transform: scale(1.05);
+  border-color: rgba(232, 157, 70, 0.4);
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+
+/* Effet Lueur pour la carte active */
+#shopify-section-{{ section.id }} .comp-item.is-active::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 32px;
+  padding: 2px; /* Epaisseur de la bordure lumineuse */
+  background: linear-gradient(180deg, rgba(232,157,70,0.6) 0%, transparent 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Recommandé Badge */
+#shopify-section-{{ section.id }} .recommande-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #E89D46;
+  color: #081A32;
+  font-size: 0.70rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 6px 20px;
+  border-bottom-left-radius: 16px;
+}
+
+/* Icones */
+#shopify-section-{{ section.id }} .comp-icon-wrapper {
+  width: 64px;
+  height: 64px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #A8B8D0; /* Bleu clair gris pour inactif */
+  margin-bottom: 2rem;
+  transition: all 0.4s ease;
+}
+
+/* Icône pour carte Active */
+#shopify-section-{{ section.id }} .comp-item.is-active .comp-icon-wrapper {
+  background: rgba(232, 157, 70, 0.15);
+  color: #E89D46;
+  filter: drop-shadow(0 0 20px rgba(232, 157, 70, 0.4));
+  mix-blend-mode: plus-lighter;
+}
+
+#shopify-section-{{ section.id }} .comp-icon-wrapper svg {
+  width: 28px;
+  height: 28px;
+}
+
+/* Titres */
+#shopify-section-{{ section.id }} .comp-title {
+  color: #F9F9F9;
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin: 0 0 1rem 0;
+  letter-spacing: -0.01em;
+}
+
+#shopify-section-{{ section.id }} .comp-subtitle {
+  color: #8A9BB3;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0 0 1.5rem 0;
+}
+
+#shopify-section-{{ section.id }} .comp-item.is-active .comp-subtitle {
+  color: #E89D46;
+}
+
+/* Ligne Séparatrice SVG */
+#shopify-section-{{ section.id }} .comp-divider {
+  width: 40px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  margin-bottom: 1.5rem;
+}
+
+#shopify-section-{{ section.id }} .comp-item.is-active .comp-divider {
+  background: rgba(232, 157, 70, 0.3);
+}
+
+/* Description */
+#shopify-section-{{ section.id }} .comp-desc {
+  color: rgba(249, 249, 249, 0.5);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 260px;
+}
+
+#shopify-section-{{ section.id }} .comp-item.is-active .comp-desc {
+  color: rgba(249, 249, 249, 0.8);
+}
+
+
+/* RESPONSIVE MOBILE : Slider Snap Carousel */
+@media screen and (max-width: 1024px) {
+  #shopify-section-{{ section.id }} .comparison-grid {
+    flex-wrap: wrap; /* On permet un retour à la ligne si écrans un peu petits */
+  }
+  #shopify-section-{{ section.id }} .comp-item {
+    flex: 1 1 300px; /* Minimum width avant de casser */
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #shopify-section-{{ section.id }} .orientation-expert-section {
+    padding: 80px 0;
+  }
+  
+  #shopify-section-{{ section.id }} .starry-orientation-header {
+    padding: 0 5%;
+  }
+
+  /* Slider Configuration */
+  #shopify-section-{{ section.id }} .orientation-grid-wrapper {
+    width: 100vw;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: 24px 0 40px 0; /* padding pour laisser respirer l'ombre et l'échelle de la carte active */
+  }
+
+  #shopify-section-{{ section.id }} .orientation-grid-wrapper::-webkit-scrollbar {
+    display: none;
+  }
+
+  #shopify-section-{{ section.id }} .comparison-grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: max-content;
+    padding: 0 5%;
+    margin: 0;
+    gap: 1.5rem;
+  }
+
+  #shopify-section-{{ section.id }} .comp-item {
+    scroll-snap-align: center;
+    width: 80vw;
+    max-width: 300px;
+    padding: 40px 24px;
+    /* On désactive le scale() pour ne pas déborder/bugger dans l'UX Mobile Slider */
+    transform: none !important;
+  }
+
+  /* Sur mobile, on garde l'opacité et les couleurs mais sans déformation de taille */
+  #shopify-section-{{ section.id }} .comp-item.is-active {
+    opacity: 1;
+    transform: none !important;
+  }
+}
+</style>
+
+<section class="orientation-expert-section sf-stitch">
+  <div class="starry-orientation-header">
+    {% if section.settings.surtitle != blank %}
+      <div class="starry-orientation-surtitle">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+        {{ section.settings.surtitle }}
+      </div>
+    {% endif %}
+    
+    {% if section.settings.title != blank %}
+      <h2 class="starry-orientation-title">{{ section.settings.title }}</h2>
+    {% endif %}
+    
+    {% if section.settings.description != blank %}
+      <p class="starry-orientation-desc">{{ section.settings.description }}</p>
+    {% endif %}
+  </div>
+
+  {% if section.blocks.size > 0 %}
+    <div class="orientation-grid-wrapper">
+      <div class="comparison-grid">
+        {% for block in section.blocks %}
+          
+          <div class="comp-item {% if block.settings.is_active %}is-active{% endif %}" {{ block.shopify_attributes }}>
+            {% if block.settings.is_active %}
+              <div class="recommande-badge">Recommandé</div>
+            {% endif %}
+
+            <div class="comp-icon-wrapper">
+              {% if block.settings.icon != blank %}
+                {{ block.settings.icon }}
+              {% endif %}
+            </div>
+
+            {% if block.settings.title != blank %}
+              <h3 class="comp-title">{{ block.settings.title }}</h3>
+            {% endif %}
+
+            {% if block.settings.subtitle != blank %}
+              <div class="comp-subtitle">{{ block.settings.subtitle }}</div>
+            {% endif %}
+
+            <div class="comp-divider"></div>
+
+            {% if block.settings.text != blank %}
+              <p class="comp-desc">{{ block.settings.text }}</p>
+            {% endif %}
+          </div>
+
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+</section>
