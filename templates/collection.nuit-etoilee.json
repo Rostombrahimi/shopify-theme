@@ -74,12 +74,12 @@
       ],
       "name": "Hero Nuit Étoilée",
       "settings": {
-        "badge_text": "🧸 AMBIANCE NUIT ÉTOILÉE",
+        "badge_text": "",
         "title": "Nuit Étoilée –<br>Créer le <span>rituel idéal</span> pour<br>un <span>endormissement serein</span>",
         "subtitle": "Une immersion céleste pensée pour apaiser l'esprit et faciliter la<br>transition vers le sommeil.",
-        "button_text_1": "Découvrir l'univers →",
+        "button_text_1": "Découvrir les produits →",
         "button_link_1": "",
-        "button_text_2": "En savoir plus",
+        "button_text_2": "",
         "button_link_2": "",
         "background_image": "shopify://shop_images/unnamed_85b15d3b-71bd-4792-8b9e-e309dcce4182.png"
       }
