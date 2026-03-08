@@ -15,14 +15,14 @@
         "slide_1": {
           "type": "slide",
           "settings": {
-            "item_id": "pro",
+            "item_id": "Espace Quotidien",
             "icon": "💼",
-            "label": "Pro",
+            "label": "Quotidien",
             "card_svg": "",
             "material_icon": "edit_note",
             "accent_color": "#e89d46",
-            "card_title": "Lampe Bureau Focus",
-            "card_subtitle": "Lumière précise 4000K"
+            "card_title": "",
+            "card_subtitle": ""
           }
         },
         "slide_2": {
