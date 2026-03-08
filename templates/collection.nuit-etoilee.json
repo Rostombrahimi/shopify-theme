@@ -83,11 +83,53 @@
         "button_link_2": "",
         "background_image": "shopify://shop_images/unnamed_85b15d3b-71bd-4792-8b9e-e309dcce4182.png"
       }
+    },
+    "sf_starry_diagnostic_mWkCB8": {
+      "type": "sf-starry-diagnostic",
+      "blocks": {
+        "diagnostic_card_4xyWAt": {
+          "type": "diagnostic_card",
+          "settings": {
+            "icon": "<svg viewbox=\"0 0 24 24\" width=\"28\" height=\"28\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n  <path d=\"M10 20.3a9 9 0 0 1-6.8-14.8c1.5 3.5 4.5 5.5 8.8 4.8a8 8 0 1 0 3.2 13.9\"></path>\n  <path d=\"M17 8h2m-1-1v2\" opacity=\"0.5\"></path>\n  <path d=\"M6 5h1m-.5-.5v1\" opacity=\"0.3\"></path>\n</svg>",
+            "title": "Difficulté à lâcher prise",
+            "text": "Votre enfant a du mal à se détendre et à <strong>\"déconnecter\"</strong> de sa journée, restant souvent en hyper-éveil au moment du coucher."
+          }
+        },
+        "diagnostic_card_qjJgE8": {
+          "type": "diagnostic_card",
+          "settings": {
+            "icon": "<svg viewbox=\"0 0 24 24\" width=\"28\" height=\"28\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n  <path d=\"M6 4h12\"></path>\n  <path d=\"M6 20h12\"></path>\n  <path d=\"M8 4v4a4 4 0 0 0 4 4v0a4 4 0 0 0 4-4V4\"></path>\n  <path d=\"M16 20v-4a4 4 0 0 0-4-4v0a4 4 0 0 0-4 4v4\"></path>\n  <path d=\"M12 12v4\" opacity=\"0.4\" stroke-dasharray=\"1 2\"></path>\n</svg>",
+            "title": "Rituel complexe",
+            "text": "Le rituel du coucher est <strong>long, difficile</strong> ou marqué par une anxiété de séparation qui pèse sur toute la famille."
+          }
+        },
+        "diagnostic_card_rKYbdd": {
+          "type": "diagnostic_card",
+          "settings": {
+            "icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z\"></path><circle cx=\"12\" cy=\"12\" r=\"3\"></circle></svg>",
+            "title": "Besoin de structure visuelle",
+            "text": "Vous cherchez un <strong>signal visuel clair</strong> qui indique de manière non-verbale que \"le temps du calme est arrivé\"."
+          }
+        }
+      },
+      "block_order": [
+        "diagnostic_card_4xyWAt",
+        "diagnostic_card_qjJgE8",
+        "diagnostic_card_rKYbdd"
+      ],
+      "name": "Diagnostic Nuit Étoilée",
+      "settings": {
+        "surtitle": "ANALYSE DE BESOIN",
+        "title": "Cette ambiance est idéale si :",
+        "description": "Découvrez si le rituel \"Nuit Étoilée\" correspond aux besoins de votre enfant pour retrouver des soirées sereines.",
+        "footer_quote": "\"Nous comprenons que chaque soirée est un défi. Nuit Étoilée a été conçue par des experts pour transformer ces tensions en moments de connexion.\""
+      }
     }
   },
   "order": [
     "banner",
     "product-grid",
-    "sf_hero_starry_XMfGXr"
+    "sf_hero_starry_XMfGXr",
+    "sf_starry_diagnostic_mWkCB8"
   ]
 }
