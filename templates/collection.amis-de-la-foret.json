@@ -154,16 +154,50 @@
         "description": "Découvrez comment nos veilleuses transforment la nuit de votre enfant en un moment de calme et de sérénité grâce à une conception pensée pour le bien-être."
       }
     },
-    "sf_orientation_forest_hxxXPi": {
-      "type": "sf-orientation-forest",
-      "name": "Orientation Forêt",
+    "sf_starry_orientation_jT8ndh": {
+      "type": "sf-starry-orientation",
+      "blocks": {
+        "orientation_card_DDzrWK": {
+          "type": "orientation_card",
+          "settings": {
+            "is_active": false,
+            "icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z\"></path></svg>",
+            "title": "Nuit Étoilée",
+            "subtitle": "Endormissement & Rituel",
+            "text": "Le passage parfait vers les songes. Une lumière qui s'estompe pour signaler au cerveau qu'il est temps de se reposer."
+          }
+        },
+        "orientation_card_99644j": {
+          "type": "orientation_card",
+          "settings": {
+            "is_active": true,
+            "icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n  <path d=\"m17 14 3 3.3a1 1 0 0 1-.7 1.7H4.7a1 1 0 0 1-.7-1.7L7 14h-.3a1 1 0 0 1-.7-1.7L9 9h-.2A1 1 0 0 1 8 7.3L12 3l4 4.3a1 1 0 0 1-.8 1.7H15l3 3.3a1 1 0 0 1-.8 1.7H17z\"></path>\n  <path d=\"M12 22v-3\"></path>\n</svg>",
+            "title": "Amis de la Forêt",
+            "subtitle": "Repère rassurant",
+            "text": "Une présence douce et constante tout au long de la nuit pour éviter les réveils anxieux dans l'obscurité totale."
+          }
+        },
+        "orientation_card_9Yr9k6": {
+          "type": "orientation_card",
+          "settings": {
+            "is_active": false,
+            "icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"4\"></circle><path d=\"M12 2v2\"></path><path d=\"M12 20v2\"></path><path d=\"m4.93 4.93 1.41 1.41\"></path><path d=\"m17.66 17.66 1.41 1.41\"></path><path d=\"M2 12h2\"></path><path d=\"M20 12h2\"></path><path d=\"m6.34 17.66-1.41 1.41\"></path><path d=\"m19.07 4.93-1.41 1.41\"></path></svg>",
+            "title": "Lumière Douce",
+            "subtitle": "Soins nocturnes",
+            "text": "Une intensité pratique pour les interventions rapides (change, eau, câlin) sans briser le cycle de mélatonine."
+          }
+        }
+      },
+      "block_order": [
+        "orientation_card_DDzrWK",
+        "orientation_card_99644j",
+        "orientation_card_9Yr9k6"
+      ],
+      "name": "Orientation Nuit Étoilée",
       "settings": {
-        "title": "Choisir la bonne présence pour leur nuit.",
-        "description": "Pourquoi choisir <span>Amis de la Forêt</span> ? Cette ambiance est pensée pour rassurer et sécuriser. Contrairement à Nuit Étoilée, orientée vers l'endormissement, Amis de la Forêt est idéale pour les enfants qui ont besoin d'un repère visible pendant la nuit.",
-        "link_text": "Consultez notre guide des lumières",
-        "link_url": "shopify://pages/latelier",
-        "link_prefix": "Vous hésitez encore ?",
-        "link_suffix": "pour trouver l'ami parfait."
+        "surtitle": "L'AVIS DE L'EXPERT",
+        "title": "Pourquoi choisir <span>Nuit Étoilée</span> ?",
+        "description": "Chaque ambiance a sa raison d'être. Nuit Étoilée est spécifiquement conçue pour accompagner la transition délicate entre l'éveil et le sommeil."
       }
     },
     "sf_forest_cta_8Dwt7z": {
@@ -185,7 +219,7 @@
     "sf_hero_forest_9YHPMb",
     "sf_empathy_forest_yqnFq7",
     "sf_benefits_forest_kdpQzJ",
-    "sf_orientation_forest_hxxXPi",
+    "sf_starry_orientation_jT8ndh",
     "sf_forest_cta_8Dwt7z"
   ]
 }
