@@ -167,6 +167,52 @@
         "banner_icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79Z\"></path></svg>",
         "banner_quote": "\"L'obscurité devient un théâtre d'étoiles.\""
       }
+    },
+    "sf_starry_orientation_wBabxn": {
+      "type": "sf-starry-orientation",
+      "blocks": {
+        "orientation_card_FFbLFA": {
+          "type": "orientation_card",
+          "settings": {
+            "is_active": true,
+            "icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z\"></path></svg>",
+            "title": "Nuit Étoilée",
+            "subtitle": "Endormissement & Rituel",
+            "text": "Le passage parfait vers les songes. Une lumière qui s'estompe pour signaler au cerveau qu'il est temps de se reposer."
+          }
+        },
+        "orientation_card_VMBXfc": {
+          "type": "orientation_card",
+          "settings": {
+            "is_active": false,
+            "icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\"></path></svg>",
+            "title": "Amis de la Forêt",
+            "subtitle": "Repère rassurant",
+            "text": "Une présence douce et constante tout au long de la nuit pour éviter les réveils anxieux dans l'obscurité totale."
+          }
+        },
+        "orientation_card_qhDkEn": {
+          "type": "orientation_card",
+          "settings": {
+            "is_active": false,
+            "icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"4\"></circle><path d=\"M12 2v2\"></path><path d=\"M12 20v2\"></path><path d=\"m4.93 4.93 1.41 1.41\"></path><path d=\"m17.66 17.66 1.41 1.41\"></path><path d=\"M2 12h2\"></path><path d=\"M20 12h2\"></path><path d=\"m6.34 17.66-1.41 1.41\"></path><path d=\"m19.07 4.93-1.41 1.41\"></path></svg>",
+            "title": "Lumière Douce",
+            "subtitle": "Soins nocturnes",
+            "text": "Une intensité pratique pour les interventions rapides (change, eau, câlin) sans briser le cycle de mélatonine."
+          }
+        }
+      },
+      "block_order": [
+        "orientation_card_FFbLFA",
+        "orientation_card_VMBXfc",
+        "orientation_card_qhDkEn"
+      ],
+      "name": "Orientation Nuit Étoilée",
+      "settings": {
+        "surtitle": "L'AVIS DE L'EXPERT",
+        "title": "Pourquoi choisir <span>Nuit Étoilée</span> ?",
+        "description": "Chaque ambiance a sa raison d'être. Nuit Étoilée est spécifiquement conçue pour accompagner la transition délicate entre l'éveil et le sommeil."
+      }
     }
   },
   "order": [
@@ -174,6 +220,7 @@
     "product-grid",
     "sf_hero_starry_XMfGXr",
     "sf_starry_diagnostic_mWkCB8",
-    "sf_starry_benefits_qXMBBG"
+    "sf_starry_benefits_qXMBBG",
+    "sf_starry_orientation_wBabxn"
   ]
 }
