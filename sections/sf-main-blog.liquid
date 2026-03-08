@@ -171,28 +171,56 @@
       margin-top: 60px;
       display: flex;
       justify-content: center;
-      gap: 1rem;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
     }
-    .atelier-pagination a, .atelier-pagination span {
+    
+    .atelier-pagination .pagination-num {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 40px;
-      height: 40px;
+      min-width: 44px;
+      height: 44px;
+      padding: 0 12px;
       color: var(--illu-text-cream);
       text-decoration: none;
       border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 50%;
+      border-radius: 50px;
       background: rgba(255,255,255,0.02);
       transition: var(--illu-transition-soft);
+      font-weight: 500;
     }
-    .atelier-pagination .current {
+    
+    .atelier-pagination .pagination-num.current {
       background: var(--illu-accent-amber);
       color: var(--illu-bg-night);
       border-color: var(--illu-accent-amber);
       font-weight: bold;
     }
-    .atelier-pagination a:hover {
+    
+    .atelier-pagination .pagination-num:hover:not(.current):not(.deco) {
+      border-color: var(--illu-accent-amber);
+      color: var(--illu-accent-amber);
+    }
+    
+    .atelier-pagination .pagination-arrow {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      height: 44px;
+      padding: 0 20px;
+      color: var(--illu-text-cream);
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 50px;
+      background: rgba(255,255,255,0.02);
+      transition: var(--illu-transition-soft);
+      font-weight: 500;
+    }
+    
+    .atelier-pagination .pagination-arrow:hover {
       border-color: var(--illu-accent-amber);
       color: var(--illu-accent-amber);
     }
@@ -275,7 +303,31 @@
 
     {%- if paginate.pages > 1 -%}
       <div class="atelier-pagination">
-        {{ paginate | default_pagination }}
+        {%- if paginate.previous -%}
+          <a href="{{ paginate.previous.url }}" class="pagination-arrow" aria-label="Précédent">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Précédent
+          </a>
+        {%- endif -%}
+
+        {%- for part in paginate.parts -%}
+          {%- if part.is_link -%}
+            <a href="{{ part.url }}" class="pagination-num">{{ part.title }}</a>
+          {%- else -%}
+            {%- if part.title == paginate.current_page -%}
+              <span class="pagination-num current">{{ part.title }}</span>
+            {%- else -%}
+              <span class="pagination-num deco">{{ part.title }}</span>
+            {%- endif -%}
+          {%- endif -%}
+        {%- endfor -%}
+
+        {%- if paginate.next -%}
+          <a href="{{ paginate.next.url }}" class="pagination-arrow" aria-label="Suivant">
+            Suivant
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        {%- endif -%}
       </div>
     {%- endif -%}
   {% endpaginate %}
