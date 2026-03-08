@@ -92,27 +92,27 @@
           "type": "need_card",
           "settings": {
             "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z\"></path></svg>",
-            "title": "Les Premières Nuits",
-            "text": "Une douceur absolue pour les soins nocturnes, sans jamais briser le calme.",
-            "link": ""
+            "title": " Nuit Étoilée",
+            "text": "Des lumières inspirées du ciel nocturne pour apaiser et accompagner l’endormissement",
+            "link": "shopify://collections/nuit-etoilee"
           }
         },
         "need_card_7mFPgD": {
           "type": "need_card",
           "settings": {
-            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20\"></path></svg>",
-            "title": "L'Heure des Histoires",
-            "text": "Des ambiances chaleureuses pour ritualiser le coucher et apaiser les esprits.",
-            "link": ""
+            "icon": "<svg viewbox=\"0 0 40 40\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n  <rect width=\"40\" height=\"40\" rx=\"12\" fill=\"#E89D46\" fill-opacity=\"0.1\"></rect>\n  <path d=\"M26 14C26 14 22 14 19 17C16 20 16 24 16 24M16 24C16 24 20 24 23 21C26 18 26 14 26 14ZM16 24L14 26\" stroke=\"#E89D46\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n  <path d=\"M21 19L23 21\" stroke=\"#E89D46\" stroke-width=\"2\" stroke-linecap=\"round\"></path>\n</svg>",
+            "title": " Amis de la Forêt",
+            "text": "Veilleuses aux formes douces et rassurantes, pensées pour devenir des compagnons de nuit.",
+            "link": "shopify://collections/amis-de-la-foret"
           }
         },
         "need_card_xMUNXN": {
           "type": "need_card",
           "settings": {
-            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><polygon points=\"16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76\"></polygon></svg>",
-            "title": "Vers l'Autonomie",
-            "text": "Des points de repère rassurants pour explorer la nuit en toute confiance.",
-            "link": ""
+            "icon": "<svg viewbox=\"0 0 40 40\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n  <rect width=\"40\" height=\"40\" rx=\"12\" fill=\"#E89D46\" fill-opacity=\"0.1\"></rect>\n  <path d=\"M15 26C13.3431 26 12 24.6569 12 23C12 21.6033 12.9525 20.4287 14.2443 20.1014C14.6534 17.7534 16.7027 16 19.1667 16C21.4116 16 23.3082 17.4526 23.9452 19.4804C24.2755 19.1685 24.7155 19 25.1944 19C26.1916 19 27 19.8084 27 20.8056C27 20.9142 26.9904 21.0205 26.9719 21.2239C27.5946 21.678 28 22.392 28 23.1944C28 24.7439 26.7439 26 25.1944 26H15Z\" stroke=\"#E89D46\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n</svg>",
+            "title": " Lumière Douce & Apaisante",
+            "text": "Une lumière tamisée pour les réveils nocturnes et les moments calmes.",
+            "link": "shopify://collections/lumiere-douce-apaisante"
           }
         }
       },
