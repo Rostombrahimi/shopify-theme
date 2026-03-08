@@ -1,0 +1,417 @@
+{% schema %}
+{
+  "name": "Hero Nuit Étoilée",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "🧸 AMBIANCE NUIT ÉTOILÉE"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Heading",
+      "default": "Nuit Étoilée –<br>Créer le <span>rituel idéal</span> pour<br>un <span>endormissement serein</span>"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subheading",
+      "default": "Une immersion céleste pensée pour apaiser l'esprit et faciliter la<br>transition vers le sommeil."
+    },
+    {
+      "type": "text",
+      "id": "button_text_1",
+      "label": "Primary Button Text",
+      "default": "Découvrir l'univers →"
+    },
+    {
+      "type": "url",
+      "id": "button_link_1",
+      "label": "Primary Button Link"
+    },
+    {
+      "type": "text",
+      "id": "button_text_2",
+      "label": "Secondary Button Text",
+      "default": "En savoir plus"
+    },
+    {
+      "type": "url",
+      "id": "button_link_2",
+      "label": "Secondary Button Link"
+    },
+    {
+       "type": "image_picker",
+       "id": "background_image",
+       "label": "Background Image (Optional)"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature Bottom",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "html",
+          "id": "icon",
+          "label": "Icon SVG (Code)"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Atmosphère Calme"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Une lumière tamisée inspirée par les lointaines galaxies."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Nuit Étoilée",
+      "blocks": [
+        { "type": "feature", "settings": { "icon": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z\"/></svg>", "title": "Atmosphère Calme", "text": "Une lumière tamisée inspirée par les lointaines galaxies." } },
+        { "type": "feature", "settings": { "icon": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z\"/><path d=\"M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z\"/></svg>", "title": "Rituels Doux", "text": "Des gestes simples pour une transition naturelle vers le rêve." } },
+        { "type": "feature", "settings": { "icon": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z\"/><line x1=\"16\" y1=\"8\" x2=\"2\" y2=\"22\"/><line x1=\"17.5\" y1=\"15\" x2=\"9\" y2=\"15\"/></svg>", "title": "Sérénité Absolue", "text": "L'apaisement total pour des nuits réparatrices." } }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+/* Hero Nuit Étoilée - sf-hero-starry.css */
+#shopify-section-{{ section.id }} .hero-starry-centered {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: #081A32;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#shopify-section-{{ section.id }} .starry-aura-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(232, 157, 70, 0.12) 0%, rgba(8, 26, 50, 0.5) 50%, #081A32 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+{% if section.settings.background_image %}
+#shopify-section-{{ section.id }} .hero-starry-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.6;
+  z-index: 0;
+  animation: star-pulse 10s infinite alternate ease-in-out;
+}
+{% endif %}
+
+@keyframes star-pulse {
+  0% { filter: brightness(0.85) contrast(1.05); }
+  100% { filter: brightness(1.15) contrast(1.15); }
+}
+
+#shopify-section-{{ section.id }} .hero-starry-content {
+  position: relative;
+  z-index: 3;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 140px 5% 4rem 5%;
+  opacity: 0;
+  animation: soft-reveal 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes soft-reveal {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+#shopify-section-{{ section.id }} .starry-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(232, 157, 70, 0.1);
+  border: 1px solid rgba(232, 157, 70, 0.2);
+  padding: 10px 24px;
+  border-radius: 99px;
+  color: #E89D46;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  margin-bottom: 2.5rem;
+  z-index: 2;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  text-transform: uppercase;
+}
+
+#shopify-section-{{ section.id }} .starry-h1 {
+  font-size: clamp(2.5rem, 6vw, 4.2rem);
+  line-height: 1.1;
+  color: #F9F9F9;
+  max-width: 1000px;
+  z-index: 2;
+  margin-bottom: 2rem;
+  font-weight: 800;
+  position: relative;
+  letter-spacing: -0.02em;
+}
+
+#shopify-section-{{ section.id }} .starry-h1 span {
+  color: #E89D46;
+  text-shadow: 0 0 40px rgba(232, 157, 70, 0.45);
+  position: relative;
+  display: inline-block;
+}
+
+/* Simulate the color-dodge glow via pseudo element as requested */
+#shopify-section-{{ section.id }} .starry-h1 span::after {
+  content: '';
+  position: absolute;
+  inset: -15px;
+  background: radial-gradient(circle, rgba(232,157,70,0.5) 0%, transparent 70%);
+  mix-blend-mode: color-dodge;
+  z-index: -1;
+  pointer-events: none;
+  filter: blur(8px);
+}
+
+#shopify-section-{{ section.id }} .starry-subtitle {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: rgba(249, 249, 249, 0.8);
+  max-width: 650px;
+  margin-bottom: 3rem;
+  z-index: 2;
+}
+
+#shopify-section-{{ section.id }} .starry-buttons {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  z-index: 2;
+}
+
+#shopify-section-{{ section.id }} .btn-starry-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 36px;
+  border-radius: 99px;
+  background-color: #E89D46;
+  color: #081A32;
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(232, 157, 70, 0.2);
+}
+
+#shopify-section-{{ section.id }} .btn-starry-primary:hover {
+  transform: translateY(-2px);
+  background-color: #F0A956;
+  box-shadow: 0 12px 25px rgba(232, 157, 70, 0.3);
+}
+
+#shopify-section-{{ section.id }} .btn-starry-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 36px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #F9F9F9;
+  font-weight: 500;
+  font-size: 1.1rem;
+  text-decoration: none;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+#shopify-section-{{ section.id }} .btn-starry-secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Bottom Features */
+#shopify-section-{{ section.id }} .hero-starry-bottom {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  padding: 0 5% 4rem 5%;
+}
+
+#shopify-section-{{ section.id }} .starry-features-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+#shopify-section-{{ section.id }} .starry-feature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 24px;
+  padding: 2.5rem 2rem;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+#shopify-section-{{ section.id }} .starry-feature:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(232, 157, 70, 0.2);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+#shopify-section-{{ section.id }} .feature-icon-starry {
+  color: #E89D46;
+  margin-bottom: 1.25rem;
+}
+
+#shopify-section-{{ section.id }} .feature-icon-starry svg {
+  width: 28px;
+  height: 28px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+#shopify-section-{{ section.id }} .feature-title-starry {
+  color: #F9F9F9;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0 0 0.8rem 0;
+  letter-spacing: -0.01em;
+}
+
+#shopify-section-{{ section.id }} .feature-text-starry {
+  color: rgba(249, 249, 249, 0.6);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0;
+  max-width: 250px;
+}
+
+@media screen and (max-width: 900px) {
+  #shopify-section-{{ section.id }} .starry-h1 {
+    font-size: 2.5rem;
+  }
+  #shopify-section-{{ section.id }} .starry-features-container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #shopify-section-{{ section.id }} .hero-starry-content {
+    padding-top: 100px;
+  }
+  #shopify-section-{{ section.id }} .starry-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+  #shopify-section-{{ section.id }} .btn-starry-primary, 
+  #shopify-section-{{ section.id }} .btn-starry-secondary {
+    width: 100%;
+  }
+  #shopify-section-{{ section.id }} .starry-feature {
+    padding: 2rem 1.5rem;
+  }
+}
+</style>
+
+<div class="hero-starry-centered">
+  {% if section.settings.background_image != blank %}
+    <img src="{{ section.settings.background_image | image_url: width: 2500 }}"
+         alt="{{ section.settings.background_image.alt | default: 'Ambiance Nuit Étoilée' }}"
+         class="hero-starry-image"
+         loading="eager"
+         width="2500"
+         height="{{ 2500 | divided_by: section.settings.background_image.aspect_ratio | round }}">
+  {% endif %}
+  <div class="starry-aura-overlay"></div>
+  
+  <div class="hero-starry-content sf-stitch">
+    {% if section.settings.badge_text != blank %}
+      <div class="starry-badge">
+        {{ section.settings.badge_text }}
+      </div>
+    {% endif %}
+
+    {% if section.settings.title != blank %}
+      <h1 class="starry-h1">{{ section.settings.title }}</h1>
+    {% endif %}
+
+    {% if section.settings.subtitle != blank %}
+      <div class="starry-subtitle">{{ section.settings.subtitle }}</div>
+    {% endif %}
+
+    <div class="starry-buttons">
+      {% if section.settings.button_text_1 != blank %}
+        <a href="{{ section.settings.button_link_1 | default: '#' }}" class="btn-starry-primary">
+          {{ section.settings.button_text_1 }}
+        </a>
+      {% endif %}
+      {% if section.settings.button_text_2 != blank %}
+        <a href="{{ section.settings.button_link_2 | default: '#' }}" class="btn-starry-secondary">
+          {{ section.settings.button_text_2 }}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+
+  {% if section.blocks.size > 0 %}
+    <div class="hero-starry-bottom sf-stitch">
+      <div class="starry-features-container">
+        {% for block in section.blocks %}
+          <div class="starry-feature" {{ block.shopify_attributes }}>
+            <div class="feature-icon-starry">
+              {% if block.settings.icon != blank %}
+                {{ block.settings.icon }}
+              {% endif %}
+            </div>
+            <h3 class="feature-title-starry">{{ block.settings.title }}</h3>
+            <p class="feature-text-starry">{{ block.settings.text }}</p>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+</div>
