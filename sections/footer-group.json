@@ -18,14 +18,14 @@
           "type": "link_list",
           "settings": {
             "title": "Univers Petit Cocon",
-            "menu": ""
+            "menu": "menu-petit-cocon"
           }
         },
         "link_list_9L8XHp": {
           "type": "link_list",
           "settings": {
             "title": "Conseils Parents",
-            "menu": ""
+            "menu": "footer"
           }
         },
         "link_list_with_icons_wmGxgx": {
