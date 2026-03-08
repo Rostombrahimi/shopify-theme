@@ -162,6 +162,10 @@
 }
 
 /* Grille des cartes */
+#shopify-section-{{ section.id }} .starry-benefits-grid-wrapper {
+  width: 100%;
+}
+
 #shopify-section-{{ section.id }} .starry-benefits-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -315,20 +319,56 @@
 
 @media screen and (max-width: 768px) {
   #shopify-section-{{ section.id }} .starry-benefits-section {
-    padding: 80px 5%;
+    padding: 80px 0; /* Remove side padding for full bleed scroll */
   }
+  
+  #shopify-section-{{ section.id }} .starry-benefits-header {
+    padding: 0 5%;
+  }
+
+  /* Mobile Swipe Slider Logic */
+  #shopify-section-{{ section.id }} .starry-benefits-grid-wrapper {
+    width: 100vw;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    padding-bottom: 24px; /* Space for shadow/hover */
+    margin-bottom: 3rem;
+  }
+
+  #shopify-section-{{ section.id }} .starry-benefits-grid-wrapper::-webkit-scrollbar {
+    display: none;
+  }
+
   #shopify-section-{{ section.id }} .starry-benefits-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    margin-bottom: 4rem;
+    display: flex;
+    flex-direction: row;
+    width: max-content;
+    padding: 0 5%;
+    margin: 0;
+    gap: 1.25rem;
   }
+  
   #shopify-section-{{ section.id }} .starry-benefit-card {
-    padding: 32px;
+    scroll-snap-align: center;
+    width: 85vw; /* Almost full width but peeking next card */
+    max-width: 320px;
+    padding: 32px 24px;
     border-radius: 24px;
+    /* Prevent hover translation jumping issues on mobile touch */
+    transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
   }
+
+  #shopify-section-{{ section.id }} .starry-benefit-card:hover,
+  #shopify-section-{{ section.id }} .starry-benefit-card:active {
+    transform: translateY(-4px); /* Subtle lift instead of large slide */
+  }
+  
   #shopify-section-{{ section.id }} .starry-banner-container {
     border-radius: 24px;
     min-height: 250px;
+    margin: 0 5%;
   }
 }
 </style>
@@ -349,18 +389,20 @@
   </div>
 
   {% if section.blocks.size > 0 %}
-    <div class="starry-benefits-grid">
-      {% for block in section.blocks %}
-        <div class="starry-benefit-card" {{ block.shopify_attributes }}>
-          <div class="benefit-icon-wrapper">
-            {% if block.settings.icon != blank %}
-              {{ block.settings.icon }}
-            {% endif %}
+    <div class="starry-benefits-grid-wrapper">
+      <div class="starry-benefits-grid">
+        {% for block in section.blocks %}
+          <div class="starry-benefit-card" {{ block.shopify_attributes }}>
+            <div class="benefit-icon-wrapper">
+              {% if block.settings.icon != blank %}
+                {{ block.settings.icon }}
+              {% endif %}
+            </div>
+            <h3 class="benefit-title">{{ block.settings.title }}</h3>
+            <p class="benefit-desc">{{ block.settings.text }}</p>
           </div>
-          <h3 class="benefit-title">{{ block.settings.title }}</h3>
-          <p class="benefit-desc">{{ block.settings.text }}</p>
-        </div>
-      {% endfor %}
+        {% endfor %}
+      </div>
     </div>
   {% endif %}
 
