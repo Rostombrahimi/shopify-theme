@@ -1,0 +1,336 @@
+{% schema %}
+{
+  "name": "Diagnostic Nuit Étoilée",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "surtitle",
+      "label": "Sur-titre",
+      "default": "ANALYSE DE BESOIN"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Titre",
+      "default": "Cette ambiance est idéale si :"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Découvrez si le rituel \"Nuit Étoilée\" correspond aux besoins de votre enfant pour retrouver des soirées sereines."
+    },
+    {
+      "type": "textarea",
+      "id": "footer_quote",
+      "label": "Citation Footer",
+      "default": "\"Nous comprenons que chaque soirée est un défi. Nuit Étoilée a été conçue par des experts pour transformer ces tensions en moments de connexion.\""
+    }
+  ],
+  "blocks": [
+    {
+      "type": "diagnostic_card",
+      "name": "Carte Diagnostic",
+      "limit": 5,
+      "settings": [
+        {
+          "type": "html",
+          "id": "icon",
+          "label": "Icône SVG"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Titre du problème",
+          "default": "Titre"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Description du problème",
+          "default": "Description avec <strong>mots importants en ambre</strong>.",
+          "info": "Utilisez les balises <strong>texte</strong> pour mettre en couleur Ambre."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Diagnostic Nuit Étoilée",
+      "blocks": [
+        {
+          "type": "diagnostic_card",
+          "settings": {
+            "icon": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 2a5 5 0 0 0-5 5v2a5 5 0 0 0 5 5h0a5 5 0 0 0 5-5V7a5 5 0 0 0-5-5Z\"/><path d=\"M8 14v1a4 4 0 0 0 4 4h0a4 4 0 0 0 4-4v-1\"/><path d=\"M12 19v3\"/></svg>",
+            "title": "Difficulté à lâcher prise",
+            "text": "Votre enfant a du mal à se détendre et à <strong>\"déconnecter\"</strong> de sa journée, restant souvent en hyper-éveil au moment du coucher."
+          }
+        },
+        {
+          "type": "diagnostic_card",
+          "settings": {
+            "icon": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><polyline points=\"12 6 12 12 15 15\"/><path d=\"M2 2l20 20\"/></svg>",
+            "title": "Rituel complexe",
+            "text": "Le rituel du coucher est <strong>long, difficile</strong> ou marqué par une anxiété de séparation qui pèse sur toute la famille."
+          }
+        },
+        {
+          "type": "diagnostic_card",
+          "settings": {
+            "icon": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z\"/><circle cx=\"12\" cy=\"12\" r=\"3\"/></svg>",
+            "title": "Besoin de structure visuelle",
+            "text": "Vous cherchez un <strong>signal visuel clair</strong> qui indique de manière non-verbale que \"le temps du calme est arrivé\"."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+/* Diagnostic Nuit Étoilée - sf-starry-diagnostic.css */
+#shopify-section-{{ section.id }} .diagnostic-section {
+  background-color: #081A32;
+  padding: 100px 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Vignette Cinématique : léger radial-gradient centrant l'attention */
+#shopify-section-{{ section.id }} .diagnostic-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(8, 26, 50, 0) 40%, rgba(5, 15, 30, 0.8) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+#shopify-section-{{ section.id }} .diagnostic-content-wrapper {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#shopify-section-{{ section.id }} .diagnostic-header {
+  text-align: left;
+  max-width: 850px;
+  width: 100%;
+  margin-bottom: 2.5rem;
+}
+
+#shopify-section-{{ section.id }} .diagnostic-surtitle {
+  color: #E89D46;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  display: inline-block;
+}
+
+#shopify-section-{{ section.id }} .diagnostic-h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: #F9F9F9;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+#shopify-section-{{ section.id }} .diagnostic-desc {
+  color: rgba(249, 249, 249, 0.7);
+  font-size: 1.15rem;
+  max-width: 700px;
+  line-height: 1.6;
+}
+
+#shopify-section-{{ section.id }} .diagnostic-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 850px;
+  width: 100%;
+}
+
+::selection {
+  background: #E89D46;
+  color: #081A32;
+}
+
+#shopify-section-{{ section.id }} .diagnostic-card {
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 32px 48px;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: left;
+}
+
+#shopify-section-{{ section.id }} .diagnostic-card:hover {
+  transform: translateX(12px);
+  border-color: rgba(232, 157, 70, 0.3);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+#shopify-section-{{ section.id }} .diagnostic-icon-wrapper {
+  width: 56px;
+  height: 56px;
+  background: rgba(232, 157, 70, 0.1);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #E89D46;
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 10px rgba(232, 157, 70, 0.3)); /* Lueur de Diagnostic */
+  transition: all 0.3s ease;
+}
+
+#shopify-section-{{ section.id }} .diagnostic-card:hover .diagnostic-icon-wrapper {
+  background: rgba(232, 157, 70, 0.2);
+  filter: drop-shadow(0 0 15px rgba(232, 157, 70, 0.4));
+  transform: scale(1.05);
+}
+
+#shopify-section-{{ section.id }} .diagnostic-icon-wrapper svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+#shopify-section-{{ section.id }} .diagnostic-text-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+#shopify-section-{{ section.id }} .diagnostic-card-title {
+  color: #F9F9F9;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+#shopify-section-{{ section.id }} .diagnostic-text {
+  color: rgba(249, 249, 249, 0.75);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+#shopify-section-{{ section.id }} .diagnostic-text strong,
+#shopify-section-{{ section.id }} .diagnostic-text b {
+  color: #E89D46;
+  font-weight: 600;
+  font-style: italic;
+}
+
+#shopify-section-{{ section.id }} .diagnostic-footer {
+  margin-top: 4rem;
+  text-align: center;
+  max-width: 600px;
+}
+
+#shopify-section-{{ section.id }} .diagnostic-footer-quote {
+  color: rgba(249, 249, 249, 0.5);
+  font-size: 0.95rem;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+@media screen and (max-width: 768px) {
+  #shopify-section-{{ section.id }} .diagnostic-section {
+    padding: 80px 5%;
+  }
+  
+  #shopify-section-{{ section.id }} .diagnostic-card {
+    padding: 24px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+    border-radius: 24px;
+  }
+  
+  #shopify-section-{{ section.id }} .diagnostic-card:hover {
+    transform: translateY(-5px) translateX(0);
+  }
+  
+  #shopify-section-{{ section.id }} .diagnostic-header {
+    text-align: center;
+  }
+  
+  #shopify-section-{{ section.id }} .diagnostic-h2 {
+    font-size: 2.2rem;
+  }
+}
+</style>
+
+<section class="diagnostic-section sf-stitch">
+  <div class="diagnostic-content-wrapper">
+    
+    <div class="diagnostic-header">
+      {% if section.settings.surtitle != blank %}
+        <span class="diagnostic-surtitle">{{ section.settings.surtitle }}</span>
+      {% endif %}
+      
+      {% if section.settings.title != blank %}
+        <h2 class="diagnostic-h2">{{ section.settings.title }}</h2>
+      {% endif %}
+      
+      {% if section.settings.description != blank %}
+        <p class="diagnostic-desc">{{ section.settings.description }}</p>
+      {% endif %}
+    </div>
+
+    {% if section.blocks.size > 0 %}
+      <div class="diagnostic-grid">
+        {% for block in section.blocks %}
+          <div class="diagnostic-card" {{ block.shopify_attributes }}>
+            <div class="diagnostic-icon-wrapper">
+              {% if block.settings.icon != blank %}
+                {{ block.settings.icon }}
+              {% endif %}
+            </div>
+            <div class="diagnostic-text-content">
+              {% if block.settings.title != blank %}
+                <h3 class="diagnostic-card-title">{{ block.settings.title }}</h3>
+              {% endif %}
+              {% if block.settings.text != blank %}
+                <p class="diagnostic-text">{{ block.settings.text }}</p>
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {% if section.settings.footer_quote != blank %}
+      <div class="diagnostic-footer">
+        <p class="diagnostic-footer-quote">{{ section.settings.footer_quote }}</p>
+      </div>
+    {% endif %}
+
+  </div>
+</section>
