@@ -1,0 +1,229 @@
+{% schema %}
+{
+  "name": "Transition Hub Nuit",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "surtitle",
+      "label": "Sur-titre (Badge)",
+      "default": "COLLECTION PREMIUM"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titre principal",
+      "default": "Nuit Étoilée"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Texte principal",
+      "default": "Pour cette ambiance, nous avons sélectionné un ensemble de projecteurs et de solutions à spectre doux, capables de transformer le plafond en une voûte apaisante sans stimuler l'éveil. Chaque pièce de cette collection a été choisie pour sa capacité à créer une transition immédiate vers le calme."
+    },
+    {
+      "type": "text",
+      "id": "btn_label",
+      "label": "Texte du bouton",
+      "default": "Explorer la collection Nuit Étoilée"
+    },
+    {
+      "type": "url",
+      "id": "btn_url",
+      "label": "Lien du bouton"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Transition Hub Nuit Étoilée"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+/* Transition Hub Nuit Étoilée - sf-starry-hub.css */
+#shopify-section-{{ section.id }} .starry-hub-section {
+  background-color: #081A32;
+  padding: 120px 5%;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Aura Protectrice Centrale */
+#shopify-section-{{ section.id }} .starry-hub-aura {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80vw;
+  height: 80vw;
+  max-width: 1000px;
+  max-height: 1000px;
+  background: radial-gradient(circle at center, rgba(232, 157, 70, 0.08) 0%, transparent 60%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+#shopify-section-{{ section.id }} .starry-hub-container {
+  position: relative;
+  z-index: 2;
+  max-width: 850px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Badge */
+#shopify-section-{{ section.id }} .hub-surtitle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(232, 157, 70, 0.08);
+  border: 1px solid rgba(232, 157, 70, 0.2);
+  padding: 6px 20px;
+  border-radius: 99px;
+  color: #E89D46;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+#shopify-section-{{ section.id }} .hub-surtitle svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Titre */
+#shopify-section-{{ section.id }} .hub-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  color: #F9F9F9;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 3rem;
+  line-height: 1.1;
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.1); /* Légère lueur blanche */
+}
+
+/* Boîte de texte avec fine bordure (Glassmorphism léger) */
+#shopify-section-{{ section.id }} .hub-text-box {
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 32px;
+  padding: 48px;
+  margin-bottom: 4rem;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+#shopify-section-{{ section.id }} .hub-text {
+  font-size: clamp(1.1rem, 2vw, 1.25rem);
+  line-height: 1.8;
+  color: rgba(249, 249, 249, 0.9);
+  margin: 0;
+}
+
+/* Micro-Glow CTA */
+#shopify-section-{{ section.id }} .btn-starry-hub {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 56px;
+  background: #E89D46;
+  color: #081A32;
+  border-radius: 99px;
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 10px 30px rgba(232, 157, 70, 0.2);
+  overflow: hidden;
+}
+
+/* Texte et Icône du bouton au dessus du pseudo-élément */
+#shopify-section-{{ section.id }} .btn-starry-hub span,
+#shopify-section-{{ section.id }} .btn-starry-hub svg {
+  position: relative;
+  z-index: 2;
+}
+
+/* Internal Glow Physical Aspect */
+#shopify-section-{{ section.id }} .btn-starry-hub::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.8) 0%, transparent 60%);
+  opacity: 0;
+  mix-blend-mode: plus-lighter;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  transform: scale(0.5);
+  pointer-events: none;
+  z-index: 1;
+}
+
+#shopify-section-{{ section.id }} .btn-starry-hub:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 20px 45px rgba(232, 157, 70, 0.4);
+}
+
+#shopify-section-{{ section.id }} .btn-starry-hub:hover::before {
+  opacity: 1;
+  transform: scale(1.5);
+}
+
+@media screen and (max-width: 768px) {
+  #shopify-section-{{ section.id }} .starry-hub-section {
+    padding: 80px 5%;
+  }
+  #shopify-section-{{ section.id }} .hub-text-box {
+    padding: 32px 24px;
+    border-radius: 24px;
+    margin-bottom: 3rem;
+  }
+  #shopify-section-{{ section.id }} .btn-starry-hub {
+    padding: 18px 32px;
+    width: 100%;
+    justify-content: center;
+  }
+}
+</style>
+
+<section class="starry-hub-section sf-stitch">
+  <div class="starry-hub-aura"></div>
+
+  <div class="starry-hub-container">
+    {% if section.settings.surtitle != blank %}
+      <div class="hub-surtitle">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 5 5 2-4 4 1 6-5-3-5 3 1-6-4-4 5-2 3-5Z"/></svg>
+        {{ section.settings.surtitle }}
+      </div>
+    {% endif %}
+
+    {% if section.settings.title != blank %}
+      <h2 class="hub-title">{{ section.settings.title }}</h2>
+    {% endif %}
+
+    {% if section.settings.description != blank %}
+      <div class="hub-text-box">
+        <p class="hub-text">{{ section.settings.description }}</p>
+      </div>
+    {% endif %}
+
+    {% if section.settings.btn_label != blank %}
+      <a href="{{ section.settings.btn_url | default: '#' }}" class="btn-starry-hub">
+        <span>{{ section.settings.btn_label }}</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+      </a>
+    {% endif %}
+  </div>
+</section>
