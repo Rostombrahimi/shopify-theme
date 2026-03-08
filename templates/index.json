@@ -16,7 +16,7 @@
           "type": "slide",
           "settings": {
             "item_id": "Espace Quotidien",
-            "icon": "💼",
+            "icon": "🛋️",
             "label": "Quotidien",
             "card_svg": "",
             "material_icon": "edit_note",
@@ -29,26 +29,26 @@
           "type": "slide",
           "settings": {
             "item_id": "setup",
-            "icon": "🎮",
-            "label": "Setup",
+            "icon": "⚡",
+            "label": "Visuel",
             "card_svg": "",
             "material_icon": "sports_esports",
             "accent_color": "#6366f1",
-            "card_title": "Neon Stream V2",
-            "card_subtitle": "Ambiance RGB Dynamic"
+            "card_title": "",
+            "card_subtitle": ""
           }
         },
         "slide_3": {
           "type": "slide",
           "settings": {
             "item_id": "cocon",
-            "icon": "🧸",
-            "label": "Cocon",
+            "icon": "✨",
+            "label": "Petit Cocon",
             "card_svg": "",
             "material_icon": "nightlight",
             "accent_color": "#fcd34d",
-            "card_title": "Veilleuse Lune Douce",
-            "card_subtitle": "Glow apaisant 2700K"
+            "card_title": "",
+            "card_subtitle": ""
           }
         }
       },
