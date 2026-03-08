@@ -213,6 +213,17 @@
         "title": "Pourquoi choisir <span>Nuit Étoilée</span> ?",
         "description": "Chaque ambiance a sa raison d'être. Nuit Étoilée est spécifiquement conçue pour accompagner la transition délicate entre l'éveil et le sommeil."
       }
+    },
+    "sf_starry_hub_TaBdc3": {
+      "type": "sf-starry-hub",
+      "name": "Transition Hub Nuit Étoilée",
+      "settings": {
+        "surtitle": "COLLECTION PREMIUM",
+        "title": "Nuit Étoilée",
+        "description": "Pour cette ambiance, nous avons sélectionné un ensemble de projecteurs et de solutions à spectre doux, capables de transformer le plafond en une voûte apaisante sans stimuler l'éveil. Chaque pièce de cette collection a été choisie pour sa capacité à créer une transition immédiate vers le calme.",
+        "btn_label": "Explorer la collection Nuit Étoilée",
+        "btn_url": ""
+      }
     }
   },
   "order": [
@@ -221,6 +232,7 @@
     "sf_hero_starry_XMfGXr",
     "sf_starry_diagnostic_mWkCB8",
     "sf_starry_benefits_qXMBBG",
-    "sf_starry_orientation_wBabxn"
+    "sf_starry_orientation_wBabxn",
+    "sf_starry_hub_TaBdc3"
   ]
 }
