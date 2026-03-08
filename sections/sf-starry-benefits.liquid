@@ -1,0 +1,389 @@
+{% schema %}
+{
+  "name": "Bénéfices Nuit Étoilée",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "surtitle",
+      "label": "Sur-titre",
+      "default": "✨ AMBIANCE SEREINE"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Titre principal",
+      "default": "Ce que cette ambiance apporte<br><span>concrètement</span>"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Une immersion visuelle et sensorielle conçue pour accompagner les rituels de sommeil de votre enfant avec douceur."
+    },
+    {
+      "type": "header",
+      "content": "Bannière Image (Bas)"
+    },
+    {
+      "type": "image_picker",
+      "id": "banner_image",
+      "label": "Image de fond de la bannière"
+    },
+    {
+      "type": "html",
+      "id": "banner_icon",
+      "label": "Icône de la bannière (SVG)",
+      "default": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79Z\"/></svg>"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "banner_quote",
+      "label": "Citation de la bannière",
+      "default": "\"L'obscurité devient un théâtre d'étoiles.\""
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit_card",
+      "name": "Carte Bénéfice",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "html",
+          "id": "icon",
+          "label": "Icône SVG",
+          "info": "Utilisez stroke-width=\"1.2\" pour un style premium."
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Titre du bénéfice",
+          "default": "Titre du bénéfice"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Description",
+          "default": "Description du bénéfice apporté par l'ambiance nuit étoilée."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Bénéfices Nuit Étoilée",
+      "blocks": [
+        {
+          "type": "benefit_card",
+          "settings": {
+            "icon": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z\"/><circle cx=\"12\" cy=\"12\" r=\"3\"/></svg>",
+            "title": "Focalisation apaisante",
+            "text": "La projection au plafond aide l'enfant à fixer son regard et à calmer son système nerveux."
+          }
+        },
+        {
+          "type": "benefit_card",
+          "settings": {
+            "icon": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M2 12h4l3-9 5 18 3-9h5\"/></svg>",
+            "title": "Frontière jour/nuit",
+            "text": "La lumière bleue profonde ou ambrée crée une bulle immersive qui délimite l'espace du sommeil."
+          }
+        },
+        {
+          "type": "benefit_card",
+          "settings": {
+            "icon": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\"/><path d=\"m9 12 2 2 4-4\"/></svg>",
+            "title": "Sécurité par l'immersion",
+            "text": "L'enfant ne s'endort pas dans le noir total, mais dans un univers bienveillant."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+/* Bénéfices Nuit Étoilée - sf-starry-benefits.css */
+#shopify-section-{{ section.id }} .starry-benefits-section {
+  background-color: #081A32;
+  padding: 100px 5%;
+  position: relative;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#shopify-section-{{ section.id }} .starry-benefits-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 4rem auto;
+  position: relative;
+  z-index: 2;
+}
+
+#shopify-section-{{ section.id }} .starry-benefits-surtitle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(232, 157, 70, 0.08);
+  border: 1px solid rgba(232, 157, 70, 0.15);
+  padding: 8px 20px;
+  border-radius: 99px;
+  color: #E89D46;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+#shopify-section-{{ section.id }} .starry-benefits-title {
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  color: #F9F9F9;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+
+#shopify-section-{{ section.id }} .starry-benefits-title span {
+  color: #E89D46;
+}
+
+#shopify-section-{{ section.id }} .starry-benefits-desc {
+  color: rgba(249, 249, 249, 0.7);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+/* Grille des cartes */
+#shopify-section-{{ section.id }} .starry-benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  max-width: 1300px;
+  margin: 0 auto 6rem auto;
+  position: relative;
+  z-index: 2;
+}
+
+#shopify-section-{{ section.id }} .starry-benefit-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 32px;
+  padding: 48px 40px;
+  text-align: left;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Micro-vignette interne : léger radial-gradient noir */
+#shopify-section-{{ section.id }} .starry-benefit-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at bottom right, rgba(0,0,0,0.4) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+#shopify-section-{{ section.id }} .starry-benefit-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(232, 157, 70, 0.3);
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+#shopify-section-{{ section.id }} .benefit-icon-wrapper {
+  width: 56px;
+  height: 56px;
+  background: rgba(232, 157, 70, 0.1);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #E89D46;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 0 12px rgba(232, 157, 70, 0.25)); /* Lueur Icône */
+}
+
+#shopify-section-{{ section.id }} .benefit-icon-wrapper svg {
+  width: 28px;
+  height: 28px;
+  fill: none;
+  stroke: currentColor;
+}
+
+#shopify-section-{{ section.id }} .benefit-title {
+  color: #F9F9F9;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 1rem 0;
+  letter-spacing: -0.01em;
+  position: relative;
+  z-index: 1;
+}
+
+#shopify-section-{{ section.id }} .benefit-desc {
+  color: rgba(249, 249, 249, 0.65);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* Bannière Image Footer */
+#shopify-section-{{ section.id }} .starry-banner-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  position: relative;
+  border-radius: 40px;
+  overflow: hidden;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+#shopify-section-{{ section.id }} .starry-banner-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.4;
+  z-index: 0;
+}
+
+/* Overlay gradient pour que le texte soit lisible */
+#shopify-section-{{ section.id }} .starry-banner-container::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(8,26,50,0.1) 0%, rgba(8,26,50,0.8) 100%);
+  z-index: 1;
+}
+
+#shopify-section-{{ section.id }} .banner-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+#shopify-section-{{ section.id }} .banner-icon {
+  color: #E89D46;
+  filter: drop-shadow(0 0 15px rgba(232, 157, 70, 0.4));
+}
+
+#shopify-section-{{ section.id }} .banner-icon svg {
+  width: 32px;
+  height: 32px;
+}
+
+#shopify-section-{{ section.id }} .banner-quote {
+  color: #F9F9F9;
+  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+  font-weight: 500;
+  font-style: italic;
+  max-width: 600px;
+  line-height: 1.4;
+}
+
+@media screen and (max-width: 1024px) {
+  #shopify-section-{{ section.id }} .starry-benefits-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #shopify-section-{{ section.id }} .starry-benefits-section {
+    padding: 80px 5%;
+  }
+  #shopify-section-{{ section.id }} .starry-benefits-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+  }
+  #shopify-section-{{ section.id }} .starry-benefit-card {
+    padding: 32px;
+    border-radius: 24px;
+  }
+  #shopify-section-{{ section.id }} .starry-banner-container {
+    border-radius: 24px;
+    min-height: 250px;
+  }
+}
+</style>
+
+<section class="starry-benefits-section sf-stitch">
+  <div class="starry-benefits-header">
+    {% if section.settings.surtitle != blank %}
+      <div class="starry-benefits-surtitle">{{ section.settings.surtitle }}</div>
+    {% endif %}
+    
+    {% if section.settings.title != blank %}
+      <h2 class="starry-benefits-title">{{ section.settings.title }}</h2>
+    {% endif %}
+    
+    {% if section.settings.description != blank %}
+      <p class="starry-benefits-desc">{{ section.settings.description }}</p>
+    {% endif %}
+  </div>
+
+  {% if section.blocks.size > 0 %}
+    <div class="starry-benefits-grid">
+      {% for block in section.blocks %}
+        <div class="starry-benefit-card" {{ block.shopify_attributes }}>
+          <div class="benefit-icon-wrapper">
+            {% if block.settings.icon != blank %}
+              {{ block.settings.icon }}
+            {% endif %}
+          </div>
+          <h3 class="benefit-title">{{ block.settings.title }}</h3>
+          <p class="benefit-desc">{{ block.settings.text }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <div class="starry-banner-container">
+    {% if section.settings.banner_image != blank %}
+      <img src="{{ section.settings.banner_image | image_url: width: 2000 }}" 
+           alt="{{ section.settings.banner_quote | strip_html | escape }}" 
+           class="starry-banner-image"
+           loading="lazy"
+           width="2000"
+           height="{{ 2000 | divided_by: section.settings.banner_image.aspect_ratio | round }}">
+    {% else %}
+      <div class="starry-banner-image" style="background:#051224;"></div>
+    {% endif %}
+    
+    <div class="banner-content">
+      {% if section.settings.banner_icon != blank %}
+        <div class="banner-icon">{{ section.settings.banner_icon }}</div>
+      {% endif %}
+      
+      {% if section.settings.banner_quote != blank %}
+        <div class="banner-quote">{{ section.settings.banner_quote }}</div>
+      {% endif %}
+    </div>
+  </div>
+</section>
