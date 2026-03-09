@@ -87,12 +87,50 @@
         "title": "Ce que cette ambiance apporte",
         "subtitle": "Plongez dans un cocon de sérénité nocturne."
       }
+    },
+    "sf_premium_products_grid_ThWLwi": {
+      "type": "sf-premium-products-grid",
+      "blocks": {
+        "product_item_pUWn9t": {
+          "type": "product_item",
+          "settings": {
+            "product": ""
+          }
+        },
+        "product_item_dKd8gx": {
+          "type": "product_item",
+          "settings": {
+            "product": ""
+          }
+        },
+        "product_item_gjmpEY": {
+          "type": "product_item",
+          "settings": {
+            "product": ""
+          }
+        },
+        "product_item_X8PwtM": {
+          "type": "product_item",
+          "settings": {
+            "product": ""
+          }
+        }
+      },
+      "block_order": [
+        "product_item_pUWn9t",
+        "product_item_dKd8gx",
+        "product_item_gjmpEY",
+        "product_item_X8PwtM"
+      ],
+      "name": "Grille Produits Premium",
+      "settings": {}
     }
   },
   "order": [
     "banner",
     "product-grid",
     "sf_univers_hero_WjfYJR",
-    "sf_cocon_benefits_jmFnhe"
+    "sf_cocon_benefits_jmFnhe",
+    "sf_premium_products_grid_ThWLwi"
   ]
 }
