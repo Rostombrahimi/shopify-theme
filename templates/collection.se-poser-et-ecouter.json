@@ -124,6 +124,13 @@
       ],
       "name": "Grille Produits Premium",
       "settings": {}
+    },
+    "sf_univers_visuel_seo_zwJyKT": {
+      "type": "sf-univers-visuel-seo",
+      "name": "SEO Texte Discret (Animé)",
+      "settings": {
+        "seo_text": "Lire ou écouter, c’est s’éclairer l’esprit.\nLa nuit est le plus beau décor pour vos histoires."
+      }
     }
   },
   "order": [
@@ -131,6 +138,7 @@
     "product-grid",
     "sf_univers_hero_WjfYJR",
     "sf_cocon_benefits_jmFnhe",
-    "sf_premium_products_grid_ThWLwi"
+    "sf_premium_products_grid_ThWLwi",
+    "sf_univers_visuel_seo_zwJyKT"
   ]
 }
