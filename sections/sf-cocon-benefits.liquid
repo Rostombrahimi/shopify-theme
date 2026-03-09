@@ -212,21 +212,26 @@
   }
 
   /* Slider Snap Logic */
-  #shopify-section-{{ section.id }} .cocon-benefits-list {
+  #shopify-section-{{ section.id }} .cocon-benefits-list-wrapper {
     width: 100vw;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    padding: 0 1.5rem 2rem 1.5rem;
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
-    margin: 0;
+    padding-bottom: 2rem;
   }
 
-  #shopify-section-{{ section.id }} .cocon-benefits-list::-webkit-scrollbar {
+  #shopify-section-{{ section.id }} .cocon-benefits-list-wrapper::-webkit-scrollbar {
     display: none;
+  }
+
+  #shopify-section-{{ section.id }} .cocon-benefits-list {
+    display: flex;
+    flex-direction: row;
+    width: max-content;
+    padding: 0 1.5rem;
+    margin: 0;
+    gap: 1.25rem;
   }
   
   #shopify-section-{{ section.id }} .cocon-benefit-row {
@@ -260,20 +265,22 @@
   </div>
 
   {% if section.blocks.size > 0 %}
-    <div class="cocon-benefits-list">
-      {% for block in section.blocks %}
-        <div class="cocon-benefit-row" {{ block.shopify_attributes }}>
-          <div class="cocon-icon-wrapper">
-            {% if block.settings.icon != blank %}
-              {{ block.settings.icon }}
-            {% endif %}
+    <div class="cocon-benefits-list-wrapper">
+      <div class="cocon-benefits-list">
+        {% for block in section.blocks %}
+          <div class="cocon-benefit-row" {{ block.shopify_attributes }}>
+            <div class="cocon-icon-wrapper">
+              {% if block.settings.icon != blank %}
+                {{ block.settings.icon }}
+              {% endif %}
+            </div>
+            <div class="cocon-text-content">
+              <h3 class="cocon-benefit-title">{{ block.settings.title }}</h3>
+              <p class="cocon-benefit-desc">{{ block.settings.text }}</p>
+            </div>
           </div>
-          <div class="cocon-text-content">
-            <h3 class="cocon-benefit-title">{{ block.settings.title }}</h3>
-            <p class="cocon-benefit-desc">{{ block.settings.text }}</p>
-          </div>
-        </div>
-      {% endfor %}
+        {% endfor %}
+      </div>
     </div>
   {% endif %}
 
