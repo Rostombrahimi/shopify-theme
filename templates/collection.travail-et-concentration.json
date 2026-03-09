@@ -38,10 +38,21 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "sf_univers_hero_BQdQAM": {
+      "type": "sf-univers-hero",
+      "name": "Univers Hero",
+      "settings": {
+        "badge_text": "UNIVERS QUOTIDIEN",
+        "title_white": "Travail & Concentration  –",
+        "title_amber": "Une lumière pensée pour travailler plus longtemps sans fatigue",
+        "subtitle": "Quand on travaille plusieurs heures d’affilée, la lumière fait toute la différence.\n Ici, chaque luminaire est pensé pour améliorer le confort visuel, réduire la fatigue et rester efficace sans s’en rendre compte."
+      }
     }
   },
   "order": [
     "banner",
-    "product-grid"
+    "product-grid",
+    "sf_univers_hero_BQdQAM"
   ]
 }
