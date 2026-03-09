@@ -1,0 +1,319 @@
+{% schema %}
+{
+  "name": "Bénéfices Lumière Douce",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "surtitle_main",
+      "label": "Sur-titre général (Badge)",
+      "default": "EXPERTISE LUMINEUSE"
+    },
+    {
+      "type": "textarea",
+      "id": "title_main",
+      "label": "Titre principal",
+      "default": "Sublimez vos nuits avec une<br>clarté apaisante."
+    },
+    {
+      "type": "text",
+      "id": "title_secondary",
+      "label": "Titre secondaire de section",
+      "default": "Ce que cette ambiance apporte"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit_card",
+      "name": "Carte Bénéfice",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "html",
+          "id": "icon",
+          "label": "Icône SVG"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Titre du bénéfice",
+          "default": "Titre du bénéfice"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Description",
+          "default": "Description du bénéfice apporté."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Bénéfices Lumière Douce",
+      "blocks": [
+        {
+          "type": "benefit_card",
+          "settings": {
+            "icon": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z\"/><circle cx=\"12\" cy=\"12\" r=\"3\"/></svg>",
+            "title": "Confort Visuel",
+            "text": "Une lumière stable qui fatigue moins les yeux lors de vos sessions prolongées."
+          }
+        },
+        {
+          "type": "benefit_card",
+          "settings": {
+            "icon": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 2v2\"/><path d=\"M12 20v2\"/><path d=\"m4.93 4.93 1.41 1.41\"/><path d=\"m17.66 17.66 1.41 1.41\"/><path d=\"M2 12h2\"/><path d=\"M20 12h2\"/><path d=\"m6.34 17.66-1.41 1.41\"/><path d=\"m19.07 4.93-1.41 1.41\"/></svg>",
+            "title": "Concentration Zen",
+            "text": "Une atmosphère calme propice à la concentration et à l'immersion totale."
+          }
+        },
+        {
+          "type": "benefit_card",
+          "settings": {
+            "icon": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 2v20\"/><path d=\"M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6\"/></svg>",
+            "title": "Équilibre Nocturne",
+            "text": "Le juste équilibre entre visibilité parfaite et ambiance chaleureuse."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+/* Bénéfices Lumière Douce - sf-softlight-benefits.css */
+#shopify-section-{{ section.id }} .softlight-benefits-section {
+  background-color: #FAFAFA; /* Fond clair selon image */
+  padding: 100px 5%;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* En-tête de section */
+#shopify-section-{{ section.id }} .softlight-benefits-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 5rem auto;
+}
+
+#shopify-section-{{ section.id }} .softlight-surtitle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(232, 157, 70, 0.08); /* Fond badge ambre très léger */
+  padding: 6px 16px;
+  border-radius: 99px;
+  color: #E89D46;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+#shopify-section-{{ section.id }} .softlight-title-main {
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  color: #081A32; /* illu-night */
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 5rem;
+}
+
+#shopify-section-{{ section.id }} .softlight-title-secondary {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: #081A32;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  letter-spacing: -0.01em;
+  display: inline-block;
+  position: relative;
+}
+
+/* Soulignement Ambre */
+#shopify-section-{{ section.id }} .softlight-title-secondary::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background-color: #E89D46;
+  border-radius: 2px;
+}
+
+/* Grille des cartes */
+#shopify-section-{{ section.id }} .softlight-benefits-grid-wrapper {
+  width: 100%;
+}
+
+#shopify-section-{{ section.id }} .softlight-benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+#shopify-section-{{ section.id }} .softlight-benefit-card {
+  background: rgba(255, 255, 255, 0.6); /* Translucide pour le glassmorphism sur fond blanc */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.03); /* Bordure ultra fine claire */
+  border-radius: 32px; /* radius chubby (32px) */
+  padding: 56px 40px;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.02);
+}
+
+#shopify-section-{{ section.id }} .softlight-benefit-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(232, 157, 70, 0.15); /* Box-shadow ambre au survol */
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* Icones */
+#shopify-section-{{ section.id }} .softlight-icon-wrapper {
+  width: 64px;
+  height: 64px;
+  background: #FFF5E6; /* Fond beige/ambre très clair */
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #E89D46;
+  margin-bottom: 2rem;
+  transition: all 0.4s ease;
+}
+
+#shopify-section-{{ section.id }} .softlight-benefit-card:hover .softlight-icon-wrapper {
+  mix-blend-mode: plus-lighter;
+  background: #E89D46;
+  color: #fff;
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(232, 157, 70, 0.3);
+}
+
+#shopify-section-{{ section.id }} .softlight-icon-wrapper svg {
+  width: 32px;
+  height: 32px;
+}
+
+/* Textes des cartes */
+#shopify-section-{{ section.id }} .softlight-benefit-title {
+  color: #081A32;
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin: 0 0 1rem 0;
+  letter-spacing: -0.01em;
+}
+
+#shopify-section-{{ section.id }} .softlight-benefit-desc {
+  color: #4A5568; /* Gris sombre pour lecture facile sur blanc */
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* RESPONSIVE MOBILE : Slider Snap Carousel (identique à Nuit Étoilée) */
+@media screen and (max-width: 1024px) {
+  #shopify-section-{{ section.id }} .softlight-benefits-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #shopify-section-{{ section.id }} .softlight-benefits-section {
+    padding: 80px 0;
+  }
+  
+  #shopify-section-{{ section.id }} .softlight-benefits-header {
+    padding: 0 5%;
+    margin-bottom: 3rem;
+  }
+  
+  #shopify-section-{{ section.id }} .softlight-title-main {
+    font-size: 2.2rem;
+    margin-bottom: 3rem;
+  }
+
+  /* Slider Snap Logic */
+  #shopify-section-{{ section.id }} .softlight-benefits-grid-wrapper {
+    width: 100vw;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-bottom: 32px;
+  }
+
+  #shopify-section-{{ section.id }} .softlight-benefits-grid-wrapper::-webkit-scrollbar {
+    display: none;
+  }
+
+  #shopify-section-{{ section.id }} .softlight-benefits-grid {
+    display: flex;
+    flex-direction: row;
+    width: max-content;
+    padding: 0 5%;
+    margin: 0;
+    gap: 1.25rem;
+  }
+  
+  #shopify-section-{{ section.id }} .softlight-benefit-card {
+    scroll-snap-align: center;
+    width: 85vw;
+    max-width: 320px;
+    padding: 40px 24px;
+    /* Prevent hover translation jumping issues on mobile touch */
+    transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  #shopify-section-{{ section.id }} .softlight-benefit-card:active {
+    transform: translateY(-4px);
+  }
+}
+</style>
+
+<section class="softlight-benefits-section sf-stitch">
+  <div class="softlight-benefits-header">
+    {% if section.settings.surtitle_main != blank %}
+      <div class="softlight-surtitle">{{ section.settings.surtitle_main }}</div>
+    {% endif %}
+    
+    {% if section.settings.title_main != blank %}
+      <h2 class="softlight-title-main">{{ section.settings.title_main }}</h2>
+    {% endif %}
+    
+    {% if section.settings.title_secondary != blank %}
+      <h3 class="softlight-title-secondary">{{ section.settings.title_secondary }}</h3>
+    {% endif %}
+  </div>
+
+  {% if section.blocks.size > 0 %}
+    <div class="softlight-benefits-grid-wrapper">
+      <div class="softlight-benefits-grid">
+        {% for block in section.blocks %}
+          <div class="softlight-benefit-card" {{ block.shopify_attributes }}>
+            <div class="softlight-icon-wrapper">
+              {% if block.settings.icon != blank %}
+                {{ block.settings.icon }}
+              {% endif %}
+            </div>
+            <h4 class="softlight-benefit-title">{{ block.settings.title }}</h4>
+            <p class="softlight-benefit-desc">{{ block.settings.text }}</p>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+</section>
