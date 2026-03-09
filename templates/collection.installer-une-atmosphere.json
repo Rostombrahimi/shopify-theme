@@ -49,46 +49,6 @@
         "subtitle": "La nuit n’est pas faite pour disparaître dans le noir. Elle est faite pour créer une ambiance, donner du relief à un espace et poser une identité visuelle forte.       \nIci, la lumière devient un élément à part entière du décor."
       }
     },
-    "sf_softlight_benefits_TLeji8": {
-      "type": "sf-softlight-benefits",
-      "blocks": {
-        "benefit_card_6yx7R9": {
-          "type": "benefit_card",
-          "settings": {
-            "icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z\"></path><circle cx=\"12\" cy=\"12\" r=\"3\"></circle></svg>",
-            "title": "Confort Visuel",
-            "text": "Une lumière stable qui fatigue moins les yeux lors de vos sessions prolongées."
-          }
-        },
-        "benefit_card_yG9xg8": {
-          "type": "benefit_card",
-          "settings": {
-            "icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 2v2\"></path><path d=\"M12 20v2\"></path><path d=\"m4.93 4.93 1.41 1.41\"></path><path d=\"m17.66 17.66 1.41 1.41\"></path><path d=\"M2 12h2\"></path><path d=\"M20 12h2\"></path><path d=\"m6.34 17.66-1.41 1.41\"></path><path d=\"m19.07 4.93-1.41 1.41\"></path></svg>",
-            "title": "Concentration Zen",
-            "text": "Une atmosphère calme propice à la concentration et à l'immersion totale."
-          }
-        },
-        "benefit_card_kQfpqf": {
-          "type": "benefit_card",
-          "settings": {
-            "icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 2v20\"></path><path d=\"M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6\"></path></svg>",
-            "title": "Équilibre Nocturne",
-            "text": "Le juste équilibre entre visibilité parfaite et ambiance chaleureuse."
-          }
-        }
-      },
-      "block_order": [
-        "benefit_card_6yx7R9",
-        "benefit_card_yG9xg8",
-        "benefit_card_kQfpqf"
-      ],
-      "name": "Bénéfices Lumière Douce",
-      "settings": {
-        "surtitle_main": "EXPERTISE LUMINEUSE",
-        "title_main": "Sublimez vos nuits avec une<br>clarté apaisante.",
-        "title_secondary": "Ce que cette ambiance apporte"
-      }
-    },
     "sf_licence_grid_CPeA7X": {
       "type": "sf-licence-grid",
       "name": "Grille Premium Licence",
@@ -96,13 +56,52 @@
         "collection": "",
         "products_to_show": 12
       }
+    },
+    "sf_visual_benefits_BPb9YQ": {
+      "type": "sf-visual-benefits",
+      "blocks": {
+        "benefit_card_66Y9LU": {
+          "type": "benefit_card",
+          "settings": {
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"4\"></circle><path d=\"M12 4h.01\"></path><path d=\"M20 12h.01\"></path><path d=\"M12 20h.01\"></path><path d=\"M4 12h.01\"></path><path d=\"M17.657 6.343h.01\"></path><path d=\"M17.657 17.657h.01\"></path><path d=\"M6.343 17.657h.01\"></path><path d=\"M6.343 6.343h.01\"></path></svg>",
+            "title": "Créer une présence\nlumineuse sans éblouir",
+            "text": "Profitez d'une diffusion optimale pour un confort visuel absolu lors de vos sessions tardives."
+          }
+        },
+        "benefit_card_M7crXz": {
+          "type": "benefit_card",
+          "settings": {
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect width=\"18\" height=\"18\" x=\"3\" y=\"3\" rx=\"2\"></rect><path d=\"M3 9h18\"></path><path d=\"M9 21V9\"></path></svg>",
+            "title": "Structurer un espace avec\ndes halos et des contrastes",
+            "text": "Redéfinissez les volumes de votre pièce grâce à des jeux d'ombres et de lumières architecturaux."
+          }
+        },
+        "benefit_card_6UNQbh": {
+          "type": "benefit_card",
+          "settings": {
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z\"></path><path d=\"m9 12 2 2 4-4\"></path></svg>",
+            "title": "Donner du caractère à une\nchambre ou un setup",
+            "text": "Apposez votre signature visuelle unique et transformez votre environnement en un sanctuaire personnel."
+          }
+        }
+      },
+      "block_order": [
+        "benefit_card_66Y9LU",
+        "benefit_card_M7crXz",
+        "benefit_card_6UNQbh"
+      ],
+      "name": "Bénéfices Visuels",
+      "settings": {
+        "title": "Ce que cette ambiance permet",
+        "footer_text": "La lumière se voit. Elle se ressent."
+      }
     }
   },
   "order": [
     "banner",
     "product-grid",
     "sf_univers_hero_JCQggm",
-    "sf_softlight_benefits_TLeji8",
+    "sf_visual_benefits_BPb9YQ",
     "sf_licence_grid_CPeA7X"
   ]
 }
