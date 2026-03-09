@@ -38,10 +38,21 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "sf_univers_hero_KWLnQL": {
+      "type": "sf-univers-hero",
+      "name": "Univers Hero",
+      "settings": {
+        "badge_text": "UNIVERS QUOTIDIEN",
+        "title_white": "Lecture & Moments Calmes –",
+        "title_amber": "Un éclairage précis, sans éblouissement",
+        "subtitle": "Lire, se poser, prendre un moment pour soi demande une lumière juste.\nNi trop forte, ni trop faible, mais suffisamment précise pour préserver le confort des yeux."
+      }
     }
   },
   "order": [
     "banner",
-    "product-grid"
+    "product-grid",
+    "sf_univers_hero_KWLnQL"
   ]
 }
