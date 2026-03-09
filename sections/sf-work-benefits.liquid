@@ -1,0 +1,302 @@
+{% schema %}
+{
+  "name": "Bénéfices Travail",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "surtitle",
+      "label": "Sur-titre (Badge)",
+      "default": "POTE EXPERT"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titre principal",
+      "default": "Ce que cette lumière change concrètement"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Sous-titre",
+      "default": "Pas de promesse miracle. Juste du confort réel."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit_card",
+      "name": "Carte Bénéfice",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "html",
+          "id": "icon",
+          "label": "Icône SVG"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Titre du bénéfice",
+          "default": "Titre du bénéfice"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Description",
+          "default": "Description du bénéfice apporté."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Bénéfices Travail",
+      "blocks": [
+        {
+          "type": "benefit_card",
+          "settings": {
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0\"/><circle cx=\"12\" cy=\"12\" r=\"3\"/></svg>",
+            "title": "Moins de fatigue visuelle",
+            "text": "Moins de fatigue visuelle en fin de journée grâce à un spectre lumineux optimisé pour le repos oculaire."
+          }
+        },
+        {
+          "type": "benefit_card",
+          "settings": {
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect width=\"20\" height=\"14\" x=\"2\" y=\"3\" rx=\"2\"/><line x1=\"8\" x2=\"16\" y1=\"21\" y2=\"21\"/><line x1=\"12\" x2=\"12\" y1=\"17\" y2=\"21\"/></svg>",
+            "title": "Meilleure lisibilité",
+            "text": "Une netteté accrue de l'écran et du plan de travail pour une concentration sans effort superflu."
+          }
+        },
+        {
+          "type": "benefit_card",
+          "settings": {
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.9 1.2 1.5 1.5 2.5\"/><path d=\"M9 18h6\"/><path d=\"M10 22h4\"/></svg>",
+            "title": "Éclairage stable",
+            "text": "Un flux constant, sans éblouissement ni scintillement, pour un confort durable tout au long de vos projets."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+/* Section Bénéfices Travail - sf-work-benefits.css */
+
+#shopify-section-{{ section.id }} .work-benefits-section {
+  background-color: #081A32; /* illu-night */
+  padding: 100px 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* En-tête */
+#shopify-section-{{ section.id }} .work-benefits-header {
+  text-align: left;
+  max-width: 1300px;
+  margin: 0 auto 4rem auto;
+  padding: 0 4rem;
+}
+
+#shopify-section-{{ section.id }} .work-surtitle {
+  color: #E89D46; /* illu-amber */
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+#shopify-section-{{ section.id }} .work-title {
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  color: #F9F9F9;
+  font-weight: 800;
+  margin: 0 0 1rem 0;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  max-width: 800px;
+}
+
+#shopify-section-{{ section.id }} .work-subtitle {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: #64748B; /* slate-500 */
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Grille */
+#shopify-section-{{ section.id }} .work-benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 4rem;
+}
+
+/* Carte */
+#shopify-section-{{ section.id }} .work-benefit-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 32px; /* radius chubby (32px) */
+  padding: 48px 32px;
+  text-align: left;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  flex-direction: column;
+}
+
+#shopify-section-{{ section.id }} .work-benefit-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(232, 157, 70, 0.3);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* Icônes */
+#shopify-section-{{ section.id }} .work-icon-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  background: rgba(0, 0, 0, 0.3); /* circular dark inner background */
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  border-radius: 50%; /* Circle like screenshot */
+  color: #E89D46;
+  margin-bottom: 2rem;
+  transition: all 0.4s ease;
+  filter: drop-shadow(0 0 10px rgba(232, 157, 70, 0.15));
+}
+
+#shopify-section-{{ section.id }} .work-icon-wrapper svg {
+  width: 24px !important;
+  height: 24px !important;
+  min-width: 24px;
+  min-height: 24px;
+  display: block;
+  flex-shrink: 0;
+}
+
+#shopify-section-{{ section.id }} .work-benefit-card:hover .work-icon-wrapper {
+  background: #E89D46;
+  color: #fff;
+  filter: drop-shadow(0 0 15px rgba(232, 157, 70, 0.4));
+  transform: scale(1.05);
+}
+
+/* Textes des cartes */
+#shopify-section-{{ section.id }} .work-benefit-title {
+  color: #F9F9F9;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 1rem 0;
+  line-height: 1.3;
+}
+
+#shopify-section-{{ section.id }} .work-benefit-desc {
+  color: #9CA3AF; /* Gris clair */
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+
+/* MOBILE RESPONSIVE - SNAP CAROUSEL */
+@media screen and (max-width: 1024px) {
+  #shopify-section-{{ section.id }} .work-benefits-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #shopify-section-{{ section.id }} .work-benefits-section {
+    padding: 80px 0;
+  }
+  
+  #shopify-section-{{ section.id }} .work-benefits-header {
+    padding: 0 1.5rem;
+    margin-bottom: 3rem;
+  }
+  
+  #shopify-section-{{ section.id }} .work-title {
+    font-size: 2.2rem;
+  }
+
+  /* Slider Snap Logic */
+  #shopify-section-{{ section.id }} .work-benefits-grid-wrapper {
+    width: 100vw;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-bottom: 2rem;
+  }
+
+  #shopify-section-{{ section.id }} .work-benefits-grid-wrapper::-webkit-scrollbar {
+    display: none;
+  }
+
+  #shopify-section-{{ section.id }} .work-benefits-grid {
+    display: flex;
+    flex-direction: row;
+    width: max-content;
+    padding: 0 1.5rem;
+    margin: 0;
+    gap: 1.25rem;
+  }
+  
+  #shopify-section-{{ section.id }} .work-benefit-card {
+    scroll-snap-align: center;
+    width: 85vw;
+    max-width: 320px;
+    padding: 32px 24px;
+    flex-shrink: 0;
+    /* Prevent hover translation jumping issues on mobile touch */
+    transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+  }
+
+  #shopify-section-{{ section.id }} .work-benefit-card:active {
+    transform: translateY(-4px);
+  }
+}
+</style>
+
+<section class="work-benefits-section sf-stitch">
+  
+  <div class="work-benefits-header">
+    {% if section.settings.surtitle != blank %}
+      <span class="work-surtitle">{{ section.settings.surtitle }}</span>
+    {% endif %}
+    {% if section.settings.title != blank %}
+      <h2 class="work-title">{{ section.settings.title | newline_to_br }}</h2>
+    {% endif %}
+    {% if section.settings.subtitle != blank %}
+      <p class="work-subtitle">{{ section.settings.subtitle }}</p>
+    {% endif %}
+  </div>
+
+  {% if section.blocks.size > 0 %}
+    <div class="work-benefits-grid-wrapper">
+      <div class="work-benefits-grid">
+        {% for block in section.blocks %}
+          <div class="work-benefit-card" {{ block.shopify_attributes }}>
+            <div class="work-icon-wrapper">
+              {% if block.settings.icon != blank %}
+                {{ block.settings.icon }}
+              {% endif %}
+            </div>
+            <h3 class="work-benefit-title">{{ block.settings.title | newline_to_br }}</h3>
+            <p class="work-benefit-desc">{{ block.settings.text }}</p>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+
+</section>
