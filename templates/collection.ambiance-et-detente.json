@@ -38,10 +38,21 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "sf_univers_hero_LkP77c": {
+      "type": "sf-univers-hero",
+      "name": "Univers Hero",
+      "settings": {
+        "badge_text": "UNIVERS VISUEL",
+        "title_white": "Ambiance & Détente –",
+        "title_amber": "Ambiances lumineuses\npour exprimer sa passion",
+        "subtitle": "Anime, pop culture, setup visuel ou déco de chambre : ici, la lumière devient une signature."
+      }
     }
   },
   "order": [
     "banner",
-    "product-grid"
+    "product-grid",
+    "sf_univers_hero_LkP77c"
   ]
 }
