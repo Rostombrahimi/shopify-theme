@@ -49,38 +49,38 @@
         "subtitle": "La nuit n’est pas faite pour disparaître dans le noir. Elle est faite pour créer une ambiance, donner du relief à un espace et poser une identité visuelle forte.       \nIci, la lumière devient un élément à part entière du décor."
       }
     },
-    "sf_softlight_benefits_gTqrtt": {
+    "sf_softlight_benefits_TLeji8": {
       "type": "sf-softlight-benefits",
       "blocks": {
-        "benefit_card_RGcyN4": {
+        "benefit_card_6yx7R9": {
           "type": "benefit_card",
           "settings": {
-            "icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" class=\"w-8 h-8\" stroke=\"currentColor\" stroke-width=\"1.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n  <!-- Centre lumineux -->\n  <circle cx=\"12\" cy=\"12\" r=\"3\" fill=\"currentColor\" fill-opacity=\"0.1\"></circle>\n  <!-- Rayonnement supérieur et inférieur doux -->\n  <path d=\"M12 4v2\" opacity=\"0.4\"></path>\n  <path d=\"M12 18v2\" opacity=\"0.4\"></path>\n  <!-- Rayonnement latéral doux -->\n  <path d=\"M4 12h2\" opacity=\"0.4\"></path>\n  <path d=\"M18 12h2\" opacity=\"0.4\"></path>\n  <!-- Rayonnement diagonal très doux -->\n  <path d=\"m6.34 6.34 1.41 1.41\" opacity=\"0.2\"></path>\n  <path d=\"m16.24 16.24 1.41 1.41\" opacity=\"0.2\"></path>\n  <path d=\"m6.34 17.66 1.41-1.41\" opacity=\"0.2\"></path>\n  <path d=\"m16.24 7.76 1.41-1.41\" opacity=\"0.2\"></path>\n  <!-- Arche englobante pour la diffusion -->\n  <path d=\"M7 12a5 5 0 0 1 10 0\" stroke-dasharray=\"2 4\" opacity=\"0.6\"></path>\n</svg>",
-            "title": " Clarté Diffuse ",
-            "text": "créer une présence lumineuse sans éblouir."
+            "icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z\"></path><circle cx=\"12\" cy=\"12\" r=\"3\"></circle></svg>",
+            "title": "Confort Visuel",
+            "text": "Une lumière stable qui fatigue moins les yeux lors de vos sessions prolongées."
           }
         },
-        "benefit_card_XGtPBQ": {
+        "benefit_card_yG9xg8": {
           "type": "benefit_card",
           "settings": {
-            "icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" class=\"w-8 h-8\" stroke=\"currentColor\" stroke-width=\"1.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n  <!-- Structure spatiale (murs/sol) -->\n  <path d=\"M3 21h18\"></path>\n  <path d=\"M3 21L7 11h10l4 10\" opacity=\"0.3\"></path>\n  <!-- Halo / Faisceau ciblé -->\n  <path d=\"M12 3L6 21\" stroke-dasharray=\"4 4\"></path>\n  <path d=\"M12 3l6 18\" stroke-dasharray=\"4 4\"></path>\n  <!-- Source de contraste (lampe ou spot) -->\n  <rect x=\"10\" y=\"2\" width=\"4\" height=\"2\" rx=\"1\"></rect>\n  <!-- Ombre/Contraste -->\n  <circle cx=\"12\" cy=\"16\" r=\"2\" opacity=\"0.5\"></circle>\n</svg>",
-            "title": "Architecture Visuelle",
-            "text": "structurer un espace avec des halos et des contrastes."
+            "icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 2v2\"></path><path d=\"M12 20v2\"></path><path d=\"m4.93 4.93 1.41 1.41\"></path><path d=\"m17.66 17.66 1.41 1.41\"></path><path d=\"M2 12h2\"></path><path d=\"M20 12h2\"></path><path d=\"m6.34 17.66-1.41 1.41\"></path><path d=\"m19.07 4.93-1.41 1.41\"></path></svg>",
+            "title": "Concentration Zen",
+            "text": "Une atmosphère calme propice à la concentration et à l'immersion totale."
           }
         },
-        "benefit_card_tKkKFh": {
+        "benefit_card_kQfpqf": {
           "type": "benefit_card",
           "settings": {
-            "icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" class=\"w-8 h-8\" stroke=\"currentColor\" stroke-width=\"1.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n  <!-- Cadre du setup / Pièce (écran ou mur) -->\n  <rect x=\"4\" y=\"6\" width=\"16\" height=\"12\" rx=\"2\" opacity=\"0.4\"></rect>\n  <path d=\"M8 22h8\"></path>\n  <path d=\"M12 18v4\"></path>\n  <!-- L'éclat de caractère / signature -->\n  <path d=\"M12 2v4\"></path>\n  <path d=\"M19.07 4.93l-2.83 2.83\"></path>\n  <!-- Le focus qui donne vie à l'espace -->\n  <circle cx=\"12\" cy=\"12\" r=\"2\" fill=\"currentColor\" fill-opacity=\"0.2\"></circle>\n  <path d=\"M12 10v4M10 12h4\" stroke-width=\"0.8\"></path>\n</svg>",
-            "title": " Signature Esthétique",
-            "text": "donner du caractère à une chambre ou un setup."
+            "icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 2v20\"></path><path d=\"M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6\"></path></svg>",
+            "title": "Équilibre Nocturne",
+            "text": "Le juste équilibre entre visibilité parfaite et ambiance chaleureuse."
           }
         }
       },
       "block_order": [
-        "benefit_card_RGcyN4",
-        "benefit_card_XGtPBQ",
-        "benefit_card_tKkKFh"
+        "benefit_card_6yx7R9",
+        "benefit_card_yG9xg8",
+        "benefit_card_kQfpqf"
       ],
       "name": "Bénéfices Lumière Douce",
       "settings": {
@@ -88,12 +88,21 @@
         "title_main": "Sublimez vos nuits avec une<br>clarté apaisante.",
         "title_secondary": "Ce que cette ambiance apporte"
       }
+    },
+    "sf_licence_grid_CPeA7X": {
+      "type": "sf-licence-grid",
+      "name": "Grille Premium Licence",
+      "settings": {
+        "collection": "",
+        "products_to_show": 12
+      }
     }
   },
   "order": [
     "banner",
     "product-grid",
     "sf_univers_hero_JCQggm",
-    "sf_softlight_benefits_gTqrtt"
+    "sf_softlight_benefits_TLeji8",
+    "sf_licence_grid_CPeA7X"
   ]
 }
