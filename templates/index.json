@@ -22,7 +22,8 @@
             "material_icon": "edit_note",
             "accent_color": "#e89d46",
             "card_title": "",
-            "card_subtitle": ""
+            "card_subtitle": "",
+            "slide_link": "shopify://collections/espace-quotidien"
           }
         },
         "slide_2": {
@@ -35,7 +36,8 @@
             "material_icon": "sports_esports",
             "accent_color": "#6366f1",
             "card_title": "",
-            "card_subtitle": ""
+            "card_subtitle": "",
+            "slide_link": "shopify://collections/univers-visuel"
           }
         },
         "slide_3": {
@@ -48,7 +50,8 @@
             "material_icon": "nightlight",
             "accent_color": "#fcd34d",
             "card_title": "",
-            "card_subtitle": ""
+            "card_subtitle": "",
+            "slide_link": "shopify://collections/petit-cocon"
           }
         }
       },
