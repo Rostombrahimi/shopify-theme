@@ -48,11 +48,97 @@
         "title_amber": "Créer une atmosphère douce pour les moments de calme",
         "subtitle": "En fin de journée, la lumière doit ralentir le rythme.\n Cette sélection est pensée pour créer une ambiance apaisante, discrète et agréable, sans jamais attirer l’attention."
       }
+    },
+    "sf_chill_benefits_ynjWNX": {
+      "type": "sf-chill-benefits",
+      "blocks": {
+        "benefit_card_zfUUQ8": {
+          "type": "benefit_card",
+          "settings": {
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"4\"></circle><path d=\"M12 2v2\"></path><path d=\"M12 20v2\"></path><path d=\"m4.93 4.93 1.41 1.41\"></path><path d=\"m17.66 17.66 1.41 1.41\"></path><path d=\"M2 12h2\"></path><path d=\"M20 12h2\"></path><path d=\"m6.34 17.66-1.41 1.41\"></path><path d=\"m19.07 4.93-1.41 1.41\"></path></svg>",
+            "title": "Lumière indirecte et enveloppante",
+            "text": "Une diffusion douce pour une immersion totale, créant un cocon de lumière protecteur."
+          }
+        },
+        "benefit_card_6CpGVg": {
+          "type": "benefit_card",
+          "settings": {
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M19 9V6a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v3\"></path><path d=\"M3 11v5a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5a2 2 0 0 0-4 0v2H7v-2a2 2 0 0 0-4 0Z\"></path><path d=\"M5 18v2\"></path><path d=\"M19 18v2\"></path></svg>",
+            "title": "Atmosphère calme",
+            "text": "Le silence visuel nécessaire pour apaiser l'esprit après une longue journée."
+          }
+        },
+        "benefit_card_7DpRDi": {
+          "type": "benefit_card",
+          "settings": {
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z\"></path></svg>",
+            "title": "Transition douce",
+            "text": "Préparez naturellement votre cycle circadien au repos grâce à une intensité lumineuse étudiée."
+          }
+        }
+      },
+      "block_order": [
+        "benefit_card_zfUUQ8",
+        "benefit_card_6CpGVg",
+        "benefit_card_7DpRDi"
+      ],
+      "name": "Bénéfices Chill",
+      "settings": {
+        "title": "Ce que cette ambiance apporte",
+        "footer_text": "Ici, la lumière s'efface pour laisser place au confort."
+      }
+    },
+    "sf_premium_products_grid_fWwHDG": {
+      "type": "sf-premium-products-grid",
+      "blocks": {
+        "product_item_eEhD6d": {
+          "type": "product_item",
+          "settings": {
+            "product": ""
+          }
+        },
+        "product_item_rzVWRx": {
+          "type": "product_item",
+          "settings": {
+            "product": ""
+          }
+        },
+        "product_item_3PENPJ": {
+          "type": "product_item",
+          "settings": {
+            "product": ""
+          }
+        },
+        "product_item_YxrFBk": {
+          "type": "product_item",
+          "settings": {
+            "product": ""
+          }
+        }
+      },
+      "block_order": [
+        "product_item_eEhD6d",
+        "product_item_rzVWRx",
+        "product_item_3PENPJ",
+        "product_item_YxrFBk"
+      ],
+      "name": "Grille Produits Premium",
+      "settings": {}
+    },
+    "sf_univers_visuel_seo_mqaJeP": {
+      "type": "sf-univers-visuel-seo",
+      "name": "SEO Texte Discret (Animé)",
+      "settings": {
+        "seo_text": "Quand la lumière sait se faire oublier, l’espace respire."
+      }
     }
   },
   "order": [
     "banner",
     "product-grid",
-    "sf_univers_hero_LkP77c"
+    "sf_univers_hero_LkP77c",
+    "sf_chill_benefits_ynjWNX",
+    "sf_premium_products_grid_fWwHDG",
+    "sf_univers_visuel_seo_mqaJeP"
   ]
 }
