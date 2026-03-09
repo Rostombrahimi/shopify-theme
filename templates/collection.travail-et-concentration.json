@@ -48,11 +48,98 @@
         "title_amber": "Une lumière pensée pour travailler plus longtemps sans fatigue",
         "subtitle": "Quand on travaille plusieurs heures d’affilée, la lumière fait toute la différence.\n Ici, chaque luminaire est pensé pour améliorer le confort visuel, réduire la fatigue et rester efficace sans s’en rendre compte."
       }
+    },
+    "sf_work_benefits_Pdy4nU": {
+      "type": "sf-work-benefits",
+      "blocks": {
+        "benefit_card_49JnFe": {
+          "type": "benefit_card",
+          "settings": {
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0\"></path><circle cx=\"12\" cy=\"12\" r=\"3\"></circle></svg>",
+            "title": "Moins de fatigue visuelle",
+            "text": "Moins de fatigue visuelle en fin de journée grâce à un spectre lumineux optimisé pour le repos oculaire."
+          }
+        },
+        "benefit_card_9NKEPc": {
+          "type": "benefit_card",
+          "settings": {
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect width=\"20\" height=\"14\" x=\"2\" y=\"3\" rx=\"2\"></rect><line x1=\"8\" x2=\"16\" y1=\"21\" y2=\"21\"></line><line x1=\"12\" x2=\"12\" y1=\"17\" y2=\"21\"></line></svg>",
+            "title": "Meilleure lisibilité",
+            "text": "Une netteté accrue de l'écran et du plan de travail pour une concentration sans effort superflu."
+          }
+        },
+        "benefit_card_EJNbec": {
+          "type": "benefit_card",
+          "settings": {
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.9 1.2 1.5 1.5 2.5\"></path><path d=\"M9 18h6\"></path><path d=\"M10 22h4\"></path></svg>",
+            "title": "Éclairage stable",
+            "text": "Un flux constant, sans éblouissement ni scintillement, pour un confort durable tout au long de vos projets."
+          }
+        }
+      },
+      "block_order": [
+        "benefit_card_49JnFe",
+        "benefit_card_9NKEPc",
+        "benefit_card_EJNbec"
+      ],
+      "name": "Bénéfices Travail",
+      "settings": {
+        "surtitle": "POTE EXPERT",
+        "title": "Ce que cette lumière change concrètement",
+        "subtitle": "Pas de promesse miracle. Juste du confort réel."
+      }
+    },
+    "sf_premium_products_grid_h4Xbdz": {
+      "type": "sf-premium-products-grid",
+      "blocks": {
+        "product_item_WMD7qW": {
+          "type": "product_item",
+          "settings": {
+            "product": ""
+          }
+        },
+        "product_item_VFMRmx": {
+          "type": "product_item",
+          "settings": {
+            "product": ""
+          }
+        },
+        "product_item_qiEDAh": {
+          "type": "product_item",
+          "settings": {
+            "product": ""
+          }
+        },
+        "product_item_P48fgM": {
+          "type": "product_item",
+          "settings": {
+            "product": ""
+          }
+        }
+      },
+      "block_order": [
+        "product_item_WMD7qW",
+        "product_item_VFMRmx",
+        "product_item_qiEDAh",
+        "product_item_P48fgM"
+      ],
+      "name": "Grille Produits Premium",
+      "settings": {}
+    },
+    "sf_univers_visuel_seo_E6eafH": {
+      "type": "sf-univers-visuel-seo",
+      "name": "SEO Texte Discret (Animé)",
+      "settings": {
+        "seo_text": "Lire, c’est aussi une question de lumière."
+      }
     }
   },
   "order": [
     "banner",
     "product-grid",
-    "sf_univers_hero_BQdQAM"
+    "sf_univers_hero_BQdQAM",
+    "sf_work_benefits_Pdy4nU",
+    "sf_premium_products_grid_h4Xbdz",
+    "sf_univers_visuel_seo_E6eafH"
   ]
 }
