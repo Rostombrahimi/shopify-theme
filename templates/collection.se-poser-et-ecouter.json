@@ -48,11 +48,51 @@
         "title_amber": "Une lumière pour vos mondes intérieurs",
         "subtitle": "Que ce soit pour plonger dans un vinyle ou s’évader dans un chapitre, le moment demande la même chose : le silence extérieur et une immersion totale. Ici, la lumière ne cherche pas à éclairer la pièce. Elle cherche à délimiter votre bulle."
       }
+    },
+    "sf_cocon_benefits_jmFnhe": {
+      "type": "sf-cocon-benefits",
+      "blocks": {
+        "benefit_row_V3GBnL": {
+          "type": "benefit_row",
+          "settings": {
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M2 12h4\"></path><path d=\"M18 12h4\"></path><path d=\"M12 2v4\"></path><path d=\"M12 18v4\"></path><rect width=\"8\" height=\"8\" x=\"8\" y=\"8\" rx=\"2\"></rect></svg>",
+            "title": "Clarté ciblée",
+            "text": "Une clarté ciblée qui respecte l'obscurité environnante pour ne pas briser l'isolement."
+          }
+        },
+        "benefit_row_zT6iJn": {
+          "type": "benefit_row",
+          "settings": {
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z\"></path><circle cx=\"12\" cy=\"12\" r=\"3\"></circle><path d=\"m2 2 20 20\"></path></svg>",
+            "title": "Fatigue réduite",
+            "text": "Un spectre ambré doux qui réduit la fatigue visuelle, que vos yeux soient sur une page ou fermés pour écouter."
+          }
+        },
+        "benefit_row_3rn6BW": {
+          "type": "benefit_row",
+          "settings": {
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z\"></path><path d=\"M12 9v4\"></path><path d=\"M16 8h2\"></path><path d=\"M16 14h2\"></path></svg>",
+            "title": "Équilibre thermique",
+            "text": "Un équilibre thermique pour une atmosphère calme, propice au flow et à la déconnexion."
+          }
+        }
+      },
+      "block_order": [
+        "benefit_row_V3GBnL",
+        "benefit_row_zT6iJn",
+        "benefit_row_3rn6BW"
+      ],
+      "name": "Bénéfices Cocon",
+      "settings": {
+        "title": "Ce que cette ambiance apporte",
+        "subtitle": "Plongez dans un cocon de sérénité nocturne."
+      }
     }
   },
   "order": [
     "banner",
     "product-grid",
-    "sf_univers_hero_WjfYJR"
+    "sf_univers_hero_WjfYJR",
+    "sf_cocon_benefits_jmFnhe"
   ]
 }
