@@ -204,8 +204,12 @@
 }
 
 #shopify-section-{{ section.id }} .softlight-icon-wrapper svg {
-  width: 32px;
-  height: 32px;
+  width: 32px !important;
+  height: 32px !important;
+  min-width: 32px;
+  min-height: 32px;
+  display: block;
+  flex-shrink: 0;
 }
 
 /* Textes des cartes */
