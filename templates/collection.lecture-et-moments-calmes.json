@@ -48,11 +48,104 @@
         "title_amber": "Un éclairage précis, sans éblouissement",
         "subtitle": "Lire, se poser, prendre un moment pour soi demande une lumière juste.\nNi trop forte, ni trop faible, mais suffisamment précise pour préserver le confort des yeux."
       }
+    },
+    "sf_quotidien_benefits_9k3LdQ": {
+      "type": "sf-quotidien-benefits",
+      "blocks": {
+        "benefit_card_fUK6C3": {
+          "type": "benefit_card",
+          "settings": {
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z\"></path><path d=\"M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z\"></path></svg>",
+            "title": "Lecture confortable",
+            "text": "Une lumière stable pour lire longtemps sans fatigue oculaire, avec un rendu des couleurs naturel."
+          }
+        },
+        "benefit_card_X6MYfE": {
+          "type": "benefit_card",
+          "settings": {
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M18 6c0 2-2 2-2 4v10a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2V10c0-2-2-2-2-4V2h12v4Z\"></path><line x1=\"6\" x2=\"18\" y1=\"6\" y2=\"6\"></line><line x1=\"12\" x2=\"12\" y1=\"12\" y2=\"12\"></line></svg>",
+            "title": "Éclairage ciblé",
+            "text": "Un flux maîtrisé pour voir clair sans éblouir, idéal pour vos tâches de précision au bureau ou à la maison."
+          }
+        },
+        "benefit_card_9R3xQC": {
+          "type": "benefit_card",
+          "settings": {
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"5\" r=\"1\"></circle><circle cx=\"19\" cy=\"5\" r=\"1\"></circle><circle cx=\"5\" cy=\"5\" r=\"1\"></circle><circle cx=\"12\" cy=\"12\" r=\"1\"></circle><circle cx=\"19\" cy=\"12\" r=\"1\"></circle><circle cx=\"5\" cy=\"12\" r=\"1\"></circle><circle cx=\"12\" cy=\"19\" r=\"1\"></circle><circle cx=\"19\" cy=\"19\" r=\"1\"></circle><circle cx=\"5\" cy=\"19\" r=\"1\"></circle></svg>",
+            "title": "Ambiance maîtrisée",
+            "text": "Une atmosphère calme qui s'intègre naturellement dans votre espace de vie pour un bien-être total."
+          }
+        }
+      },
+      "block_order": [
+        "benefit_card_fUK6C3",
+        "benefit_card_X6MYfE",
+        "benefit_card_9R3xQC"
+      ],
+      "name": "Bénéfices Quotidien",
+      "settings": {
+        "title": "Ce que cette lumière permet",
+        "subtitle": "Une expertise technologique au service de votre confort visuel quotidien, conçue pour durer et s'adapter."
+      }
+    },
+    "sf_premium_products_grid_dKpdnH": {
+      "type": "sf-premium-products-grid",
+      "blocks": {
+        "product_item_HawCiA": {
+          "type": "product_item",
+          "settings": {
+            "product": ""
+          }
+        },
+        "product_item_bDCCz6": {
+          "type": "product_item",
+          "settings": {
+            "product": ""
+          }
+        },
+        "product_item_74fCFX": {
+          "type": "product_item",
+          "settings": {
+            "product": ""
+          }
+        },
+        "product_item_LBpgp9": {
+          "type": "product_item",
+          "settings": {
+            "product": ""
+          }
+        },
+        "product_item_UYcwrb": {
+          "type": "product_item",
+          "settings": {
+            "product": ""
+          }
+        }
+      },
+      "block_order": [
+        "product_item_HawCiA",
+        "product_item_bDCCz6",
+        "product_item_74fCFX",
+        "product_item_LBpgp9",
+        "product_item_UYcwrb"
+      ],
+      "name": "Grille Produits Premium",
+      "settings": {}
+    },
+    "sf_univers_visuel_seo_HfCfpN": {
+      "type": "sf-univers-visuel-seo",
+      "name": "SEO Texte Discret (Animé)",
+      "settings": {
+        "seo_text": "Lire, c’est aussi une question de lumière."
+      }
     }
   },
   "order": [
     "banner",
     "product-grid",
-    "sf_univers_hero_KWLnQL"
+    "sf_univers_hero_KWLnQL",
+    "sf_quotidien_benefits_9k3LdQ",
+    "sf_premium_products_grid_dKpdnH",
+    "sf_univers_visuel_seo_HfCfpN"
   ]
 }
