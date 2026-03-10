@@ -252,9 +252,9 @@
       "settings": {
         "badge_text": "ILS NOUS AIMENT",
         "title": "L'avis de nos clients <em>illuminés</em>",
-        "description": "Découvrez pourquoi nos créations trouvent leur place dans les intérieurs les plus exigeants. Une transparence totale, garantie par nos artisans.",
-        "show_global_rating": true,
-        "global_rating_text": "4.9/5 | Basé sur 1,240 avis",
+        "description": "Découvrez pourquoi nos selections trouvent leur place dans les intérieurs les plus exigeants. Une transparence totale, garantie par notre équipe.",
+        "show_global_rating": false,
+        "global_rating_text": "",
         "btn_text": "Rejoindre nos clients illuminés",
         "btn_link": ""
       }
