@@ -265,11 +265,11 @@
         "block_0": {
           "type": "article",
           "settings": {
-            "tag": "Workspace",
-            "title": "Comment choisir sa lumière de bureau",
-            "excerpt": "Maximize productivity and reduce eye strain with our guide to color temperature and lux levels. Learn how specific kelvin...",
-            "read_time": 5,
-            "article_link": ""
+            "tag": "Productivité",
+            "title": "Comment choisir la lampe de table parfaite",
+            "excerpt": "Boostez votre concentration et réduisez la fatigue visuelle. Découvrez notre guide expert pour trouver la température de couleur (Kelvin) idéale et l'intensité parfaite pour votre zone de travail",
+            "read_time": 4,
+            "article_link": "shopify://blogs/nos-blog/comment-choisir-la-lampe-de-table-parfaite"
           }
         },
         "block_1": {
