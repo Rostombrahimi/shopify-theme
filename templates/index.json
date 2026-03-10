@@ -302,8 +302,8 @@
         "badge_text": "LE BLOG DES EXPERTS",
         "title": "L'Atelier Atmosphère",
         "description": "Lighting is an art, not just a utility. Discover our expert guides on sculpting your space with the perfect luminescence, from warm bedroom ambiances to focused office clarity.",
-        "btn_text": "View All Guides",
-        "btn_link": ""
+        "btn_text": "Découvir L'atelier",
+        "btn_link": "shopify://pages/latelier"
       }
     }
   },
