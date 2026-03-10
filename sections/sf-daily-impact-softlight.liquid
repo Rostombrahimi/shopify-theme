@@ -238,31 +238,20 @@
             {% case block.settings.icon %}
               {% when 'bulb' %}
                 <!-- Lampe/Intensité -->
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 16V18" stroke="#E89D46" stroke-width="1.8" stroke-linecap="round"/>
-                  <path d="M9 16H15" stroke="#E89D46" stroke-width="1.8" stroke-linecap="round"/>
-                  <path d="M9 20H15" stroke="#E89D46" stroke-width="1.8" stroke-linecap="round"/>
-                  <path d="M6 8C6 4.68629 8.68629 2 12 2C15.3137 2 18 4.68629 18 8C18 10.3698 16.626 12.4223 14.6151 13.3986" stroke="#E89D46" stroke-width="1.8" stroke-linecap="round"/>
-                  <path d="M9.38491 13.3986C7.37397 12.4223 6 10.3698 6 8" stroke="#E89D46" stroke-width="1.8" stroke-linecap="round"/>
-                  <path d="M1 8H3" stroke="#E89D46" stroke-width="1.8" stroke-linecap="round"/>
-                  <path d="M21 8H23" stroke="#E89D46" stroke-width="1.8" stroke-linecap="round"/>
-                  <path d="M4 15L5.5 13.5" stroke="#E89D46" stroke-width="1.8" stroke-linecap="round"/>
-                  <path d="M20 15L18.5 13.5" stroke="#E89D46" stroke-width="1.8" stroke-linecap="round"/>
+                <svg viewBox="0 0 24 24" fill="none" stroke="#E89D46" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.9 1.2 1.5 1.5 2.5"/>
+                  <path d="M9 18h6"/><path d="M10 22h4"/>
                 </svg>
               {% when 'eye' %}
                 <!-- Œil/Visibilité -->
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M2 12C2 12 5.5 5 12 5C18.5 5 22 12 22 12C22 12 18.5 19 12 19C5.5 19 2 12 2 12Z" stroke="#E89D46" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                  <circle cx="12" cy="12" r="3" stroke="#E89D46" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                <svg viewBox="0 0 24 24" fill="none" stroke="#E89D46" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
+                  <circle cx="12" cy="12" r="3"/>
                 </svg>
               {% when 'sunset' %}
                 <!-- Soleil Couchant/Transition -->
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M17 18A5 5 0 0 0 7 18" stroke="#E89D46" stroke-width="1.8" stroke-linecap="round"/>
-                  <path d="M12 2V4" stroke="#E89D46" stroke-width="1.8" stroke-linecap="round"/>
-                  <path d="M4.22168 10.2217L5.63589 11.6359" stroke="#E89D46" stroke-width="1.8" stroke-linecap="round"/>
-                  <path d="M19.7783 10.2217L18.3641 11.6359" stroke="#E89D46" stroke-width="1.8" stroke-linecap="round"/>
-                  <path d="M1.5 18H22.5" stroke="#E89D46" stroke-width="1.8" stroke-linecap="round"/>
+                <svg viewBox="0 0 24 24" fill="none" stroke="#E89D46" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 10V2"/><path d="m4.93 10.93 1.41 1.41"/><path d="M2 18h2"/><path d="M20 18h2"/><path d="m19.07 10.93-1.41 1.41"/><path d="M22 22H2"/><path d="m16 5-4 4-4-4"/><path d="M16 18a4 4 0 0 0-8 0"/>
                 </svg>
             {% endcase %}
           </div>

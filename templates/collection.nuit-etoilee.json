@@ -131,7 +131,7 @@
         "benefit_card_DtmnLV": {
           "type": "benefit_card",
           "settings": {
-            "icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z\"></path><circle cx=\"12\" cy=\"12\" r=\"3\"></circle></svg>",
+            "icon": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z\"/><circle cx=\"12\" cy=\"12\" r=\"3\"/></svg>",
             "title": "Focalisation apaisante",
             "text": "La projection au plafond aide l'enfant à fixer son regard et à calmer son système nerveux."
           }
@@ -139,7 +139,7 @@
         "benefit_card_dyjV9i": {
           "type": "benefit_card",
           "settings": {
-            "icon": "<svg width=\"40\" height=\"40\" viewbox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n  <path d=\"M12 2V4M12 20V22M4.22 4.22L5.64 5.64M18.36 18.36L19.78 19.78M2 12H4M20 12H22M4.22 19.78L5.64 18.36M18.36 5.64L19.78 4.22\" stroke=\"#E89D46\" stroke-width=\"1.2\" stroke-linecap=\"round\" opacity=\"0.3\"></path>\n  <path d=\"M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79Z\" stroke=\"#E89D46\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n</svg>",
+            "icon": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M13 16a3 3 0 1 1 0 6H7a5 5 0 1 1 4.9-6Z\"/><path d=\"M10.1 9A6 6 0 0 1 16 4a4.24 4.24 0 0 0 6 6 6 6 0 0 1-3 5.197\"/></svg>",
             "title": "Frontière jour/nuit",
             "text": "La lumière bleue profonde ou ambrée crée une bulle immersive qui délimite l'espace du sommeil."
           }
@@ -147,7 +147,7 @@
         "benefit_card_8knDUR": {
           "type": "benefit_card",
           "settings": {
-            "icon": "<svg width=\"40\" height=\"40\" viewbox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n  <path d=\"M12 22C12 22 20 18 20 12V5L12 2L4 5V12C4 18 12 22 12 22Z\" stroke=\"#E89D46\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n  <path d=\"M9 12L11 14L15 10\" stroke=\"#E89D46\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" opacity=\"0.6\"></path>\n</svg>",
+            "icon": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\"/><path d=\"m9 12 2 2 4-4\"/></svg>",
             "title": "Sécurité par l'immersion",
             "text": "L'enfant ne s'endort pas dans le noir total, mais dans un univers bienveillant."
           }
