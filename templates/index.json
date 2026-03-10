@@ -33,6 +33,7 @@
             "item_id": "setup",
             "icon": "⚡",
             "label": "Visuel",
+            "image": "shopify://shop_images/luminaire-univers-visuel-anime-pop-culture-vertical_2.jpg",
             "card_svg": "",
             "material_icon": "sports_esports",
             "accent_color": "#6366f1",
