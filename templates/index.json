@@ -190,9 +190,9 @@
           "type": "review",
           "settings": {
             "stars": 5,
-            "text": "Depuis que j'ai cette lampe, mon bureau est transformé. La lumière est douce, parfaite pour le code tard le soir sans fatiguer les yeux.",
-            "author_name": "Julien",
-            "author_role": "Développeur Fullstack",
+            "text": "Franchement surpris par la qualité la lumière est vraiment douce pour les yeux, je travaille souvent tard et je sens clairement la différence. Mon bureau est devenu beaucoup plus agréable le soir",
+            "author_name": "Mathieu P.",
+            "author_role": "Développeur Web",
             "is_verified": true,
             "is_featured": false
           }
@@ -200,8 +200,8 @@
         "block_1": {
           "type": "review",
           "settings": {
-            "stars": 5,
-            "text": "Juste incroyable. La finition laiton est sublime.",
+            "stars": 4,
+            "text": "La lampe est superbe et la lumière est parfaite pour mon bureau. Le carton était un peu abîmé à l’arrivée, mais le produit à l’intérieur était intact donc rien de grave.",
             "author_name": "Clara L.",
             "author_role": "Paris, France",
             "is_verified": true,
@@ -211,8 +211,8 @@
         "block_2": {
           "type": "review",
           "settings": {
-            "stars": 5,
-            "text": "Une qualité de fabrication rare de nos jours. Le design minimaliste s'intègre partout. J'ai commandé le modèle 'Aurore' pour un client, et j'en ai pris un pour moi le lendemain.",
+            "stars": 4,
+            "text": "Très bon produit. La lampe est élégante et la lumière est vraiment agréable. Seul petit point : la livraison a pris plus de temps que prévu, mais le colis est arrivé bien protégé et la qualité est au rendez-vous",
             "author_name": "Sophie L.",
             "author_role": "Architecte d'intérieur",
             "is_verified": true,
@@ -223,9 +223,9 @@
           "type": "review",
           "settings": {
             "stars": 5,
-            "text": "J'avais un doute sur l'installation de l'applique murale. J'ai contacté le support un dimanche et j'ai eu une réponse en 15 minutes avec une vidéo explicative. C'est rare d'avoir un tel niveau de service. La lampe est installée et elle est magnifique.",
+            "text": "je cherchais une lumière pour mon setup et c’est exactement ce que je voulais l’ambiance est beaucoup plus immersive maintenant, surtout le soir.",
             "author_name": "Thomas R.",
-            "author_role": "Chef de projet",
+            "author_role": "Etudiant",
             "is_verified": true,
             "is_featured": false
           }
