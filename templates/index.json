@@ -177,6 +177,7 @@
         "text": "<p>En supprimant les intermédiaires, nous nous concentrons sur l'essentiel : la qualité de la lumière et le design de votre intérieur. Chaque pièce est pensée pour transformer votre espace en un sanctuaire de sérénité.</p>",
         "button_label": "Découvrir notre histoire",
         "button_link": "",
+        "image": "shopify://shop_images/ambiance-chaleureuse-luminaire-detente-salon-illuminees.jpg",
         "card_title": "Ambiance chaleureuse",
         "card_text": "La lumière idéale pour vos soirées détente, conçue pour apaiser l'esprit.",
         "card_icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M6 16 A6 6 0 0 1 18 16\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"></path><path d=\"M3 16H21\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"></path><path d=\"M12 7V4\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"></path><path d=\"M17 9L19 7\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"></path><path d=\"M7 9L5 7\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"></path></svg>"
