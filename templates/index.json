@@ -48,6 +48,7 @@
             "item_id": "cocon",
             "icon": "✨",
             "label": "Petit Cocon",
+            "image": "shopify://shop_images/luminaire-bebe-nuit-apaisee-cocon.jpg",
             "card_svg": "",
             "material_icon": "nightlight",
             "accent_color": "#fcd34d",
