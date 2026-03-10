@@ -275,20 +275,20 @@
         "block_1": {
           "type": "article",
           "settings": {
-            "tag": "Interior Design",
+            "tag": "Le Labo Technique",
             "title": "Lumière chaude ou froide ? Le guide ultime",
             "excerpt": "Comprendre les mystères des Kelvins pour sculpter l'ambiance parfaite. Découvrez comment passer d'un bureau productif à un salon apaisant simplement en choisissant la bonne teinte de blanc.",
-            "read_time": 8,
+            "read_time": 6,
             "article_link": "shopify://blogs/nos-blog/quest-ce-que-la-temperature-de-couleur"
           }
         },
         "block_2": {
           "type": "article",
           "settings": {
-            "tag": "Technical",
-            "title": "Warm vs. Cool: A Kelvin Guide",
-            "excerpt": "Understanding the spectrum to create the right mood for relaxation or focus. From 2700K cozy evenings to 5000K daylight...",
-            "read_time": 6,
+            "tag": "Design d'intérieur",
+            "title": "Les erreurs à ne surtout pas commettre dans l’éclairage d’une chambre à coucher",
+            "excerpt": "Éblouissement avant de dormir, fausse lumière bleue ou placements hasardeux... Découvrez comment bannir ces ennemis de votre sommeil et sculpter une atmosphère véritablement propice au repos et à la détente absolue.",
+            "read_time": 7,
             "article_link": "shopify://blogs/nos-blog/les-erreurs-a-ne-surtout-pas-commettre-dans-l-eclairage-d-une-chambre-a-coucher"
           }
         }
