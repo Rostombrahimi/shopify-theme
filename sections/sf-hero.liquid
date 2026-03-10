@@ -491,27 +491,32 @@
     .sf-hero__slide-image {
       position: absolute;
       inset: 0;
-      background-size: cover;
-      background-position: center;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       background-color: var(--illu-bg-night);
+      z-index: 0;
     }
     
     .sf-hero__slide-gradient-1 {
       position: absolute;
       inset: 0;
-      background-image: linear-gradient(to top, rgba(8, 26, 50, 0.9), transparent, transparent);
+      background-image: linear-gradient(to top, rgba(8, 26, 50, 0.95), transparent, transparent);
       opacity: 0.8;
+      z-index: 1;
     }
     
     .sf-hero__slide-gradient-2 {
       position: absolute;
       inset: 0;
-      background-image: linear-gradient(to right, rgba(8, 26, 50, 0.4), transparent, transparent);
+      background-image: linear-gradient(to right, rgba(8, 26, 50, 0.6), transparent, transparent);
+      z-index: 2;
     }
     
     /* Slide Card */
     .sf-hero__card {
       position: absolute;
+      z-index: 5;
       bottom: 2.5rem;
       right: 2.5rem;
       background-color: rgba(8, 26, 50, 0.85);
@@ -646,9 +651,9 @@
                 {% endif %}
                 
                 {% if block.settings.image != blank %}
-                  <div class="sf-hero__slide-image" style="background-image: url('{{ block.settings.image | image_url: width: 1400 }}');"></div>
+                  <img src="{{ block.settings.image | image_url: width: 1400 }}" alt="{{ block.settings.card_title | escape }}" class="sf-hero__slide-image" width="1400" height="auto" loading="lazy" />
                 {% else %}
-                  <div class="sf-hero__slide-image" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDLDmw_wnM5YKwrekD1E81vEnheylg6IxAfXI7QP4pK0pxAe72seYZ4IZ89NyTDnqv0-DWqXDIRqQDxwJOiSBerfD3QT-Ju4osDbFXjUxnWORS7vGD9JQp-6lHuB3m2D_VF1GrULBPbXugmW1_4tfRnCLDWeJugzvPf62-nsdg_8K0V_ATsR_50yqjKzfTHOeljBV9q4Ga_KJTbaWNFXaxo7BR-zrsYafTP65xn5QcJ6H9BUKCt8euq3bx4rZYhgMj9HoMAkcflHc8A');"></div>
+                  <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLDmw_wnM5YKwrekD1E81vEnheylg6IxAfXI7QP4pK0pxAe72seYZ4IZ89NyTDnqv0-DWqXDIRqQDxwJOiSBerfD3QT-Ju4osDbFXjUxnWORS7vGD9JQp-6lHuB3m2D_VF1GrULBPbXugmW1_4tfRnCLDWeJugzvPf62-nsdg_8K0V_ATsR_50yqjKzfTHOeljBV9q4Ga_KJTbaWNFXaxo7BR-zrsYafTP65xn5QcJ6H9BUKCt8euq3bx4rZYhgMj9HoMAkcflHc8A" alt="Fallback Atmosphere" class="sf-hero__slide-image" width="1400" height="800" loading="lazy" />
                 {% endif %}
                 
                 <div class="sf-hero__slide-gradient-1"></div>
