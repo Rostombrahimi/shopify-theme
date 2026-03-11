@@ -239,42 +239,13 @@
         "button_link": ""
       }
     },
-    "sf_premium_products_grid_FTYLAW": {
-      "type": "sf-premium-products-grid",
-      "blocks": {
-        "product_item_RkYz7T": {
-          "type": "product_item",
-          "settings": {
-            "product": ""
-          }
-        },
-        "product_item_9MCx69": {
-          "type": "product_item",
-          "settings": {
-            "product": ""
-          }
-        },
-        "product_item_bfEYwR": {
-          "type": "product_item",
-          "settings": {
-            "product": ""
-          }
-        },
-        "product_item_XrgmGz": {
-          "type": "product_item",
-          "settings": {
-            "product": ""
-          }
-        }
-      },
-      "block_order": [
-        "product_item_RkYz7T",
-        "product_item_9MCx69",
-        "product_item_bfEYwR",
-        "product_item_XrgmGz"
-      ],
-      "name": "Grille Produits Premium",
-      "settings": {}
+    "sf_licence_grid_HzmPhg": {
+      "type": "sf-licence-grid",
+      "name": "Grille Premium Licence",
+      "settings": {
+        "collection": "",
+        "products_to_show": 4
+      }
     }
   },
   "order": [
@@ -284,6 +255,6 @@
     "sf_daily_identification_softlight_HaBLkc",
     "sf_daily_impact_softlight_qDtaWf",
     "sf_orientation_softlight_aztMH9",
-    "sf_premium_products_grid_FTYLAW"
+    "sf_licence_grid_HzmPhg"
   ]
 }
