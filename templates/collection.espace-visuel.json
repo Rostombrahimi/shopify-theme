@@ -155,7 +155,7 @@
         "title": "La maîtrise de la qualité <i>plutôt que la quantité.</i>",
         "text": "Nous ne multiplions pas les modèles pour remplir un catalogue. Nous avons conçu des lampes immersives capables de s'adapter à différents univers visuels, puis nous les déclinons par licences, thèmes et personnages pour garantir un rendu fidèle et cohérent.",
         "card_title": "Expertise Lumineuse",
-        "card_subtitle": "Conception française artisanale",
+        "card_subtitle": "",
         "card_icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"4\"></circle><path d=\"M12 2v2\"></path><path d=\"M12 20v2\"></path><path d=\"M5 5l1.5 1.5\"></path><path d=\"M17.5 17.5L19 19\"></path><path d=\"M2 12h2\"></path><path d=\"M20 12h2\"></path><path d=\"M5 19l1.5-1.5\"></path><path d=\"M17.5 6.5L19 5\"></path></svg>"
       }
     },
