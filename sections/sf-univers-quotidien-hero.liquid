@@ -66,10 +66,8 @@
 #shopify-section-{{ section.id }} .daily-overlay {
   position: absolute;
   inset: 0;
-  /* Assombrissement massif pour contrer l'écran et la lampe */
-  background: linear-gradient(to bottom, rgba(8, 26, 50, 0.6) 0%, rgba(8, 26, 50, 0.85) 35%, rgba(1, 8, 20, 0.98) 100%);
-  backdrop-filter: blur(8px); /* Ajout du flou demandé */
-  -webkit-backdrop-filter: blur(8px);
+  /* Overlay global allégé puisqu'on a une boîte pour le texte */
+  background: linear-gradient(to bottom, rgba(8, 26, 50, 0.4) 0%, rgba(8, 26, 50, 0.6) 100%);
   z-index: 1;
   pointer-events: none;
 }
@@ -87,35 +85,50 @@
   padding: 0 5%;
 }
 
+/* Nouvel encart "Glassmorphism" pour garantir une lisibilité absolue */
+#shopify-section-{{ section.id }} .daily-hero-box {
+  background: rgba(8, 26, 50, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: 3rem 2rem;
+  max-width: 900px;
+  width: 100%;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
 #shopify-section-{{ section.id }} .daily-h1 {
   font-family: 'Inter', sans-serif;
   font-size: clamp(2.5rem, 6vw, 4.5rem);
   font-weight: 800;
   line-height: 1.05;
   color: #F9F9F9;
-  margin: 0 0 2rem 0;
+  margin: 0 0 1.5rem 0;
   letter-spacing: -0.03em;
-  text-shadow: 0 4px 25px rgba(0, 0, 0, 0.8), 0 1px 3px rgba(0,0,0,0.5); /* Ombre très forte */
+  /* Ombres allégées grâce au fond sombre */
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); 
 }
 
 #shopify-section-{{ section.id }} .daily-h1 span {
   color: #E89D46;
-  text-shadow: 0 0 35px rgba(232, 157, 70, 0.5), 0 4px 25px rgba(0, 0, 0, 0.9);
+  text-shadow: 0 0 25px rgba(232, 157, 70, 0.4);
 }
 
 #shopify-section-{{ section.id }} .daily-subtitle {
   font-family: 'Inter', sans-serif;
-  font-size: 1.38rem;
+  font-size: 1.25rem;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.95); /* Blanc quasi pur */
-  font-weight: 500; /* Un peu plus épais pour contraster */
-  max-width: 800px;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 750px;
   margin: 0 auto;
-  /* Ombre portée démultipliée pour créer un contour noir autour des lettres */
-  text-shadow: 
-    0 4px 15px rgba(0, 0, 0, 0.9),
-    0 1px 3px rgba(0, 0, 0, 0.8),
-    0 0 40px rgba(0, 0, 0, 1);
+}
+
+/* Mobile responsive for the box */
+@media screen and (max-width: 768px) {
+  #shopify-section-{{ section.id }} .daily-hero-box {
+    padding: 2rem 1.5rem;
+  }
 }
 </style>
 
@@ -132,16 +145,18 @@
   <div class="daily-overlay"></div>
 
   <div class="daily-hero-content">
-    <h1 class="daily-h1">
-      {{ section.settings.title | newline_to_br }}
-      {%- if section.settings.title_highlight != blank -%}
-        <br><span>{{ section.settings.title_highlight }}</span>
+    <div class="daily-hero-box">
+      <h1 class="daily-h1">
+        {{ section.settings.title | newline_to_br }}
+        {%- if section.settings.title_highlight != blank -%}
+          <br><span>{{ section.settings.title_highlight }}</span>
+        {%- endif -%}
+      </h1>
+      
+      {%- if section.settings.subtitle != blank -%}
+        <p class="daily-subtitle">{{ section.settings.subtitle }}</p>
       {%- endif -%}
-    </h1>
-    
-    {%- if section.settings.subtitle != blank -%}
-      <p class="daily-subtitle">{{ section.settings.subtitle }}</p>
-    {%- endif -%}
+    </div>
   </div>
 
 </div>
