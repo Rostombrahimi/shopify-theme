@@ -179,6 +179,25 @@
     position: relative;
     z-index: 4;
     max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Nouvel encart "Glassmorphism" pour la lisibilité absolue */
+  .atelier-hero-box {
+    background: rgba(8, 26, 50, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 3rem 2rem;
+    width: 100%;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
   }
 
   .atelier-h1 {
@@ -189,18 +208,19 @@
     line-height: 1.1;
     margin: 0 0 2rem 0;
     letter-spacing: -0.02em;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5); /* Ombre allégée grace à la box */
   }
 
   .atelier-h1 span {
     color: var(--illu-accent-amber, #E89D46);
-    /* Expert glow */
-    text-shadow: 0 0 40px rgba(232, 157, 70, 0.4);
+    /* Expert glow allégé */
+    text-shadow: 0 0 30px rgba(232, 157, 70, 0.35);
   }
 
   .atelier-subtitle {
     font-size: 1.25rem;
     line-height: 1.7;
-    color: rgba(249, 249, 249, 0.8);
+    color: rgba(249, 249, 249, 0.9);
     max-width: 800px;
     margin: 0 auto 3rem auto;
   }
@@ -210,7 +230,7 @@
     display: flex;
     justify-content: center;
     gap: 1.5rem;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
   }
 
   .atelier-btn-primary {
@@ -366,6 +386,9 @@
       min-height: auto;
       padding: 140px 1.5rem 180px 1.5rem;
     }
+    .atelier-hero-box {
+      padding: 2rem 1.5rem;
+    }
     .atelier-h1 {
       font-size: 2.5rem;
     }
@@ -400,29 +423,31 @@
     <div class="atelier-hero-fade-bottom"></div>
 
     <div class="atelier-content">
-      {% if section.settings.title != blank %}
-        <h1 class="atelier-h1">{{ section.settings.title | replace: '<span>', '<span>' }}</h1>
-      {% endif %}
-
-      {% if section.settings.subtitle != blank %}
-        <p class="atelier-subtitle">{{ section.settings.subtitle }}</p>
-      {% endif %}
-
-      <div class="atelier-actions">
-        {% if section.settings.primary_btn_text != blank %}
-          <a href="{{ section.settings.primary_btn_url | default: '#' }}" class="atelier-btn-primary">
-            {{ section.settings.primary_btn_text }}
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
+      <div class="atelier-hero-box">
+        {% if section.settings.title != blank %}
+          <h1 class="atelier-h1">{{ section.settings.title | replace: '<span>', '<span>' }}</h1>
         {% endif %}
-        
-        {% if section.settings.secondary_btn_text != blank %}
-          <a href="{{ section.settings.secondary_btn_url | default: '#' }}" class="atelier-btn-secondary">
-            {{ section.settings.secondary_btn_text }}
-          </a>
+
+        {% if section.settings.subtitle != blank %}
+          <p class="atelier-subtitle">{{ section.settings.subtitle }}</p>
         {% endif %}
+
+        <div class="atelier-actions">
+          {% if section.settings.primary_btn_text != blank %}
+            <a href="{{ section.settings.primary_btn_url | default: '#' }}" class="atelier-btn-primary">
+              {{ section.settings.primary_btn_text }}
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          {% endif %}
+          
+          {% if section.settings.secondary_btn_text != blank %}
+            <a href="{{ section.settings.secondary_btn_url | default: '#' }}" class="atelier-btn-secondary">
+              {{ section.settings.secondary_btn_text }}
+            </a>
+          {% endif %}
+        </div>
       </div>
 
       <div class="atelier-scroll-indicator">

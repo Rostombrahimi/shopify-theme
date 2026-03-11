@@ -145,6 +145,22 @@
   animation: soft-reveal 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
+/* Nouvel encart "Glassmorphism" pour la lisibilité absolue */
+#shopify-section-{{ section.id }} .starry-hero-box {
+  background: rgba(8, 26, 50, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: 3rem 2rem;
+  width: 100%;
+  max-width: 1000px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 @keyframes soft-reveal {
   0% { opacity: 0; transform: translateY(20px); }
   100% { opacity: 1; transform: translateY(0); }
@@ -154,7 +170,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: rgba(232, 157, 70, 0.1);
+  background: rgba(232, 157, 70, 0.05); /* Lighter bg since we have the box */
   border: 1px solid rgba(232, 157, 70, 0.2);
   padding: 10px 24px;
   border-radius: 99px;
@@ -164,8 +180,6 @@
   letter-spacing: 0.15em;
   margin-bottom: 2.5rem;
   z-index: 2;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
   text-transform: uppercase;
 }
 
@@ -179,11 +193,12 @@
   font-weight: 800;
   position: relative;
   letter-spacing: -0.02em;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5); /* Ombre allégée grace à la box */
 }
 
 #shopify-section-{{ section.id }} .starry-h1 span {
   color: #E89D46;
-  text-shadow: 0 0 40px rgba(232, 157, 70, 0.45);
+  text-shadow: 0 0 30px rgba(232, 157, 70, 0.35); /* Glow ajusté */
   position: relative;
   display: inline-block;
 }
@@ -193,7 +208,7 @@
   content: '';
   position: absolute;
   inset: -15px;
-  background: radial-gradient(circle, rgba(232,157,70,0.5) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(232,157,70,0.4) 0%, transparent 70%);
   mix-blend-mode: color-dodge;
   z-index: -1;
   pointer-events: none;
@@ -203,7 +218,7 @@
 #shopify-section-{{ section.id }} .starry-subtitle {
   font-size: 1.25rem;
   line-height: 1.6;
-  color: rgba(249, 249, 249, 0.8);
+  color: rgba(249, 249, 249, 0.9);
   max-width: 650px;
   margin-bottom: 3rem;
   z-index: 2;
@@ -343,6 +358,9 @@
   #shopify-section-{{ section.id }} .hero-starry-content {
     padding-top: 100px;
   }
+  #shopify-section-{{ section.id }} .starry-hero-box {
+    padding: 2rem 1.5rem;
+  }
   #shopify-section-{{ section.id }} .starry-buttons {
     flex-direction: column;
     width: 100%;
@@ -369,31 +387,33 @@
   <div class="starry-aura-overlay"></div>
   
   <div class="hero-starry-content sf-stitch">
-    {% if section.settings.badge_text != blank %}
-      <div class="starry-badge">
-        {{ section.settings.badge_text }}
+    <div class="starry-hero-box">
+      {% if section.settings.badge_text != blank %}
+        <div class="starry-badge">
+          {{ section.settings.badge_text }}
+        </div>
+      {% endif %}
+
+      {% if section.settings.title != blank %}
+        <h1 class="starry-h1">{{ section.settings.title }}</h1>
+      {% endif %}
+
+      {% if section.settings.subtitle != blank %}
+        <div class="starry-subtitle">{{ section.settings.subtitle }}</div>
+      {% endif %}
+
+      <div class="starry-buttons">
+        {% if section.settings.button_text_1 != blank %}
+          <a href="{{ section.settings.button_link_1 | default: '#' }}" class="btn-starry-primary">
+            {{ section.settings.button_text_1 }}
+          </a>
+        {% endif %}
+        {% if section.settings.button_text_2 != blank %}
+          <a href="{{ section.settings.button_link_2 | default: '#' }}" class="btn-starry-secondary">
+            {{ section.settings.button_text_2 }}
+          </a>
+        {% endif %}
       </div>
-    {% endif %}
-
-    {% if section.settings.title != blank %}
-      <h1 class="starry-h1">{{ section.settings.title }}</h1>
-    {% endif %}
-
-    {% if section.settings.subtitle != blank %}
-      <div class="starry-subtitle">{{ section.settings.subtitle }}</div>
-    {% endif %}
-
-    <div class="starry-buttons">
-      {% if section.settings.button_text_1 != blank %}
-        <a href="{{ section.settings.button_link_1 | default: '#' }}" class="btn-starry-primary">
-          {{ section.settings.button_text_1 }}
-        </a>
-      {% endif %}
-      {% if section.settings.button_text_2 != blank %}
-        <a href="{{ section.settings.button_link_2 | default: '#' }}" class="btn-starry-secondary">
-          {{ section.settings.button_text_2 }}
-        </a>
-      {% endif %}
     </div>
   </div>
 
