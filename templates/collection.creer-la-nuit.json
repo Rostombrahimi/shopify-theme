@@ -52,38 +52,6 @@
     },
     "sf_softlight_benefits_rEV7eW": {
       "type": "sf-softlight-benefits",
-      "blocks": {
-        "benefit_card_wMBkMp": {
-          "type": "benefit_card",
-          "settings": {
-            "icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z\"></path><circle cx=\"12\" cy=\"12\" r=\"3\"></circle></svg>",
-            "title": "Confort Visuel",
-            "text": "Une lumière stable qui fatigue moins les yeux lors de vos sessions prolongées."
-          }
-        },
-        "benefit_card_UEARMi": {
-          "type": "benefit_card",
-          "settings": {
-            "icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n  <path d=\"M12 22c4.97 0 9-4.03 9-9 0-4.97-4.03-9-9-9s-9 4.03-9 9c0 4.97 4.03 9 9 9Z\" opacity=\"0.3\"></path>\n  <path d=\"M12 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z\"></path>\n  <path d=\"M12 7c2 2 4 1 4-2 0-3-2-4-4-2-2-2-4-1-4 2 0 3 2 4 4 2Z\"></path>\n  <path d=\"M12 15c2-2 4-1 4 2 0 3-2 4-4 2-2 2-4 1-4-2 0-3 2-4 4-2Z\"></path>\n</svg>",
-            "title": "Concentration Zen",
-            "text": "Une atmosphère calme propice à la concentration et à l'immersion totale."
-          }
-        },
-        "benefit_card_LMdgmj": {
-          "type": "benefit_card",
-          "settings": {
-            "icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n  <path d=\"M12 2v20\"></path>\n  <path d=\"M3 7h18\"></path>\n  <path d=\"M6 7l-2 5a2 2 0 0 0 2 2h0a2 2 0 0 0 2-2l-2-5\"></path>\n  <path d=\"M18 7l-2 5a2 2 0 0 0 2 2h0a2 2 0 0 0 2-2l-2-5\"></path>\n  <path d=\"M12 22h-4\"></path>\n  <path d=\"M12 22h4\"></path>\n  <circle cx=\"12\" cy=\"5\" r=\"3\" opacity=\"0.4\"></circle>\n</svg>",
-            "title": "Équilibre Nocturne",
-            "text": "Le juste équilibre entre visibilité parfaite et ambiance chaleureuse."
-          }
-        }
-      },
-      "block_order": [
-        "benefit_card_wMBkMp",
-        "benefit_card_UEARMi",
-        "benefit_card_LMdgmj"
-      ],
-      "name": "Bénéfices Lumière Douce",
       "settings": {
         "surtitle_main": "",
         "title_main": "Sublimez vos nuits avec une<br>clarté apaisante.",
