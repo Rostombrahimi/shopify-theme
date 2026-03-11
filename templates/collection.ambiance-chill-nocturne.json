@@ -112,6 +112,7 @@
         "card_gg8bda": {
           "type": "card",
           "settings": {
+            "image": "shopify://shop_images/homme-detendu-musique-vinyles-lumiere.jpg",
             "icon": "headphones",
             "title": "Se poser & écouter",
             "text": "Pour les moments de détente absolue, bercés par vos vinyles préférés. Une lumière tamisée qui accompagne la musique.",
