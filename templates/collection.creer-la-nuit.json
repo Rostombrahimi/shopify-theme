@@ -43,10 +43,11 @@
       "type": "sf-univers-hero",
       "name": "Univers Hero",
       "settings": {
-        "badge_text": "UNIVERS VISUEL",
+        "badge_text": "Chill & nocturne",
         "title_white": "Créer la nuit –",
         "title_amber": "Une lumière qui accompagne la créativité",
-        "subtitle": "\"La nuit libère l’esprit\" quand le silence s’installe, la lumière doit suivre le rythme : présente, douce, jamais agressive. Ici, elle accompagne l’écriture, le dessin, la musique ou la création, sans casser le flow."
+        "subtitle": "\"La nuit libère l’esprit\" quand le silence s’installe, la lumière doit suivre le rythme : présente, douce, jamais agressive. Ici, elle accompagne l’écriture, le dessin, la musique ou la création, sans casser le flow.",
+        "background_image": "shopify://shop_images/hero-bureau-nocturne-lampe-architecte-croquis-creations-focalisees.jpg"
       }
     },
     "sf_softlight_benefits_rEV7eW": {
