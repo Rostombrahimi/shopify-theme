@@ -66,8 +66,8 @@
 #shopify-section-{{ section.id }} .daily-overlay {
   position: absolute;
   inset: 0;
-  /* Plus sombre en haut et beaucoup plus sombre en bas pour le texte */
-  background: linear-gradient(to bottom, rgba(8, 26, 50, 0.5) 0%, rgba(8, 26, 50, 0.8) 40%, rgba(8, 26, 50, 0.98) 100%);
+  /* Assombrissement massif pour contrer l'écran et la lampe */
+  background: linear-gradient(to bottom, rgba(8, 26, 50, 0.6) 0%, rgba(8, 26, 50, 0.85) 35%, rgba(1, 8, 20, 0.98) 100%);
   backdrop-filter: blur(8px); /* Ajout du flou demandé */
   -webkit-backdrop-filter: blur(8px);
   z-index: 1;
@@ -95,22 +95,27 @@
   color: #F9F9F9;
   margin: 0 0 2rem 0;
   letter-spacing: -0.03em;
-  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6); /* Ombre de lisibilité */
+  text-shadow: 0 4px 25px rgba(0, 0, 0, 0.8), 0 1px 3px rgba(0,0,0,0.5); /* Ombre très forte */
 }
 
 #shopify-section-{{ section.id }} .daily-h1 span {
   color: #E89D46;
-  text-shadow: 0 0 35px rgba(232, 157, 70, 0.45), 0 4px 20px rgba(0, 0, 0, 0.8);
+  text-shadow: 0 0 35px rgba(232, 157, 70, 0.5), 0 4px 25px rgba(0, 0, 0, 0.9);
 }
 
 #shopify-section-{{ section.id }} .daily-subtitle {
   font-family: 'Inter', sans-serif;
   font-size: 1.38rem;
   line-height: 1.6;
-  color: rgba(249, 249, 249, 0.9); /* Plus blanc */
+  color: rgba(255, 255, 255, 0.95); /* Blanc quasi pur */
+  font-weight: 500; /* Un peu plus épais pour contraster */
   max-width: 800px;
   margin: 0 auto;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8); /* Ombre de lisibilité */
+  /* Ombre portée démultipliée pour créer un contour noir autour des lettres */
+  text-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.9),
+    0 1px 3px rgba(0, 0, 0, 0.8),
+    0 0 40px rgba(0, 0, 0, 1);
 }
 </style>
 
