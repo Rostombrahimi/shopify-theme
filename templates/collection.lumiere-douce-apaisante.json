@@ -193,6 +193,43 @@
     },
     "sf_orientation_softlight_aztMH9": {
       "type": "sf-orientation-softlight",
+      "blocks": {
+        "orientation_card_6RYFMX": {
+          "type": "orientation_card",
+          "settings": {
+            "is_active": true,
+            "theme": "douce",
+            "icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"4\"></circle><path d=\"M12 2v2\"></path><path d=\"M12 20v2\"></path><path d=\"m4.93 4.93 1.41 1.41\"></path><path d=\"m17.66 17.66 1.41 1.41\"></path><path d=\"M2 12h2\"></path><path d=\"M20 12h2\"></path><path d=\"m6.34 17.66-1.41 1.41\"></path><path d=\"m19.07 4.93-1.41 1.41\"></path></svg>",
+            "title": "Lumière Douce",
+            "text": "Une intensité pratique pour les interventions rapides (change, eau, câlin) sans briser le cycle de mélatonine."
+          }
+        },
+        "orientation_card_bKcfg6": {
+          "type": "orientation_card",
+          "settings": {
+            "is_active": false,
+            "theme": "nuit",
+            "icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z\"></path></svg>",
+            "title": "Endormissement & Rituel",
+            "text": "Le passage parfait vers les songes. Une lumière qui s'estompe pour signaler au cerveau qu'il est temps de se reposer."
+          }
+        },
+        "orientation_card_xQDYpL": {
+          "type": "orientation_card",
+          "settings": {
+            "is_active": false,
+            "theme": "foret",
+            "icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n  <path d=\"m17 14 3 3.3a1 1 0 0 1-.7 1.7H4.7a1 1 0 0 1-.7-1.7L7 14h-.3a1 1 0 0 1-.7-1.7L9 9h-.2A1 1 0 0 1 8 7.3L12 3l4 4.3a1 1 0 0 1-.8 1.7H15l3 3.3a1 1 0 0 1-.8 1.7H17z\"></path>\n  <path d=\"M12 22v-3\"></path>\n</svg>",
+            "title": "Amis de la Forêt",
+            "text": "Une présence douce et constante tout au long de la nuit pour éviter les réveils anxieux dans l'obscurité totale."
+          }
+        }
+      },
+      "block_order": [
+        "orientation_card_6RYFMX",
+        "orientation_card_bKcfg6",
+        "orientation_card_xQDYpL"
+      ],
       "name": "Orientation Expert LD",
       "settings": {
         "badge_text": "L'ORIENTATION EXPERT",
