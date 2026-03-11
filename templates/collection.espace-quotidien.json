@@ -45,7 +45,8 @@
       "settings": {
         "title": "Espaces de vie,",
         "title_highlight": "Lumière & Harmonie",
-        "subtitle": "Des solutions d'éclairage conçues pour s'intégrer parfaitement à votre quotidien, tout en respectant l'ambiance de chaque pièce."
+        "subtitle": "Des solutions d'éclairage conçues pour s'intégrer parfaitement à votre quotidien, tout en respectant l'ambiance de chaque pièce.",
+        "background_image": "shopify://shop_images/hero-univers-espace-quotidien-ambiance-travail.png"
       }
     },
     "sf_univers_quotidien_cards_UkJ4M7": {
@@ -136,6 +137,7 @@
         "usage_card_iaQhmJ": {
           "type": "usage_card",
           "settings": {
+            "image": "shopify://shop_images/univers-espace-quotidien-sous-univers-travail-concentration-setup.jpg",
             "icon": "<svg width=\"16\" height=\"16\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"2\" y=\"3\" width=\"20\" height=\"14\" rx=\"2\" ry=\"2\"></rect><line x1=\"8\" y1=\"21\" x2=\"16\" y2=\"21\"></line><line x1=\"12\" y1=\"17\" x2=\"12\" y2=\"21\"></line></svg>",
             "title": "Travail & Concentration",
             "text": "Lumières pensées pour travailler plus longtemps sans fatigue.",
@@ -147,6 +149,7 @@
         "usage_card_deCXUe": {
           "type": "usage_card",
           "settings": {
+            "image": "shopify://shop_images/univers-espace-quotidien-ambiance-detente-atmosphere-douce-nook.jpg",
             "icon": "<svg width=\"16\" height=\"16\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M2 12h4l3-9 5 18 3-9h5\"></path></svg>",
             "title": "Ambiance & Détente",
             "text": "Créer une atmosphère douce en fin de journée.",
@@ -158,6 +161,7 @@
         "usage_card_TkNjCQ": {
           "type": "usage_card",
           "settings": {
+            "image": "shopify://shop_images/coin-lecture-lumiere-douce-eclairage-precis-sans-eblouissement_2.png",
             "icon": "<svg width=\"16\" height=\"16\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 19.5A2.5 2.5 0 0 1 6.5 17H20\"></path><path d=\"M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z\"></path></svg>",
             "title": "Lecture & Moments Calmes",
             "text": "Un éclairage précis, sans éblouissement.",
