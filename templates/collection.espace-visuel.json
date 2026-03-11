@@ -47,7 +47,7 @@
         "title_white": "Univers Visuel  –",
         "title_amber": "Ambiances lumineuses\npour exprimer sa passion",
         "subtitle": "Anime, pop culture, setup visuel ou déco de chambre : ici, la lumière devient une signature.",
-        "background_image": "shopify://shop_images/lumiere-led-murale-ambiance-espace-visuel-bureau.png"
+        "background_image": "shopify://shop_images/hero-univers-visuel-expression-curation-setup.jpg"
       }
     },
     "sf_univers_why_PtWbPL": {
@@ -57,11 +57,12 @@
         "label": "LE POURQUOI",
         "heading": "Plus qu'une\nchambre, un\nterritoire\nd'expression.",
         "text": "À l'adolescence, une chambre n'est pas qu'un endroit pour dormir. C'est un refuge, une arène de jeu, et surtout, le miroir d'une identité en pleine construction. Dans cet Univers Visuel, chaque source lumineuse raconte une histoire...",
-        "button_link": "",
+        "button_link": "shopify://pages/qui-sommes-nous",
         "button_text": "Philosophie Illuminées",
-        "card_badge": "AMBIANCE",
-        "card_label": "Expertise Ados",
-        "card_title": "Configuré pour la victoire\net le repos."
+        "image": "shopify://shop_images/eclairage-chambre-ado-ambiance-decorative-moderne.jpg",
+        "card_badge": "",
+        "card_label": "Ambiance",
+        "card_title": ""
       }
     },
     "sf_sub_universes_nTkUHm": {
