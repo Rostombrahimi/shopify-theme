@@ -71,7 +71,8 @@
         "universe_card_QbtXt7": {
           "type": "universe_card",
           "settings": {
-            "badge": "01. POP CULTURE",
+            "image": "shopify://shop_images/etageres_collection_manga_anime_figurines_shonen_one_piece_naruto_bleach.jpg",
+            "badge": "01. ANIME",
             "title": "Univers Anime & Manga",
             "description": "Inspiré des licences cultes et des scènes iconiques pour une immersion totale.",
             "btn_text": "Explorer cet univers",
@@ -81,7 +82,7 @@
         "universe_card_jgLzt8": {
           "type": "universe_card",
           "settings": {
-            "badge": "02. DESIGN SETUP",
+            "badge": "02. SETUP & POP CULTURE",
             "title": "Setup Visuel & Pop Culture",
             "description": "Pour créer une ambiance forte, même sans jouer. Le design au service de ton espace.",
             "btn_text": "Explorer cet univers",
@@ -91,7 +92,7 @@
         "universe_card_LmAxyU": {
           "type": "universe_card",
           "settings": {
-            "badge": "03. ATMOSPHÈRE",
+            "badge": "03. AMBIANCE CHILL",
             "title": "Ambiance Chill & Nocturne",
             "description": "Lumières douces pour se poser, écouter, créer. Ta bulle de sérénité quotidienne.",
             "btn_text": "Explorer cet univers",
