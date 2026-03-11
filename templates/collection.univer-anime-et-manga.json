@@ -43,12 +43,10 @@
       "type": "sf-univers-visuel-hero",
       "name": "Univers Visuel Hero",
       "settings": {
+        "background_image": "shopify://shop_images/decorations-lumineuses-chambre-ado-univers-manga.jpg",
         "badge_text": "🏮 SOUS-COLLECTION ANIMÉ",
         "title": "Lampes Animé –\n<em>Ambiances inspirées des licences cultes</em>",
-        "description": "Une immersion lumineuse radicale. Plongez votre espace dans l'aura de vos héros avec notre curation exclusive de pièces d'exception.",
-        "action_icon": "",
-        "action_text": "DÉCOUVRIR",
-        "action_link": ""
+        "description": "Une immersion lumineuse radicale. Plongez votre espace dans l'aura de vos héros avec notre curation exclusive de pièces d'exception."
       }
     },
     "sf_univers_visuel_guide_MqBWtt": {
