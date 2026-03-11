@@ -43,12 +43,9 @@
       "type": "sf-univers-visuel-hero",
       "name": "Univers Visuel Hero",
       "settings": {
-        "badge_text": "",
+        "badge_text": "chill & nocturne",
         "title": "Ambiance Chill & Nocturne –\n<em>Une lumière pour se poser, créer et ressentir</em>",
-        "description": "Quand la nuit tombe, la lumière change de rôle : elle accompagne les moments calmes, stimule la créativité et crée une atmosphère qui vous ressemble.",
-        "action_icon": "",
-        "action_text": "DÉCOUVRIR",
-        "action_link": ""
+        "description": "Quand la nuit tombe, la lumière change de rôle : elle accompagne les moments calmes, stimule la créativité et crée une atmosphère qui vous ressemble."
       }
     },
     "sf_chill_moments_AGCewh": {

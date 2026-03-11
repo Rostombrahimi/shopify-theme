@@ -93,6 +93,7 @@
         "universe_card_LmAxyU": {
           "type": "universe_card",
           "settings": {
+            "image": "shopify://shop_images/fauteuil-velours-vert-coin-lecture-tourne-disque-vue-ville-nuit.jpg",
             "badge": "03. AMBIANCE CHILL",
             "title": "Ambiance Chill & Nocturne",
             "description": "Lumières douces pour se poser, écouter, créer. Ta bulle de sérénité quotidienne.",
