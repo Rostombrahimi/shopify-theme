@@ -191,6 +191,43 @@
     },
     "sf_orientation_softlight_aztMH9": {
       "type": "sf-orientation-softlight",
+      "blocks": {
+        "card_nuit": {
+          "type": "orientation_card",
+          "settings": {
+            "is_active": false,
+            "theme": "nuit",
+            "title": "Nuit Étoilée",
+            "text": "Idéale pour l'endormissement",
+            "icon": "<svg viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79Z\" fill=\"#718096\" stroke=\"none\"/></svg>"
+          }
+        },
+        "card_foret": {
+          "type": "orientation_card",
+          "settings": {
+            "is_active": false,
+            "theme": "foret",
+            "title": "Amis de la Forêt",
+            "text": "Un repère rassurant",
+            "icon": "<svg viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M12 2L5 10H8.5L3 18H11V22H13V18H21L15.5 10H19L12 2Z\" stroke=\"#34D399\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M12 8L9.5 12H11L8.5 15.5H15.5L13 12H14.5L12 8Z\" stroke=\"#34D399\" stroke-width=\"1.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+          }
+        },
+        "card_douce": {
+          "type": "orientation_card",
+          "settings": {
+            "is_active": true,
+            "theme": "douce",
+            "title": "Lumière Douce",
+            "text": "Pratique pour les soins",
+            "icon": "<svg viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"12\" cy=\"12\" r=\"4\" fill=\"#081A32\"/><path d=\"M12 3V5M12 19V21M5.636 5.636L7.05 7.05M16.95 16.95L18.364 18.364M3 12H5M19 12H21M5.636 18.364L7.05 16.95M16.95 5.636L18.364 7.05\" stroke=\"#081A32\" stroke-width=\"2\" stroke-linecap=\"round\"/></svg>"
+          }
+        }
+      },
+      "block_order": [
+        "card_nuit",
+        "card_foret",
+        "card_douce"
+      ],
       "name": "Orientation Expert LD",
       "settings": {
         "badge_text": "L'ORIENTATION EXPERT",

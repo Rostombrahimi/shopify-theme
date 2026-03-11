@@ -34,9 +34,93 @@
       "label": "Button Link"
     }
   ],
+  "blocks": [
+    {
+      "type": "orientation_card",
+      "name": "Carte Orientation",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "is_active",
+          "label": "Marquer comme Recommandé",
+          "default": false
+        },
+        {
+          "type": "select",
+          "id": "theme",
+          "label": "Thème de la carte (Couleurs)",
+          "options": [
+            {
+              "value": "nuit",
+              "label": "Nuit Étoilée (Bleu)"
+            },
+            {
+              "value": "foret",
+              "label": "Amis de la Forêt (Vert)"
+            },
+            {
+              "value": "douce",
+              "label": "Lumière Douce (Ambre)"
+            }
+          ],
+          "default": "nuit"
+        },
+        {
+          "type": "html",
+          "id": "icon",
+          "label": "Icône SVG"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Titre (Nom de l'ambiance)",
+          "default": "Nom de l'ambiance"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Sous-titre / Description",
+          "default": "Description courte"
+        }
+      ]
+    }
+  ],
   "presets": [
     {
-      "name": "Orientation Expert LD"
+      "name": "Orientation Expert LD",
+      "blocks": [
+        {
+          "type": "orientation_card",
+          "settings": {
+            "is_active": false,
+            "theme": "nuit",
+            "title": "Nuit Étoilée",
+            "text": "Idéale pour l'endormissement",
+            "icon": "<svg viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79Z\" fill=\"#718096\" stroke=\"none\"/></svg>"
+          }
+        },
+        {
+          "type": "orientation_card",
+          "settings": {
+            "is_active": false,
+            "theme": "foret",
+            "title": "Amis de la Forêt",
+            "text": "Un repère rassurant",
+            "icon": "<svg viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M12 2L5 10H8.5L3 18H11V22H13V18H21L15.5 10H19L12 2Z\" stroke=\"#34D399\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M12 8L9.5 12H11L8.5 15.5H15.5L13 12H14.5L12 8Z\" stroke=\"#34D399\" stroke-width=\"1.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+          }
+        },
+        {
+          "type": "orientation_card",
+          "settings": {
+            "is_active": true,
+            "theme": "douce",
+            "title": "Lumière Douce",
+            "text": "Pratique pour les soins",
+            "icon": "<svg viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"12\" cy=\"12\" r=\"4\" fill=\"#081A32\"/><path d=\"M12 3V5M12 19V21M5.636 5.636L7.05 7.05M16.95 16.95L18.364 18.364M3 12H5M19 12H21M5.636 18.364L7.05 16.95M16.95 5.636L18.364 7.05\" stroke=\"#081A32\" stroke-width=\"2\" stroke-linecap=\"round\"/></svg>"
+          }
+        }
+      ]
     }
   ]
 }
@@ -166,12 +250,15 @@
   height: 28px;
 }
 
-/* Specific icon colors */
-.comp-item:nth-child(1) .comp-icon-circle { background: #252D5A; } /* Nuit Etoilee color */
-.comp-item:nth-child(1) .comp-icon-circle svg { fill: #A5B4FC; }
+/* Specific icon colors by theme class */
+.comp-item.theme-nuit .comp-icon-circle { background: #252D5A; } 
+.comp-item.theme-nuit .comp-icon-circle svg { fill: #A5B4FC; }
 
-.comp-item:nth-child(2) .comp-icon-circle { background: #133D35; } /* Foret color */
-.comp-item:nth-child(2) .comp-icon-circle svg { fill: #34D399; }
+.comp-item.theme-foret .comp-icon-circle { background: #133D35; } 
+.comp-item.theme-foret .comp-icon-circle svg { fill: #34D399; }
+
+.comp-item.theme-douce .comp-icon-circle { background: #E89D46; } 
+.comp-item.theme-douce .comp-icon-circle svg { stroke: #081A32; }
 
 .comp-item.is-active .comp-icon-circle { 
   background: #E89D46; 
@@ -295,44 +382,20 @@
     </div>
 
     <div class="comparison-grid">
-      <!-- Item 1: Nuit Étoilée (Inactive) -->
-      <div class="comp-item">
-        <div class="comp-icon-circle">
-          <!-- Croissant de lune unique en mode solid -->
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79Z" fill="#718096" stroke="none"/>
-          </svg>
+      {% for block in section.blocks %}
+        <div class="comp-item theme-{{ block.settings.theme }} {% if block.settings.is_active %}is-active{% endif %}" {{ block.shopify_attributes }}>
+          {% if block.settings.is_active %}
+            <div class="active-recommendation">RECOMMANDÉ</div>
+          {% endif %}
+          
+          <div class="comp-icon-circle">
+            {{ block.settings.icon }}
+          </div>
+          
+          <h3>{{ block.settings.title }}</h3>
+          <p>{{ block.settings.text }}</p>
         </div>
-        <h3>Nuit Étoilée</h3>
-        <p>Idéale pour l'endormissement</p>
-      </div>
-
-      <!-- Item 2: Amis de la Forêt (Inactive) -->
-      <div class="comp-item">
-        <div class="comp-icon-circle">
-          <!-- Icône Forêt du mockup -->
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2L5 10H8.5L3 18H11V22H13V18H21L15.5 10H19L12 2Z" stroke="#34D399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M12 8L9.5 12H11L8.5 15.5H15.5L13 12H14.5L12 8Z" stroke="#34D399" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
-        <h3>Amis de la Forêt</h3>
-        <p>Un repère rassurant</p>
-      </div>
-
-      <!-- Item 3: Lumière Douce (Active) -->
-      <div class="comp-item is-active">
-        <div class="active-recommendation">RECOMMANDÉ</div>
-        <div class="comp-icon-circle">
-          <!-- Icône Lumière Douce rayonnante et cohérente -->
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="12" cy="12" r="4" fill="#081A32"/>
-            <path d="M12 3V5M12 19V21M5.636 5.636L7.05 7.05M16.95 16.95L18.364 18.364M3 12H5M19 12H21M5.636 18.364L7.05 16.95M16.95 5.636L18.364 7.05" stroke="#081A32" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <h3>Lumière Douce</h3>
-        <p>Pratique pour les soins</p>
-      </div>
+      {% endfor %}
     </div>
 
     {% if section.settings.button_text != blank %}
