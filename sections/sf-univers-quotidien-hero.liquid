@@ -58,7 +58,7 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
-  filter: saturate(1.2) brightness(0.8);
+  filter: saturate(1.2) brightness(0.6); /* Image plus sombre dès la base */
   z-index: 0;
 }
 
@@ -67,7 +67,9 @@
   position: absolute;
   inset: 0;
   /* Plus sombre en haut et beaucoup plus sombre en bas pour le texte */
-  background: linear-gradient(to bottom, rgba(8, 26, 50, 0.4) 0%, rgba(8, 26, 50, 0.7) 40%, rgba(8, 26, 50, 0.95) 100%);
+  background: linear-gradient(to bottom, rgba(8, 26, 50, 0.5) 0%, rgba(8, 26, 50, 0.8) 40%, rgba(8, 26, 50, 0.98) 100%);
+  backdrop-filter: blur(8px); /* Ajout du flou demandé */
+  -webkit-backdrop-filter: blur(8px);
   z-index: 1;
   pointer-events: none;
 }
