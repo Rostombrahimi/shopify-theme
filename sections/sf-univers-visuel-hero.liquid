@@ -27,23 +27,6 @@
       "id": "description",
       "label": "Description",
       "default": "Une immersion lumineuse radicale. Plongez votre espace dans l'aura de vos héros avec notre curation exclusive de pièces d'exception."
-    },
-    {
-      "type": "html",
-      "id": "action_icon",
-      "label": "Icône d'action (SVG)",
-      "info": "Mettez le code SVG de l'icône centrale en bas."
-    },
-    {
-      "type": "text",
-      "id": "action_text",
-      "label": "Texte d'action",
-      "default": "DÉCOUVRIR"
-    },
-    {
-      "type": "url",
-      "id": "action_link",
-      "label": "Lien d'action"
     }
   ],
   "presets": [
@@ -170,88 +153,7 @@
   line-height: 1.6;
   color: rgba(249, 249, 249, 0.9);
   max-width: 700px;
-  margin-bottom: 3rem;
-}
-
-/* Premium Separator */
-#shopify-section-{{ section.id }} .premium-separator {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
-  margin-bottom: 2.5rem;
-  width: 100%;
-  max-width: 400px;
-}
-
-#shopify-section-{{ section.id }} .premium-separator-line {
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(232, 157, 70, 0.4), transparent);
-}
-
-#shopify-section-{{ section.id }} .premium-separator-icon {
-  color: #E89D46;
-  width: 28px;
-  height: 28px;
-  opacity: 0.8;
-  filter: drop-shadow(0 0 8px rgba(232, 157, 70, 0.5));
-}
-
-/* Action Center (Icon + Text) */
-#shopify-section-{{ section.id }} .action-center-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-  text-decoration: none;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-#shopify-section-{{ section.id }} .action-center-container:hover {
-  transform: translateY(-5px);
-}
-
-#shopify-section-{{ section.id }} .action-icon-circle {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #F9F9F9;
-  transition: all 0.3s ease;
-}
-
-#shopify-section-{{ section.id }} .action-center-container:hover .action-icon-circle {
-  background: rgba(232, 157, 70, 0.2);
-  border-color: #E89D46;
-  color: #E89D46;
-  box-shadow: 0 0 20px rgba(232, 157, 70, 0.4);
-}
-
-#shopify-section-{{ section.id }} .action-icon-circle svg {
-  width: 24px;
-  height: 24px;
-}
-
-#shopify-section-{{ section.id }} .action-text {
-  color: rgba(249, 249, 249, 0.6);
-  font-family: 'Inter', sans-serif;
-  font-size: 0.83rem;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  transition: color 0.3s ease;
-}
-
-#shopify-section-{{ section.id }} .action-center-container:hover .action-text {
-  color: #F9F9F9;
+  margin-bottom: 0;
 }
 
 @media (max-width: 768px) {
@@ -290,55 +192,7 @@
           {{ section.settings.description }}
         </p>
       {%- endif -%}
-
-      <div class="premium-separator">
-        <div class="premium-separator-line"></div>
-        <svg class="premium-separator-icon" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M10 2L11.5 7.5L17 9L11.5 10.5L10 16L8.5 10.5L3 9L8.5 7.5L10 2Z" />
-          <path d="M19.5 4L20.3 6.2L22.5 7L20.3 7.8L19.5 10L18.7 7.8L16.5 7L18.7 6.2L19.5 4Z" />
-          <path d="M16 13L16.5 14.5L18 15L16.5 15.5L16 17L15.5 15.5L14 15L15.5 14.5L16 13Z" />
-        </svg>
-        <div class="premium-separator-line"></div>
-      </div>
-
-      <a href="{{ section.settings.action_link | default: '#' }}" class="action-center-container">
-        <div class="action-icon-circle">
-          {%- if section.settings.action_icon != blank -%}
-            {{ section.settings.action_icon }}
-          {%- else -%}
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-          {%- endif -%}
-        </div>
-        {%- if section.settings.action_text != blank -%}
-          <span class="action-text">{{ section.settings.action_text }}</span>
-        {%- endif -%}
-      </a>
     </div>
   </div>
 </div>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const actionBtn = document.querySelector('#shopify-section-{{ section.id }} .action-center-container');
-    if (actionBtn) {
-      actionBtn.addEventListener('click', function(e) {
-        const href = this.getAttribute('href');
-        // Check if the link is an anchor on the same page
-        if (href && href.startsWith('#') && href.length > 1) {
-          const target = document.querySelector(href);
-          if (target) {
-            e.preventDefault();
-            const headerOffset = 80; // Assuming a sticky header height
-            const elementPosition = target.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-            
-            window.scrollTo({
-              top: offsetPosition,
-              behavior: "smooth"
-            });
-          }
-        }
-      });
-    }
-  });
-</script>
