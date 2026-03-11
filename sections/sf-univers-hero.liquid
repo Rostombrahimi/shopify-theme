@@ -73,7 +73,8 @@ body { margin: 0; display: flex; flex-direction: column; -webkit-font-smoothing:
 #shopify-section-{{ section.id }} .hero-bg-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(8, 26, 50, 0.4) 0%, rgba(8, 26, 50, 1) 100%);
+  /* Overlay allégé vu qu'on a la box en verre dépoli */
+  background: linear-gradient(to bottom, rgba(8, 26, 50, 0.4) 0%, rgba(8, 26, 50, 0.7) 100%);
   z-index: 1;
 }
 
@@ -81,8 +82,25 @@ body { margin: 0; display: flex; flex-direction: column; -webkit-font-smoothing:
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle, transparent 0%, rgba(8, 26, 50, 0.9) 80%);
+  background: radial-gradient(circle, transparent 0%, rgba(8, 26, 50, 0.6) 80%);
   z-index: 2;
+}
+
+/* Nouvel encart "Glassmorphism" pour la lisibilité absolue */
+#shopify-section-{{ section.id }} .hero-box {
+  background: rgba(8, 26, 50, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: 3rem 2rem;
+  max-width: 1000px;
+  width: 100%;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #shopify-section-{{ section.id }} .hero-badge {
@@ -94,7 +112,6 @@ body { margin: 0; display: flex; flex-direction: column; -webkit-font-smoothing:
   font-size: 0.94rem;
   letter-spacing: 0.15em;
   margin-bottom: 2rem;
-  z-index: 3;
   border: 1px solid rgba(255, 255, 255, 0.1);
   text-transform: uppercase;
   font-weight: 700;
@@ -103,22 +120,24 @@ body { margin: 0; display: flex; flex-direction: column; -webkit-font-smoothing:
 #shopify-section-{{ section.id }} .hero-title {
   font-size: clamp(2.5rem, 6vw, 5.5rem);
   line-height: 1.05;
-  max-width: 1000px;
-  z-index: 3;
+  width: 100%;
   margin-bottom: 1.5rem;
   font-weight: 800;
   letter-spacing: -0.02em;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5); /* Ombre allégée grace à la box */
 }
 
 #shopify-section-{{ section.id }} .title-white { color: var(--illu-text-light, #F9F9F9); }
-#shopify-section-{{ section.id }} .title-amber { color: var(--illu-accent-amber, #E89D46); }
+#shopify-section-{{ section.id }} .title-amber { 
+  color: var(--illu-accent-amber, #E89D46); 
+  text-shadow: 0 0 25px rgba(232, 157, 70, 0.4);
+}
 
 #shopify-section-{{ section.id }} .hero-subtitle {
-  color: rgba(249, 249, 249, 0.85);
+  color: rgba(249, 249, 249, 0.95);
   font-size: 1.24rem;
   max-width: 600px;
-  z-index: 3;
-  margin-bottom: 3rem;
+  margin-bottom: 0;
   line-height: 1.6;
 }
 
@@ -134,23 +153,31 @@ body { margin: 0; display: flex; flex-direction: column; -webkit-font-smoothing:
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(10px); }
 }
+
+@media screen and (max-width: 768px) {
+  #shopify-section-{{ section.id }} .hero-box {
+    padding: 2rem 1.5rem;
+  }
+}
 </style>
 
 <div class="sf-stitch hero-univers-centered">
   <div class="hero-bg-overlay"></div>
   
-  {% if section.settings.badge_text != blank %}
-    <div class="hero-badge">{{ section.settings.badge_text }}</div>
-  {% endif %}
-  
-  <h1 class="hero-title">
-    <span class="title-white">{{ section.settings.title_white | newline_to_br }}</span><br/>
-    <span class="title-amber">{{ section.settings.title_amber | newline_to_br }}</span>
-  </h1>
-  
-  {% if section.settings.subtitle != blank %}
-    <p class="hero-subtitle">{{ section.settings.subtitle }}</p>
-  {% endif %}
+  <div class="hero-box">
+    {% if section.settings.badge_text != blank %}
+      <div class="hero-badge">{{ section.settings.badge_text }}</div>
+    {% endif %}
+    
+    <h1 class="hero-title">
+      <span class="title-white">{{ section.settings.title_white | newline_to_br }}</span><br/>
+      <span class="title-amber">{{ section.settings.title_amber | newline_to_br }}</span>
+    </h1>
+    
+    {% if section.settings.subtitle != blank %}
+      <p class="hero-subtitle">{{ section.settings.subtitle }}</p>
+    {% endif %}
+  </div>
   
   <div class="hero-chevron" onclick="window.scrollTo({top: window.innerHeight, behavior: 'smooth'})">
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
