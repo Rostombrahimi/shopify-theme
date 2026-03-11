@@ -52,6 +52,7 @@
       ],
       "name": "Approach Hero",
       "settings": {
+        "background_image": "shopify://shop_images/expertise-notre-approche-atelier-illuminees-precision.png",
         "badge_text": "NOTRE MÉTHODE",
         "title": "Notre Approche –<br><span>La lumière utile, sculptée<br>par l’expertise</span>",
         "description": "Nous ne sommes pas de simples revendeurs. Nous sommes des curateurs. Découvrez comment nous sélectionnons, testons et validons chaque luminaire pour votre confort."
