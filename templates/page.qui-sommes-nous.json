@@ -65,6 +65,7 @@
       ],
       "name": "About - Genesis & Why",
       "settings": {
+        "hero_image": "shopify://shop_images/illuminees-notre-philosophie-atelier-lumiere.png",
         "hero_badge": "GENÈSE",
         "hero_title": "<span>Illuminées</span> - Une marque de luminaires née d’un usage réel",
         "hero_text": "Tout a commencé en 2019, non pas par envie de créer de belles images, mais par une quête personnelle : celle de vivre mieux la lumière au quotidien.",
