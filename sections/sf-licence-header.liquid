@@ -97,7 +97,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 30% 50%, transparent 0%, rgba(8, 26, 50, 0.7) 100%);
+  background: radial-gradient(circle at 30% 50%, transparent 0%, rgba(8, 26, 50, 0.3) 100%);
   z-index: 1;
   pointer-events: none;
 }
@@ -107,7 +107,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  box-shadow: inset 0 0 60px rgba(8, 26, 50, 0.9);
+  box-shadow: inset 0 0 40px rgba(8, 26, 50, 0.5);
   z-index: 1;
   pointer-events: none;
 }
@@ -119,7 +119,7 @@
   width: 110%; /* Plus large pour le parallaxe */
   height: 120%; /* Plus haut pour le parallaxe */
   object-fit: cover;
-  filter: brightness(0.6) saturate(0.8);
+  filter: brightness(0.9) saturate(1.1); /* Moins assombri, couleurs plus vives */
   will-change: transform;
   z-index: 0;
 }
@@ -151,7 +151,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em; /* Un peu plus resserré que 0.2em pour Konoha */
   margin: 0;
-  text-shadow: 0 0 20px var(--header-glow-alpha); /* Lueur dynamique discrète */
+  text-shadow: 0 2px 15px rgba(0,0,0,0.8), 0 0 20px var(--header-glow-alpha); /* Lueur et contraste pour la lisibilité */
   animation: pulseTextGlow 4s infinite alternate;
 }
 
