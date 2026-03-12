@@ -19,40 +19,9 @@
     },
     "sf_approach_hero_Dc8YPL": {
       "type": "sf-approach-hero",
-      "blocks": {
-        "feature_anDh89": {
-          "type": "feature",
-          "settings": {
-            "icon": "compass",
-            "title": "Sélection Rigoureuse",
-            "text": "Chaque pièce est analysée pour sa qualité de fabrication et son rendu lumineux réel."
-          }
-        },
-        "feature_eP3VQ3": {
-          "type": "feature",
-          "settings": {
-            "icon": "device",
-            "title": "Test en Situation",
-            "text": "Nous testons les luminaires dans nos laboratoires pour garantir un confort visuel optimal."
-          }
-        },
-        "feature_gGVqdD": {
-          "type": "feature",
-          "settings": {
-            "icon": "award",
-            "title": "Garantie Expert",
-            "text": "Une validation technique complète pour une durabilité et une esthétique sans compromis."
-          }
-        }
-      },
-      "block_order": [
-        "feature_anDh89",
-        "feature_eP3VQ3",
-        "feature_gGVqdD"
-      ],
       "name": "Approach Hero",
       "settings": {
-        "background_image": "shopify://shop_images/expertise-notre-approche-atelier-illuminees-precision.png",
+        "background_image": "shopify://shop_images/notre-approche-methode-curation-expertise-luminaire-vertical.jpg",
         "badge_text": "NOTRE MÉTHODE",
         "title": "Notre Approche –<br><span>La lumière utile, sculptée<br>par l’expertise</span>",
         "description": "Nous ne sommes pas de simples revendeurs. Nous sommes des curateurs. Découvrez comment nous sélectionnons, testons et validons chaque luminaire pour votre confort."
