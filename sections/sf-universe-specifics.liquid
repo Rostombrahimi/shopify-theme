@@ -194,10 +194,10 @@
   margin-bottom: 2.5rem;
 }
 
-/* Base icon svg styling */
 .universe-card-icon-box svg {
   width: 32px;
   height: 32px;
+  color: #E89D46;
   /* Lueur de Badge / Icon glow */
   filter: drop-shadow(0 0 12px rgba(232, 157, 70, 0.25));
   transition: all 0.3s ease;
@@ -336,22 +336,19 @@
           {% else %}
             {% case block.settings.icon %}
               {% when 'lamp' %}
-                <!-- Desk Lamp style matching mockup -->
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 3C7.58172 3 4 6.58172 4 11V15H20V11C20 6.58172 16.4183 3 12 3Z" stroke="#E89D46" stroke-width="1.2" stroke-linecap="round"/>
-                  <path d="M2 15H22M12 15V21M7 21H17" stroke="#E89D46" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                <!-- Solid Desk Lamp style -->
+                <svg viewBox="0 0 256 256" fill="currentColor">
+                  <path d="M232,208H24a8,8,0,0,0,0,16H232a8,8,0,0,0,0-16Zm-64-16a8,8,0,0,0,8-8V93.57A72.07,72.07,0,0,0,105.77,21.68l-1.5,0a71.93,71.93,0,0,0-63.51,65L32,96a8,8,0,0,0,8,8h24v80a8,8,0,0,0,8,8H168ZM48.24,88A56,56,0,0,1,104.09,37.66h1.16A56.05,56.05,0,0,1,160,92.51V96l-111.9.09C48.1,93.41,48.15,90.7,48.24,88Z"></path>
                 </svg>
               {% when 'gamepad' %}
-                <!-- Gamepad style matching mockup -->
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M6 12H8M7 11V13M15 11V11.01M18 13V13.01M6 9C6 7.34315 7.34315 6 9 6H15C16.6569 6 18 7.34315 18 9V15C18 16.6569 16.6569 18 15 18H9C7.34315 18 6 16.6569 6 15V9Z" stroke="#E89D46" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M12 15s-2.5-1-2.5-2.5M12 15s2.5-1 2.5-2.5" stroke="#E89D46" stroke-width="1" opacity="0.5"/>
+                <!-- Solid Gamepad style -->
+                <svg viewBox="0 0 256 256" fill="currentColor">
+                  <path d="M239.81,114.71,216.79,53.25A24,24,0,0,0,194.32,36C186,34.49,158.41,32,128,32s-58,2.49-66.32,4-20.84,15.65-22.47,24l-23,61.45A31.84,31.84,0,0,0,44.91,161.9L65.48,185.9a16,16,0,0,0,15,5.1l20.45-4.48A91.43,91.43,0,0,1,128,184a91.43,91.43,0,0,1,27.08,2.52l20.45,4.48a16,16,0,0,0,15-5.1l20.57-24A31.83,31.83,0,0,0,239.81,114.71ZM176,112a12,12,0,1,1,12-12A12,12,0,0,1,176,112ZM72,112H64v8a8,8,0,0,1-16,0v-8H40a8,8,0,0,1,0-16h8V88a8,8,0,0,1,16,0v8h8a8,8,0,0,1,0,16Zm136-24a12,12,0,1,1-12-12A12,12,0,0,1,208,88Z"></path>
                 </svg>
               {% when 'moon' %}
-                <!-- Moon Solid style matching mockup -->
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79Z" stroke="#E89D46" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M11 7L11.5 8L12.5 8.5L11.5 9L11 10L10.5 9L9.5 8.5L10.5 8L11 7Z" fill="#E89D46" opacity="0.6"/>
+                <!-- Solid Moon style -->
+                <svg viewBox="0 0 256 256" fill="currentColor">
+                  <path d="M216.7,152.62A104,104,0,1,1,103.38,39.3a8,8,0,0,1,10.6,10.6,88,88,0,0,0,113.31,113.31,8,8,0,0,1,10.6,10.6Z"></path>
                 </svg>
             {% endcase %}
           {% endif %}

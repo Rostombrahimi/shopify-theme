@@ -187,13 +187,9 @@
 
 /* Icon internal styling */
 .charter-icon-box svg {
-  width: 24px;
-  height: 24px;
-  stroke: #E89D46;
-  fill: none;
-  stroke-width: 1.8;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+  width: 28px;
+  height: 28px;
+  color: #E89D46;
   /* Saturation Base */
   filter: drop-shadow(0 0 10px rgba(232, 157, 70, 0.3));
   transition: all 0.4s ease;
@@ -326,46 +322,34 @@
       <div class="charter-card" {{ block.shopify_attributes }}>
         
         <div class="charter-icon-box">
-          {% case block.settings.icon %}
-            {% when 'plug' %}
-              <!-- Plug Icon for Sécurité -->
-              <svg viewBox="0 0 24 24">
-                <path d="M12 22V15"></path>
-                <path d="M7 6H17V9C17 11.761 14.761 14 12 14C9.239 14 7 11.761 7 9V6Z"></path>
-                <path d="M9 2V6"></path>
-                <path d="M15 2V6"></path>
-              </svg>
-            {% when 'waves' %}
-              <!-- Waves/Flicker free for Stabilité -->
-              <svg viewBox="0 0 24 24">
-                <path d="M3 6C5.5 6 5.5 8 8 8C10.5 8 10.5 6 13 6C15.5 6 15.5 8 18 8C20.5 8 20.5 6 23 6"></path>
-                <path d="M3 12C5.5 12 5.5 14 8 14C10.5 14 10.5 12 13 12C15.5 12 15.5 14 18 14C20.5 14 20.5 12 23 12"></path>
-                <path d="M3 18C5.5 18 5.5 20 8 20C10.5 20 10.5 18 13 18C15.5 18 15.5 20 18 20C20.5 20 20.5 18 23 18"></path>
-              </svg>
-            {% when 'palette' %}
-              <!-- Palette for Fidélité -->
-              <svg viewBox="0 0 24 24">
-                <path d="M12 21.5C7.266 21.5 3.5 17.584 3.5 12.5C3.5 7.416 7.266 3.5 12 3.5C16.945 3.5 21.5 6.916 21.5 12.5C21.5 13.916 20 16.5 17.5 16.5H16C15 16.5 15 18.5 15 19.5C15 20.605 13.105 21.5 12 21.5Z"></path>
-                <circle cx="8" cy="10" r="1.5" fill="#E89D46" stroke="none"></circle>
-                <circle cx="11.5" cy="7.5" r="1.5" fill="#E89D46" stroke="none"></circle>
-                <circle cx="15.5" cy="10.5" r="1.5" fill="#E89D46" stroke="none"></circle>
-              </svg>
-            {% when 'diamond' %}
-              <!-- Diamond for Durabilité -->
-              <svg viewBox="0 0 24 24">
-                <path d="M3.5 8L12 22L20.5 8L16.5 2H7.5L3.5 8Z"></path>
-                <path d="M3.5 8H20.5"></path>
-                <path d="M7.5 2L12 8L16.5 2"></path>
-                <path d="M7.5 8L12 22"></path>
-                <path d="M16.5 8L12 22"></path>
-              </svg>
-            {% when 'touch' %}
-              <!-- Touch Pointer for Simplicité -->
-              <svg viewBox="0 0 24 24">
-                <path d="M8 11V5C8 3.89543 8.89543 3 10 3C11.1046 3 12 3.89543 12 5V14"></path>
-                <path d="M12 11V9C12 7.89543 12.89543 7 14 7C15.1046 7 16 7.89543 16 9V14"></path>
-                <path d="M16 12C16 10.8954 16.8954 10 18 10C19.1046 10 20 10.8954 20 12V16.6373C20 18.2323 19.3496 19.7578 18.1965 20.86L17.7291 21.3065C16.2736 22.6974 14.2818 23.4913 12.2132 23.5002C9.53982 23.5117 7.00994 22.3768 5.21557 20.3644L4.03212 19.0371L8 16.5V11"></path>
-              </svg>
+            {% case block.settings.icon %}
+              {% when 'plug' %}
+                <!-- Solid Plug Icon -->
+                <svg viewBox="0 0 256 256" fill="currentColor">
+                  <path d="M168,88V56a8,8,0,0,0-16,0V88H104V56a8,8,0,0,0-16,0V88a40,40,0,0,0-40,40v48a16,16,0,0,0,16,16h56v40a8,8,0,0,0,16,0V192h56a16,16,0,0,0,16-16V128A40,40,0,0,0,168,88Z"></path>
+                </svg>
+              {% when 'waves' %}
+                <!-- Solid Waves/Flux Icon -->
+                <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="24" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M32 64c24-24 40-24 64 0 24 24 40 24 64 0 24-24 40-24 64 0" />
+                  <path d="M32 128c24-24 40-24 64 0 24 24 40 24 64 0 24-24 40-24 64 0" />
+                  <path d="M32 192c24-24 40-24 64 0 24 24 40 24 64 0 24-24 40-24 64 0" />
+                </svg>
+              {% when 'palette' %}
+                <!-- Solid Palette Icon -->
+                <svg viewBox="0 0 256 256" fill="currentColor">
+                  <path d="M128,24A104.11,104.11,0,0,0,24,128c0,57.31,46.69,104,104,104,16.27,0,32-6.52,32-28.16C160,192,143.61,192,141.87,192a8,8,0,0,1-8-8c0-14.77,20.06-24,42.13-24H184c26.47,0,48-26.9,48-60A104.12,104.12,0,0,0,128,24ZM88,128a16,16,0,1,1,16-16A16,16,0,0,1,88,128Zm24-48a16,16,0,1,1,16-16A16,16,0,0,1,112,80Zm56,0a16,16,0,1,1,16-16A16,16,0,0,1,168,80Z"></path>
+                </svg>
+              {% when 'diamond' %}
+                <!-- Solid Diamond Icon -->
+                <svg viewBox="0 0 256 256" fill="currentColor">
+                  <path d="M236.21,80.79l-40-56A15.93,15.93,0,0,0,183.18,16H72.82a15.93,15.93,0,0,0-13,8.79l-40,56a16,16,0,0,0-.72,17.72l96,136a16,16,0,0,0,25.84,0l96-136A16,16,0,0,0,236.21,80.79ZM64.51,64H191.49L208.63,88H47.37Z"></path>
+                </svg>
+              {% when 'touch' %}
+                <!-- Solid Touch/Hand Icon -->
+                <svg viewBox="0 0 256 256" fill="currentColor">
+                  <path d="M236.06,128.42l-58.46-56.55A16,16,0,0,0,149.34,83.1L128,103.74V40a16,16,0,0,0-32,0v96L84,121.36A16,16,0,0,0,59,122.9L30.13,156.4a8,8,0,0,0-.56,10.95L86.5,230.14A32.09,32.09,0,0,0,109.83,240h85a32,32,0,0,0,28-16.59l20.45-37.1A56.33,56.33,0,0,0,248,159.27V144A16,16,0,0,0,236.06,128.42Z"></path>
+                </svg>
           {% endcase %}
         </div>
 
