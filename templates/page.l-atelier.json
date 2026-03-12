@@ -52,12 +52,13 @@
       ],
       "name": "Atelier Hero",
       "settings": {
+        "bg_image": "shopify://shop_images/hero-vertical-atelier-science-lumiere-expertise-spectre.jpg",
         "title": "L'Atelier —<br><span>Comprendre la lumière<br>pour mieux la vivre.</span>",
         "subtitle": "On ne vous demande pas de nous croire sur parole. Ici, on décortique la science du spectre, l'ergonomie visuelle et les rituels de sommeil. Pas de blabla, juste de l'expertise.",
-        "primary_btn_text": "Explorer l'expertise",
+        "primary_btn_text": "",
         "primary_btn_url": "",
         "secondary_btn_text": "Nos publications",
-        "secondary_btn_url": ""
+        "secondary_btn_url": "shopify://blogs/nos-blog"
       }
     },
     "sf_atelier_MPNJaT": {
@@ -105,7 +106,7 @@
         "title": "L'Atelier Atmosphère",
         "description": "L'éclairage est un art, pas seulement un outil utilitaire. Découvrez nos guides d'experts pour sculpter votre espace avec la luminosité parfaite, des ambiances chaleureuses de la chambre à coucher à la clarté concentrée du bureau.",
         "btn_text": "Voir tout les blogs",
-        "btn_link": "shopify://blogs/nos-blog/lampe-de-chevet-design-et-tendance-que-choisir"
+        "btn_link": "shopify://blogs/nos-blog"
       }
     }
   },
