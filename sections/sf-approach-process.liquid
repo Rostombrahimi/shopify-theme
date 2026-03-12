@@ -308,9 +308,11 @@
 .process-cta-content {
   position: relative;
   z-index: 2;
-  padding: 80px;
-  width: 50%;
-  max-width: 600px;
+  padding: 80px 40px;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .process-cta-h2 {
@@ -325,13 +327,14 @@
   font-size: 1.21rem;
   color: rgba(249, 249, 249, 0.7);
   line-height: 1.6;
-  margin-bottom: 3rem;
+  margin: 0 auto 3rem auto;
   max-width: 450px;
 }
 
 .process-cta-buttons {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 20px;
   flex-wrap: wrap;
 }
@@ -379,8 +382,8 @@
 .process-cta-image-wrapper {
   position: absolute;
   top: 0;
-  right: 0;
-  width: 60%;
+  left: 0;
+  width: 100%;
   height: 100%;
   z-index: 0;
 }
@@ -392,11 +395,11 @@
   opacity: 0.7; /* Blend it slightly */
 }
 
-/* Gradient fade from left to right over the image */
+/* Dark overlay to ensure text is readable */
 .process-cta-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to right, #121A26 0%, rgba(18, 26, 38, 0.9) 30%, transparent 100%);
+  background: rgba(18, 26, 38, 0.7);
   z-index: 1;
 }
 
@@ -417,13 +420,13 @@
     min-height: auto;
   }
   .process-cta-image-wrapper {
-    position: relative;
+    position: absolute;
     width: 100%;
-    height: 350px;
-    order: 1;
+    height: 100%;
+    order: 0;
   }
   .process-cta-overlay {
-    background: linear-gradient(to bottom, #121A26 0%, rgba(18, 26, 38, 0.8) 50%, transparent 100%);
+    background: rgba(18, 26, 38, 0.85);
   }
   .process-cta-content {
     width: 100%;
