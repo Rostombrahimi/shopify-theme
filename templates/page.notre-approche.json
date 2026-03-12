@@ -33,8 +33,8 @@
         "step_a8ijwQ": {
           "type": "step",
           "settings": {
+            "custom_svg": "",
             "number": "01",
-            "icon": "compass",
             "title": "Sourcing Sélectif",
             "text": "Une sélection courte et exigeante guidée par la boussole de l'excellence. Nous ne retenons que 1% des pièces étudiées.",
             "pill_1": "Matériaux nobles",
@@ -44,8 +44,8 @@
         "step_8AFahm": {
           "type": "step",
           "settings": {
+            "custom_svg": "",
             "number": "02",
-            "icon": "flask",
             "title": "Tests Intensifs",
             "text": "48h de tests intensifs pour chaque modèle en laboratoire. Résistance thermique, stabilité électrique et durabilité.",
             "pill_1": "Laboratoire interne",
@@ -55,8 +55,8 @@
         "step_j6zkKY": {
           "type": "step",
           "settings": {
+            "custom_svg": "",
             "number": "03",
-            "icon": "shield",
             "title": "Validation Expert",
             "text": "Validation finale du confort visuel et des normes de sécurité. L'assurance d'une lumière saine pour vos yeux.",
             "pill_1": "Normes CE",
@@ -88,7 +88,7 @@
         "control_point_6TTqDj": {
           "type": "control_point",
           "settings": {
-            "icon": "plug",
+            "custom_svg": "",
             "title": "Sécurité Électrique",
             "text": "Conformité stricte aux normes européennes. Chaque pièce est testée individuellement pour assurer une installation sans risque et une protection optimale contre les surtensions."
           }
@@ -96,7 +96,7 @@
         "control_point_zbtH6Y": {
           "type": "control_point",
           "settings": {
-            "icon": "waves",
+            "custom_svg": "",
             "title": "Stabilité du Flux",
             "text": "Une lumière constante sans scintillement (\"flicker-free\"). Nos drivers haute performance garantissent un confort visuel absolu, réduisant la fatigue oculaire."
           }
@@ -104,7 +104,7 @@
         "control_point_rCjYmc": {
           "type": "control_point",
           "settings": {
-            "icon": "palette",
+            "custom_svg": "",
             "title": "Fidélité des Couleurs",
             "text": "Un indice de rendu des couleurs (IRC) supérieur à 90. Nous veillons à ce que votre intérieur soit sublimé par une restitution naturelle et vibrante des teintes."
           }
@@ -112,7 +112,7 @@
         "control_point_7Pr3LB": {
           "type": "control_point",
           "settings": {
-            "icon": "diamond",
+            "custom_svg": "",
             "title": "Durabilité des Matériaux",
             "text": "Des finitions premium en laiton massif, verre soufflé et aluminium anodisé. Conçus pour résister au temps et à l'usure sans perdre leur éclat."
           }
@@ -120,7 +120,7 @@
         "control_point_VgDEjC": {
           "type": "control_point",
           "settings": {
-            "icon": "touch",
+            "custom_svg": "",
             "title": "Simplicité d'Usage",
             "text": "Assemblage intuitif et systèmes de contrôle ergonomiques. L'expérience utilisateur est au cœur de notre conception, de l'installation à l'utilisation quotidienne."
           }
@@ -148,7 +148,6 @@
         "universe_j7DnYK": {
           "type": "universe",
           "settings": {
-            "icon": "lamp",
             "custom_svg": "",
             "title": "Espace Quotidien",
             "tags": "CLARTÉ • FONCTIONNALITÉ • SOBRIÉTÉ",
@@ -160,7 +159,6 @@
         "universe_jEtMzH": {
           "type": "universe",
           "settings": {
-            "icon": "gamepad",
             "custom_svg": "",
             "title": "Univers Visuel",
             "tags": "AMBIANCE • EXPRESSION • IDENTITÉ",
@@ -172,7 +170,6 @@
         "universe_YjQGz9": {
           "type": "universe",
           "settings": {
-            "icon": "moon",
             "custom_svg": "",
             "title": "Petit Cocon",
             "tags": "DOUCEUR • SÉCURITÉ • SÉRÉNITÉ",
@@ -202,7 +199,6 @@
         "difference_L9c7R6": {
           "type": "difference",
           "settings": {
-            "icon": "focus",
             "custom_svg": "",
             "title": "Moins de choix",
             "description": "Parce que la clarté commence par l'épure."
@@ -211,7 +207,6 @@
         "difference_cjaUrR": {
           "type": "difference",
           "settings": {
-            "icon": "infinity",
             "custom_svg": "",
             "title": "Meilleure expérience",
             "description": "Un accompagnement expert à chaque étape."
@@ -220,7 +215,6 @@
         "difference_kqJj6T": {
           "type": "difference",
           "settings": {
-            "icon": "check",
             "custom_svg": "",
             "title": "Décisions plus simples",
             "description": "Fini le paradoxe du choix, place au ressenti."
@@ -229,7 +223,6 @@
         "difference_bbMiJh": {
           "type": "difference",
           "settings": {
-            "icon": "diamond",
             "custom_svg": "",
             "title": "Produits plus durables",
             "description": "Une sélection pensée pour durer, pas pour être remplacée."
@@ -248,7 +241,7 @@
         "title": "Pourquoi la curation est une élévation",
         "cta_text_above": "Prêt à illuminer votre intérieur avec discernement ?",
         "cta_button_text": "Découvrir nos univers lumineux →",
-        "cta_button_link": "shopify://collections"
+        "cta_button_link": "shopify://collections/nos-univers"
       }
     }
   },
