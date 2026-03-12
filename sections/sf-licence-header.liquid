@@ -26,13 +26,6 @@
       "id": "title",
       "label": "Titre Principal",
       "default": "KONOHA"
-    },
-    {
-      "type": "color",
-      "id": "glow_color",
-      "label": "Couleur de l'Aura (Glow)",
-      "default": "#E89D46",
-      "info": "Définit la couleur vibrante du halo externe et des accents (ligne, surtitre). Parfait pour teinter selon l'univers."
     }
   ],
   "presets": [
@@ -63,19 +56,6 @@
   justify-content: flex-start; /* Aligné à gauche d'après la maquette */
   padding-left: 60px; /* Espace à gauche */
   background: #000;
-  /* Lueur Ambiante (Glow) & Micro-Flicker */
-  box-shadow: 0 0 100px -20px var(--header-glow);
-  animation: organicBoxFlicker 3s infinite alternate;
-}
-
-@keyframes organicBoxFlicker {
-  0%, 100% { box-shadow: 0 0 100px -20px var(--header-glow); }
-  5% { box-shadow: 0 0 110px -15px var(--header-glow); }
-  10% { box-shadow: 0 0 90px -25px var(--header-glow); }
-  15% { box-shadow: 0 0 105px -18px var(--header-glow); }
-  50% { box-shadow: 0 0 85px -30px var(--header-glow); }
-  75% { box-shadow: 0 0 115px -10px var(--header-glow); }
-  90% { box-shadow: 0 0 95px -22px var(--header-glow); }
 }
 
 /* Le "Scanline" ou "Light Sweep" */
@@ -149,7 +129,7 @@
   font-family: 'Inter', sans-serif;
   font-size: 0.83rem;
   font-weight: 700;
-  color: var(--header-glow); /* Imprégnation de la vibe couleur */
+  color: #E89D46;
   text-transform: uppercase;
   letter-spacing: 0.15em;
   margin: 0;
@@ -164,24 +144,24 @@
   text-transform: uppercase;
   letter-spacing: 0.05em; /* Un peu plus resserré que 0.2em pour Konoha */
   margin: 0;
-  text-shadow: 0 2px 15px rgba(0,0,0,0.8), 0 0 20px var(--header-glow-alpha); /* Lueur et contraste pour la lisibilité */
-  animation: pulseTextGlow 4s infinite alternate;
+  text-shadow: 0 2px 15px rgba(0,0,0,0.8), 0 0 20px rgba(232, 157, 70, 0.4);
+  animation: pulseGlow 4s infinite alternate;
 }
 
 /* Lueur Réactive (Pulse) */
-@keyframes pulseTextGlow {
-  0% { text-shadow: 0 0 15px var(--header-glow-alpha); }
-  100% { text-shadow: 0 0 30px var(--header-glow); }
+@keyframes pulseGlow {
+  0% { text-shadow: 0 0 15px rgba(232, 157, 70, 0.2); }
+  100% { text-shadow: 0 0 30px rgba(232, 157, 70, 0.6); }
 }
 
-/* Séparateur coloré sous le titre */
+/* Séparateur ambre sous le titre (d'après l'image) */
 #shopify-section-{{ section.id }} .vibe-header-line {
   width: 60px;
   height: 3px;
-  background-color: var(--header-glow);
+  background-color: #E89D46;
   margin-top: 12px;
   border-radius: 2px;
-  box-shadow: 0 0 10px var(--header-glow-alpha);
+  box-shadow: 0 0 10px rgba(232, 157, 70, 0.5);
 }
 
 @media (max-width: 768px) {
@@ -208,14 +188,12 @@
 }
 </style>
 
-{%- assign theme_glow = section.settings.glow_color | default: '#E89D46' -%}
-{%- assign theme_glow_alpha = theme_glow | color_modify: 'alpha', 0.4 -%}
 {%- assign has_mobile_image = false -%}
 {%- if section.settings.background_image_mobile != blank -%}
   {%- assign has_mobile_image = true -%}
 {%- endif -%}
 
-<div class="sf-stitch vibe-header-section {% if has_mobile_image %}has-mobile-image{% endif %}" style="--header-glow: {{ theme_glow }}; --header-glow-alpha: {{ theme_glow_alpha }};">
+<div class="sf-stitch vibe-header-section {% if has_mobile_image %}has-mobile-image{% endif %}">
   <div class="vibe-header-container" id="vibe-parallax-{{ section.id }}">
     
     <!-- Injection du Scanline Effect -->
