@@ -20,6 +20,13 @@
       "id": "title",
       "label": "Titre Principal",
       "default": "KONOHA"
+    },
+    {
+      "type": "color",
+      "id": "glow_color",
+      "label": "Couleur de l'Aura (Glow)",
+      "default": "#E89D46",
+      "info": "Définit la couleur vibrante du halo externe et des accents (ligne, surtitre). Parfait pour teinter selon l'univers."
     }
   ],
   "presets": [
@@ -50,6 +57,39 @@
   justify-content: flex-start; /* Aligné à gauche d'après la maquette */
   padding-left: 60px; /* Espace à gauche */
   background: #000;
+  /* Lueur Ambiante (Glow) & Micro-Flicker */
+  box-shadow: 0 0 100px -20px var(--header-glow);
+  animation: organicBoxFlicker 3s infinite alternate;
+}
+
+@keyframes organicBoxFlicker {
+  0%, 100% { box-shadow: 0 0 100px -20px var(--header-glow); }
+  5% { box-shadow: 0 0 110px -15px var(--header-glow); }
+  10% { box-shadow: 0 0 90px -25px var(--header-glow); }
+  15% { box-shadow: 0 0 105px -18px var(--header-glow); }
+  50% { box-shadow: 0 0 85px -30px var(--header-glow); }
+  75% { box-shadow: 0 0 115px -10px var(--header-glow); }
+  90% { box-shadow: 0 0 95px -22px var(--header-glow); }
+}
+
+/* Le "Scanline" ou "Light Sweep" */
+#shopify-section-{{ section.id }} .vibe-scanline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 25%;
+  height: 100%;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1), transparent);
+  transform: skewX(-25deg) translateX(-300%);
+  z-index: 1; /* Devant l'image, derrière le gradient vignette/texte */
+  pointer-events: none;
+  animation: scanlineSweep 12s infinite cubic-bezier(0.1, 0, 0.3, 1);
+  will-change: transform;
+}
+
+@keyframes scanlineSweep {
+  0%, 85% { transform: skewX(-25deg) translateX(-300%); }
+  95%, 100% { transform: skewX(-25deg) translateX(500%); }
 }
 
 /* Vignettage pour focaliser l'oeil sur le centre/gauche */
@@ -96,7 +136,7 @@
   font-family: 'Inter', sans-serif;
   font-size: 0.83rem;
   font-weight: 700;
-  color: #E89D46;
+  color: var(--header-glow); /* Imprégnation de la vibe couleur */
   text-transform: uppercase;
   letter-spacing: 0.15em;
   margin: 0;
@@ -111,24 +151,24 @@
   text-transform: uppercase;
   letter-spacing: 0.05em; /* Un peu plus resserré que 0.2em pour Konoha */
   margin: 0;
-  text-shadow: 0 0 20px rgba(232, 157, 70, 0.4); /* Lueur ambre discrète */
-  animation: pulseGlow 4s infinite alternate;
+  text-shadow: 0 0 20px var(--header-glow-alpha); /* Lueur dynamique discrète */
+  animation: pulseTextGlow 4s infinite alternate;
 }
 
 /* Lueur Réactive (Pulse) */
-@keyframes pulseGlow {
-  0% { text-shadow: 0 0 15px rgba(232, 157, 70, 0.2); }
-  100% { text-shadow: 0 0 30px rgba(232, 157, 70, 0.6); }
+@keyframes pulseTextGlow {
+  0% { text-shadow: 0 0 15px var(--header-glow-alpha); }
+  100% { text-shadow: 0 0 30px var(--header-glow); }
 }
 
-/* Séparateur ambre sous le titre (d'après l'image) */
+/* Séparateur coloré sous le titre */
 #shopify-section-{{ section.id }} .vibe-header-line {
   width: 60px;
   height: 3px;
-  background-color: #E89D46;
+  background-color: var(--header-glow);
   margin-top: 12px;
   border-radius: 2px;
-  box-shadow: 0 0 10px rgba(232, 157, 70, 0.5);
+  box-shadow: 0 0 10px var(--header-glow-alpha);
 }
 
 @media (max-width: 768px) {
@@ -144,8 +184,15 @@
 }
 </style>
 
-<div class="sf-stitch vibe-header-section">
+{%- assign theme_glow = section.settings.glow_color | default: '#E89D46' -%}
+{%- assign theme_glow_alpha = theme_glow | color_modify: 'alpha', 0.4 -%}
+
+<div class="sf-stitch vibe-header-section" style="--header-glow: {{ theme_glow }}; --header-glow-alpha: {{ theme_glow_alpha }};">
   <div class="vibe-header-container" id="vibe-parallax-{{ section.id }}">
+    
+    <!-- Injection du Scanline Effect -->
+    <div class="vibe-scanline"></div>
+
     {%- if section.settings.background_image != blank -%}
       {{ section.settings.background_image | image_url: width: 2200 | image_tag: class: 'vibe-header-parallax-img', loading: 'eager' }}
     {%- else -%}
