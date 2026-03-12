@@ -82,7 +82,8 @@
     {
       "type": "url",
       "id": "cta_link",
-      "label": "Lien du bouton"
+      "label": "Lien Global par défaut",
+      "info": "Astuce : Pour avoir un lien différent sur chaque article, créez un champ Méta d'article (URL) avec la clé 'custom.bouton_lien'. Le code l'utilisera en priorité !"
     }
   ],
   "presets": [
@@ -315,6 +316,8 @@
 <section class="blog-cta-wrapper">
   <div class="blog-cta-inner">
     
+    {%- assign final_cta_link = article.metafields.custom.bouton_lien | default: section.settings.cta_link | default: '#' -%}
+
     <div class="cta-glass-card">
       
       {% if section.settings.card_layout == 'collection' %}
@@ -333,7 +336,7 @@
           </div>
           <h3 class="col-title">{{ section.settings.col_title }}</h3>
           <p class="col-desc">{{ section.settings.col_desc }}</p>
-          <a href="{{ section.settings.cta_link | default: '#' }}" class="btn-blog-cta">
+          <a href="{{ final_cta_link }}" class="btn-blog-cta">
             {{ section.settings.cta_text }}
             <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
@@ -358,7 +361,7 @@
             <h3 class="prod-title">{{ section.settings.prod_title }}</h3>
             <p class="prod-desc">{{ section.settings.prod_desc }}</p>
             <div>
-              <a href="{{ section.settings.cta_link | default: '#' }}" class="btn-blog-cta">
+              <a href="{{ final_cta_link }}" class="btn-blog-cta">
                 {{ section.settings.cta_text }}
                 <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </a>
