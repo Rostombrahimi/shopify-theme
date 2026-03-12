@@ -334,10 +334,13 @@
 }
 </style>
 
-<!-- HERO SECTION -->
-<section class="blog-hero-wrapper">
-  
-  <div class="blog-hero-bg">
+<!-- MAIN WRAPPER to prevent white gaps -->
+<div class="sf-stitch" style="background-color: var(--illu-bg-night, #081A32);">
+
+  <!-- HERO SECTION -->
+  <div class="blog-hero-wrapper">
+    
+    <div class="blog-hero-bg">
     {%- if article.image -%}
       <img src="{{ article.image | image_url: width: 2000 }}" alt="{{ article.image.alt | escape }}" loading="eager">
     {%- else -%}
@@ -363,11 +366,11 @@
 
   </div>
 
-</section>
+  </div>
 
-<!-- BODY SECTION -->
-<section class="blog-article-wrapper">
-  <div class="blog-article-inner">
+  <!-- BODY SECTION -->
+  <div class="blog-article-wrapper">
+    <div class="blog-article-inner">
       
       <!-- LA PÉPITE EN 30 SECONDES (DÉPLACÉE SOUS LE HERO) -->
       {%- if article.excerpt != blank -%}
@@ -384,6 +387,7 @@
 
       <div class="blog-content-richtext">
         {{ article.content }}
-      </div>
+    </div>
   </div>
-</section>
+
+</div>
