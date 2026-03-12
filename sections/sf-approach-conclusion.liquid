@@ -158,12 +158,12 @@
   width: 24px;
   height: 24px;
   color: #E89D46;
+  stroke: #E89D46;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
   transition: all 0.3s ease;
-}
-
-.diff-icon-box svg.illu-solid-svg {
-  stroke: none !important;
-  fill: currentColor !important;
 }
 
 .diff-card:hover .diff-icon-box svg {
@@ -264,24 +264,34 @@
             {{ block.settings.custom_svg }}
           {% else %}
             {% if forloop.index == 1 %}
-              <!-- Solid Scan icon for Moins de choix -->
-              <svg class="illu-solid-svg" viewBox="0 0 256 256" fill="currentColor">
-                <path d="M216,40H176a8,8,0,0,0,0,16h32V88a8,8,0,0,0,16,0V48A8,8,0,0,0,216,40ZM88,200H48V168a8,8,0,0,0-16,0v40a8,8,0,0,0,8,8H88a8,8,0,0,0,0-16Zm128-40a8,8,0,0,0-8,8v32H176a8,8,0,0,0,0,16h40a8,8,0,0,0,8-8V168A8,8,0,0,0,216,160ZM48,88V56H88a8,8,0,0,0,0-16H40a8,8,0,0,0-8,8V88a8,8,0,0,0,16,0Zm80,8a32,32,0,1,0,32,32A32,32,0,0,0,128,96Zm0,48a16,16,0,1,1,16-16A16,16,0,0,1,128,144Z"></path>
+              <!-- Thin Focus icon for Moins de choix -->
+              <svg viewBox="0 0 24 24">
+                <path d="M5 9V5H9"></path>
+                <path d="M19 9V5H15"></path>
+                <path d="M19 15V19H15"></path>
+                <path d="M5 15V19H9"></path>
+                <circle cx="12" cy="12" r="2"></circle>
               </svg>
             {% elsif forloop.index == 2 %}
-              <!-- Solid Infinity icon for Meilleure expérience -->
-              <svg class="illu-solid-svg" viewBox="0 0 256 256" fill="currentColor">
-                <path d="M248,128c0,28.8-21.78,56-55.8,56a64.57,64.57,0,0,1-43.76-17C137.6,156.45,128.53,144,128,144s-9.6,12.45-20.44,23C96.78,177.58,80.12,184,63.8,184C29.78,184,8,156.8,8,128S29.78,72,63.8,72a64.57,64.57,0,0,1,43.76,17C118.4,99.55,127.47,112,128,112s9.6-12.45,20.44-23c10.78-10.55,27.44-17,43.76-17C226.22,72,248,99.2,248,128Z"></path>
+              <!-- Thin Infinity icon for Meilleure expérience -->
+              <svg viewBox="0 0 24 24">
+                <path d="M8.56 16.5C11.56 16.5 13.06 12 15.56 12C16.892 12 18.232 12.612 19.344 14C20.457 15.388 21.06 17.5 19.344 19.5C17.629 21.5 14.892 21.5 12.56 21.5C9.56 21.5 8.06 16.5 5.56 16.5C4.228 16.5 2.888 15.888 1.776 14.5C0.663 13.112 0.0600004 11 1.776 9C3.491 7 6.228 7 8.56 7"></path>
+                <path d="M15.44 7.5C12.44 7.5 10.94 12 8.44 12C7.108 12 5.768 11.388 4.656 10C3.543 8.612 2.94 6.5 4.656 4.5C6.371 2.5 9.108 2.5 11.44 2.5C14.44 2.5 15.94 7.5 18.44 7.5C19.772 7.5 21.112 8.112 22.224 9.5C23.337 10.888 23.94 13 22.224 15C20.509 17 17.772 17 15.44 17"></path>
               </svg>
             {% elsif forloop.index == 3 %}
-              <!-- Solid Check Circle icon for Décisions simples -->
-              <svg class="illu-solid-svg" viewBox="0 0 256 256" fill="currentColor">
-                <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm45.66,85.66-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z"></path>
+              <!-- Thin Check Circle icon for Décisions simples -->
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="9"></circle>
+                <path d="M8 12L11 15L16 9"></path>
               </svg>
             {% else %}
-              <!-- Solid Diamond icon for Produits durables -->
-              <svg class="illu-solid-svg" viewBox="0 0 256 256" fill="currentColor">
-                <path d="M236.21,80.79l-40-56A15.93,15.93,0,0,0,183.18,16H72.82a15.93,15.93,0,0,0-13,8.79l-40,56a16,16,0,0,0-.72,17.72l96,136a16,16,0,0,0,25.84,0l96-136A16,16,0,0,0,236.21,80.79ZM64.51,64H191.49L208.63,88H47.37Z"></path>
+              <!-- Thin Diamond icon for Produits durables -->
+              <svg viewBox="0 0 24 24">
+                <path d="M3.5 8L12 22L20.5 8L16.5 2H7.5L3.5 8Z"></path>
+                <path d="M3.5 8H20.5"></path>
+                <path d="M7.5 2L12 8L16.5 2"></path>
+                <path d="M7.5 8L12 22"></path>
+                <path d="M16.5 8L12 22"></path>
               </svg>
             {% endif %}
           {% endif %}
