@@ -1,0 +1,350 @@
+﻿{% schema %}
+{
+  "name": "Orientation Expert LD",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "L'ORIENTATION EXPERT"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Heading",
+      "default": "Choisir la justesse<br>pour vos nuits."
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Pourquoi choisir Lumi├¿re Douce & Apaisante ? Contrairement ├á Nuit ├ëtoil├⌐e, orient├⌐e vers l'endormissement, et ├á Amis de la For├¬t, pens├⌐e comme rep├¿re rassurant, cette ambiance est con├ºue pour les moments pratiques de la nuit, sans perturber l'enfant."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Voir la collection Lumi├¿re Douce"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Orientation Expert LD"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+.orientation-softlight-section {
+  background-color: #081A32;
+  padding: 100px 4rem 120px 4rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.orientation-expert-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Header part */
+.orientation-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 4rem auto;
+}
+
+.orientation-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.05); /* slightly lighter than the card bg */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 8px 24px;
+  border-radius: 99px;
+  color: #F9F9F9;
+  font-size: 0.83rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  backdrop-filter: blur(8px);
+}
+
+.orientation-badge svg {
+  width: 16px;
+  height: 16px;
+  stroke: #E89D46;
+}
+
+.orientation-h2 {
+  font-size: clamp(2.75rem, 4.95vw, 4.4rem);
+  color: #F9F9F9;
+  font-weight: 600;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+.orientation-desc {
+  font-size: 1.26rem;
+  color: rgba(249, 249, 249, 0.85); /* As per mockup */
+  line-height: 1.6;
+}
+
+/* Grid part */
+.comparison-grid {
+  display: flex;
+  justify-content: center;
+  gap: 24px; /* Reduced gap based on mockup */
+  margin-bottom: 4rem;
+}
+
+/* Cards */
+.comp-item {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.03); /* #111A2C roughly in mockup context */
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 40px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  /* Grillage de D├⌐sactivation */
+  opacity: 0.5;
+  filter: grayscale(80%);
+  transition: all 0.4s ease;
+}
+
+.comp-item.is-active {
+  opacity: 1;
+  filter: none;
+  background: #232223; /* Dark brownish-grey in mockup */
+  border-color: #E89D46;
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  transform: scale(1.03);
+}
+
+.active-recommendation {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #E89D46;
+  color: #081A32;
+  font-size: 0.77rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 4px 16px;
+  border-radius: 99px;
+  text-transform: uppercase;
+}
+
+/* Icons within cards */
+.comp-icon-circle {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.comp-icon-circle svg {
+  width: 28px;
+  height: 28px;
+}
+
+/* Specific icon colors */
+.comp-item:nth-child(1) .comp-icon-circle { background: #252D5A; } /* Nuit Etoilee color */
+.comp-item:nth-child(1) .comp-icon-circle svg { fill: #A5B4FC; }
+
+.comp-item:nth-child(2) .comp-icon-circle { background: #133D35; } /* Foret color */
+.comp-item:nth-child(2) .comp-icon-circle svg { fill: #34D399; }
+
+.comp-item.is-active .comp-icon-circle { 
+  background: #E89D46; 
+  /* Lueur de l'Active */
+  filter: drop-shadow(0 0 15px rgba(232, 157, 70, 0.4));
+}
+.comp-item.is-active .comp-icon-circle svg { 
+  stroke: #081A32; 
+  mix-blend-mode: normal; /* Modified based on mockup visual where it's solid dark on orange */
+}
+
+/* Texts within cards */
+.comp-item h3 {
+  color: #F9F9F9;
+  font-size: 1.38rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+}
+
+.comp-item p {
+  color: rgba(249, 249, 249, 0.5);
+  font-size: 0.99rem;
+  line-height: 1.4;
+  margin: 0;
+  max-width: 180px;
+}
+
+.comp-item.is-active h3 {
+  font-size: 1.54rem;
+}
+
+.comp-item.is-active p {
+  color: #F9F9F9;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+/* CTA */
+.orientation-cta {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-softlight-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: #E89D46;
+  color: #081A32;
+  padding: 16px 40px;
+  border-radius: 99px;
+  font-size: 1.16rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(232, 157, 70, 0.2);
+}
+
+.btn-softlight-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px rgba(232, 157, 70, 0.3);
+  background: #F0A956;
+}
+
+.btn-softlight-cta svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.3s ease;
+}
+
+.btn-softlight-cta:hover svg {
+  transform: translateX(4px);
+}
+
+@media screen and (max-width: 900px) {
+  .comparison-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+  .comp-item {
+    width: 100%;
+    max-width: 400px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .orientation-softlight-section {
+    padding: 80px 2rem;
+  }
+  .orientation-h2 {
+    font-size: 2.75rem;
+  }
+}
+</style>
+
+<section class="orientation-softlight-section">
+  <div class="orientation-expert-container">
+    
+    <div class="orientation-header">
+      {% if section.settings.badge_text != blank %}
+        <div class="orientation-badge">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L15 9L22 10L17 15L18 22L12 18L6 22L7 15L2 10L9 9L12 2Z" fill="none" stroke="#E89D46" stroke-width="2" stroke-linejoin="round"/>
+          </svg>
+          {{ section.settings.badge_text }}
+        </div>
+      {% endif %}
+      
+      {% if section.settings.title != blank %}
+        <h2 class="orientation-h2">{{ section.settings.title }}</h2>
+      {% endif %}
+      
+      {% if section.settings.description != blank %}
+        <p class="orientation-desc">{{ section.settings.description }}</p>
+      {% endif %}
+    </div>
+
+    <div class="comparison-grid">
+      <!-- Item 1: Nuit ├ëtoil├⌐e (Inactive) -->
+      <div class="comp-item">
+        <div class="comp-icon-circle">
+          <!-- Croissant de lune unique en mode solid -->
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79Z" fill="#718096" stroke="none"/>
+          </svg>
+        </div>
+        <h3>Nuit ├ëtoil├⌐e</h3>
+        <p>Id├⌐ale pour l'endormissement</p>
+      </div>
+
+      <!-- Item 2: Amis de la For├¬t (Inactive) -->
+      <div class="comp-item">
+        <div class="comp-icon-circle">
+          <!-- Ic├┤ne For├¬t du mockup -->
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L5 10H8.5L3 18H11V22H13V18H21L15.5 10H19L12 2Z" stroke="#34D399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12 8L9.5 12H11L8.5 15.5H15.5L13 12H14.5L12 8Z" stroke="#34D399" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3>Amis de la For├¬t</h3>
+        <p>Un rep├¿re rassurant</p>
+      </div>
+
+      <!-- Item 3: Lumi├¿re Douce (Active) -->
+      <div class="comp-item is-active">
+        <div class="active-recommendation">RECOMMAND├ë</div>
+        <div class="comp-icon-circle">
+          <!-- Ic├┤ne Lumi├¿re Douce rayonnante et coh├⌐rente -->
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="4" fill="#081A32"/>
+            <path d="M12 3V5M12 19V21M5.636 5.636L7.05 7.05M16.95 16.95L18.364 18.364M3 12H5M19 12H21M5.636 18.364L7.05 16.95M16.95 5.636L18.364 7.05" stroke="#081A32" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>Lumi├¿re Douce</h3>
+        <p>Pratique pour les soins</p>
+      </div>
+    </div>
+
+    {% if section.settings.button_text != blank %}
+      <div class="orientation-cta">
+        <a href="{{ section.settings.button_link | default: '#' }}" class="btn-softlight-cta">
+          {{ section.settings.button_text }}
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 12H19M19 12L12 5M19 12L12 19"></path>
+          </svg>
+        </a>
+      </div>
+    {% endif %}
+
+  </div>
+</section>
