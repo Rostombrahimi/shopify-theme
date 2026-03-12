@@ -122,10 +122,10 @@
 .vibe-header-parallax-img,
 .vibe-header-mobile-img {
   position: absolute;
-  top: -10%; /* Décentré vers le haut pour permettre le défilement */
+  top: -20%; /* Décentré vers le haut avec une plus grande marge */
   left: -5%;
   width: 110%; /* Plus large pour le parallaxe */
-  height: 120%; /* Plus haut pour le parallaxe */
+  height: 140%; /* Plus haut pour compenser le mouvement horizontal et vertical sans montrer le fond Noir */
   object-fit: cover;
   filter: brightness(0.9) saturate(1.1); /* Moins assombri, couleurs plus vives */
   will-change: transform;
@@ -261,9 +261,9 @@
         // Execute only if section is in viewport to save performance
         if (scrolled + window.innerHeight > containerTop && scrolled < containerTop + containerHeight) {
           const distance = scrolled - containerTop;
-          // Slowly move the image down as user scrolls down
-          if (imgDesktop) imgDesktop.style.transform = `translateY(${distance * 0.15}px)`; 
-          if (imgMobile) imgMobile.style.transform = `translateY(${distance * 0.15}px)`; 
+          // Slowly move the image down as user scrolls down, using a safe multiplier
+          if (imgDesktop) imgDesktop.style.transform = `translateY(${distance * 0.10}px)`; 
+          if (imgMobile) imgMobile.style.transform = `translateY(${distance * 0.10}px)`; 
         }
       });
     }
