@@ -167,6 +167,15 @@
         "reassure_title": "L'engagement Qualité & Sécurité",
         "reassure_text": "Parce que la lumière habille votre quotidien, nous concevons nos produits pour qu'ils soient aussi sûrs qu'élégants. Une tranquillité d'esprit pour toute la famille."
       }
+    },
+    "sf_licence_header_Nqcxqi": {
+      "type": "sf-licence-header",
+      "name": "Banderole Cinématique (Licence)",
+      "settings": {
+        "background_image": "shopify://shop_images/1773342921767.jpg",
+        "overline": "COLLECTION EXCLUSIVE",
+        "title": "KONOHA"
+      }
     }
   },
   "order": [
@@ -176,6 +185,7 @@
     "sf_univers_visuel_guide_MqBWtt",
     "sf_univers_visuel_portals_iYjXFf",
     "sf_univers_visuel_seo_f7xnGJ",
-    "sf_inspirations_reassurance_rDPNhF"
+    "sf_inspirations_reassurance_rDPNhF",
+    "sf_licence_header_Nqcxqi"
   ]
 }
