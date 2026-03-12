@@ -46,17 +46,9 @@
       "limit": 5,
       "settings": [
         {
-          "type": "select",
-          "id": "icon",
-          "label": "Icon",
-          "options": [
-            { "value": "plug", "label": "Plug / Electricity" },
-            { "value": "waves", "label": "Waves / Flux" },
-            { "value": "palette", "label": "Palette" },
-            { "value": "diamond", "label": "Diamond" },
-            { "value": "touch", "label": "Touch / Interaction" }
-          ],
-          "default": "plug"
+          "type": "textarea",
+          "id": "custom_svg",
+          "label": "Custom SVG (Overrides default icon)"
         },
         {
           "type": "text",
@@ -77,11 +69,11 @@
     {
       "name": "Charte Qualité",
       "blocks": [
-        { "type": "control_point", "settings": { "icon": "plug", "title": "Sécurité Électrique", "text": "Conformité stricte aux normes européennes. Chaque pièce est testée individuellement pour assurer une installation sans risque et une protection optimale contre les surtensions." } },
-        { "type": "control_point", "settings": { "icon": "waves", "title": "Stabilité du Flux", "text": "Une lumière constante sans scintillement (\"flicker-free\"). Nos drivers haute performance garantissent un confort visuel absolu, réduisant la fatigue oculaire." } },
-        { "type": "control_point", "settings": { "icon": "palette", "title": "Fidélité des Couleurs", "text": "Un indice de rendu des couleurs (IRC) supérieur à 90. Nous veillons à ce que votre intérieur soit sublimé par une restitution naturelle et vibrante des teintes." } },
-        { "type": "control_point", "settings": { "icon": "diamond", "title": "Durabilité des Matériaux", "text": "Des finitions premium en laiton massif, verre soufflé et aluminium anodisé. Conçus pour résister au temps et à l'usure sans perdre leur éclat." } },
-        { "type": "control_point", "settings": { "icon": "touch", "title": "Simplicité d'Usage", "text": "Assemblage intuitif et systèmes de contrôle ergonomiques. L'expérience utilisateur est au cœur de notre conception, de l'installation à l'utilisation quotidienne." } }
+        { "type": "control_point", "settings": { "title": "Sécurité Électrique", "text": "Conformité stricte aux normes européennes. Chaque pièce est testée individuellement pour assurer une installation sans risque et une protection optimale contre les surtensions." } },
+        { "type": "control_point", "settings": { "title": "Stabilité du Flux", "text": "Une lumière constante sans scintillement (\"flicker-free\"). Nos drivers haute performance garantissent un confort visuel absolu, réduisant la fatigue oculaire." } },
+        { "type": "control_point", "settings": { "title": "Fidélité des Couleurs", "text": "Un indice de rendu des couleurs (IRC) supérieur à 90. Nous veillons à ce que votre intérieur soit sublimé par une restitution naturelle et vibrante des teintes." } },
+        { "type": "control_point", "settings": { "title": "Durabilité des Matériaux", "text": "Des finitions premium en laiton massif, verre soufflé et aluminium anodisé. Conçus pour résister au temps et à l'usure sans perdre leur éclat." } },
+        { "type": "control_point", "settings": { "title": "Simplicité d'Usage", "text": "Assemblage intuitif et systèmes de contrôle ergonomiques. L'expérience utilisateur est au cœur de notre conception, de l'installation à l'utilisation quotidienne." } }
       ]
     }
   ]
@@ -324,35 +316,38 @@
       <div class="charter-card" {{ block.shopify_attributes }}>
         
         <div class="charter-icon-box">
-            {% case block.settings.icon %}
-              {% when 'plug' %}
+            {% if block.settings.custom_svg != blank %}
+              {{ block.settings.custom_svg }}
+            {% else %}
+              {% if forloop.index == 1 %}
                 <!-- Solid Plug Icon -->
                 <svg viewBox="0 0 256 256" fill="currentColor">
                   <path d="M168,88V56a8,8,0,0,0-16,0V88H104V56a8,8,0,0,0-16,0V88a40,40,0,0,0-40,40v48a16,16,0,0,0,16,16h56v40a8,8,0,0,0,16,0V192h56a16,16,0,0,0,16-16V128A40,40,0,0,0,168,88Z"></path>
                 </svg>
-              {% when 'waves' %}
+              {% elsif forloop.index == 2 %}
                 <!-- Solid Waves/Flux Icon -->
                 <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="24" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M32 64c24-24 40-24 64 0 24 24 40 24 64 0 24-24 40-24 64 0" />
                   <path d="M32 128c24-24 40-24 64 0 24 24 40 24 64 0 24-24 40-24 64 0" />
                   <path d="M32 192c24-24 40-24 64 0 24 24 40 24 64 0 24-24 40-24 64 0" />
                 </svg>
-              {% when 'palette' %}
+              {% elsif forloop.index == 3 %}
                 <!-- Solid Palette Icon -->
                 <svg viewBox="0 0 256 256" fill="currentColor">
                   <path d="M128,24A104.11,104.11,0,0,0,24,128c0,57.31,46.69,104,104,104,16.27,0,32-6.52,32-28.16C160,192,143.61,192,141.87,192a8,8,0,0,1-8-8c0-14.77,20.06-24,42.13-24H184c26.47,0,48-26.9,48-60A104.12,104.12,0,0,0,128,24ZM88,128a16,16,0,1,1,16-16A16,16,0,0,1,88,128Zm24-48a16,16,0,1,1,16-16A16,16,0,0,1,112,80Zm56,0a16,16,0,1,1,16-16A16,16,0,0,1,168,80Z"></path>
                 </svg>
-              {% when 'diamond' %}
+              {% elsif forloop.index == 4 %}
                 <!-- Solid Diamond Icon -->
                 <svg viewBox="0 0 256 256" fill="currentColor">
                   <path d="M236.21,80.79l-40-56A15.93,15.93,0,0,0,183.18,16H72.82a15.93,15.93,0,0,0-13,8.79l-40,56a16,16,0,0,0-.72,17.72l96,136a16,16,0,0,0,25.84,0l96-136A16,16,0,0,0,236.21,80.79ZM64.51,64H191.49L208.63,88H47.37Z"></path>
                 </svg>
-              {% when 'touch' %}
+              {% else %}
                 <!-- Solid Touch/Hand Icon -->
                 <svg viewBox="0 0 256 256" fill="currentColor">
                   <path d="M236.06,128.42l-58.46-56.55A16,16,0,0,0,149.34,83.1L128,103.74V40a16,16,0,0,0-32,0v96L84,121.36A16,16,0,0,0,59,122.9L30.13,156.4a8,8,0,0,0-.56,10.95L86.5,230.14A32.09,32.09,0,0,0,109.83,240h85a32,32,0,0,0,28-16.59l20.45-37.1A56.33,56.33,0,0,0,248,159.27V144A16,16,0,0,0,236.06,128.42Z"></path>
                 </svg>
-          {% endcase %}
+              {% endif %}
+            {% endif %}
         </div>
 
         <div class="charter-content">

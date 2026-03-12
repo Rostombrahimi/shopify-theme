@@ -41,20 +41,9 @@
       "limit": 3,
       "settings": [
         {
-          "type": "select",
-          "id": "icon",
-          "label": "Icon",
-          "options": [
-            { "value": "lamp", "label": "Desk Lamp (Quotidien)" },
-            { "value": "gamepad", "label": "Gamepad (Visuel)" },
-            { "value": "moon", "label": "Moon (Cocon)" }
-          ],
-          "default": "lamp"
-        },
-        {
           "type": "textarea",
           "id": "custom_svg",
-          "label": "Custom SVG (Overrides Icon Select)"
+          "label": "Custom SVG (Overrides default icon)"
         },
         {
           "type": "text",
@@ -92,9 +81,9 @@
     {
       "name": "Expertise Univers",
       "blocks": [
-        { "type": "universe", "settings": { "icon": "lamp", "title": "Espace Quotidien", "tags": "CLARTÉ • FONCTIONNALITÉ • SOBRIÉTÉ", "description": "Une approche pragmatique pour vos espaces de travail et de vie, alliant efficacité lumineuse et design épuré pour un quotidien simplifié.", "link_text": "Découvrir l'approche Quotidien →" } },
-        { "type": "universe", "settings": { "icon": "gamepad", "title": "Univers Visuel", "tags": "AMBIANCE • EXPRESSION • IDENTITÉ", "description": "Pour les passionnés de pop-culture et de gaming, nous créons des atmosphères immersives et uniques qui affirment votre style personnel.", "link_text": "Découvrir l'approche Visuelle →" } },
-        { "type": "universe", "settings": { "icon": "moon", "title": "Petit Cocon", "tags": "DOUCEUR • SÉCURITÉ • SÉRÉNITÉ", "description": "Une conception pensée pour la tranquillité des parents et le bien-être des enfants, utilisant des matériaux sûrs et une lumière apaisante.", "link_text": "Découvrir l'approche Cocon →" } }
+        { "type": "universe", "settings": { "title": "Espace Quotidien", "tags": "CLARTÉ • FONCTIONNALITÉ • SOBRIÉTÉ", "description": "Une approche pragmatique pour vos espaces de travail et de vie, alliant efficacité lumineuse et design épuré pour un quotidien simplifié.", "link_text": "Découvrir l'approche Quotidien →" } },
+        { "type": "universe", "settings": { "title": "Univers Visuel", "tags": "AMBIANCE • EXPRESSION • IDENTITÉ", "description": "Pour les passionnés de pop-culture et de gaming, nous créons des atmosphères immersives et uniques qui affirment votre style personnel.", "link_text": "Découvrir l'approche Visuelle →" } },
+        { "type": "universe", "settings": { "title": "Petit Cocon", "tags": "DOUCEUR • SÉCURITÉ • SÉRÉNITÉ", "description": "Une conception pensée pour la tranquillité des parents et le bien-être des enfants, utilisant des matériaux sûrs et une lumière apaisante.", "link_text": "Découvrir l'approche Cocon →" } }
       ]
     }
   ]
@@ -336,23 +325,22 @@
           {% if block.settings.custom_svg != blank %}
             {{ block.settings.custom_svg }}
           {% else %}
-            {% case block.settings.icon %}
-              {% when 'lamp' %}
-                <!-- Solid Desk Lamp style -->
-                <svg viewBox="0 0 256 256" fill="currentColor">
-                  <path d="M232,208H24a8,8,0,0,0,0,16H232a8,8,0,0,0,0-16Zm-64-16a8,8,0,0,0,8-8V93.57A72.07,72.07,0,0,0,105.77,21.68l-1.5,0a71.93,71.93,0,0,0-63.51,65L32,96a8,8,0,0,0,8,8h24v80a8,8,0,0,0,8,8H168ZM48.24,88A56,56,0,0,1,104.09,37.66h1.16A56.05,56.05,0,0,1,160,92.51V96l-111.9.09C48.1,93.41,48.15,90.7,48.24,88Z"></path>
-                </svg>
-              {% when 'gamepad' %}
-                <!-- Solid Gamepad style -->
-                <svg viewBox="0 0 256 256" fill="currentColor">
-                  <path d="M239.81,114.71,216.79,53.25A24,24,0,0,0,194.32,36C186,34.49,158.41,32,128,32s-58,2.49-66.32,4-20.84,15.65-22.47,24l-23,61.45A31.84,31.84,0,0,0,44.91,161.9L65.48,185.9a16,16,0,0,0,15,5.1l20.45-4.48A91.43,91.43,0,0,1,128,184a91.43,91.43,0,0,1,27.08,2.52l20.45,4.48a16,16,0,0,0,15-5.1l20.57-24A31.83,31.83,0,0,0,239.81,114.71ZM176,112a12,12,0,1,1,12-12A12,12,0,0,1,176,112ZM72,112H64v8a8,8,0,0,1-16,0v-8H40a8,8,0,0,1,0-16h8V88a8,8,0,0,1,16,0v8h8a8,8,0,0,1,0,16Zm136-24a12,12,0,1,1-12-12A12,12,0,0,1,208,88Z"></path>
-                </svg>
-              {% when 'moon' %}
-                <!-- Solid Moon style -->
-                <svg viewBox="0 0 256 256" fill="currentColor">
-                  <path d="M216.7,152.62A104,104,0,1,1,103.38,39.3a8,8,0,0,1,10.6,10.6,88,88,0,0,0,113.31,113.31,8,8,0,0,1,10.6,10.6Z"></path>
-                </svg>
-            {% endcase %}
+            {% if forloop.index == 1 %}
+              <!-- Solid Desk Lamp style -->
+              <svg viewBox="0 0 256 256" fill="currentColor">
+                <path d="M232,208H24a8,8,0,0,0,0,16H232a8,8,0,0,0,0-16Zm-64-16a8,8,0,0,0,8-8V93.57A72.07,72.07,0,0,0,105.77,21.68l-1.5,0a71.93,71.93,0,0,0-63.51,65L32,96a8,8,0,0,0,8,8h24v80a8,8,0,0,0,8,8H168ZM48.24,88A56,56,0,0,1,104.09,37.66h1.16A56.05,56.05,0,0,1,160,92.51V96l-111.9.09C48.1,93.41,48.15,90.7,48.24,88Z"></path>
+              </svg>
+            {% elsif forloop.index == 2 %}
+              <!-- Solid Gamepad style -->
+              <svg viewBox="0 0 256 256" fill="currentColor">
+                <path d="M239.81,114.71,216.79,53.25A24,24,0,0,0,194.32,36C186,34.49,158.41,32,128,32s-58,2.49-66.32,4-20.84,15.65-22.47,24l-23,61.45A31.84,31.84,0,0,0,44.91,161.9L65.48,185.9a16,16,0,0,0,15,5.1l20.45-4.48A91.43,91.43,0,0,1,128,184a91.43,91.43,0,0,1,27.08,2.52l20.45,4.48a16,16,0,0,0,15-5.1l20.57-24A31.83,31.83,0,0,0,239.81,114.71ZM176,112a12,12,0,1,1,12-12A12,12,0,0,1,176,112ZM72,112H64v8a8,8,0,0,1-16,0v-8H40a8,8,0,0,1,0-16h8V88a8,8,0,0,1,16,0v8h8a8,8,0,0,1,0,16Zm136-24a12,12,0,1,1-12-12A12,12,0,0,1,208,88Z"></path>
+              </svg>
+            {% else %}
+              <!-- Solid Moon style -->
+              <svg viewBox="0 0 256 256" fill="currentColor">
+                <path d="M216.7,152.62A104,104,0,1,1,103.38,39.3a8,8,0,0,1,10.6,10.6,88,88,0,0,0,113.31,113.31,8,8,0,0,1,10.6,10.6Z"></path>
+              </svg>
+            {% endif %}
           {% endif %}
         </div>
         
