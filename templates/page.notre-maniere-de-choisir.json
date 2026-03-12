@@ -191,16 +191,6 @@
         "subtitle": "Expert, rassurant, haut de gamme. L'excellence par la sobriété. Nous filtrons le superflu pour ne garder que l'essentiel.",
         "footer_text": "ILLUMINÉES • L'EXCELLENCE PAR LA CURATION"
       }
-    },
-    "sf_licence_header_BbC7xF": {
-      "type": "sf-licence-header",
-      "name": "Banderole Cinématique (Licence)",
-      "settings": {
-        "background_image": "shopify://shop_images/1773342921767.jpg",
-        "background_image_mobile": "shopify://shop_images/Gemini_Generated_Image_uyw3zguyw3zguyw3.jpg",
-        "overline": "",
-        "title": ""
-      }
     }
   },
   "order": [
@@ -208,7 +198,6 @@
     "sf_anti_catalogue_36Xhab",
     "sf_no_go_list_eDkEBE",
     "sf_atelier_filters_cNrxQ3",
-    "sf_selection_luxe_Kw8htY",
-    "sf_licence_header_BbC7xF"
+    "sf_selection_luxe_Kw8htY"
   ]
 }
