@@ -197,9 +197,9 @@
       "name": "Banderole Cinématique (Licence)",
       "settings": {
         "background_image": "shopify://shop_images/1773342921767.jpg",
-        "overline": "COLLECTION EXCLUSIVE",
-        "title": "KONOHA",
-        "glow_color": "#E89D46"
+        "background_image_mobile": "shopify://shop_images/Gemini_Generated_Image_uyw3zguyw3zguyw3.jpg",
+        "overline": "",
+        "title": ""
       }
     }
   },
