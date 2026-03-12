@@ -65,7 +65,7 @@
         "refusal_card_Uq9mNH": {
           "type": "refusal_card",
           "settings": {
-            "icon_svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9.88 9.88a3 3 0 1 0 4.24 4.24\"/><path d=\"M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68\"/><path d=\"M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61\"/><line x1=\"2\" y1=\"2\" x2=\"22\" y2=\"22\"/></svg>",
+            "icon_svg": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9.88 9.88a3 3 0 1 0 4.24 4.24\"></path><path d=\"M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68\"></path><path d=\"M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61\"></path><line x1=\"2\" y1=\"2\" x2=\"22\" y2=\"22\"></line></svg>",
             "card_title": "Design Instagrammable mais agressif",
             "card_text": "Nous disons non au scintillement (flickering) et à la fatigue visuelle. Un bel objet ne doit jamais sacrifier votre confort neurologique pour quelques likes."
           }
@@ -73,7 +73,7 @@
         "refusal_card_g4AbrN": {
           "type": "refusal_card",
           "settings": {
-            "icon_svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><line x1=\"10\" y1=\"2\" x2=\"14\" y2=\"2\"/><line x1=\"12\" y1=\"14\" x2=\"15\" y2=\"11\"/><path d=\"M8.2 6.7A8 8 0 0 1 20 14\"/><path d=\"M19.1 19.1A8 8 0 0 1 4.9 8.2\"/><line x1=\"2\" y1=\"2\" x2=\"22\" y2=\"22\"/></svg>",
+            "icon_svg": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><line x1=\"10\" y1=\"2\" x2=\"14\" y2=\"2\"></line><line x1=\"12\" y1=\"14\" x2=\"15\" y2=\"11\"></line><path d=\"M8.2 6.7A8 8 0 0 1 20 14\"></path><path d=\"M19.1 19.1A8 8 0 0 1 4.9 8.2\"></path><line x1=\"2\" y1=\"2\" x2=\"22\" y2=\"22\"></line></svg>",
             "card_title": "Gadgets à obsolescence programmée",
             "card_text": "Refus catégorique des tendances éphémères et des composants scellés impossibles à réparer. Nous concevons pour la décennie, pas pour la saison."
           }
@@ -81,7 +81,7 @@
         "refusal_card_rLm8Xf": {
           "type": "refusal_card",
           "settings": {
-            "icon_svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 11v4\"/><path d=\"M10 13h4\"/><path d=\"M2 13v7a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-4\"/><path d=\"M16 6h4a2 2 0 0 1 2 2v2\"/><path d=\"M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2\"/><path d=\"M8 6H4a2 2 0 0 0-2 2v2\"/><line x1=\"2\" y1=\"2\" x2=\"22\" y2=\"22\"/></svg>",
+            "icon_svg": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 11v4\"></path><path d=\"M10 13h4\"></path><path d=\"M2 13v7a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-4\"></path><path d=\"M16 6h4a2 2 0 0 1 2 2v2\"></path><path d=\"M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2\"></path><path d=\"M8 6H4a2 2 0 0 0-2 2v2\"></path><line x1=\"2\" y1=\"2\" x2=\"22\" y2=\"22\"></line></svg>",
             "card_title": "La lumière Blanche Hôpital",
             "card_text": "Bannissement des éclairages froids (>5000K) dans les espaces de vie. La lumière doit réchauffer l'âme, pas stériliser l'atmosphère."
           }
@@ -109,7 +109,7 @@
         "filter_card_GqfweA": {
           "type": "filter_card",
           "settings": {
-            "icon_svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z\"/><circle cx=\"12\" cy=\"12\" r=\"3\"/></svg>",
+            "icon_svg": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z\"></path><circle cx=\"12\" cy=\"12\" r=\"3\"></circle></svg>",
             "title": "Ergonomie Visuelle",
             "description": "Stabilité du flux et indice de rendu des couleurs (IRC).",
             "objective_text": "Zéro fatigue même après une journée de travail."
@@ -118,7 +118,7 @@
         "filter_card_9XnPNd": {
           "type": "filter_card",
           "settings": {
-            "icon_svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"8\" cy=\"8\" r=\"1.5\"/><circle cx=\"12\" cy=\"8\" r=\"1.5\"/><circle cx=\"16\" cy=\"8\" r=\"1.5\"/><circle cx=\"8\" cy=\"12\" r=\"1.5\"/><circle cx=\"12\" cy=\"12\" r=\"1.5\"/><circle cx=\"16\" cy=\"12\" r=\"1.5\"/><circle cx=\"8\" cy=\"16\" r=\"1.5\"/><circle cx=\"12\" cy=\"16\" r=\"1.5\"/><circle cx=\"16\" cy=\"16\" r=\"1.5\"/></svg>",
+            "icon_svg": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"8\" cy=\"8\" r=\"1.5\"></circle><circle cx=\"12\" cy=\"8\" r=\"1.5\"></circle><circle cx=\"16\" cy=\"8\" r=\"1.5\"></circle><circle cx=\"8\" cy=\"12\" r=\"1.5\"></circle><circle cx=\"12\" cy=\"12\" r=\"1.5\"></circle><circle cx=\"16\" cy=\"12\" r=\"1.5\"></circle><circle cx=\"8\" cy=\"16\" r=\"1.5\"></circle><circle cx=\"12\" cy=\"16\" r=\"1.5\"></circle><circle cx=\"16\" cy=\"16\" r=\"1.5\"></circle></svg>",
             "title": "Justesse Narrative",
             "description": "Capacité à créer une \"bulle\" sans inonder la pièce.",
             "objective_text": "Une immersion totale dans votre univers."
@@ -127,7 +127,7 @@
         "filter_card_RbtA8x": {
           "type": "filter_card",
           "settings": {
-            "icon_svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z\"/><path d=\"M12 15s-2.5-1.5-2.5-3a1.5 1.5 0 0 1 3-1 1.5 1.5 0 0 1 3 1c0 1.5-2.5 3-2.5 3z\" fill=\"currentColor\"/></svg>",
+            "icon_svg": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z\"></path><path d=\"M12 15s-2.5-1.5-2.5-3a1.5 1.5 0 0 1 3-1 1.5 1.5 0 0 1 3 1c0 1.5-2.5 3-2.5 3z\" fill=\"currentColor\"></path></svg>",
             "title": "Sécurité Passive",
             "description": "Chaleur des matériaux et absence de composants volatils nocifs.",
             "objective_text": "Une sérénité totale pour le Petit Cocon."
@@ -154,7 +154,7 @@
         "curation_card_gUmrzC": {
           "type": "curation_card",
           "settings": {
-            "icon_svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polygon points=\"12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2\"/></svg>",
+            "icon_svg": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polygon points=\"12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2\"></polygon></svg>",
             "card_title": "Décision simplifiée",
             "card_text": "Trop de choix tue le choix ; nous ne proposons que la Master pièce de chaque catégorie.",
             "card_image": "shopify://shop_images/image_2565d8a6-0369-4e52-88b1-def9b47ec4ca.png"
@@ -163,7 +163,7 @@
         "curation_card_CWzRQy": {
           "type": "curation_card",
           "settings": {
-            "icon_svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.77 3.77z\"/></svg>",
+            "icon_svg": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.77 3.77z\"></path></svg>",
             "card_title": "Maîtrise totale",
             "card_text": "Nous connaissons chaque vis et chaque réglage de nos produits. Une expertise technique sans compromis.",
             "card_image": "shopify://shop_images/unnamed_0fdd1201-07a2-4fe2-a066-8f07462a7948.png"
@@ -172,7 +172,7 @@
         "curation_card_fndpBy": {
           "type": "curation_card",
           "settings": {
-            "icon_svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z\"/><path d=\"M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12\"/></svg>",
+            "icon_svg": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z\"></path><path d=\"M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12\"></path></svg>",
             "card_title": "Impact Durable",
             "card_text": "Choisir juste du premier coup, c'est éviter les retours inutiles et réduire considérablement le gaspillage.",
             "card_image": "shopify://shop_images/unnamed_c56c825d-3ea8-40b8-9263-8828acd4d86f.png"
@@ -191,6 +191,16 @@
         "subtitle": "Expert, rassurant, haut de gamme. L'excellence par la sobriété. Nous filtrons le superflu pour ne garder que l'essentiel.",
         "footer_text": "ILLUMINÉES • L'EXCELLENCE PAR LA CURATION"
       }
+    },
+    "sf_licence_header_BbC7xF": {
+      "type": "sf-licence-header",
+      "name": "Banderole Cinématique (Licence)",
+      "settings": {
+        "background_image": "shopify://shop_images/1773342921767.jpg",
+        "overline": "COLLECTION EXCLUSIVE",
+        "title": "KONOHA",
+        "glow_color": "#E89D46"
+      }
     }
   },
   "order": [
@@ -198,6 +208,7 @@
     "sf_anti_catalogue_36Xhab",
     "sf_no_go_list_eDkEBE",
     "sf_atelier_filters_cNrxQ3",
-    "sf_selection_luxe_Kw8htY"
+    "sf_selection_luxe_Kw8htY",
+    "sf_licence_header_BbC7xF"
   ]
 }
