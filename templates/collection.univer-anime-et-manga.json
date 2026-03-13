@@ -64,9 +64,9 @@
         "portal_JFGXgi": {
           "type": "portal",
           "settings": {
-            "image": "shopify://shop_images/Gemini_Generated_Image_luw6jrluw6jrluw6.jpg",
+            "image": "shopify://shop_images/univers-anime-naruto-konoha-village-ambiance-ninja.jpg",
             "title": "NARUTO",
-            "text_outline": false,
+            "text_outline": true,
             "description": "Ressentez la volonté du feu. Une lueur ambrée chaleureuse.",
             "atmosphere_label": "",
             "atmosphere_value": "",
@@ -77,23 +77,77 @@
         "portal_yFanh8": {
           "type": "portal",
           "settings": {
-            "title": "NARUTO",
-            "text_outline": false,
-            "description": "Ressentez la volonté du feu. Une lueur ambrée chaleureuse.",
-            "atmosphere_label": "ATMOSPHÈRE",
-            "atmosphere_value": "Chaleur & Chakra",
+            "image": "shopify://shop_images/univers-anime-one-piece-thousand-sunny-aventure-pirate.jpg",
+            "title": "One piece",
+            "text_outline": true,
+            "description": "",
+            "atmosphere_label": "",
+            "atmosphere_value": "",
             "button_text": "Entrer dans la légende",
             "button_link": ""
           }
         },
-        "portal_7PhRCh": {
+        "portal_PJ7cw4": {
           "type": "portal",
           "settings": {
-            "title": "NARUTO",
-            "text_outline": false,
+            "image": "shopify://shop_images/univers-anime-dragon-ball-goku-nuage-magique-kinto-un.jpg",
+            "title": "Dragon ball z",
+            "text_outline": true,
             "description": "Ressentez la volonté du feu. Une lueur ambrée chaleureuse.",
-            "atmosphere_label": "ATMOSPHÈRE",
-            "atmosphere_value": "Chaleur & Chakra",
+            "atmosphere_label": "",
+            "atmosphere_value": "",
+            "button_text": "Entrer dans la légende",
+            "button_link": ""
+          }
+        },
+        "portal_giVPLx": {
+          "type": "portal",
+          "settings": {
+            "image": "shopify://shop_images/univers-anime-my-hero-academia-deku-hero-ambiance-anime.jpg",
+            "title": "My hero academia",
+            "text_outline": true,
+            "description": "Ressentez la volonté du feu. Une lueur ambrée chaleureuse.",
+            "atmosphere_label": "",
+            "atmosphere_value": "",
+            "button_text": "Entrer dans la légende",
+            "button_link": ""
+          }
+        },
+        "portal_E4eUnr": {
+          "type": "portal",
+          "settings": {
+            "image": "shopify://shop_images/univers-anime-attack-on-titan-rumbling-ambiance-manga.png",
+            "title": "attack on titan",
+            "text_outline": true,
+            "description": "Ressentez la volonté du feu. Une lueur ambrée chaleureuse.",
+            "atmosphere_label": "",
+            "atmosphere_value": "",
+            "button_text": "Entrer dans la légende",
+            "button_link": ""
+          }
+        },
+        "portal_GW3tfx": {
+          "type": "portal",
+          "settings": {
+            "image": "shopify://shop_images/univers-anime-solo-leveling-portail-donjon-dark-fantasy.jpg",
+            "title": "solo leveling",
+            "text_outline": true,
+            "description": "Ressentez la volonté du feu. Une lueur ambrée chaleureuse.",
+            "atmosphere_label": "",
+            "atmosphere_value": "",
+            "button_text": "Entrer dans la légende",
+            "button_link": ""
+          }
+        },
+        "portal_DBPiAi": {
+          "type": "portal",
+          "settings": {
+            "image": "shopify://shop_images/univers-anime-studio-ghibli-esprit-foret-ambiance-magique.jpg",
+            "title": "Studio ghibli",
+            "text_outline": true,
+            "description": "Ressentez la volonté du feu. Une lueur ambrée chaleureuse.",
+            "atmosphere_label": "",
+            "atmosphere_value": "",
             "button_text": "Entrer dans la légende",
             "button_link": ""
           }
@@ -102,7 +156,11 @@
       "block_order": [
         "portal_JFGXgi",
         "portal_yFanh8",
-        "portal_7PhRCh"
+        "portal_PJ7cw4",
+        "portal_giVPLx",
+        "portal_E4eUnr",
+        "portal_GW3tfx",
+        "portal_DBPiAi"
       ],
       "name": "Portails d'Univers",
       "settings": {
@@ -168,15 +226,6 @@
         "reassure_title": "L'engagement Qualité & Sécurité",
         "reassure_text": "Parce que la lumière habille votre quotidien, nous concevons nos produits pour qu'ils soient aussi sûrs qu'élégants. Une tranquillité d'esprit pour toute la famille."
       }
-    },
-    "sf_licence_header_Nqcxqi": {
-      "type": "sf-licence-header",
-      "name": "Banderole Cinématique (Licence)",
-      "settings": {
-        "background_image": "shopify://shop_images/1773342921767.jpg",
-        "overline": "COLLECTION EXCLUSIVE",
-        "title": "KONOHA"
-      }
     }
   },
   "order": [
@@ -186,7 +235,6 @@
     "sf_univers_visuel_guide_MqBWtt",
     "sf_univers_visuel_portals_iYjXFf",
     "sf_univers_visuel_seo_f7xnGJ",
-    "sf_inspirations_reassurance_rDPNhF",
-    "sf_licence_header_Nqcxqi"
+    "sf_inspirations_reassurance_rDPNhF"
   ]
 }
