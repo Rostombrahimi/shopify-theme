@@ -61,6 +61,19 @@
     "sf_univers_visuel_portals_iYjXFf": {
       "type": "sf-univers-visuel-portals",
       "blocks": {
+        "portal_Hr8zgQ": {
+          "type": "portal",
+          "settings": {
+            "image": "shopify://shop_images/univers-anime-demon-slayer.jpg",
+            "title": "Demon slayer",
+            "text_outline": true,
+            "description": "Ressentez la volonté du feu. Une lueur ambrée chaleureuse.",
+            "atmosphere_label": "",
+            "atmosphere_value": "",
+            "button_text": "Entrer dans la légende",
+            "button_link": ""
+          }
+        },
         "portal_Db6M4t": {
           "type": "portal",
           "settings": {
@@ -129,7 +142,7 @@
         "portal_E4eUnr": {
           "type": "portal",
           "settings": {
-            "image": "shopify://shop_images/univers-anime-attack-on-titan-rumbling-ambiance-manga.png",
+            "image": "shopify://shop_images/univers-anime-attack-on-titan-rumbling-ambiance-manga.jpg",
             "title": "attack on titan",
             "text_outline": true,
             "description": "Ressentez la volonté du feu. Une lueur ambrée chaleureuse.",
@@ -155,7 +168,7 @@
         "portal_DBPiAi": {
           "type": "portal",
           "settings": {
-            "image": "shopify://shop_images/univers-anime-studio-ghibli-esprit-foret-ambiance-magique.jpg",
+            "image": "shopify://shop_images/univers-anime-studio-ghibli-esprit-foret-ambiance-magique_0727343e-a8a4-4314-89f5-2af2fa488a1b.jpg",
             "title": "Studio ghibli",
             "text_outline": true,
             "description": "Ressentez la volonté du feu. Une lueur ambrée chaleureuse.",
@@ -167,6 +180,7 @@
         }
       },
       "block_order": [
+        "portal_Hr8zgQ",
         "portal_Db6M4t",
         "portal_JFGXgi",
         "portal_yFanh8",
