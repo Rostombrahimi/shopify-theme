@@ -47,11 +47,20 @@
         "overline": "",
         "title": ""
       }
+    },
+    "sf_licence_grid_7aYcn9": {
+      "type": "sf-licence-grid",
+      "name": "Grille Premium Licence",
+      "settings": {
+        "collection": "licence-demon-slayer",
+        "products_to_show": 12
+      }
     }
   },
   "order": [
     "banner",
     "product-grid",
-    "sf_licence_header_NtL3zT"
+    "sf_licence_header_NtL3zT",
+    "sf_licence_grid_7aYcn9"
   ]
 }
