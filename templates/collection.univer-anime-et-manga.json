@@ -61,10 +61,23 @@
     "sf_univers_visuel_portals_iYjXFf": {
       "type": "sf-univers-visuel-portals",
       "blocks": {
+        "portal_Db6M4t": {
+          "type": "portal",
+          "settings": {
+            "image": "shopify://shop_images/jujutsu_kaisen.jpg",
+            "title": "jujutsu kaisen",
+            "text_outline": false,
+            "description": "Ressentez la volonté du feu. Une lueur ambrée chaleureuse.",
+            "atmosphere_label": "",
+            "atmosphere_value": "",
+            "button_text": "Entrer dans la légende",
+            "button_link": ""
+          }
+        },
         "portal_JFGXgi": {
           "type": "portal",
           "settings": {
-            "image": "shopify://shop_images/univers-anime-naruto-konoha-village-ambiance-ninja.jpg",
+            "image": "shopify://shop_images/univers-anime-naruto-konoha-village-ambiance-ninja_b9b7ddf5-04cd-41d1-ae0b-2dcaf6f85b87.jpg",
             "title": "NARUTO",
             "text_outline": true,
             "description": "Ressentez la volonté du feu. Une lueur ambrée chaleureuse.",
@@ -77,7 +90,7 @@
         "portal_yFanh8": {
           "type": "portal",
           "settings": {
-            "image": "shopify://shop_images/univers-anime-one-piece-thousand-sunny-aventure-pirate.jpg",
+            "image": "shopify://shop_images/univers-anime-one-piece-thousand-sunny-aventure-pirate_2.jpg",
             "title": "One piece",
             "text_outline": true,
             "description": "",
@@ -90,7 +103,7 @@
         "portal_PJ7cw4": {
           "type": "portal",
           "settings": {
-            "image": "shopify://shop_images/univers-anime-dragon-ball-goku-nuage-magique-kinto-un.jpg",
+            "image": "shopify://shop_images/univers-anime-dragon-ball-goku-nuage-magique-kinto-un_fe00a0ae-019a-499a-963f-e40c97c96f0c.jpg",
             "title": "Dragon ball z",
             "text_outline": true,
             "description": "Ressentez la volonté du feu. Une lueur ambrée chaleureuse.",
@@ -103,7 +116,7 @@
         "portal_giVPLx": {
           "type": "portal",
           "settings": {
-            "image": "shopify://shop_images/univers-anime-my-hero-academia-deku-hero-ambiance-anime.jpg",
+            "image": "shopify://shop_images/univers-anime-my-hero-academia-deku-hero-ambiance-anime_271cb2ca-057e-4d68-b389-2fcbdc73d121.jpg",
             "title": "My hero academia",
             "text_outline": true,
             "description": "Ressentez la volonté du feu. Une lueur ambrée chaleureuse.",
@@ -154,6 +167,7 @@
         }
       },
       "block_order": [
+        "portal_Db6M4t",
         "portal_JFGXgi",
         "portal_yFanh8",
         "portal_PJ7cw4",
