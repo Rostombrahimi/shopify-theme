@@ -64,12 +64,13 @@
         "portal_JFGXgi": {
           "type": "portal",
           "settings": {
+            "image": "shopify://shop_images/Gemini_Generated_Image_luw6jrluw6jrluw6.jpg",
             "title": "NARUTO",
             "text_outline": false,
             "description": "Ressentez la volonté du feu. Une lueur ambrée chaleureuse.",
-            "atmosphere_label": "ATMOSPHÈRE",
-            "atmosphere_value": "Chaleur & Chakra",
-            "button_text": "Entrer dans la légende",
+            "atmosphere_label": "",
+            "atmosphere_value": "",
+            "button_text": "Entrer dans Konoha",
             "button_link": ""
           }
         },
