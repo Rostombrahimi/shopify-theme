@@ -93,7 +93,7 @@
             "image": "shopify://shop_images/univers-anime-naruto-konoha-village-ambiance-ninja_b9b7ddf5-04cd-41d1-ae0b-2dcaf6f85b87.jpg",
             "title": "NARUTO",
             "text_outline": true,
-            "description": "Ressentez la volonté du feu. Une lueur ambrée chaleureuse.",
+            "description": "Parcourez les rues de Konoha avec Naruto, Sasuke et Sakura. Entre ninjutsu, missions secrètes et rêves de Hokage, découvrez l’héritage des shinobi et la volonté du feu.",
             "atmosphere_label": "",
             "atmosphere_value": "",
             "button_text": "Entrer dans Konoha",
@@ -106,10 +106,10 @@
             "image": "shopify://shop_images/univers-anime-one-piece-thousand-sunny-aventure-pirate_2.jpg",
             "title": "One piece",
             "text_outline": true,
-            "description": "",
+            "description": "Levez l’ancre avec Luffy et l’équipage du Chapeau de Paille. Entre Grand Line, fruits du démon et chasse au One Piece, l’aventure pirate ne fait que commencer.",
             "atmosphere_label": "",
             "atmosphere_value": "",
-            "button_text": "Entrer dans la légende",
+            "button_text": "Lever l’Ancre",
             "button_link": ""
           }
         },
