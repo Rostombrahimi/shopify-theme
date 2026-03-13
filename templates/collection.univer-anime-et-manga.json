@@ -119,10 +119,10 @@
             "image": "shopify://shop_images/univers-anime-dragon-ball-goku-nuage-magique-kinto-un_fe00a0ae-019a-499a-963f-e40c97c96f0c.jpg",
             "title": "Dragon ball z",
             "text_outline": true,
-            "description": "Ressentez la volonté du feu. Une lueur ambrée chaleureuse.",
+            "description": "Rejoignez Goku, Vegeta et les guerriers Z dans leurs combats légendaires. Entre transformations Saiyan, Kamehameha et tournois intergalactiques, préparez-vous à dépasser vos limites.",
             "atmosphere_label": "",
             "atmosphere_value": "",
-            "button_text": "Entrer dans la légende",
+            "button_text": "Libérer votre Ki",
             "button_link": ""
           }
         },
@@ -132,10 +132,10 @@
             "image": "shopify://shop_images/univers-anime-my-hero-academia-deku-hero-ambiance-anime_271cb2ca-057e-4d68-b389-2fcbdc73d121.jpg",
             "title": "My hero academia",
             "text_outline": true,
-            "description": "Ressentez la volonté du feu. Une lueur ambrée chaleureuse.",
+            "description": "Entrez à l’académie des héros avec Deku, Bakugo et Todoroki. Entre alter surpuissants, entraînements à U.A. et combats pour la justice, découvrez la nouvelle génération de héros.",
             "atmosphere_label": "",
             "atmosphere_value": "",
-            "button_text": "Entrer dans la légende",
+            "button_text": "Rejoindre l’Académie UA",
             "button_link": ""
           }
         },
@@ -145,10 +145,10 @@
             "image": "shopify://shop_images/univers-anime-attack-on-titan-rumbling-ambiance-manga.jpg",
             "title": "attack on titan",
             "text_outline": true,
-            "description": "Ressentez la volonté du feu. Une lueur ambrée chaleureuse.",
+            "description": "Combattez aux côtés du Bataillon d’Exploration dans un monde assiégé par les Titans. Entre manœuvres tridimensionnelles, mystères des murs et destin d’Eren, chaque mission peut changer l’humanité.",
             "atmosphere_label": "",
             "atmosphere_value": "",
-            "button_text": "Entrer dans la légende",
+            "button_text": "Rejoindre le Bataillon",
             "button_link": ""
           }
         },
@@ -158,10 +158,10 @@
             "image": "shopify://shop_images/univers-anime-solo-leveling-portail-donjon-dark-fantasy.jpg",
             "title": "solo leveling",
             "text_outline": true,
-            "description": "Ressentez la volonté du feu. Une lueur ambrée chaleureuse.",
+            "description": "Suivez l’ascension de Sung Jin-Woo, le chasseur devenu monarque des ombres. Entre donjons, portails et armées de soldats d’ombre, franchissez les limites du système.",
             "atmosphere_label": "",
             "atmosphere_value": "",
-            "button_text": "Entrer dans la légende",
+            "button_text": "Entrer dans le Donjon",
             "button_link": ""
           }
         },
@@ -171,10 +171,10 @@
             "image": "shopify://shop_images/univers-anime-studio-ghibli-esprit-foret-ambiance-magique_0727343e-a8a4-4314-89f5-2af2fa488a1b.jpg",
             "title": "Studio ghibli",
             "text_outline": true,
-            "description": "Ressentez la volonté du feu. Une lueur ambrée chaleureuse.",
+            "description": "Voyagez dans les mondes enchanteurs de Miyazaki. Entre esprits de la forêt, châteaux volants et créatures mythiques, laissez la magie de Ghibli transformer votre espace.",
             "atmosphere_label": "",
             "atmosphere_value": "",
-            "button_text": "Entrer dans la légende",
+            "button_text": "Entrer dans le Monde des Esprits",
             "button_link": ""
           }
         }
