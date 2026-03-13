@@ -47,11 +47,20 @@
         "overline": "",
         "title": ""
       }
+    },
+    "sf_licence_grid_KJBxtW": {
+      "type": "sf-licence-grid",
+      "name": "Grille Premium Licence",
+      "settings": {
+        "collection": "licence-jujutsu-kaisen",
+        "products_to_show": 4
+      }
     }
   },
   "order": [
     "banner",
     "product-grid",
-    "sf_licence_header_w9gCyY"
+    "sf_licence_header_w9gCyY",
+    "sf_licence_grid_KJBxtW"
   ]
 }
