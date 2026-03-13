@@ -61,6 +61,19 @@
     "sf_univers_visuel_portals_iYjXFf": {
       "type": "sf-univers-visuel-portals",
       "blocks": {
+        "portal_JFGXgi": {
+          "type": "portal",
+          "settings": {
+            "image": "shopify://shop_images/univers-anime-naruto-konoha-village-ambiance-ninja_b9b7ddf5-04cd-41d1-ae0b-2dcaf6f85b87.jpg",
+            "title": "NARUTO",
+            "text_outline": true,
+            "description": "Parcourez les rues de Konoha avec Naruto, Sasuke et Sakura. Entre ninjutsu, missions secrètes et rêves de Hokage, découvrez l’héritage des shinobi et la volonté du feu.",
+            "atmosphere_label": "",
+            "atmosphere_value": "",
+            "button_text": "Entrer dans Konoha",
+            "button_link": "shopify://collections/licence-naruto"
+          }
+        },
         "portal_Hr8zgQ": {
           "type": "portal",
           "settings": {
@@ -84,19 +97,6 @@
             "atmosphere_label": "",
             "atmosphere_value": "",
             "button_text": "Entrer dans l’École d’Exorcisme",
-            "button_link": ""
-          }
-        },
-        "portal_JFGXgi": {
-          "type": "portal",
-          "settings": {
-            "image": "shopify://shop_images/univers-anime-naruto-konoha-village-ambiance-ninja_b9b7ddf5-04cd-41d1-ae0b-2dcaf6f85b87.jpg",
-            "title": "NARUTO",
-            "text_outline": true,
-            "description": "Parcourez les rues de Konoha avec Naruto, Sasuke et Sakura. Entre ninjutsu, missions secrètes et rêves de Hokage, découvrez l’héritage des shinobi et la volonté du feu.",
-            "atmosphere_label": "",
-            "atmosphere_value": "",
-            "button_text": "Entrer dans Konoha",
             "button_link": ""
           }
         },
@@ -180,9 +180,9 @@
         }
       },
       "block_order": [
+        "portal_JFGXgi",
         "portal_Hr8zgQ",
         "portal_Db6M4t",
-        "portal_JFGXgi",
         "portal_yFanh8",
         "portal_PJ7cw4",
         "portal_giVPLx",
