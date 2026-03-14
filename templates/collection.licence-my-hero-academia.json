@@ -48,11 +48,20 @@
         "overline": "",
         "title": ""
       }
+    },
+    "sf_licence_grid_CeREHj": {
+      "type": "sf-licence-grid",
+      "name": "Grille Premium Licence",
+      "settings": {
+        "collection": "licence-my-hero-academia",
+        "products_to_show": 4
+      }
     }
   },
   "order": [
     "banner",
     "product-grid",
-    "sf_licence_header_bk6kXz"
+    "sf_licence_header_bk6kXz",
+    "sf_licence_grid_CeREHj"
   ]
 }
