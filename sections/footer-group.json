@@ -74,9 +74,9 @@
           "type": "contact_social",
           "settings": {
             "heading": "Besoin d'aide ?",
-            "menu": "footer",
-            "show_social": false,
-            "social_instagram": "",
+            "menu": "a-propos",
+            "show_social": true,
+            "social_instagram": "https://www.instagram.com/illumineesfrance?igsh=MTJvMjVxbWF4NGtrcQ==",
             "social_pinterest": ""
           }
         }
@@ -94,7 +94,7 @@
         "newsletter_text": "Recevez nos conseils lumineux et nos dernières créations directement dans votre boîte mail.",
         "newsletter_button_text": "Recevoir les conseils",
         "bottom_text": "Des luminaires pensés pour améliorer le confort.",
-        "bottom_menu": ""
+        "bottom_menu": "footer"
       }
     }
   },
