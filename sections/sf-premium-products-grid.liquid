@@ -150,7 +150,12 @@
   <div class="premium-product-grid">
     
     {%- for block in section.blocks -%}
-      {%- assign product = block.settings.product -%}
+      {%- assign product_setting = block.settings.product -%}
+      {%- if product_setting.url != blank -%}
+        {%- assign product = product_setting -%}
+      {%- else -%}
+        {%- assign product = all_products[product_setting] -%}
+      {%- endif -%}
       
       {%- if product != blank -%}
         <a href="{{ product.url }}" class="premium-card" {{ block.shopify_attributes }}>
