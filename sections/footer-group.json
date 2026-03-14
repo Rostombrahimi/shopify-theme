@@ -74,8 +74,8 @@
           "type": "contact_social",
           "settings": {
             "heading": "Besoin d'aide ?",
-            "menu": "a-propos",
-            "show_social": true,
+            "menu": "footer",
+            "show_social": false,
             "social_instagram": "",
             "social_pinterest": ""
           }
