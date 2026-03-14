@@ -13,10 +13,10 @@
       "type": "range",
       "id": "products_to_show",
       "min": 2,
-      "max": 12,
+      "max": 24,
       "step": 2,
-      "default": 4,
-      "label": "Nombre de produits à afficher"
+      "default": 10,
+      "label": "Produits par page"
     }
   ],
   "presets": [
@@ -140,30 +140,86 @@
     margin-bottom: 24px;
   }
 }
+
+/* Pagination Styling */
+#shopify-section-{{ section.id }} .sf-pagination {
+  margin-top: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Inter', sans-serif;
+  flex-wrap: wrap;
+}
+
+#shopify-section-{{ section.id }} .sf-pagination span.page,
+#shopify-section-{{ section.id }} .sf-pagination span.next,
+#shopify-section-{{ section.id }} .sf-pagination span.prev,
+#shopify-section-{{ section.id }} .sf-pagination span.deco {
+  display: inline-flex;
+}
+
+#shopify-section-{{ section.id }} .sf-pagination span a,
+#shopify-section-{{ section.id }} .sf-pagination span.current,
+#shopify-section-{{ section.id }} .sf-pagination span.deco {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  min-width: 48px;
+  padding: 0 16px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #F9F9F9;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+#shopify-section-{{ section.id }} .sf-pagination span a:hover {
+  background: rgba(232, 157, 70, 0.2);
+  color: #E89D46;
+}
+
+#shopify-section-{{ section.id }} .sf-pagination span.current {
+  background: #E89D46;
+  color: #081A32;
+  font-weight: 600;
+}
 </style>
 
 <div class="sf-stitch premium-grid-section">
-  <div class="premium-product-grid">
-    
-    {%- assign collection = section.settings.collection -%}
-    
-    {%- if collection != blank and collection.products_count > 0 -%}
-      {%- for product in collection.products limit: section.settings.products_to_show -%}
-        <a href="{{ product.url }}" class="premium-card">
-          <div class="premium-img-container">
-            {%- if product.featured_image != blank -%}
-              {{ product.featured_image | image_url: width: 800 | image_tag: class: 'product-cutout-img', loading: 'lazy', alt: product.title }}
-            {%- else -%}
-              {{ 'product-1' | placeholder_svg_tag: 'product-cutout-img' }}
-            {%- endif -%}
-          </div>
-          <div class="premium-info">
-            <h3 class="premium-name">{{ product.title }}</h3>
-            <span class="premium-price">{{ product.price | money }}</span>
-          </div>
-        </a>
-      {%- endfor -%}
-    {%- else -%}
+  {%- assign collection = section.settings.collection -%}
+  
+  {%- if collection != blank and collection.products_count > 0 -%}
+    {%- paginate collection.products by section.settings.products_to_show -%}
+      <div class="premium-product-grid">
+        {%- for product in collection.products -%}
+          <a href="{{ product.url }}" class="premium-card">
+            <div class="premium-img-container">
+              {%- if product.featured_image != blank -%}
+                {{ product.featured_image | image_url: width: 800 | image_tag: class: 'product-cutout-img', loading: 'lazy', alt: product.title }}
+              {%- else -%}
+                {{ 'product-1' | placeholder_svg_tag: 'product-cutout-img' }}
+              {%- endif -%}
+            </div>
+            <div class="premium-info">
+              <h3 class="premium-name">{{ product.title }}</h3>
+              <span class="premium-price">{{ product.price | money }}</span>
+            </div>
+          </a>
+        {%- endfor -%}
+      </div>
+      
+      {%- if paginate.pages > 1 -%}
+        <div class="sf-pagination">
+          {{ paginate | default_pagination: next: 'Suivant &rarr;', previous: '&larr; Précédent' }}
+        </div>
+      {%- endif -%}
+    {%- endpaginate -%}
+  {%- else -%}
+    <div class="premium-product-grid">
       <!-- Placeholders si aucune collection n'est sélectionnée -->
       {%- for i in (1..section.settings.products_to_show) -%}
         <div class="premium-card">
@@ -176,7 +232,6 @@
           </div>
         </div>
       {%- endfor -%}
-    {%- endif -%}
-    
-  </div>
+    </div>
+  {%- endif -%}
 </div>

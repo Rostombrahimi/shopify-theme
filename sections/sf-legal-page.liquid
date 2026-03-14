@@ -1,0 +1,122 @@
+<!-- sf-legal-page.liquid -->
+<style>
+  #shopify-section-{{ section.id }} {
+    background-color: var(--illu-night, #081A32);
+    color: var(--illu-text-cream, #F9F9F9);
+    padding: 80px 20px;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  #shopify-section-{{ section.id }} .sf-legal-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.02); /* Effet bento léger / Glass */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 32px;
+    padding: 64px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  #shopify-section-{{ section.id }} .sf-legal-title {
+    color: var(--illu-accent-amber, #E89D46);
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 48px;
+    text-align: center;
+    letter-spacing: -0.02em;
+  }
+
+  /* Style du contenu généré par l'éditeur Shopify (Rich Text) */
+  #shopify-section-{{ section.id }} .sf-legal-content {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: rgba(249, 249, 249, 0.85); /* Crème légèrement transparent pour la lecture */
+  }
+
+  #shopify-section-{{ section.id }} .sf-legal-content h1,
+  #shopify-section-{{ section.id }} .sf-legal-content h2,
+  #shopify-section-{{ section.id }} .sf-legal-content h3,
+  #shopify-section-{{ section.id }} .sf-legal-content h4 {
+    color: var(--illu-text-cream, #F9F9F9);
+    margin-top: 40px;
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+
+  #shopify-section-{{ section.id }} .sf-legal-content h2 { font-size: 1.75rem; }
+  #shopify-section-{{ section.id }} .sf-legal-content h3 { font-size: 1.4rem; color: var(--illu-accent-amber, #E89D46); }
+
+  #shopify-section-{{ section.id }} .sf-legal-content p {
+    margin-bottom: 24px;
+  }
+
+  #shopify-section-{{ section.id }} .sf-legal-content a {
+    color: var(--illu-accent-amber, #E89D46);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(232, 157, 70, 0.3);
+    transition: all 0.3s ease;
+  }
+
+  #shopify-section-{{ section.id }} .sf-legal-content a:hover {
+    border-bottom-color: var(--illu-accent-amber, #E89D46);
+  }
+
+  #shopify-section-{{ section.id }} .sf-legal-content ul,
+  #shopify-section-{{ section.id }} .sf-legal-content ol {
+    margin-bottom: 24px;
+    padding-left: 24px;
+  }
+
+  #shopify-section-{{ section.id }} .sf-legal-content li {
+    margin-bottom: 8px;
+  }
+
+  @media (max-width: 768px) {
+    #shopify-section-{{ section.id }} {
+      padding: 40px 16px;
+    }
+    
+    #shopify-section-{{ section.id }} .sf-legal-container {
+      padding: 32px 24px;
+      border-radius: 24px;
+    }
+    
+    #shopify-section-{{ section.id }} .sf-legal-title {
+      font-size: 2rem;
+      margin-bottom: 32px;
+    }
+  }
+</style>
+
+<div class="sf-stitch">
+  <div class="sf-legal-container">
+    <h1 class="sf-legal-title">{{ page.title | escape }}</h1>
+    
+    <div class="sf-legal-content rte">
+      {{ page.content }}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Page Légale Premium",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Cette section affiche le titre et le contenu de la page actuelle avec le style sombre (Glassmorphism) de votre marque."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Page Légale Premium"
+    }
+  ]
+}
+{% endschema %}

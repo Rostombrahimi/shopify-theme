@@ -1,0 +1,12 @@
+{
+  "sections": {
+    "main": {
+      "type": "sf-legal-page",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
