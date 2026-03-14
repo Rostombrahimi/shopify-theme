@@ -91,6 +91,7 @@
         "need_card_Cb7K8i": {
           "type": "need_card",
           "settings": {
+            "image": "shopify://shop_images/univers-petit-cocon-nuit-etoilee-voie-lactee-croissant-lune-montagnes_19848b1f-5e54-43f4-ab5c-bf0bafc4a223.png",
             "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z\"></path></svg>",
             "title": " Nuit Étoilée",
             "text": "Des lumières inspirées du ciel nocturne pour apaiser et accompagner l’endormissement",
@@ -100,6 +101,7 @@
         "need_card_7mFPgD": {
           "type": "need_card",
           "settings": {
+            "image": "shopify://shop_images/petit-cocon-amis-foret-veilleuses-faon-renard.jpg",
             "icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n  <path d=\"m17 14 3 3.3a1 1 0 0 1-.7 1.7H4.7a1 1 0 0 1-.7-1.7L7 14h-.3a1 1 0 0 1-.7-1.7L9 9h-.2A1 1 0 0 1 8 7.3L12 3l4 4.3a1 1 0 0 1-.8 1.7H15l3 3.3a1 1 0 0 1-.8 1.7H17z\"></path>\n  <path d=\"M12 22v-3\"></path>\n</svg>",
             "title": " Amis de la Forêt",
             "text": "Veilleuses aux formes douces et rassurantes, pensées pour devenir des compagnons de nuit.",
@@ -109,6 +111,7 @@
         "need_card_xMUNXN": {
           "type": "need_card",
           "settings": {
+            "image": "shopify://shop_images/Gemini_Generated_Image_ojd0raojd0raojd0.jpg",
             "icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n  <path d=\"M8 2h8l4 10H4L8 2Z\"></path>\n  <path d=\"M12 12v6\"></path>\n  <path d=\"M8 22h8\"></path>\n  <path d=\"M12 18h.01\"></path>\n</svg>",
             "title": " Lumière Douce & Apaisante",
             "text": "Une lumière tamisée pour les réveils nocturnes et les moments calmes.",
