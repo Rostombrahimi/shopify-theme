@@ -56,13 +56,42 @@
         "seo_text": "Découvrez notre collection Naruto inspirée du village de Konoha. Entre lampes anime, cadres lumineux et décorations manga, retrouvez vos ninjas préférés comme Naruto, Kakashi ou Itachi et créez une ambiance unique dans votre espace."
       }
     },
-    "sf_licence_grid_xyUNA9": {
-      "type": "sf-licence-grid",
-      "name": "Grille Premium Licence",
-      "settings": {
-        "collection": "licence-naruto",
-        "products_to_show": 12
-      }
+    "sf_premium_products_grid_qRMcyF": {
+      "type": "sf-premium-products-grid",
+      "blocks": {
+        "product_item_b4PKfV": {
+          "type": "product_item",
+          "settings": {
+            "product": "lampe-naruto-led-3d-veilleuse-manga-edition-sharingan"
+          }
+        },
+        "product_item_hPw9gf": {
+          "type": "product_item",
+          "settings": {
+            "product": ""
+          }
+        },
+        "product_item_A6Npnq": {
+          "type": "product_item",
+          "settings": {
+            "product": ""
+          }
+        },
+        "product_item_XF9hW6": {
+          "type": "product_item",
+          "settings": {
+            "product": ""
+          }
+        }
+      },
+      "block_order": [
+        "product_item_b4PKfV",
+        "product_item_hPw9gf",
+        "product_item_A6Npnq",
+        "product_item_XF9hW6"
+      ],
+      "name": "Grille Produits Premium",
+      "settings": {}
     }
   },
   "order": [
@@ -70,6 +99,6 @@
     "product-grid",
     "sf_licence_header_AryXBk",
     "sf_univers_visuel_seo_wzikr6",
-    "sf_licence_grid_xyUNA9"
+    "sf_premium_products_grid_qRMcyF"
   ]
 }
