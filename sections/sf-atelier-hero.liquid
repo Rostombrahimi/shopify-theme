@@ -121,7 +121,7 @@
   /* --- HERO AREA --- */
   .atelier-hero {
     position: relative;
-    min-height: 85vh; /* Légèrement moins que 100vh pour voir les cartes dépasser */
+    min-height: auto; /* Remove vh height for normal flow */
     background-color: var(--illu-bg-night, #081A32);
     display: flex;
     flex-direction: column;
@@ -129,7 +129,7 @@
     justify-content: center;
     text-align: center;
     overflow: hidden;
-    padding: 120px 5% 180px 5%; /* Padding bas important pour le dégradé */
+    padding: 120px 5% 80px 5%; /* Adjusted padding bottom */
   }
 
   .atelier-hero-bg {
@@ -310,7 +310,7 @@
     position: relative;
     z-index: 5;
     max-width: 1400px;
-    margin: -100px auto 0 auto; /* Overlap with hero */
+    margin: 20px auto 0 auto; /* Moved below hero instead of overlapping */
     padding: 0 4rem 100px 4rem;
   }
 
@@ -384,7 +384,7 @@
   @media screen and (max-width: 768px) {
     .atelier-hero {
       min-height: auto;
-      padding: 140px 1.5rem 180px 1.5rem;
+      padding: 140px 1.5rem 60px 1.5rem; /* Restored safe padding */
     }
     .atelier-hero-box {
       padding: 2rem 1.5rem;
@@ -397,7 +397,7 @@
     }
     .atelier-grid-area {
       padding: 0 1.5rem 80px 1.5rem;
-      margin-top: -60px;
+      margin-top: 20px; /* Moved below hero */
     }
     .atelier-features-grid {
       grid-template-columns: 1fr;
