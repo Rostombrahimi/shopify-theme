@@ -190,12 +190,7 @@
 </style>
 
 <div class="sf-stitch premium-grid-section">
-  {%- assign collection_setting = section.settings.collection -%}
-  {%- if collection_setting.url != blank -%}
-    {%- assign collection = collection_setting -%}
-  {%- else -%}
-    {%- assign collection = collections[collection_setting] -%}
-  {%- endif -%}
+  {%- assign collection = section.settings.collection -%}
   
   {%- if collection != blank and collection.products_count > 0 -%}
     {%- paginate collection.products by section.settings.products_to_show -%}
