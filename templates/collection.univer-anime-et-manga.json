@@ -84,7 +84,7 @@
             "atmosphere_label": "",
             "atmosphere_value": "",
             "button_text": "Rejoindre les Pourfendeurs",
-            "button_link": ""
+            "button_link": "shopify://collections/licence-demon-slayer"
           }
         },
         "portal_Db6M4t": {
@@ -97,7 +97,7 @@
             "atmosphere_label": "",
             "atmosphere_value": "",
             "button_text": "Entrer dans l’École d’Exorcisme",
-            "button_link": ""
+            "button_link": "shopify://collections/licence-jujutsu-kaisen"
           }
         },
         "portal_yFanh8": {
@@ -123,7 +123,7 @@
             "atmosphere_label": "",
             "atmosphere_value": "",
             "button_text": "Libérer votre Ki",
-            "button_link": ""
+            "button_link": "shopify://collections/licence-dragon-ball-z"
           }
         },
         "portal_giVPLx": {
@@ -136,7 +136,7 @@
             "atmosphere_label": "",
             "atmosphere_value": "",
             "button_text": "Rejoindre l’Académie UA",
-            "button_link": ""
+            "button_link": "shopify://collections/licence-my-hero-academia"
           }
         },
         "portal_E4eUnr": {
@@ -149,7 +149,7 @@
             "atmosphere_label": "",
             "atmosphere_value": "",
             "button_text": "Rejoindre le Bataillon",
-            "button_link": ""
+            "button_link": "shopify://collections/licence-attack-on-titan"
           }
         },
         "portal_GW3tfx": {
@@ -162,7 +162,7 @@
             "atmosphere_label": "",
             "atmosphere_value": "",
             "button_text": "Entrer dans le Donjon",
-            "button_link": ""
+            "button_link": "shopify://collections/licence-solo-leveling"
           }
         },
         "portal_DBPiAi": {
@@ -175,7 +175,7 @@
             "atmosphere_label": "",
             "atmosphere_value": "",
             "button_text": "Entrer dans le Monde des Esprits",
-            "button_link": ""
+            "button_link": "shopify://collections/licence-studio-ghibli"
           }
         }
       },
