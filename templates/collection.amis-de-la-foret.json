@@ -47,7 +47,8 @@
         "title": "Amis de la Forêt –<br><span>Une lumière rassurante pour accompagner les nuits</span>",
         "subtitle": "Des formes familières et une lumière douce pour transformer la veilleuse en compagnon de nuit.",
         "button_text": "Trouver son compagnon →",
-        "button_link": ""
+        "button_link": "",
+        "background_image": "shopify://shop_images/Hero-petit-cocon-amis-foret-veilleuses-faon-renard.jpg"
       }
     },
     "sf_empathy_forest_yqnFq7": {
@@ -111,7 +112,8 @@
       "settings": {
         "badge_text": "EMPATHIE",
         "title": "Une présence bienveillante, au<br>moment où ils en ont le plus besoin.",
-        "description": "Les nuits sont parfois longues pour les petits comme pour les grands. Nos créations sont pensées pour adoucir ces instants fragiles."
+        "description": "Les nuits sont parfois longues pour les petits comme pour les grands. Nos créations sont pensées pour adoucir ces instants fragiles.",
+        "image": "shopify://shop_images/univers-petit-cocon-lumiere-douce-apaisante-sommeil-bebe.jpg"
       }
     },
     "sf_benefits_forest_kdpQzJ": {
@@ -157,16 +159,6 @@
     "sf_starry_orientation_jT8ndh": {
       "type": "sf-starry-orientation",
       "blocks": {
-        "orientation_card_DDzrWK": {
-          "type": "orientation_card",
-          "settings": {
-            "is_active": false,
-            "icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z\"></path></svg>",
-            "title": "Nuit Étoilée",
-            "subtitle": "Endormissement & Rituel",
-            "text": "Le passage parfait vers les songes. Une lumière qui s'estompe pour signaler au cerveau qu'il est temps de se reposer."
-          }
-        },
         "orientation_card_99644j": {
           "type": "orientation_card",
           "settings": {
@@ -175,6 +167,16 @@
             "title": "Amis de la Forêt",
             "subtitle": "Repère rassurant",
             "text": "Une présence douce et constante tout au long de la nuit pour éviter les réveils anxieux dans l'obscurité totale."
+          }
+        },
+        "orientation_card_DDzrWK": {
+          "type": "orientation_card",
+          "settings": {
+            "is_active": false,
+            "icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z\"></path></svg>",
+            "title": "Nuit Étoilée",
+            "subtitle": "Endormissement & Rituel",
+            "text": "Le passage parfait vers les songes. Une lumière qui s'estompe pour signaler au cerveau qu'il est temps de se reposer."
           }
         },
         "orientation_card_9Yr9k6": {
@@ -189,8 +191,8 @@
         }
       },
       "block_order": [
-        "orientation_card_DDzrWK",
         "orientation_card_99644j",
+        "orientation_card_DDzrWK",
         "orientation_card_9Yr9k6"
       ],
       "name": "Orientation Nuit Étoilée",
@@ -200,17 +202,42 @@
         "description": "Chaque ambiance a sa raison d'être. Nuit Étoilée est spécifiquement conçue pour accompagner la transition délicate entre l'éveil et le sommeil."
       }
     },
-    "sf_forest_cta_8Dwt7z": {
-      "type": "sf-forest-cta",
-      "name": "Transition Forêt CTA",
-      "settings": {
-        "badge_text": "LA COLLECTION AMIS DE LA FORÊT",
-        "title": "Une présence rassurante,<br>inspirée par la nature",
-        "description": "Pour cette ambiance, nous avons sélectionné une base lumineuse douce, déclinée en plusieurs formes inspirées du monde naturel, afin de créer une présence rassurante adaptée à chaque enfant.",
-        "button_text": "Découvrir la veilleuse Amis de la Forêt",
-        "button_link": "",
-        "footer_text": "RECOMMANDÉ PAR NOS EXPERTS"
-      }
+    "sf_premium_products_grid_hrmeQb": {
+      "type": "sf-premium-products-grid",
+      "blocks": {
+        "product_item_TRTfq9": {
+          "type": "product_item",
+          "settings": {
+            "product": ""
+          }
+        },
+        "product_item_dU7B9b": {
+          "type": "product_item",
+          "settings": {
+            "product": ""
+          }
+        },
+        "product_item_PPVDW3": {
+          "type": "product_item",
+          "settings": {
+            "product": ""
+          }
+        },
+        "product_item_6BPynE": {
+          "type": "product_item",
+          "settings": {
+            "product": ""
+          }
+        }
+      },
+      "block_order": [
+        "product_item_TRTfq9",
+        "product_item_dU7B9b",
+        "product_item_PPVDW3",
+        "product_item_6BPynE"
+      ],
+      "name": "Grille Produits Premium",
+      "settings": {}
     }
   },
   "order": [
@@ -220,6 +247,6 @@
     "sf_empathy_forest_yqnFq7",
     "sf_benefits_forest_kdpQzJ",
     "sf_starry_orientation_jT8ndh",
-    "sf_forest_cta_8Dwt7z"
+    "sf_premium_products_grid_hrmeQb"
   ]
 }
