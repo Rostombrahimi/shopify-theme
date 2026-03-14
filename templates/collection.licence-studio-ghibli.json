@@ -52,8 +52,8 @@
       "type": "sf-licence-grid",
       "name": "Grille Premium Licence",
       "settings": {
-        "collection": "",
-        "products_to_show": 4
+        "collection": "licence-studio-ghibli",
+        "products_to_show": 10
       }
     }
   },
