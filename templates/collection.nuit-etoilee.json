@@ -75,7 +75,7 @@
       "name": "Hero Nuit Étoilée",
       "settings": {
         "badge_text": "",
-        "title": "Nuit Étoilée –<br>Créer le <span>rituel idéal</span> pour<br>un <span>endormissement serein</span>",
+        "title": "Nuit Étoilée –<br><span>Créer le <span>rituel idéal</span> pour<br>un <span>endormissement serein</span></span>",
         "subtitle": "Une immersion céleste pensée pour apaiser l'esprit et faciliter la<br>transition vers le sommeil.",
         "button_text_1": "Découvrir les produits →",
         "button_link_1": "",
@@ -131,7 +131,7 @@
         "benefit_card_DtmnLV": {
           "type": "benefit_card",
           "settings": {
-            "icon": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z\"/><circle cx=\"12\" cy=\"12\" r=\"3\"/></svg>",
+            "icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z\"></path><circle cx=\"12\" cy=\"12\" r=\"3\"></circle></svg>",
             "title": "Focalisation apaisante",
             "text": "La projection au plafond aide l'enfant à fixer son regard et à calmer son système nerveux."
           }
@@ -139,7 +139,7 @@
         "benefit_card_dyjV9i": {
           "type": "benefit_card",
           "settings": {
-            "icon": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M13 16a3 3 0 1 1 0 6H7a5 5 0 1 1 4.9-6Z\"/><path d=\"M10.1 9A6 6 0 0 1 16 4a4.24 4.24 0 0 0 6 6 6 6 0 0 1-3 5.197\"/></svg>",
+            "icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M13 16a3 3 0 1 1 0 6H7a5 5 0 1 1 4.9-6Z\"></path><path d=\"M10.1 9A6 6 0 0 1 16 4a4.24 4.24 0 0 0 6 6 6 6 0 0 1-3 5.197\"></path></svg>",
             "title": "Frontière jour/nuit",
             "text": "La lumière bleue profonde ou ambrée crée une bulle immersive qui délimite l'espace du sommeil."
           }
@@ -147,7 +147,7 @@
         "benefit_card_8knDUR": {
           "type": "benefit_card",
           "settings": {
-            "icon": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\"/><path d=\"m9 12 2 2 4-4\"/></svg>",
+            "icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\"></path><path d=\"m9 12 2 2 4-4\"></path></svg>",
             "title": "Sécurité par l'immersion",
             "text": "L'enfant ne s'endort pas dans le noir total, mais dans un univers bienveillant."
           }
@@ -214,15 +214,12 @@
         "description": "Chaque ambiance a sa raison d'être. Nuit Étoilée est spécifiquement conçue pour accompagner la transition délicate entre l'éveil et le sommeil."
       }
     },
-    "sf_starry_hub_TaBdc3": {
-      "type": "sf-starry-hub",
-      "name": "Transition Hub Nuit Étoilée",
+    "sf_licence_grid_3UFybH": {
+      "type": "sf-licence-grid",
+      "name": "Grille Premium Licence",
       "settings": {
-        "surtitle": "COLLECTION PREMIUM",
-        "title": "Nuit Étoilée",
-        "description": "Pour cette ambiance, nous avons sélectionné un ensemble de projecteurs et de solutions à spectre doux, capables de transformer le plafond en une voûte apaisante sans stimuler l'éveil. Chaque pièce de cette collection a été choisie pour sa capacité à créer une transition immédiate vers le calme.",
-        "btn_label": "Explorer la collection Nuit Étoilée",
-        "btn_url": ""
+        "collection": "",
+        "products_to_show": 4
       }
     }
   },
@@ -233,6 +230,6 @@
     "sf_starry_diagnostic_mWkCB8",
     "sf_starry_benefits_qXMBBG",
     "sf_starry_orientation_wBabxn",
-    "sf_starry_hub_TaBdc3"
+    "sf_licence_grid_3UFybH"
   ]
 }
