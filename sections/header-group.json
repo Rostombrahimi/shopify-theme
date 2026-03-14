@@ -39,7 +39,7 @@
     "sf_announcement_bar_pBUHWX": {
       "type": "sf-announcement-bar",
       "blocks": {
-        "announcement_pY83gE": {
+        "announcement_YJcQ7n": {
           "type": "announcement",
           "settings": {
             "show_icon": true,
@@ -50,12 +50,12 @@
         }
       },
       "block_order": [
-        "announcement_pY83gE"
+        "announcement_YJcQ7n"
       ],
       "name": "✨ Barre d'Annonce (Illuminées)",
       "settings": {
         "show_announcement": true,
-        "rotation_speed": 4
+        "rotation_speed": 7
       }
     },
     "sf-header": {
