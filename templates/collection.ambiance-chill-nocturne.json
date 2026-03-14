@@ -193,17 +193,6 @@
         "title": "Une lumière qui <span class=\"amber-text\">s'assume.</span>",
         "description": "Nous ne cherchons pas à proposer des lumières neutres ou invisibles. Dans l'univers Visuel, la lumière fait partie intégrante de l'ambiance : elle est visible, ressentie, assumée, tout en restant confortable pour les yeux."
       }
-    },
-    "sf_chill_final_cta_pwXb64": {
-      "type": "sf-chill-final-cta",
-      "name": "Chill CTA Final",
-      "settings": {
-        "title": "Prolongez l'expérience.",
-        "btn_1_text": "Explorer les ambiances<br>nocturnes",
-        "btn_1_link": "",
-        "btn_2_text": "Découvrir l'univers<br>Visuel",
-        "btn_2_link": ""
-      }
     }
   },
   "order": [
@@ -212,7 +201,6 @@
     "sf_univers_visuel_hero_iarYrG",
     "sf_chill_moments_AGCewh",
     "sf_chill_nav_nDXbBL",
-    "sf_manifesto_chill_bTChAF",
-    "sf_chill_final_cta_pwXb64"
+    "sf_manifesto_chill_bTChAF"
   ]
 }
