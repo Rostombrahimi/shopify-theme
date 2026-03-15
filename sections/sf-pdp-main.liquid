@@ -173,42 +173,27 @@
                   <div class="sf-pdp-variants" {{ block.shopify_attributes }}>
                     <sf-variant-radios class="no-js-hidden" data-section="{{ section.id }}" data-url="{{ product.url }}">
                       {%- for option in product.options_with_values -%}
-                        <div class="sf-variant-drawer-wrapper js-drawer-wrapper" data-option="{{ option.name }}" style="z-index: {{ 100 | minus: forloop.index }};">
-                          <!-- Trigger Button -->
-                          <button type="button" class="sf-variant-trigger js-drawer-trigger" aria-expanded="false">
-                            <div class="sf-variant-trigger-info">
-                              <span class="sf-variant-trigger-label">Choisissez : {{ option.name }}</span>
-                              <span class="sf-variant-trigger-value js-selected-value">{{ option.selected_value }}</span>
-                            </div>
-                            <svg class="sf-variant-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-                          </button>
-                          
-                          <!-- Drawer overlay & container -->
-                          <div class="sf-variant-overlay js-drawer-overlay"></div>
-                          <div class="sf-variant-drawer-container js-drawer-container">
-                            <div class="sf-variant-drawer-header">
-                              <h3>{{ option.name }}</h3>
-                              <button type="button" class="sf-variant-close js-drawer-close">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                              </button>
-                            </div>
-                            <div class="sf-variant-drawer-body sf-variant-options">
-                              {%- for value in option.values -%}
-                                <div class="sf-variant-row">
-                                  <input type="radio" id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
-                                        name="{{ option.name }}"
-                                        value="{{ value | escape }}"
-                                        form="product-form-{{ section.id }}"
-                                        {% if option.selected_value == value %}checked{% endif %}
-                                  >
-                                  <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
-                                    {{ value }}
-                                  </label>
-                                </div>
-                              {%- endfor -%}
-                            </div>
+                        <fieldset class="sf-variant-fieldset" data-option="{{ option.name }}">
+                          <legend class="sf-variant-legend">
+                            Choisissez : {{ option.name }} <span class="js-selected-value">{{ option.selected_value }}</span>
+                          </legend>
+                          <div class="sf-variant-pills">
+                            {%- for value in option.values -%}
+                              <div class="sf-variant-pill-wrapper">
+                                <input type="radio" id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
+                                      name="{{ option.name }}"
+                                      value="{{ value | escape }}"
+                                      form="product-form-{{ section.id }}"
+                                      {% if option.selected_value == value %}checked{% endif %}
+                                      class="sf-variant-radio-input"
+                                >
+                                <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}" class="sf-variant-pill-label">
+                                  {{ value }}
+                                </label>
+                              </div>
+                            {%- endfor -%}
                           </div>
-                        </div>
+                        </fieldset>
                       {%- endfor -%}
                       <script type="application/json">
                         {{ product.variants | json }}
@@ -449,46 +434,9 @@
     constructor() {
       super();
       this.addEventListener('change', this.onVariantChange);
-      this.initDrawers();
-    }
-
-    initDrawers() {
-      const wrappers = this.querySelectorAll('.js-drawer-wrapper');
-      
-      wrappers.forEach(wrapper => {
-        const trigger = wrapper.querySelector('.js-drawer-trigger');
-        const overlay = wrapper.querySelector('.js-drawer-overlay');
-        const closeBtn = wrapper.querySelector('.js-drawer-close');
-        
-        const openDrawer = () => wrapper.classList.add('is-open');
-        const closeDrawer = () => wrapper.classList.remove('is-open');
-
-        if(trigger) trigger.addEventListener('click', openDrawer);
-        if(overlay) overlay.addEventListener('click', closeDrawer);
-        if(closeBtn) closeBtn.addEventListener('click', closeDrawer);
-        
-        // Fix iOS fixed container label focus jump
-        const labels = wrapper.querySelectorAll('label');
-        labels.forEach(label => {
-          label.addEventListener('click', (e) => {
-            e.preventDefault(); // Stop native scrolling and focus
-            const inputId = label.getAttribute('for');
-            if (inputId) {
-              const input = document.getElementById(inputId);
-              if (input && !input.checked) {
-                input.checked = true;
-                input.dispatchEvent(new Event('change', { bubbles: true }));
-              }
-            }
-          });
-        });
-      });
     }
 
     onVariantChange(event) {
-      // Prevent browser from native scroll adjustments
-      const currentScrollY = window.scrollY;
-
       this.updateOptions();
       this.updateMasterId();
       this.updateFormId();
@@ -496,19 +444,11 @@
       this.updateImage();
       this.updateURL();
       
-      // Force scroll restoration instantly
-      window.scrollTo({ top: currentScrollY, behavior: 'instant' });
-      
-      // Update drawer trigger label & close drawer
-      const wrapper = event.target.closest('.js-drawer-wrapper');
-      if (wrapper) {
-         const selectedValueEl = wrapper.querySelector('.js-selected-value');
+      // Update legend label
+      const fieldset = event.target.closest('.sf-variant-fieldset');
+      if (fieldset) {
+         const selectedValueEl = fieldset.querySelector('.js-selected-value');
          if(selectedValueEl) selectedValueEl.textContent = event.target.value;
-         
-         // Fix mobile scroll jump: prevent focus loss from bubbling scroll and add visual feedback
-         setTimeout(() => {
-           wrapper.classList.remove('is-open');
-         }, 250);
       }
     }
 
