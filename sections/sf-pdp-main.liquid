@@ -482,7 +482,11 @@
       if (wrapper) {
          const selectedValueEl = wrapper.querySelector('.js-selected-value');
          if(selectedValueEl) selectedValueEl.textContent = event.target.value;
-         wrapper.classList.remove('is-open');
+         
+         // Fix mobile scroll jump: prevent focus loss from bubbling scroll and add visual feedback
+         setTimeout(() => {
+           wrapper.classList.remove('is-open');
+         }, 250);
       }
     }
 

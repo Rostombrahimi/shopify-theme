@@ -123,6 +123,7 @@ img.product-gallery {
 .sf-variant-drawer-wrapper {
     position: relative;
     margin-bottom: 20px;
+    z-index: 20;
 }
 
 .sf-variant-trigger {
@@ -306,6 +307,8 @@ img.product-gallery {
         transform: translateY(-10px);
         transition: all 0.2s ease;
         box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        background: #081221;
+        z-index: 1000;
     }
     
     .sf-variant-drawer-wrapper.is-open .sf-variant-drawer-container {
