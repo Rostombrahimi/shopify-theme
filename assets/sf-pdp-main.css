@@ -190,6 +190,62 @@ img.product-gallery {
     box-shadow: 0 0 15px rgba(232, 157, 70, 0.2);
 }
 
+/* Responsive Visibility */
+@media (max-width: 1024px) {
+    .sf-hidden-mobile {
+        display: none !important;
+    }
+}
+
+@media (min-width: 1025px) {
+    .sf-hidden-desktop {
+        display: none !important;
+    }
+}
+
+/* Native Select Wrapper (Mobile) */
+.sf-variant-select-container {
+    position: relative;
+    width: 100%;
+}
+
+.sf-variant-native-select {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 100%;
+    display: block;
+    padding: 16px 45px 16px 20px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: #FFF;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.sf-variant-native-select:focus {
+    border-color: #E89D46;
+    box-shadow: 0 0 0 2px rgba(232, 157, 70, 0.2);
+}
+
+/* Optional: style option tags for PC if they show there, but OS handles mobile */
+.sf-variant-native-select option {
+    background: #081221;
+    color: #FFF;
+}
+
+.sf-variant-select-chevron {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #8A9BB1;
+    pointer-events: none;
+}
+
 
 .sf-pdp-thumbnails {
     display: flex;

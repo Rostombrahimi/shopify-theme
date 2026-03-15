@@ -177,13 +177,12 @@
                           <legend class="sf-variant-legend">
                             Choisissez : {{ option.name }} <span class="js-selected-value">{{ option.selected_value }}</span>
                           </legend>
-                          <div class="sf-variant-pills">
+                          <div class="sf-variant-pills sf-hidden-mobile">
                             {%- for value in option.values -%}
                               <div class="sf-variant-pill-wrapper">
                                 <input type="radio" id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
                                       name="{{ option.name }}"
                                       value="{{ value | escape }}"
-                                      form="product-form-{{ section.id }}"
                                       {% if option.selected_value == value %}checked{% endif %}
                                       class="sf-variant-radio-input"
                                 >
@@ -192,6 +191,17 @@
                                 </label>
                               </div>
                             {%- endfor -%}
+                          </div>
+
+                          <div class="sf-variant-select-container sf-hidden-desktop">
+                            <select class="sf-variant-native-select" name="{{ option.name }}">
+                              {%- for value in option.values -%}
+                                <option value="{{ value | escape }}" {% if option.selected_value == value %}selected{% endif %}>
+                                  {{ value }}
+                                </option>
+                              {%- endfor -%}
+                            </select>
+                            <svg class="sf-variant-select-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
                           </div>
                         </fieldset>
                       {%- endfor -%}
@@ -437,6 +447,15 @@
     }
 
     onVariantChange(event) {
+      // Sync inputs so both desktop pills and mobile select stay in sync
+      if (event.target.tagName === 'SELECT') {
+        const matchingRadios = this.querySelectorAll(`input[name="${event.target.name}"][value="${event.target.value.replace(/"/g, '\\"')}"]`);
+        matchingRadios.forEach(r => r.checked = true);
+      } else if (event.target.type === 'radio') {
+        const matchingSelects = this.querySelectorAll(`select[name="${event.target.name}"]`);
+        matchingSelects.forEach(s => s.value = event.target.value);
+      }
+
       this.updateOptions();
       this.updateMasterId();
       this.updateFormId();
