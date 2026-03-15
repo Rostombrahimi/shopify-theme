@@ -173,7 +173,31 @@
                   <div class="sf-pdp-variants" {{ block.shopify_attributes }}>
                     <sf-variant-radios class="no-js-hidden" data-section="{{ section.id }}" data-url="{{ product.url }}">
                       {%- for option in product.options_with_values -%}
-                        <div class="sf-variant-drawer-wrapper js-drawer-wrapper" data-option="{{ option.name }}" style="z-index: {{ 100 | minus: forloop.index }};">
+                        <!-- DESKTOP PILLS -->
+                        <fieldset class="sf-variant-fieldset sf-hidden-mobile" data-option="{{ option.name }}">
+                          <legend class="sf-variant-legend">
+                            Choisissez : {{ option.name }} <span class="js-selected-value">{{ option.selected_value }}</span>
+                          </legend>
+                          <div class="sf-variant-pills">
+                            {%- for value in option.values -%}
+                              <div class="sf-variant-pill-wrapper">
+                                <input type="radio" id="desktop-{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
+                                      name="desktop-{{ option.name }}"
+                                      data-sync-name="{{ option.name }}"
+                                      value="{{ value | escape }}"
+                                      {% if option.selected_value == value %}checked{% endif %}
+                                      class="sf-variant-radio-input"
+                                >
+                                <label for="desktop-{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}" class="sf-variant-pill-label">
+                                  {{ value }}
+                                </label>
+                              </div>
+                            {%- endfor -%}
+                          </div>
+                        </fieldset>
+
+                        <!-- MOBILE DRAWER -->
+                        <div class="sf-variant-drawer-wrapper js-drawer-wrapper sf-hidden-desktop" data-option="{{ option.name }}" style="z-index: {{ 100 | minus: forloop.index }};">
                           <!-- Trigger Button -->
                           <button type="button" class="sf-variant-trigger js-drawer-trigger" aria-expanded="false">
                             <div class="sf-variant-trigger-info">
@@ -195,13 +219,14 @@
                             <div class="sf-variant-drawer-body sf-variant-options">
                               {%- for value in option.values -%}
                                 <div class="sf-variant-row">
-                                  <input type="radio" id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
+                                  <input type="radio" id="mobile-{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
                                         name="{{ option.name }}"
+                                        data-sync-name="{{ option.name }}"
                                         value="{{ value | escape }}"
                                         form="product-form-{{ section.id }}"
                                         {% if option.selected_value == value %}checked{% endif %}
                                   >
-                                  <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
+                                  <label for="mobile-{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
                                     {{ value }}
                                   </label>
                                 </div>
@@ -486,6 +511,16 @@
     }
 
     onVariantChange(event) {
+      // Sync logic for Desktop Pills and Mobile Drawer
+      const targetName = event.target.getAttribute('data-sync-name') || event.target.name;
+      const targetValue = event.target.value.replace(/"/g, '\\"');
+      
+      const realFormRadios = this.querySelectorAll(`input[name="${targetName}"][value="${targetValue}"]`);
+      realFormRadios.forEach(r => r.checked = true);
+      
+      const desktopPillRadios = this.querySelectorAll(`input[name="desktop-${targetName}"][value="${targetValue}"]`);
+      desktopPillRadios.forEach(r => r.checked = true);
+
       this.updateOptions();
       this.updateMasterId();
       this.updateFormId();
@@ -519,10 +554,18 @@
            }
          }, 150);
       }
+      
+      // Update custom fieldset legend logic (for Desktop)
+      const fieldset = event.target.closest('.sf-variant-fieldset');
+      if (fieldset) {
+         const selectedValueEl = fieldset.querySelector('.js-selected-value');
+         if(selectedValueEl) selectedValueEl.textContent = event.target.value;
+      }
     }
 
     updateOptions() {
-      this.options = Array.from(this.querySelectorAll('input[type="radio"]:checked'), (radio) => radio.value);
+      // We only care about the real form inputs, not the desktop- duplicate inputs
+      this.options = Array.from(this.querySelectorAll('.sf-variant-drawer-wrapper input[type="radio"]:checked'), (radio) => radio.value);
     }
 
     updateMasterId() {
