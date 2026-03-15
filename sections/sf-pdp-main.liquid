@@ -173,37 +173,42 @@
                   <div class="sf-pdp-variants" {{ block.shopify_attributes }}>
                     <sf-variant-radios class="no-js-hidden" data-section="{{ section.id }}" data-url="{{ product.url }}">
                       {%- for option in product.options_with_values -%}
-                        <fieldset class="sf-variant-fieldset" data-option="{{ option.name }}">
-                          <legend class="sf-variant-legend">
-                            Choisissez : {{ option.name }} <span class="js-selected-value">{{ option.selected_value }}</span>
-                          </legend>
-                          <div class="sf-variant-pills sf-hidden-mobile">
-                            {%- for value in option.values -%}
-                              <div class="sf-variant-pill-wrapper">
-                                <input type="radio" id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
-                                      name="{{ option.name }}"
-                                      value="{{ value | escape }}"
-                                      {% if option.selected_value == value %}checked{% endif %}
-                                      class="sf-variant-radio-input"
-                                >
-                                <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}" class="sf-variant-pill-label">
-                                  {{ value }}
-                                </label>
-                              </div>
-                            {%- endfor -%}
-                          </div>
-
-                          <div class="sf-variant-select-container sf-hidden-desktop">
-                            <select class="sf-variant-native-select" name="{{ option.name }}">
+                        <div class="sf-variant-drawer-wrapper js-drawer-wrapper" data-option="{{ option.name }}" style="z-index: {{ 100 | minus: forloop.index }};">
+                          <!-- Trigger Button -->
+                          <button type="button" class="sf-variant-trigger js-drawer-trigger" aria-expanded="false">
+                            <div class="sf-variant-trigger-info">
+                              <span class="sf-variant-trigger-label">Choisissez : {{ option.name }}</span>
+                              <span class="sf-variant-trigger-value js-selected-value">{{ option.selected_value }}</span>
+                            </div>
+                            <svg class="sf-variant-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                          </button>
+                          
+                          <!-- Drawer overlay & container -->
+                          <div class="sf-variant-overlay js-drawer-overlay"></div>
+                          <div class="sf-variant-drawer-container js-drawer-container">
+                            <div class="sf-variant-drawer-header">
+                              <h3>{{ option.name }}</h3>
+                              <button type="button" class="sf-variant-close js-drawer-close">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                              </button>
+                            </div>
+                            <div class="sf-variant-drawer-body sf-variant-options">
                               {%- for value in option.values -%}
-                                <option value="{{ value | escape }}" {% if option.selected_value == value %}selected{% endif %}>
-                                  {{ value }}
-                                </option>
+                                <div class="sf-variant-row">
+                                  <input type="radio" id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
+                                        name="{{ option.name }}"
+                                        value="{{ value | escape }}"
+                                        form="product-form-{{ section.id }}"
+                                        {% if option.selected_value == value %}checked{% endif %}
+                                  >
+                                  <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
+                                    {{ value }}
+                                  </label>
+                                </div>
                               {%- endfor -%}
-                            </select>
-                            <svg class="sf-variant-select-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                            </div>
                           </div>
-                        </fieldset>
+                        </div>
                       {%- endfor -%}
                       <script type="application/json">
                         {{ product.variants | json }}
@@ -444,18 +449,43 @@
     constructor() {
       super();
       this.addEventListener('change', this.onVariantChange);
+      this.initDrawers();
+    }
+
+    initDrawers() {
+      const wrappers = this.querySelectorAll('.js-drawer-wrapper');
+      
+      wrappers.forEach(wrapper => {
+        const trigger = wrapper.querySelector('.js-drawer-trigger');
+        const overlay = wrapper.querySelector('.js-drawer-overlay');
+        const closeBtn = wrapper.querySelector('.js-drawer-close');
+        
+        const openDrawer = () => wrapper.classList.add('is-open');
+        const closeDrawer = () => wrapper.classList.remove('is-open');
+
+        if(trigger) trigger.addEventListener('click', openDrawer);
+        if(overlay) overlay.addEventListener('click', closeDrawer);
+        if(closeBtn) closeBtn.addEventListener('click', closeDrawer);
+        
+        // Prevent default label click behavior to stop native iOS jumping
+        const labels = wrapper.querySelectorAll('label');
+        labels.forEach(label => {
+          label.addEventListener('click', (e) => {
+            e.preventDefault();
+            const inputId = label.getAttribute('for');
+            if (inputId) {
+              const input = document.getElementById(inputId);
+              if (input && !input.checked) {
+                input.checked = true;
+                input.dispatchEvent(new Event('change', { bubbles: true }));
+              }
+            }
+          });
+        });
+      });
     }
 
     onVariantChange(event) {
-      // Sync inputs so both desktop pills and mobile select stay in sync
-      if (event.target.tagName === 'SELECT') {
-        const matchingRadios = this.querySelectorAll(`input[name="${event.target.name}"][value="${event.target.value.replace(/"/g, '\\"')}"]`);
-        matchingRadios.forEach(r => r.checked = true);
-      } else if (event.target.type === 'radio') {
-        const matchingSelects = this.querySelectorAll(`select[name="${event.target.name}"]`);
-        matchingSelects.forEach(s => s.value = event.target.value);
-      }
-
       this.updateOptions();
       this.updateMasterId();
       this.updateFormId();
@@ -463,11 +493,31 @@
       this.updateImage();
       this.updateURL();
       
-      // Update legend label
-      const fieldset = event.target.closest('.sf-variant-fieldset');
-      if (fieldset) {
-         const selectedValueEl = fieldset.querySelector('.js-selected-value');
+      // Update custom drawer label and logic
+      const wrapper = event.target.closest('.js-drawer-wrapper');
+      if (wrapper) {
+         const selectedValueEl = wrapper.querySelector('.js-selected-value');
          if(selectedValueEl) selectedValueEl.textContent = event.target.value;
+         
+         // Smooth scroll to image ONLY on mobile, and close drawer
+         setTimeout(() => {
+           wrapper.classList.remove('is-open');
+           
+           if (window.innerWidth <= 1024) { // Mobile breakpoint
+             const imageContainer = document.querySelector('.sf-pdp-main-image-container');
+             if (imageContainer) {
+               // Calculate offset (e.g., 80px for a sticky header)
+               const headerOffset = 80;
+               const elementPosition = imageContainer.getBoundingClientRect().top;
+               const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+               
+               window.scrollTo({
+                 top: offsetPosition,
+                 behavior: "smooth"
+               });
+             }
+           }
+         }, 150);
       }
     }
 
