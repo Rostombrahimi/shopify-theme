@@ -543,7 +543,11 @@
 
     updateURL() {
       if (!this.currentVariant) return;
-      window.history.replaceState({ }, '', `${this.dataset.url}?variant=${this.currentVariant.id}`);
+      // Prevent browser from trying to scroll to an element if the URL changes
+      const currentUrl = window.location.href;
+      const urlObject = new URL(currentUrl);
+      urlObject.searchParams.set('variant', this.currentVariant.id);
+      window.history.replaceState({ path: urlObject.href }, '', urlObject.href);
     }
 
     updatePrice() {

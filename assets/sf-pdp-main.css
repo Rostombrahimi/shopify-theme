@@ -119,13 +119,13 @@ img.product-gallery {
     margin-bottom: 24px;
     width: 100%;
     position: relative;
-    z-index: 50;
+    z-index: 500;
 }
 
 .sf-variant-drawer-wrapper {
     position: relative;
     margin-bottom: 20px;
-    z-index: 20;
+    z-index: 9999;
 }
 
 .sf-variant-trigger {
@@ -308,9 +308,9 @@ img.product-gallery {
         visibility: hidden;
         transform: translateY(-10px);
         transition: all 0.2s ease;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        box-shadow: 0 10px 40px rgba(0,0,0,0.8);
         background: #081221;
-        z-index: 1000;
+        z-index: 10000;
     }
     
     .sf-variant-drawer-wrapper.is-open .sf-variant-drawer-container {
