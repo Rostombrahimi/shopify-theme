@@ -118,6 +118,8 @@ img.product-gallery {
 .sf-pdp-variants {
     margin-bottom: 24px;
     width: 100%;
+    position: relative;
+    z-index: 50;
 }
 
 .sf-variant-drawer-wrapper {
@@ -261,10 +263,14 @@ img.product-gallery {
 }
 
 .sf-variant-row input[type="radio"] {
-    position: absolute;
+    position: fixed;
+    top: 0;
+    left: 0;
     opacity: 0;
-    width: 0;
-    height: 0;
+    width: 1px;
+    height: 1px;
+    pointer-events: none;
+    z-index: -1;
 }
 
 .sf-variant-row label {
