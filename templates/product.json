@@ -68,12 +68,6 @@
                         "text": "Livraison sécurisée Premium"
                     }
                 },
-                "reassurance_2": {
-                    "type": "reassurance",
-                    "settings": {
-                        "text": "100% Satisfait ou Remboursé"
-                    }
-                },
                 "description": {
                     "type": "description",
                     "settings": {
@@ -97,7 +91,6 @@
                 "buy_buttons",
                 "illuminations_path",
                 "reassurance_1",
-                "reassurance_2",
                 "description",
                 "accordion"
             ],
