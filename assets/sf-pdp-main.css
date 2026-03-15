@@ -41,8 +41,8 @@ body {
 
 .sf-pdp-grid {
     display: grid;
-    grid-template-columns: 10fr 11fr;
-    /* Image is slightly smaller than info box */
+    grid-template-columns: 7fr 13fr;
+    /* Image is smaller than info box */
     gap: 60px;
     align-items: start;
 }
