@@ -29,6 +29,10 @@
             "text": "Un chef-d'œuvre artisanal capturant l'essence même de l'énergie cinétique pure."
           }
         },
+        "variant_picker_XtbXfq": {
+          "type": "variant_picker",
+          "settings": {}
+        },
         "price": {
           "type": "price",
           "settings": {}
@@ -39,12 +43,9 @@
             "btn_text": "Ajouter au panier"
           }
         },
-        "variant_picker_XtbXfq": {
-          "type": "variant_picker",
-          "settings": {}
-        },
         "illuminations_path_M67jpY": {
           "type": "illuminations_path",
+          "disabled": true,
           "settings": {
             "accent_color": "#e89d46",
             "phrase_1": "Votre atmosphère est prête à être infusée.",
@@ -85,9 +86,9 @@
         "badge",
         "title",
         "subtitle",
+        "variant_picker_XtbXfq",
         "price",
         "buy_buttons",
-        "variant_picker_XtbXfq",
         "illuminations_path_M67jpY",
         "description",
         "specs",
