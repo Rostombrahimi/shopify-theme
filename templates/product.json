@@ -1,18 +1,30 @@
 {
     "sections": {
         "main": {
-            "type": "main-product",
+            "type": "sf-pdp-main",
             "blocks": {
-                "vendor": {
-                    "type": "text",
+                "badge": {
+                    "type": "badge",
                     "settings": {
-                        "text": "{{ product.vendor }}",
-                        "text_style": "uppercase"
+                        "text": "Expert Verified"
                     }
                 },
                 "title": {
                     "type": "title",
                     "settings": {}
+                },
+                "reviews": {
+                    "type": "reviews",
+                    "settings": {
+                        "rating": 5,
+                        "text": "4.9/5 (128 avis)"
+                    }
+                },
+                "subtitle": {
+                    "type": "subtitle",
+                    "settings": {
+                        "text": "Un chef-d'œuvre artisanal capturant l'essence même de l'énergie cinétique pure."
+                    }
                 },
                 "price": {
                     "type": "price",
@@ -20,63 +32,68 @@
                 },
                 "variant_picker": {
                     "type": "variant_picker",
-                    "settings": {
-                        "picker_type": "button",
-                        "swatch_shape": "circle"
-                    }
-                },
-                "quantity_selector": {
-                    "type": "quantity_selector",
                     "settings": {}
                 },
                 "buy_buttons": {
                     "type": "buy_buttons",
                     "settings": {
-                        "show_dynamic_checkout": true,
-                        "show_gift_card_recipient": true
+                        "btn_text": "Ajouter au panier"
                     }
                 },
                 "illuminations_path": {
                     "type": "illuminations_path",
-                    "settings": {}
+                    "settings": {
+                        "accent_color": "#E89D46",
+                        "phrase_1": "Votre atmosphère est prête à être infusée.",
+                        "phrase_2": "Temps de propagation des photons : 3 à 5 jours.",
+                        "phrase_3": "Votre univers s'illumine le",
+                        "label_start": "L'Atelier Illuminées",
+                        "label_end": "Votre Univers",
+                        "delivery_days": 4,
+                        "carousel_speed": 4
+                    }
+                },
+                "reassurance_1": {
+                    "type": "reassurance",
+                    "settings": {
+                        "text": "Livraison sécurisée Premium"
+                    }
+                },
+                "reassurance_2": {
+                    "type": "reassurance",
+                    "settings": {
+                        "text": "100% Satisfait ou Remboursé"
+                    }
                 },
                 "description": {
                     "type": "description",
-                    "settings": {}
-                },
-                "share": {
-                    "type": "share",
                     "settings": {
-                        "share_label": "Share"
+                        "heading": "Description"
+                    }
+                },
+                "accordion": {
+                    "type": "accordion",
+                    "settings": {
+                        "heading": "Spécifications"
                     }
                 }
             },
             "block_order": [
-                "vendor",
+                "badge",
                 "title",
+                "reviews",
+                "subtitle",
                 "price",
                 "variant_picker",
-                "quantity_selector",
                 "buy_buttons",
-                "light_path",
+                "illuminations_path",
+                "reassurance_1",
+                "reassurance_2",
                 "description",
-                "share"
+                "accordion"
             ],
-            "settings": {
-                "enable_sticky_info": true,
-                "color_scheme": "scheme-1",
-                "media_size": "large",
-                "constrain_to_viewport": true,
-                "media_fit": "contain",
-                "gallery_layout": "stacked",
-                "mobile_thumbnails": "hide",
-                "media_position": "left",
-                "image_zoom": "lightbox",
-                "hide_variants": true,
-                "enable_video_looping": false,
-                "padding_top": 36,
-                "padding_bottom": 12
-            }
+            "settings": {}
+
         },
         "related-products": {
             "type": "related-products",
