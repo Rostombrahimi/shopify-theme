@@ -168,6 +168,35 @@
                   {% endif %}
                 </div>
                 
+              {%- when 'variant_picker' -%}
+                {%- unless product.has_only_default_variant -%}
+                  <div class="sf-pdp-variants" {{ block.shopify_attributes }}>
+                    <sf-variant-radios class="no-js-hidden" data-section="{{ section.id }}" data-url="{{ product.url }}">
+                      {%- for option in product.options_with_values -%}
+                        <fieldset class="js product-form__input">
+                          <legend class="form__label">{{ option.name }}</legend>
+                          <div class="sf-variant-options">
+                            {%- for value in option.values -%}
+                              <input type="radio" id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
+                                    name="{{ option.name }}"
+                                    value="{{ value | escape }}"
+                                    form="product-form-{{ section.id }}"
+                                    {% if option.selected_value == value %}checked{% endif %}
+                              >
+                              <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
+                                {{ value }}
+                              </label>
+                            {%- endfor -%}
+                          </div>
+                        </fieldset>
+                      {%- endfor -%}
+                      <script type="application/json">
+                        {{ product.variants | json }}
+                      </script>
+                    </sf-variant-radios>
+                  </div>
+                {%- endunless -%}
+                
               {%- when 'buy_buttons' -%}
                 <div style="margin-bottom: 40px;" {{ block.shopify_attributes }}>
                   <form method="post" action="/cart/add" id="product-form-{{ section.id }}" class="sf-pdp-form">
@@ -395,6 +424,129 @@
       observer.observe(mainAtcForm);
     }
   });
+
+  class SfVariantSelects extends HTMLElement {
+    constructor() {
+      super();
+      this.addEventListener('change', this.onVariantChange);
+    }
+
+    onVariantChange() {
+      this.updateOptions();
+      this.updateMasterId();
+      this.updateFormId();
+      this.updatePrice();
+      this.updateImage();
+      this.updateURL();
+    }
+
+    updateOptions() {
+      this.options = Array.from(this.querySelectorAll('input[type="radio"]:checked'), (radio) => radio.value);
+    }
+
+    updateMasterId() {
+      this.currentVariant = this.getVariantData().find((variant) => {
+        return !variant.options.map((option, index) => {
+          return this.options[index] === option;
+        }).includes(false);
+      });
+    }
+
+    updateFormId() {
+      const formInput = document.querySelector(`#product-form-${this.dataset.section} input[name="id"]`);
+      if (formInput && this.currentVariant) {
+        formInput.value = this.currentVariant.id;
+      }
+      
+      const stickyBtn = document.querySelector('.sf-sticky-btn');
+      const addBtn = document.querySelector('.sf-pdp-add-to-cart-wrapper .btn-add-to-cart');
+      
+      if (this.currentVariant) {
+        if (this.currentVariant.available) {
+          if (addBtn) {
+            addBtn.disabled = false;
+            addBtn.innerHTML = addBtn.dataset.originalText || 'Ajouter au panier'; 
+          }
+          if (stickyBtn) {
+            stickyBtn.disabled = false;
+            stickyBtn.textContent = 'Ajouter';
+          }
+        } else {
+          if (addBtn) {
+            if(!addBtn.dataset.originalText) addBtn.dataset.originalText = addBtn.innerHTML;
+            addBtn.disabled = true;
+            addBtn.textContent = 'Rupture de stock';
+          }
+          if (stickyBtn) {
+            stickyBtn.disabled = true;
+            stickyBtn.textContent = 'Épuisé';
+          }
+        }
+      }
+    }
+
+    updateURL() {
+      if (!this.currentVariant) return;
+      window.history.replaceState({ }, '', `${this.dataset.url}?variant=${this.currentVariant.id}`);
+    }
+
+    updatePrice() {
+      if (!this.currentVariant) return;
+      const priceElement = document.querySelector('.sf-pdp-price-current');
+      const compareElement = document.querySelector('.sf-pdp-price-compare');
+      const stickyPrice = document.querySelector('.sf-sticky-atc-price');
+      
+      const formatMoney = (cents) => {
+        return (cents / 100).toFixed(2).replace('.', ',') + ' €'; 
+      };
+
+      if (priceElement) priceElement.textContent = formatMoney(this.currentVariant.price);
+      if (stickyPrice) stickyPrice.textContent = formatMoney(this.currentVariant.price);
+      
+      if (compareElement) {
+        if (this.currentVariant.compare_at_price > this.currentVariant.price) {
+          compareElement.textContent = formatMoney(this.currentVariant.compare_at_price);
+          compareElement.style.display = 'inline-block';
+        } else {
+          compareElement.style.display = 'none';
+        }
+      }
+    }
+
+    updateImage() {
+      if (!this.currentVariant || !this.currentVariant.featured_media) return;
+      const mainImage = document.querySelector('.sf-pdp-main-image');
+      const stickyImage = document.querySelector('.sf-sticky-atc-info img');
+      
+      if (mainImage) {
+        const thumbs = document.querySelectorAll('.sf-pdp-thumb');
+        thumbs.forEach(t => t.classList.remove('is-active'));
+        const activeThumb = document.querySelector(`.sf-pdp-thumb[data-media-id="${this.currentVariant.featured_media.id}"]`);
+        if(activeThumb) activeThumb.classList.add('is-active');
+
+        mainImage.src = this.currentVariant.featured_media.preview_image.src;
+      }
+      
+      if (stickyImage) {
+        stickyImage.src = this.currentVariant.featured_media.preview_image.src;
+      }
+    }
+
+    getVariantData() {
+      this.variantData = this.variantData || JSON.parse(this.querySelector('[type="application/json"]').textContent);
+      return this.variantData;
+    }
+  }
+
+  customElements.define('sf-variant-radios', SfVariantSelects);
+
+  // Initialize add-to-cart button text storage
+  document.addEventListener('DOMContentLoaded', () => {
+    const addBtn = document.querySelector('.sf-pdp-add-to-cart-wrapper .btn-add-to-cart');
+    if(addBtn) {
+      addBtn.dataset.originalText = addBtn.innerHTML;
+    }
+  });
 </script>
 
 {% schema %}
@@ -464,6 +616,11 @@
     {
       "type": "price",
       "name": "Prix",
+      "limit": 1
+    },
+    {
+      "type": "variant_picker",
+      "name": "Sélecteur de variantes",
       "limit": 1
     },
     {
@@ -606,6 +763,7 @@
         { "type": "reviews" },
         { "type": "subtitle" },
         { "type": "price" },
+        { "type": "variant_picker" },
         { "type": "buy_buttons" },
         { "type": "illuminations_path" },
         { "type": "reassurance" },
