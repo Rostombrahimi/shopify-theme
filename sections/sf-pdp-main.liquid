@@ -173,22 +173,42 @@
                   <div class="sf-pdp-variants" {{ block.shopify_attributes }}>
                     <sf-variant-radios class="no-js-hidden" data-section="{{ section.id }}" data-url="{{ product.url }}">
                       {%- for option in product.options_with_values -%}
-                        <fieldset class="js product-form__input">
-                          <legend class="form__label">{{ option.name }}</legend>
-                          <div class="sf-variant-options">
-                            {%- for value in option.values -%}
-                              <input type="radio" id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
-                                    name="{{ option.name }}"
-                                    value="{{ value | escape }}"
-                                    form="product-form-{{ section.id }}"
-                                    {% if option.selected_value == value %}checked{% endif %}
-                              >
-                              <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
-                                {{ value }}
-                              </label>
-                            {%- endfor -%}
+                        <div class="sf-variant-drawer-wrapper js-drawer-wrapper" data-option="{{ option.name }}">
+                          <!-- Trigger Button -->
+                          <button type="button" class="sf-variant-trigger js-drawer-trigger" aria-expanded="false">
+                            <div class="sf-variant-trigger-info">
+                              <span class="sf-variant-trigger-label">Choisissez : {{ option.name }}</span>
+                              <span class="sf-variant-trigger-value js-selected-value">{{ option.selected_value }}</span>
+                            </div>
+                            <svg class="sf-variant-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                          </button>
+                          
+                          <!-- Drawer overlay & container -->
+                          <div class="sf-variant-overlay js-drawer-overlay"></div>
+                          <div class="sf-variant-drawer-container js-drawer-container">
+                            <div class="sf-variant-drawer-header">
+                              <h3>{{ option.name }}</h3>
+                              <button type="button" class="sf-variant-close js-drawer-close">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                              </button>
+                            </div>
+                            <div class="sf-variant-drawer-body sf-variant-options">
+                              {%- for value in option.values -%}
+                                <div class="sf-variant-row">
+                                  <input type="radio" id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
+                                        name="{{ option.name }}"
+                                        value="{{ value | escape }}"
+                                        form="product-form-{{ section.id }}"
+                                        {% if option.selected_value == value %}checked{% endif %}
+                                  >
+                                  <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
+                                    {{ value }}
+                                  </label>
+                                </div>
+                              {%- endfor -%}
+                            </div>
                           </div>
-                        </fieldset>
+                        </div>
                       {%- endfor -%}
                       <script type="application/json">
                         {{ product.variants | json }}
@@ -429,15 +449,41 @@
     constructor() {
       super();
       this.addEventListener('change', this.onVariantChange);
+      this.initDrawers();
     }
 
-    onVariantChange() {
+    initDrawers() {
+      const wrappers = this.querySelectorAll('.js-drawer-wrapper');
+      
+      wrappers.forEach(wrapper => {
+        const trigger = wrapper.querySelector('.js-drawer-trigger');
+        const overlay = wrapper.querySelector('.js-drawer-overlay');
+        const closeBtn = wrapper.querySelector('.js-drawer-close');
+        
+        const openDrawer = () => wrapper.classList.add('is-open');
+        const closeDrawer = () => wrapper.classList.remove('is-open');
+
+        if(trigger) trigger.addEventListener('click', openDrawer);
+        if(overlay) overlay.addEventListener('click', closeDrawer);
+        if(closeBtn) closeBtn.addEventListener('click', closeDrawer);
+      });
+    }
+
+    onVariantChange(event) {
       this.updateOptions();
       this.updateMasterId();
       this.updateFormId();
       this.updatePrice();
       this.updateImage();
       this.updateURL();
+      
+      // Update drawer trigger label & close drawer
+      const wrapper = event.target.closest('.js-drawer-wrapper');
+      if (wrapper) {
+         const selectedValueEl = wrapper.querySelector('.js-selected-value');
+         if(selectedValueEl) selectedValueEl.textContent = event.target.value;
+         wrapper.classList.remove('is-open');
+      }
     }
 
     updateOptions() {

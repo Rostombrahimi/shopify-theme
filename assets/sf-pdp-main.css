@@ -114,63 +114,230 @@ img.product-gallery {
     transition: filter 0.3s ease;
 }
 
-/* Variants CSS */
+/* Variants Drawer CSS */
 .sf-pdp-variants {
     margin-bottom: 24px;
     width: 100%;
 }
 
-.sf-pdp-variants fieldset {
-    border: none;
-    padding: 0;
-    margin: 0 0 20px 0;
+.sf-variant-drawer-wrapper {
+    position: relative;
+    margin-bottom: 20px;
 }
 
-.sf-pdp-variants legend {
-    font-size: 14px;
-    font-weight: 600;
-    color: #E2E8F0;
-    margin-bottom: 12px;
+.sf-variant-trigger {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: #FFF;
+    font-size: 15px;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.3s ease;
+}
+
+.sf-variant-trigger:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.sf-variant-trigger-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.sf-variant-trigger-label {
+    font-size: 12px;
+    color: #8A9BB1;
     text-transform: uppercase;
     letter-spacing: 0.05em;
+    font-weight: 600;
 }
 
-.sf-variant-options {
+.sf-variant-trigger-value {
+    font-weight: 500;
+}
+
+.sf-variant-chevron {
+    color: #8A9BB1;
+    transition: transform 0.3s ease;
+}
+
+.sf-variant-drawer-wrapper.is-open .sf-variant-chevron {
+    transform: rotate(180deg);
+}
+
+/* Drawer Container */
+.sf-variant-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.sf-variant-drawer-container {
+    position: fixed;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    max-height: 80vh;
+    background: #081221;
+    border-radius: 24px 24px 0 0;
+    z-index: 1000;
     display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
+    flex-direction: column;
+    transition: bottom 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    box-shadow: 0 -10px 40px rgba(0,0,0,0.5);
+    border-top: 1px solid rgba(255,255,255,0.1);
 }
 
-.sf-variant-options input[type="radio"] {
+.sf-variant-drawer-wrapper.is-open .sf-variant-overlay {
+    opacity: 1;
+    visibility: visible;
+}
+
+.sf-variant-drawer-wrapper.is-open .sf-variant-drawer-container {
+    bottom: 0;
+}
+
+.sf-variant-drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.sf-variant-drawer-header h3 {
+    margin: 0;
+    font-size: 16px;
+    color: #FFF;
+    font-weight: 600;
+}
+
+.sf-variant-close {
+    background: none;
+    border: none;
+    color: #8A9BB1;
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s;
+}
+
+.sf-variant-close:hover {
+    background: rgba(255,255,255,0.1);
+    color: #FFF;
+}
+
+.sf-variant-drawer-body {
+    padding: 16px 24px 32px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Radio Styles */
+.sf-variant-row {
+    position: relative;
+}
+
+.sf-variant-row input[type="radio"] {
     position: absolute;
     opacity: 0;
     width: 0;
     height: 0;
 }
 
-.sf-variant-options label {
-    display: inline-block;
-    padding: 10px 18px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 16px;
+.sf-variant-row label {
+    display: block;
+    width: 100%;
+    padding: 16px 20px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 500;
-    color: #A0AEC0;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    color: #E2E8F0;
+    transition: all 0.2s ease;
 }
 
-.sf-variant-options input[type="radio"]:checked + label {
+.sf-variant-row input[type="radio"]:checked + label {
     background: rgba(232, 157, 70, 0.1);
     border-color: #E89D46;
     color: #fff;
-    box-shadow: 0 4px 15px rgba(232, 157, 70, 0.15);
 }
 
-.sf-variant-options label:hover {
-    background: rgba(255, 255, 255, 0.08);
-    color: #fff;
+/* Desktop Dropdown overrides */
+@media (min-width: 1025px) {
+    .sf-variant-overlay {
+        display: none !important;
+    }
+    
+    .sf-variant-drawer-container {
+        position: absolute;
+        top: calc(100% + 8px);
+        bottom: auto;
+        left: 0;
+        width: 100%;
+        max-height: 400px;
+        border-radius: 12px;
+        border: 1px solid rgba(255,255,255,0.1);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all 0.2s ease;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    
+    .sf-variant-drawer-wrapper.is-open .sf-variant-drawer-container {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+    
+    .sf-variant-drawer-header {
+        display: none;
+    }
+    
+    .sf-variant-drawer-body {
+        padding: 12px;
+        gap: 4px;
+    }
+    
+    .sf-variant-row label {
+        padding: 12px 16px;
+        border: none;
+        background: transparent;
+        border-radius: 8px;
+    }
+    
+    .sf-variant-row label:hover {
+        background: rgba(255,255,255,0.05);
+    }
+    
+    .sf-variant-row input[type="radio"]:checked + label {
+        background: rgba(232, 157, 70, 0.1);
+        color: #E89D46;
+    }
 }
 
 .sf-pdp-thumbnails {
