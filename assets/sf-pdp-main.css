@@ -263,14 +263,10 @@ img.product-gallery {
 }
 
 .sf-variant-row input[type="radio"] {
-    position: fixed;
-    top: 0;
-    left: 0;
+    position: absolute;
     opacity: 0;
-    width: 1px;
-    height: 1px;
-    pointer-events: none;
-    z-index: -1;
+    width: 0;
+    height: 0;
 }
 
 .sf-variant-row label {
@@ -394,12 +390,12 @@ img.product-gallery {
 /* PDP Purchase Block (Info Right) */
 .pdp-sticky-container {
     background: var(--illu-night-light, #0D233F);
-    /* The dark blue requested */
     border-radius: 24px;
-    /* slightly smaller chubby */
     padding: 40px;
     border: 1px solid rgba(255, 255, 255, 0.05);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 10;
 }
 
 .sf-pdp-badge {

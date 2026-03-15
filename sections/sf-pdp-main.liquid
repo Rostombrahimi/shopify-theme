@@ -470,12 +470,18 @@
     }
 
     onVariantChange(event) {
+      // Prevent browser from native scroll adjustments
+      const currentScrollY = window.scrollY;
+
       this.updateOptions();
       this.updateMasterId();
       this.updateFormId();
       this.updatePrice();
       this.updateImage();
       this.updateURL();
+      
+      // Force scroll restoration instantly
+      window.scrollTo({ top: currentScrollY, behavior: 'instant' });
       
       // Update drawer trigger label & close drawer
       const wrapper = event.target.closest('.js-drawer-wrapper');
