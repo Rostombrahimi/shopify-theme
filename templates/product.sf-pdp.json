@@ -23,13 +23,6 @@
           "type": "title",
           "settings": {}
         },
-        "reviews": {
-          "type": "reviews",
-          "settings": {
-            "rating": 5,
-            "text": "4.9/5 (128 avis)"
-          }
-        },
         "subtitle": {
           "type": "subtitle",
           "settings": {
@@ -101,7 +94,6 @@
       "block_order": [
         "badge",
         "title",
-        "reviews",
         "subtitle",
         "price",
         "buy_buttons",
@@ -113,51 +105,6 @@
         "advice"
       ],
       "settings": {}
-    },
-    "reviews_grid": {
-      "type": "sf-pdp-reviews-grid",
-      "blocks": {
-        "review_1": {
-          "type": "review",
-          "settings": {
-            "author": "Julien M.",
-            "date": "Il y a 3 jours",
-            "rating": 5,
-            "title": "Une pièce maîtresse",
-            "content": "<p>La qualité du verre soufflé est exceptionnelle. La lueur ambrée donne une atmosphère incroyable au salon le soir. Très satisfait.</p>"
-          }
-        },
-        "review_2": {
-          "type": "review",
-          "settings": {
-            "author": "Sophie T.",
-            "date": "Il y a 1 semaine",
-            "rating": 5,
-            "title": "Exactement comme sur les photos",
-            "content": "<p>Livraison impeccable, emballage très sécurisé. Le design est épuré mais l'effet lumineux est vraiment puissant.</p>"
-          }
-        },
-        "review_3": {
-          "type": "review",
-          "settings": {
-            "author": "Marc A.",
-            "date": "Il y a 2 semaines",
-            "rating": 4,
-            "title": "Très bel objet",
-            "content": "<p>Superbe design cinétique. Un peu imposant mais c'est ce qui fait son charme. Je l'ai mis sur mon bureau, c'est génial.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "review_1",
-        "review_2",
-        "review_3"
-      ],
-      "settings": {
-        "show_header": true,
-        "average_score": "4.9",
-        "total_reviews": "Basé sur 128 avis"
-      }
     },
     "echo_lumineux": {
       "type": "sf-echo-lumineux",
@@ -200,7 +147,6 @@
   },
   "order": [
     "main",
-    "reviews_grid",
     "echo_lumineux"
   ]
 }
