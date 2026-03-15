@@ -180,6 +180,13 @@
                           </legend>
                           <div class="sf-variant-pills">
                             {%- for value in option.values -%}
+                              {%- assign variant_image = blank -%}
+                              {%- for variant in product.variants -%}
+                                {%- if variant.options contains value and variant.featured_image -%}
+                                  {%- assign variant_image = variant.featured_image -%}
+                                  {%- break -%}
+                                {%- endif -%}
+                              {%- endfor -%}
                               <div class="sf-variant-pill-wrapper">
                                 <input type="radio" id="desktop-{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
                                       name="desktop-{{ option.name }}"
@@ -189,7 +196,10 @@
                                       class="sf-variant-radio-input"
                                 >
                                 <label for="desktop-{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}" class="sf-variant-pill-label">
-                                  {{ value }}
+                                  {%- if variant_image != blank -%}
+                                    <img src="{{ variant_image | image_url: width: 80 }}" alt="{{ value | escape }}" class="sf-variant-swatch-img" width="40" height="40" loading="lazy">
+                                  {%- endif -%}
+                                  <span>{{ value }}</span>
                                 </label>
                               </div>
                             {%- endfor -%}
@@ -218,6 +228,13 @@
                             </div>
                             <div class="sf-variant-drawer-body sf-variant-options">
                               {%- for value in option.values -%}
+                                {%- assign variant_image = blank -%}
+                                {%- for variant in product.variants -%}
+                                  {%- if variant.options contains value and variant.featured_image -%}
+                                    {%- assign variant_image = variant.featured_image -%}
+                                    {%- break -%}
+                                  {%- endif -%}
+                                {%- endfor -%}
                                 <div class="sf-variant-row">
                                   <input type="radio" id="mobile-{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
                                         name="{{ option.name }}"
@@ -227,7 +244,10 @@
                                         {% if option.selected_value == value %}checked{% endif %}
                                   >
                                   <label for="mobile-{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
-                                    {{ value }}
+                                    {%- if variant_image != blank -%}
+                                      <img src="{{ variant_image | image_url: width: 80 }}" alt="{{ value | escape }}" class="sf-variant-swatch-img" width="40" height="40" loading="lazy">
+                                    {%- endif -%}
+                                    <span>{{ value }}</span>
                                   </label>
                                 </div>
                               {%- endfor -%}
