@@ -173,7 +173,7 @@
                   <div class="sf-pdp-variants" {{ block.shopify_attributes }}>
                     <sf-variant-radios class="no-js-hidden" data-section="{{ section.id }}" data-url="{{ product.url }}">
                       {%- for option in product.options_with_values -%}
-                        <div class="sf-variant-drawer-wrapper js-drawer-wrapper" data-option="{{ option.name }}">
+                        <div class="sf-variant-drawer-wrapper js-drawer-wrapper" data-option="{{ option.name }}" style="z-index: {{ 100 | minus: forloop.index }};">
                           <!-- Trigger Button -->
                           <button type="button" class="sf-variant-trigger js-drawer-trigger" aria-expanded="false">
                             <div class="sf-variant-trigger-info">
@@ -466,6 +466,22 @@
         if(trigger) trigger.addEventListener('click', openDrawer);
         if(overlay) overlay.addEventListener('click', closeDrawer);
         if(closeBtn) closeBtn.addEventListener('click', closeDrawer);
+        
+        // Fix iOS fixed container label focus jump
+        const labels = wrapper.querySelectorAll('label');
+        labels.forEach(label => {
+          label.addEventListener('click', (e) => {
+            e.preventDefault(); // Stop native scrolling and focus
+            const inputId = label.getAttribute('for');
+            if (inputId) {
+              const input = document.getElementById(inputId);
+              if (input && !input.checked) {
+                input.checked = true;
+                input.dispatchEvent(new Event('change', { bubbles: true }));
+              }
+            }
+          });
+        });
       });
     }
 
